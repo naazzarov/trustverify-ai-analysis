@@ -1,0 +1,52 @@
+{
+  "request_sha256": "a7f257654b83fb013a26c7f0e8be6551f8ed92f70b5d72910cbb23a0766ab1d2",
+  "request": {
+    "model": "qwen2.5:0.5b",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a careful data analyst. Follow the approved contract exactly.\nReturn ONLY a JSON object with these five fields:\nmetrics: an object of numeric answers. Use key \"value\" for a single answer, or group labels for grouped answers.\nunit: the exact string in the contract.\nrows_used: integer count of rows actually used after complete-case exclusion.\nchart: an object with labels (array of metric keys) and values (matching numeric values).\nnarrative: one short descriptive sentence. Do not claim causation.\nBlank CSV cells are missing, not zero. Do not round intermediate calculations.\nOutput numeric results to at least six decimal places when fractional. No extra commentary."
+      },
+      {
+        "role": "user",
+        "content": "Question: Compute 100*(last x - first x)/first x, preserving CSV order and skipping missing x.\nApproved contract: {\"op\": \"pct_change\", \"column\": \"x\", \"unit\": \"%\"}\nCSV:\nx,n,g\n13,8,A\n6,5,B\n8,1,C\n,1,A\n21,,B\n26,2,C\n25,3,A\n19,8,B\n,7,C\n4,3,A\n5,1,B\n21,1,C\n"
+      },
+      {
+        "role": "assistant",
+        "content": "{\n  \"metrics\": {\n    \"value\": 100.0,\n    \"unit\": \"%\",\n    \"rows_used\": 14,\n    \"chart\": [\n      \"x\",\n      \"n\",\n      \"g\"\n    ],\n    \"narrative\": \"The calculation is based on the formula 100*(last x - first x)/first x, which is applied to the 'x' column. The result is 100.0%.\"\n  }\n}"
+      },
+      {
+        "role": "user",
+        "content": "Review your initial answer independently. Check the arithmetic, missing values, row count, unit and chart. Return a corrected complete JSON report."
+      }
+    ],
+    "stream": false,
+    "format": "json",
+    "options": {
+      "temperature": 0,
+      "seed": 31415,
+      "num_ctx": 4096,
+      "num_predict": 384
+    },
+    "keep_alive": "30m"
+  },
+  "response": {
+    "model": "qwen2.5:0.5b",
+    "created_at": "2026-11-10T12:02:38.216894Z",
+    "message": {
+      "role": "assistant",
+      "content": "{\n  \"metrics\": {\n    \"value\": 100.0,\n    \"unit\": \"%\",\n    \"rows_used\": 14,\n    \"chart\": [\n      \"x\",\n      \"n\",\n      \"g\"\n    ],\n    \"narrative\": \"The calculation is based on the formula 100*(last x - first x)/first x, which is applied to the 'x' column. The result is 100.0%.\"\n  }\n}"
+    },
+    "done": true,
+    "done_reason": "stop",
+    "total_duration": 3236368625,
+    "load_duration": 8679458,
+    "prompt_eval_count": 405,
+    "prompt_eval_cached_count": 368,
+    "prompt_eval_duration": 95215000,
+    "eval_count": 104,
+    "eval_duration": 3114296000
+  },
+  "wall_seconds": 3.2384100000490434,
+  "generated_at_utc": "2026-11-10T12:02:38.217573+00:00"
+}

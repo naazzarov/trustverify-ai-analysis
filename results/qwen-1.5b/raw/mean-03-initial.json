@@ -1,0 +1,44 @@
+{
+  "request_sha256": "d7df2b6c0e450d3a3cb7d82cf4bcdcdcde1d669ee7671ffe46e3a56102014046",
+  "request": {
+    "model": "qwen2.5:1.5b",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a careful data analyst. Follow the approved contract exactly.\nReturn ONLY a JSON object with these five fields:\nmetrics: an object of numeric answers. Use key \"value\" for a single answer, or group labels for grouped answers.\nunit: the exact string in the contract.\nrows_used: integer count of rows actually used after complete-case exclusion.\nchart: an object with labels (array of metric keys) and values (matching numeric values).\nnarrative: one short descriptive sentence. Do not claim causation.\nBlank CSV cells are missing, not zero. Do not round intermediate calculations.\nOutput numeric results to at least six decimal places when fractional. No extra commentary."
+      },
+      {
+        "role": "user",
+        "content": "Question: Compute the arithmetic mean of nonmissing x values.\nApproved contract: {\"op\": \"mean\", \"column\": \"x\", \"unit\": \"points\"}\nCSV:\nx,n,g\n24,6,A\n11,3,B\n10,7,C\n,7,A\n13,,B\n18,2,C\n27,6,A\n27,7,B\n,5,C\n4,7,A\n14,1,B\n4,7,C\n"
+      }
+    ],
+    "stream": false,
+    "format": "json",
+    "options": {
+      "temperature": 0,
+      "seed": 31415,
+      "num_ctx": 4096,
+      "num_predict": 384
+    },
+    "keep_alive": "30m"
+  },
+  "response": {
+    "model": "qwen2.5:1.5b",
+    "created_at": "2026-11-10T12:10:58.849231Z",
+    "message": {
+      "role": "assistant",
+      "content": "{\n  \"metrics\": {\n    \"value\": 12.83333\n  },\n  \"unit\": \"points\",\n  \"rows_used\": 10,\n  \"chart\": {\n    \"x\": [\n      \"24\",\n      \"11\",\n      \"10\",\n      \"7\",\n      \"13\",\n      \"18\",\n      \"27\",\n      \"27\",\n      \"5\",\n      \"4\",\n      \"14\"\n    ],\n    \"value\": [\n      12.83333,\n      12.83333,\n      12.83333,\n      12.83333,\n      12.83333,\n      12.83333,\n      12.83333,\n      12.83333,\n      12.83333,\n      12.83333,\n      12.83333\n    ]\n  },\n  \"narrative\": \"The arithmetic mean of the nonmissing x values is 12.83333 points.\"\n}"
+    },
+    "done": true,
+    "done_reason": "stop",
+    "total_duration": 13844311166,
+    "load_duration": 8704833,
+    "prompt_eval_count": 253,
+    "prompt_eval_cached_count": 183,
+    "prompt_eval_duration": 385764000,
+    "eval_count": 262,
+    "eval_duration": 13416934000
+  },
+  "wall_seconds": 13.882044124999084,
+  "generated_at_utc": "2026-11-10T12:10:58.873091+00:00"
+}

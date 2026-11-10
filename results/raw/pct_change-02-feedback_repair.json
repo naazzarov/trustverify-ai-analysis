@@ -1,0 +1,52 @@
+{
+  "request_sha256": "bc0ab8b45b46f40d4a1d7e1e5f9a49359b10e7e2cc52fd104010e39e7d0fb74a",
+  "request": {
+    "model": "qwen2.5:0.5b",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a careful data analyst. Follow the approved contract exactly.\nReturn ONLY a JSON object with these five fields:\nmetrics: an object of numeric answers. Use key \"value\" for a single answer, or group labels for grouped answers.\nunit: the exact string in the contract.\nrows_used: integer count of rows actually used after complete-case exclusion.\nchart: an object with labels (array of metric keys) and values (matching numeric values).\nnarrative: one short descriptive sentence. Do not claim causation.\nBlank CSV cells are missing, not zero. Do not round intermediate calculations.\nOutput numeric results to at least six decimal places when fractional. No extra commentary."
+      },
+      {
+        "role": "user",
+        "content": "Question: Compute 100*(last x - first x)/first x, preserving CSV order and skipping missing x.\nApproved contract: {\"op\": \"pct_change\", \"column\": \"x\", \"unit\": \"%\"}\nCSV:\nx,n,g\n23,7,A\n18,1,B\n15,1,C\n,3,A\n15,,B\n6,1,C\n12,6,A\n18,1,B\n,6,C\n26,4,A\n4,2,B\n20,9,C\n"
+      },
+      {
+        "role": "assistant",
+        "content": "{\n  \"value\": 1.0,\n  \"unit\": \"%\",\n  \"rows_used\": 14,\n  \"chart\": {\n    \"labels\": [\"15\", \"6\", \"18\", \"20\", \"23\", \"26\", \"4\", \"12\", \"18\", \"15\", \"18\", \"23\", \"26\", \"3\", \"6\", \"15\", \"18\", \"15\", \"18\", \"15\", \"18\", \"15\", \"18\", \"15\", \"18\", \"15\", \"18\", \"15\", \"18\", \"15\", \"18\", \"15\", \"18\", \"15\", \"18\", \"15\", \"18\", \"15\", \"18\", \"15\", \"18\", \"15\", \"18\", \"15\", \"18\", \"15\", \"18\", \"15\", \"18\", \"15\", \"18\", \"15\", \"18\", \"15\", \"18\", \"15\", \"18\", \"15\", \"18\", \"15\", \"18\", \"15\", \"18\", \"15\", \"18\", \"15\", \"18\", \"15\", \"18\", \"15\", \"18\", \"15\", \"18\", \"15\", \"18\", \"15\", \"18\", \"15\", \"18\", \"15\", \"18\", \"15\", \"18\", \"15\", \"18\", \"15\", \"18\", \"15\", \"1"
+      },
+      {
+        "role": "user",
+        "content": "Use the executable checker findings below to repair your initial answer. Return a corrected complete JSON report. Checker findings: {\"status\": \"fail\", \"profile\": \"full\", \"findings\": [{\"code\": \"SCHEMA\", \"field\": \"$\", \"message\": \"Report must be a JSON object\", \"expected\": null, \"actual\": null}], \"scope\": \"structured fields only\"}"
+      }
+    ],
+    "stream": false,
+    "format": "json",
+    "options": {
+      "temperature": 0,
+      "seed": 31415,
+      "num_ctx": 4096,
+      "num_predict": 384
+    },
+    "keep_alive": "30m"
+  },
+  "response": {
+    "model": "qwen2.5:0.5b",
+    "created_at": "2026-11-10T12:01:41.908127Z",
+    "message": {
+      "role": "assistant",
+      "content": "{\n  \"value\": 1.0,\n  \"unit\": \"%\",\n  \"rows_used\": 14,\n  \"chart\": {\n    \"labels\": [\"15\", \"6\", \"18\", \"20\", \"23\", \"26\", \"3\", \"4\", \"12\", \"18\", \"15\", \"18\", \"15\", \"18\", \"15\", \"18\", \"15\", \"18\", \"15\", \"18\", \"15\", \"18\", \"15\", \"18\", \"15\", \"18\", \"15\", \"18\", \"15\", \"18\", \"15\", \"18\", \"15\", \"18\", \"15\", \"18\", \"15\", \"18\", \"15\", \"18\", \"15\", \"18\", \"15\", \"18\", \"15\", \"18\", \"15\", \"18\", \"15\", \"18\", \"15\", \"18\", \"15\", \"18\", \"15\", \"18\", \"15\", \"18\", \"15\", \"18\", \"15\", \"18\", \"15\", \"18\", \"15\", \"18\", \"15\", \"18\", \"15\", \"18\", \"15\", \"18\", \"15\", \"18\", \"15\", \"18\", \"15\", \"18\", \"15\", \"18\", \"15\", \"18\", \"15\", \"18\", \"15\", \"18\", \"15\", \"18\", \""
+    },
+    "done": true,
+    "done_reason": "length",
+    "total_duration": 11819253334,
+    "load_duration": 5549334,
+    "prompt_eval_count": 740,
+    "prompt_eval_cached_count": 656,
+    "prompt_eval_duration": 161893000,
+    "eval_count": 384,
+    "eval_duration": 11608590000
+  },
+  "wall_seconds": 11.824477625021245,
+  "generated_at_utc": "2026-11-10T12:01:41.912011+00:00"
+}

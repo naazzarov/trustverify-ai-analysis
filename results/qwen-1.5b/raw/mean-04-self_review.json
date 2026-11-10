@@ -1,0 +1,52 @@
+{
+  "request_sha256": "5e31156dcf67ef747289b84ee7f41a7e9be1618e8c2ef2eca277757c6beef982",
+  "request": {
+    "model": "qwen2.5:1.5b",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a careful data analyst. Follow the approved contract exactly.\nReturn ONLY a JSON object with these five fields:\nmetrics: an object of numeric answers. Use key \"value\" for a single answer, or group labels for grouped answers.\nunit: the exact string in the contract.\nrows_used: integer count of rows actually used after complete-case exclusion.\nchart: an object with labels (array of metric keys) and values (matching numeric values).\nnarrative: one short descriptive sentence. Do not claim causation.\nBlank CSV cells are missing, not zero. Do not round intermediate calculations.\nOutput numeric results to at least six decimal places when fractional. No extra commentary."
+      },
+      {
+        "role": "user",
+        "content": "Question: Compute the arithmetic mean of nonmissing x values.\nApproved contract: {\"op\": \"mean\", \"column\": \"x\", \"unit\": \"points\"}\nCSV:\nx,n,g\n14,6,A\n12,3,B\n19,7,C\n,6,A\n28,,B\n27,7,C\n10,5,A\n14,4,B\n,2,C\n19,1,A\n28,4,B\n19,7,C\n"
+      },
+      {
+        "role": "assistant",
+        "content": "{\n  \"metrics\": {\n    \"value\": 14.2\n  },\n  \"unit\": \"points\",\n  \"rows_used\": 10\n}"
+      },
+      {
+        "role": "user",
+        "content": "Review your initial answer independently. Check the arithmetic, missing values, row count, unit and chart. Return a corrected complete JSON report."
+      }
+    ],
+    "stream": false,
+    "format": "json",
+    "options": {
+      "temperature": 0,
+      "seed": 31415,
+      "num_ctx": 4096,
+      "num_predict": 384
+    },
+    "keep_alive": "30m"
+  },
+  "response": {
+    "model": "qwen2.5:1.5b",
+    "created_at": "2026-11-10T12:11:28.860316Z",
+    "message": {
+      "role": "assistant",
+      "content": "{\n  \"metrics\": {\n    \"value\": 14.2\n  },\n  \"unit\": \"points\",\n  \"rows_used\": 10,\n  \"chart\": {\n    \"labels\": [\n      \"x\"\n    ],\n    \"values\": [\n      14.2\n    ]\n  },\n  \"narrative\": \"The arithmetic mean of the non-missing x values is 14.2 points.\"\n}"
+    },
+    "done": true,
+    "done_reason": "stop",
+    "total_duration": 4296082667,
+    "load_duration": 3724750,
+    "prompt_eval_count": 327,
+    "prompt_eval_cached_count": 290,
+    "prompt_eval_duration": 222016000,
+    "eval_count": 93,
+    "eval_duration": 4063475000
+  },
+  "wall_seconds": 4.297669666004367,
+  "generated_at_utc": "2026-11-10T12:11:28.861074+00:00"
+}

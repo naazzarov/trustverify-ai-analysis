@@ -1,0 +1,99 @@
+{
+  "experiment": "actual_local_model_pilot",
+  "model": "qwen2.5:0.5b",
+  "options": {
+    "temperature": 0,
+    "seed": 31415,
+    "num_ctx": 4096,
+    "num_predict": 384
+  },
+  "system_prompt": "You are a careful data analyst. Follow the approved contract exactly.\nReturn ONLY a JSON object with these five fields:\nmetrics: an object of numeric answers. Use key \"value\" for a single answer, or group labels for grouped answers.\nunit: the exact string in the contract.\nrows_used: integer count of rows actually used after complete-case exclusion.\nchart: an object with labels (array of metric keys) and values (matching numeric values).\nnarrative: one short descriptive sentence. Do not claim causation.\nBlank CSV cells are missing, not zero. Do not round intermediate calculations.\nOutput numeric results to at least six decimal places when fractional. No extra commentary.",
+  "system_prompt_sha256": "7d804e8c2d9d6ede5e27cd39ad048e191ba9f7ac23ed3b14baab266520086152",
+  "protocol_sha256": "904732337e277befe5c69259c600af8be7a6546f09b012f0940d9816b9860457",
+  "task_file_sha256": "7d6b3739552c30bcdf34699afad15d9ca9dc80ebb30eb93d727df946187eac73",
+  "model_details": {
+    "parent_model": "",
+    "format": "gguf",
+    "family": "qwen2",
+    "families": [
+      "qwen2"
+    ],
+    "parameter_size": "494.03M",
+    "quantization_level": "Q4_K_M"
+  },
+  "model_info": {
+    "general.architecture": "qwen2",
+    "general.base_model.0.name": "Qwen2.5 0.5B",
+    "general.base_model.0.organization": "Qwen",
+    "general.base_model.0.repo_url": "https://huggingface.co/Qwen/Qwen2.5-0.5B",
+    "general.base_model.count": 1,
+    "general.basename": "Qwen2.5",
+    "general.file_type": 15,
+    "general.finetune": "Instruct",
+    "general.languages": [
+      "en"
+    ],
+    "general.license": "apache-2.0",
+    "general.license.link": "https://huggingface.co/Qwen/Qwen2.5-0.5B-Instruct/blob/main/LICENSE",
+    "general.parameter_count": 494032768,
+    "general.quantization_version": 2,
+    "general.size_label": "0.5B",
+    "general.tags": [
+      "chat",
+      "text-generation"
+    ],
+    "general.type": "model",
+    "qwen2.attention.head_count": 14,
+    "qwen2.attention.head_count_kv": 2,
+    "qwen2.attention.layer_norm_rms_epsilon": 1e-06,
+    "qwen2.block_count": 24,
+    "qwen2.context_length": 32768,
+    "qwen2.embedding_length": 896,
+    "qwen2.feed_forward_length": 4864,
+    "qwen2.rope.freq_base": 1000000,
+    "tokenizer.ggml.add_bos_token": false,
+    "tokenizer.ggml.bos_token_id": 151643,
+    "tokenizer.ggml.eos_token_id": 151645,
+    "tokenizer.ggml.merges": [],
+    "tokenizer.ggml.model": "gpt2",
+    "tokenizer.ggml.padding_token_id": 151643,
+    "tokenizer.ggml.pre": "qwen2",
+    "tokenizer.ggml.token_type": [],
+    "tokenizer.ggml.tokens": []
+  },
+  "model_tags": {
+    "models": [
+      {
+        "name": "qwen2.5:0.5b",
+        "model": "qwen2.5:0.5b",
+        "modified_at": "2026-11-10T19:54:19.256592185+08:00",
+        "size": 397821319,
+        "digest": "a8b0c51577010a279d933d14c2a8ab4b268079d44c5c8830c0a93900f1827c67",
+        "details": {
+          "parent_model": "",
+          "format": "gguf",
+          "family": "qwen2",
+          "families": [
+            "qwen2"
+          ],
+          "parameter_size": "494.03M",
+          "quantization_level": "Q4_K_M",
+          "context_length": 32768,
+          "embedding_length": 896
+        },
+        "capabilities": [
+          "completion",
+          "tools"
+        ]
+      }
+    ]
+  },
+  "environment": {
+    "python": "3.14.7 (main, Aug  5 2026, 10:29:49) [Clang 21.0.0 (clang-2100.1.1.101)]",
+    "platform": "macOS-26.5.2-arm64-arm-64bit-Mach-O",
+    "machine": "arm64"
+  },
+  "task_count": 24,
+  "generated_at_utc": "2026-11-10T11:55:57.819269+00:00",
+  "calls_per_task": 3
+}

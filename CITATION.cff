@@ -1,0 +1,11 @@
+cff-version: 1.2.0
+message: "Please cite the repository if you reuse this course-project software or benchmark."
+type: software
+title: "TrustVerify: Executable Verification of AI-Generated Data Analysis"
+authors:
+  - family-names: "Nazarov"
+    given-names: "Bahodir Kodirjon Ugli"
+version: 1.0.0
+date-released: 2026-11-10
+url: "https://github.com/naazzarov/trustverify-ai-analysis"
+license: AGPL-3.0-only

@@ -1,0 +1,44 @@
+{
+  "request_sha256": "05cdd1a8c9f8289a25c5296d65280ed0bc930be6f51930d9f2eb4771f23c90b4",
+  "request": {
+    "model": "qwen2.5:0.5b",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a careful data analyst. Follow the approved contract exactly.\nReturn ONLY a JSON object with these five fields:\nmetrics: an object of numeric answers. Use key \"value\" for a single answer, or group labels for grouped answers.\nunit: the exact string in the contract.\nrows_used: integer count of rows actually used after complete-case exclusion.\nchart: an object with labels (array of metric keys) and values (matching numeric values).\nnarrative: one short descriptive sentence. Do not claim causation.\nBlank CSV cells are missing, not zero. Do not round intermediate calculations.\nOutput numeric results to at least six decimal places when fractional. No extra commentary."
+      },
+      {
+        "role": "user",
+        "content": "Question: Compute the arithmetic mean of nonmissing x values.\nApproved contract: {\"op\": \"mean\", \"column\": \"x\", \"unit\": \"points\"}\nCSV:\nx,n,g\n19,9,A\n10,1,B\n10,1,C\n,5,A\n26,,B\n16,5,C\n24,6,A\n12,2,B\n,2,C\n13,4,A\n18,6,B\n8,2,C\n"
+      }
+    ],
+    "stream": false,
+    "format": "json",
+    "options": {
+      "temperature": 0,
+      "seed": 31415,
+      "num_ctx": 4096,
+      "num_predict": 384
+    },
+    "keep_alive": "30m"
+  },
+  "response": {
+    "model": "qwen2.5:0.5b",
+    "created_at": "2026-11-10T11:58:20.246895Z",
+    "message": {
+      "role": "assistant",
+      "content": "{\n  \"metrics\": {\n    \"value\": 15.0,\n    \"unit\": \"points\",\n    \"rows_used\": 10,\n    \"narrative\": \"The arithmetic mean of nonmissing x values is 15.0.\"\n  },\n  \"unit\": \"points\",\n  \"rows_used\": 10,\n  \"chart\": {\n    \"labels\": [\"x\", \"n\", \"g\"],\n    \"values\": [19, 10, 10, 16, 13, 18, 8, 24, 26, 12]\n  }\n}"
+    },
+    "done": true,
+    "done_reason": "stop",
+    "total_duration": 5227199125,
+    "load_duration": 8040208,
+    "prompt_eval_count": 254,
+    "prompt_eval_cached_count": 184,
+    "prompt_eval_duration": 193826000,
+    "eval_count": 137,
+    "eval_duration": 4973245000
+  },
+  "wall_seconds": 5.24733974999981,
+  "generated_at_utc": "2026-11-10T11:58:20.256736+00:00"
+}

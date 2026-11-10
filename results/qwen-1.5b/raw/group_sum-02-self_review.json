@@ -1,0 +1,52 @@
+{
+  "request_sha256": "f27d5bd2796dea97497dd312af0897662281544fe0ca2b30b2f9a5fda8bef5fa",
+  "request": {
+    "model": "qwen2.5:1.5b",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a careful data analyst. Follow the approved contract exactly.\nReturn ONLY a JSON object with these five fields:\nmetrics: an object of numeric answers. Use key \"value\" for a single answer, or group labels for grouped answers.\nunit: the exact string in the contract.\nrows_used: integer count of rows actually used after complete-case exclusion.\nchart: an object with labels (array of metric keys) and values (matching numeric values).\nnarrative: one short descriptive sentence. Do not claim causation.\nBlank CSV cells are missing, not zero. Do not round intermediate calculations.\nOutput numeric results to at least six decimal places when fractional. No extra commentary."
+      },
+      {
+        "role": "user",
+        "content": "Question: Sum nonmissing x by g, excluding empty groups; sort labels alphabetically.\nApproved contract: {\"op\": \"group_sum\", \"column\": \"x\", \"unit\": \"points\", \"group\": \"g\"}\nCSV:\nx,n,g\n10,6,A\n23,4,B\n23,2,C\n,4,A\n15,,B\n25,8,C\n9,6,A\n19,3,B\n,3,C\n23,2,A\n24,9,B\n15,1,C\n"
+      },
+      {
+        "role": "assistant",
+        "content": "{\n  \"metrics\": {\n    \"value\": 100\n  },\n  \"unit\": \"points\",\n  \"rows_used\": 9,\n  \"chart\": {\n    \"labels\": [\"A\", \"B\", \"C\"],\n    \"values\": [33.33333, 33.33333, 33.33333]\n  },\n  \"narrative\": \"The total nonmissing value of x is 100 points, distributed among groups A, B, and C.\"\n}"
+      },
+      {
+        "role": "user",
+        "content": "Review your initial answer independently. Check the arithmetic, missing values, row count, unit and chart. Return a corrected complete JSON report."
+      }
+    ],
+    "stream": false,
+    "format": "json",
+    "options": {
+      "temperature": 0,
+      "seed": 31415,
+      "num_ctx": 4096,
+      "num_predict": 384
+    },
+    "keep_alive": "30m"
+  },
+  "response": {
+    "model": "qwen2.5:1.5b",
+    "created_at": "2026-11-10T12:14:34.833068Z",
+    "message": {
+      "role": "assistant",
+      "content": "{\n  \"metrics\": {\n    \"value\": 100\n  },\n  \"unit\": \"points\",\n  \"rows_used\": 9,\n  \"chart\": {\n    \"labels\": [\"A\", \"B\", \"C\"],\n    \"values\": [33.33333, 33.33333, 33.33333]\n  },\n  \"narrative\": \"The total nonmissing value of x is 100 points, distributed among groups A, B, and C.\"\n}"
+    },
+    "done": true,
+    "done_reason": "stop",
+    "total_duration": 10427250042,
+    "load_duration": 207299333,
+    "prompt_eval_count": 422,
+    "prompt_eval_cached_count": 385,
+    "prompt_eval_duration": 216890000,
+    "eval_count": 119,
+    "eval_duration": 9596909000
+  },
+  "wall_seconds": 10.485567290976178,
+  "generated_at_utc": "2026-11-10T12:14:34.852095+00:00"
+}

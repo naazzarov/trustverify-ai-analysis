@@ -1,0 +1,361 @@
+[
+  {
+    "task": {
+      "id": "ratio-02",
+      "split": "test",
+      "family": "ratio",
+      "data": "data/csv/ratio-02.csv",
+      "spec": {
+        "op": "ratio",
+        "column": "x",
+        "unit": "%",
+        "denominator": "n"
+      },
+      "question": "Compute 100*sum(x)/sum(n), using only rows with both x and n present.",
+      "data_sha256": "da28b378270c73046657705f59574d1e93c2c4e8eb8a4fc2e3bb9e87b7f65351"
+    },
+    "rows": [
+      {
+        "x": "23",
+        "n": "5",
+        "g": "A"
+      },
+      {
+        "x": "23",
+        "n": "5",
+        "g": "B"
+      },
+      {
+        "x": "7",
+        "n": "5",
+        "g": "C"
+      },
+      {
+        "x": "",
+        "n": "5",
+        "g": "A"
+      },
+      {
+        "x": "5",
+        "n": "",
+        "g": "B"
+      },
+      {
+        "x": "5",
+        "n": "7",
+        "g": "C"
+      },
+      {
+        "x": "11",
+        "n": "7",
+        "g": "A"
+      },
+      {
+        "x": "20",
+        "n": "6",
+        "g": "B"
+      },
+      {
+        "x": "",
+        "n": "3",
+        "g": "C"
+      },
+      {
+        "x": "18",
+        "n": "6",
+        "g": "A"
+      },
+      {
+        "x": "4",
+        "n": "4",
+        "g": "B"
+      },
+      {
+        "x": "26",
+        "n": "7",
+        "g": "C"
+      }
+    ],
+    "fault": "clean",
+    "report": {
+      "metrics": {
+        "value": 263.46153846153845
+      },
+      "unit": "%",
+      "rows_used": 9,
+      "chart": {
+        "labels": [
+          "value"
+        ],
+        "values": [
+          263.46153846153845
+        ]
+      },
+      "narrative": "Reference values from an independent SQLite oracle."
+    },
+    "verification": {
+      "status": "pass",
+      "profile": "full",
+      "findings": [],
+      "scope": "structured fields only; narrative and contract intent unchecked"
+    },
+    "repaired": {
+      "metrics": {
+        "value": 263.46153846153845
+      },
+      "unit": "%",
+      "rows_used": 9,
+      "chart": {
+        "labels": [
+          "value"
+        ],
+        "values": [
+          263.46153846153845
+        ]
+      },
+      "narrative": "Structured fields recomputed from the approved contract. No causal conclusion established."
+    }
+  },
+  {
+    "task": {
+      "id": "ratio-02",
+      "split": "test",
+      "family": "ratio",
+      "data": "data/csv/ratio-02.csv",
+      "spec": {
+        "op": "ratio",
+        "column": "x",
+        "unit": "%",
+        "denominator": "n"
+      },
+      "question": "Compute 100*sum(x)/sum(n), using only rows with both x and n present.",
+      "data_sha256": "da28b378270c73046657705f59574d1e93c2c4e8eb8a4fc2e3bb9e87b7f65351"
+    },
+    "rows": [
+      {
+        "x": "23",
+        "n": "5",
+        "g": "A"
+      },
+      {
+        "x": "23",
+        "n": "5",
+        "g": "B"
+      },
+      {
+        "x": "7",
+        "n": "5",
+        "g": "C"
+      },
+      {
+        "x": "",
+        "n": "5",
+        "g": "A"
+      },
+      {
+        "x": "5",
+        "n": "",
+        "g": "B"
+      },
+      {
+        "x": "5",
+        "n": "7",
+        "g": "C"
+      },
+      {
+        "x": "11",
+        "n": "7",
+        "g": "A"
+      },
+      {
+        "x": "20",
+        "n": "6",
+        "g": "B"
+      },
+      {
+        "x": "",
+        "n": "3",
+        "g": "C"
+      },
+      {
+        "x": "18",
+        "n": "6",
+        "g": "A"
+      },
+      {
+        "x": "4",
+        "n": "4",
+        "g": "B"
+      },
+      {
+        "x": "26",
+        "n": "7",
+        "g": "C"
+      }
+    ],
+    "fault": "numeric",
+    "report": {
+      "metrics": {
+        "value": 266.71153846153845
+      },
+      "unit": "%",
+      "rows_used": 9,
+      "chart": {
+        "labels": [
+          "value"
+        ],
+        "values": [
+          263.46153846153845
+        ]
+      },
+      "narrative": "Reference values from an independent SQLite oracle."
+    },
+    "verification": {
+      "status": "fail",
+      "profile": "full",
+      "findings": [
+        {
+          "code": "NUMERIC",
+          "field": "metrics.value",
+          "message": "Incorrect or non-finite numeric result",
+          "expected": 263.46153846153845,
+          "actual": 266.71153846153845
+        }
+      ],
+      "scope": "structured fields only; narrative and contract intent unchecked"
+    },
+    "repaired": {
+      "metrics": {
+        "value": 263.46153846153845
+      },
+      "unit": "%",
+      "rows_used": 9,
+      "chart": {
+        "labels": [
+          "value"
+        ],
+        "values": [
+          263.46153846153845
+        ]
+      },
+      "narrative": "Structured fields recomputed from the approved contract. No causal conclusion established."
+    }
+  },
+  {
+    "task": {
+      "id": "ratio-02",
+      "split": "test",
+      "family": "ratio",
+      "data": "data/csv/ratio-02.csv",
+      "spec": {
+        "op": "ratio",
+        "column": "x",
+        "unit": "%",
+        "denominator": "n"
+      },
+      "question": "Compute 100*sum(x)/sum(n), using only rows with both x and n present.",
+      "data_sha256": "da28b378270c73046657705f59574d1e93c2c4e8eb8a4fc2e3bb9e87b7f65351"
+    },
+    "rows": [
+      {
+        "x": "23",
+        "n": "5",
+        "g": "A"
+      },
+      {
+        "x": "23",
+        "n": "5",
+        "g": "B"
+      },
+      {
+        "x": "7",
+        "n": "5",
+        "g": "C"
+      },
+      {
+        "x": "",
+        "n": "5",
+        "g": "A"
+      },
+      {
+        "x": "5",
+        "n": "",
+        "g": "B"
+      },
+      {
+        "x": "5",
+        "n": "7",
+        "g": "C"
+      },
+      {
+        "x": "11",
+        "n": "7",
+        "g": "A"
+      },
+      {
+        "x": "20",
+        "n": "6",
+        "g": "B"
+      },
+      {
+        "x": "",
+        "n": "3",
+        "g": "C"
+      },
+      {
+        "x": "18",
+        "n": "6",
+        "g": "A"
+      },
+      {
+        "x": "4",
+        "n": "4",
+        "g": "B"
+      },
+      {
+        "x": "26",
+        "n": "7",
+        "g": "C"
+      }
+    ],
+    "fault": "causal_claim",
+    "report": {
+      "metrics": {
+        "value": 263.46153846153845
+      },
+      "unit": "%",
+      "rows_used": 9,
+      "chart": {
+        "labels": [
+          "value"
+        ],
+        "values": [
+          263.46153846153845
+        ]
+      },
+      "narrative": "These observational data prove that group membership causes the outcome."
+    },
+    "verification": {
+      "status": "pass",
+      "profile": "full",
+      "findings": [],
+      "scope": "structured fields only; narrative and contract intent unchecked"
+    },
+    "repaired": {
+      "metrics": {
+        "value": 263.46153846153845
+      },
+      "unit": "%",
+      "rows_used": 9,
+      "chart": {
+        "labels": [
+          "value"
+        ],
+        "values": [
+          263.46153846153845
+        ]
+      },
+      "narrative": "Structured fields recomputed from the approved contract. No causal conclusion established."
+    }
+  }
+]

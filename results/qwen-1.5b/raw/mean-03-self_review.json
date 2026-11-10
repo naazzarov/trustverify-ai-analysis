@@ -1,0 +1,52 @@
+{
+  "request_sha256": "737f0726b7dcbec9a9066fe18370c0a03780443cdeb7ca06f0018809cb75f899",
+  "request": {
+    "model": "qwen2.5:1.5b",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a careful data analyst. Follow the approved contract exactly.\nReturn ONLY a JSON object with these five fields:\nmetrics: an object of numeric answers. Use key \"value\" for a single answer, or group labels for grouped answers.\nunit: the exact string in the contract.\nrows_used: integer count of rows actually used after complete-case exclusion.\nchart: an object with labels (array of metric keys) and values (matching numeric values).\nnarrative: one short descriptive sentence. Do not claim causation.\nBlank CSV cells are missing, not zero. Do not round intermediate calculations.\nOutput numeric results to at least six decimal places when fractional. No extra commentary."
+      },
+      {
+        "role": "user",
+        "content": "Question: Compute the arithmetic mean of nonmissing x values.\nApproved contract: {\"op\": \"mean\", \"column\": \"x\", \"unit\": \"points\"}\nCSV:\nx,n,g\n24,6,A\n11,3,B\n10,7,C\n,7,A\n13,,B\n18,2,C\n27,6,A\n27,7,B\n,5,C\n4,7,A\n14,1,B\n4,7,C\n"
+      },
+      {
+        "role": "assistant",
+        "content": "{\n  \"metrics\": {\n    \"value\": 12.83333\n  },\n  \"unit\": \"points\",\n  \"rows_used\": 10,\n  \"chart\": {\n    \"x\": [\n      \"24\",\n      \"11\",\n      \"10\",\n      \"7\",\n      \"13\",\n      \"18\",\n      \"27\",\n      \"27\",\n      \"5\",\n      \"4\",\n      \"14\"\n    ],\n    \"value\": [\n      12.83333,\n      12.83333,\n      12.83333,\n      12.83333,\n      12.83333,\n      12.83333,\n      12.83333,\n      12.83333,\n      12.83333,\n      12.83333,\n      12.83333\n    ]\n  },\n  \"narrative\": \"The arithmetic mean of the nonmissing x values is 12.83333 points.\"\n}"
+      },
+      {
+        "role": "user",
+        "content": "Review your initial answer independently. Check the arithmetic, missing values, row count, unit and chart. Return a corrected complete JSON report."
+      }
+    ],
+    "stream": false,
+    "format": "json",
+    "options": {
+      "temperature": 0,
+      "seed": 31415,
+      "num_ctx": 4096,
+      "num_predict": 384
+    },
+    "keep_alive": "30m"
+  },
+  "response": {
+    "model": "qwen2.5:1.5b",
+    "created_at": "2026-11-10T12:11:11.804905Z",
+    "message": {
+      "role": "assistant",
+      "content": "{\n  \"metrics\": {\n    \"value\": 12.83333\n  },\n  \"unit\": \"points\",\n  \"rows_used\": 10,\n  \"chart\": {\n    \"x\": [\n      \"24\",\n      \"11\",\n      \"10\",\n      \"7\",\n      \"13\",\n      \"18\",\n      \"27\",\n      \"27\",\n      \"5\",\n      \"4\",\n      \"14\"\n    ],\n    \"value\": [\n      12.83333,\n      12.83333,\n      12.83333,\n      12.83333,\n      12.83333,\n      12.83333,\n      12.83333,\n      12.83333,\n      12.83333,\n      12.83333,\n      12.83333\n    ]\n  },\n  \"narrative\": \"The arithmetic mean of the nonmissing x values is 12.83333 points.\"\n}"
+    },
+    "done": true,
+    "done_reason": "stop",
+    "total_duration": 12914553208,
+    "load_duration": 39358000,
+    "prompt_eval_count": 551,
+    "prompt_eval_cached_count": 514,
+    "prompt_eval_duration": 165851000,
+    "eval_count": 262,
+    "eval_duration": 12683591000
+  },
+  "wall_seconds": 12.954324166988954,
+  "generated_at_utc": "2026-11-10T12:11:11.831069+00:00"
+}

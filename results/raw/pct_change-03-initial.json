@@ -1,0 +1,44 @@
+{
+  "request_sha256": "9a6b0c92d4e58b14f0fe78a3f33be6ad58519bc2d218e3faea7b15d9d25fc76c",
+  "request": {
+    "model": "qwen2.5:0.5b",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a careful data analyst. Follow the approved contract exactly.\nReturn ONLY a JSON object with these five fields:\nmetrics: an object of numeric answers. Use key \"value\" for a single answer, or group labels for grouped answers.\nunit: the exact string in the contract.\nrows_used: integer count of rows actually used after complete-case exclusion.\nchart: an object with labels (array of metric keys) and values (matching numeric values).\nnarrative: one short descriptive sentence. Do not claim causation.\nBlank CSV cells are missing, not zero. Do not round intermediate calculations.\nOutput numeric results to at least six decimal places when fractional. No extra commentary."
+      },
+      {
+        "role": "user",
+        "content": "Question: Compute 100*(last x - first x)/first x, preserving CSV order and skipping missing x.\nApproved contract: {\"op\": \"pct_change\", \"column\": \"x\", \"unit\": \"%\"}\nCSV:\nx,n,g\n11,3,A\n9,7,B\n24,9,C\n,6,A\n6,,B\n18,6,C\n9,3,A\n24,6,B\n,6,C\n8,7,A\n24,9,B\n12,2,C\n"
+      }
+    ],
+    "stream": false,
+    "format": "json",
+    "options": {
+      "temperature": 0,
+      "seed": 31415,
+      "num_ctx": 4096,
+      "num_predict": 384
+    },
+    "keep_alive": "30m"
+  },
+  "response": {
+    "model": "qwen2.5:0.5b",
+    "created_at": "2026-11-10T12:01:45.40873Z",
+    "message": {
+      "role": "assistant",
+      "content": "{\n  \"metrics\": {\n    \"value\": 100.0,\n    \"unit\": \"%\",\n    \"rows_used\": 14,\n    \"chart\": [\n      \"x\",\n      \"n\",\n      \"g\"\n    ],\n    \"narrative\": \"The calculation is based on the formula 100*(last x - first x)/first x, which is applied to the 'x' column. The result is the percentage change between the last and first values of the 'x' column.\"\n  }\n}"
+    },
+    "done": true,
+    "done_reason": "stop",
+    "total_duration": 3479925416,
+    "load_duration": 16573583,
+    "prompt_eval_count": 265,
+    "prompt_eval_cached_count": 197,
+    "prompt_eval_duration": 153475000,
+    "eval_count": 112,
+    "eval_duration": 3282012000
+  },
+  "wall_seconds": 3.4856493329862133,
+  "generated_at_utc": "2026-11-10T12:01:45.413500+00:00"
+}

@@ -1,0 +1,52 @@
+{
+  "request_sha256": "e6fc202c8a55d92f9760d2c01e0941d6f8b7c4e6d6db732ddea1f787e5d0d8e3",
+  "request": {
+    "model": "qwen2.5:0.5b",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a careful data analyst. Follow the approved contract exactly.\nReturn ONLY a JSON object with these five fields:\nmetrics: an object of numeric answers. Use key \"value\" for a single answer, or group labels for grouped answers.\nunit: the exact string in the contract.\nrows_used: integer count of rows actually used after complete-case exclusion.\nchart: an object with labels (array of metric keys) and values (matching numeric values).\nnarrative: one short descriptive sentence. Do not claim causation.\nBlank CSV cells are missing, not zero. Do not round intermediate calculations.\nOutput numeric results to at least six decimal places when fractional. No extra commentary."
+      },
+      {
+        "role": "user",
+        "content": "Question: Sum nonmissing x values.\nApproved contract: {\"op\": \"sum\", \"column\": \"x\", \"unit\": \"points\"}\nCSV:\nx,n,g\n4,4,A\n19,8,B\n18,3,C\n,1,A\n16,,B\n15,3,C\n2,7,A\n28,9,B\n,7,C\n24,5,A\n9,4,B\n16,3,C\n"
+      },
+      {
+        "role": "assistant",
+        "content": "{\n  \"metrics\": {\n    \"x\": 16.0,\n    \"n\": 9.0,\n    \"g\": 4.0\n  },\n  \"unit\": \"points\",\n  \"rows_used\": 16,\n  \"chart\": {\n    \"labels\": [\"x\", \"n\", \"g\"],\n    \"values\": [16.0, 9.0, 4.0]\n  },\n  \"narrative\": \"The sum of nonmissing x values is 16.0.\"\n}"
+      },
+      {
+        "role": "user",
+        "content": "Use the executable checker findings below to repair your initial answer. Return a corrected complete JSON report. Checker findings: {\"status\": \"fail\", \"profile\": \"full\", \"findings\": [{\"code\": \"METRIC_KEYS\", \"field\": \"metrics\", \"message\": \"Metric labels differ\", \"expected\": [\"value\"], \"actual\": {\"x\": 16.0, \"n\": 9.0, \"g\": 4.0}}, {\"code\": \"ROWS\", \"field\": \"rows_used\", \"message\": \"Complete-case count differs\", \"expected\": 10, \"actual\": 16}, {\"code\": \"CHART\", \"field\": \"chart\", \"message\": \"Chart labels must uniquely cover the metrics\", \"expected\": null, \"actual\": null}], \"scope\": \"structured fields only; narrative and contract intent unchecked\"}"
+      }
+    ],
+    "stream": false,
+    "format": "json",
+    "options": {
+      "temperature": 0,
+      "seed": 31415,
+      "num_ctx": 4096,
+      "num_predict": 384
+    },
+    "keep_alive": "30m"
+  },
+  "response": {
+    "model": "qwen2.5:0.5b",
+    "created_at": "2026-11-10T11:56:42.897651Z",
+    "message": {
+      "role": "assistant",
+      "content": "{\n  \"metrics\": {\n    \"x\": 16.0,\n    \"n\": 9.0,\n    \"g\": 4.0\n  },\n  \"unit\": \"points\",\n  \"rows_used\": 16,\n  \"chart\": {\n    \"labels\": [\"x\", \"n\", \"g\"],\n    \"values\": [16.0, 9.0, 4.0]\n  },\n  \"narrative\": \"The sum of nonmissing x values is 16.0.\"\n}"
+    },
+    "done": true,
+    "done_reason": "stop",
+    "total_duration": 5051500417,
+    "load_duration": 57657959,
+    "prompt_eval_count": 551,
+    "prompt_eval_cached_count": 367,
+    "prompt_eval_duration": 177810000,
+    "eval_count": 115,
+    "eval_duration": 4736903000
+  },
+  "wall_seconds": 5.074766290956177,
+  "generated_at_utc": "2026-11-10T11:56:42.913123+00:00"
+}

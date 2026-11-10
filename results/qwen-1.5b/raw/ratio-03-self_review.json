@@ -1,0 +1,52 @@
+{
+  "request_sha256": "0a6c73845d02f7fe79c061526a08bbe81fd6a9c7bc4e0cb959b538d31b8f6494",
+  "request": {
+    "model": "qwen2.5:1.5b",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a careful data analyst. Follow the approved contract exactly.\nReturn ONLY a JSON object with these five fields:\nmetrics: an object of numeric answers. Use key \"value\" for a single answer, or group labels for grouped answers.\nunit: the exact string in the contract.\nrows_used: integer count of rows actually used after complete-case exclusion.\nchart: an object with labels (array of metric keys) and values (matching numeric values).\nnarrative: one short descriptive sentence. Do not claim causation.\nBlank CSV cells are missing, not zero. Do not round intermediate calculations.\nOutput numeric results to at least six decimal places when fractional. No extra commentary."
+      },
+      {
+        "role": "user",
+        "content": "Question: Compute 100*sum(x)/sum(n), using only rows with both x and n present.\nApproved contract: {\"op\": \"ratio\", \"column\": \"x\", \"unit\": \"%\", \"denominator\": \"n\"}\nCSV:\nx,n,g\n23,5,A\n21,8,B\n18,9,C\n,9,A\n16,,B\n4,1,C\n16,2,A\n8,7,B\n,7,C\n12,2,A\n7,3,B\n2,8,C\n"
+      },
+      {
+        "role": "assistant",
+        "content": "{\n  \"metrics\": {\n    \"value\": 2.0\n  },\n  \"unit\": \"%\",\n  \"rows_used\": 9,\n  \"chart\": {\n    \"x\": [\"23\", \"21\", \"18\", \"9\", \"16\", \"4\", \"16\", \"8\", \"7\", \"12\"],\n    \"n\": [\"5\", \"8\", \"9\", \"9\", \"2\", \"1\", \"2\", \"7\", \"3\", \"2\"],\n    \"value\": [2.0, 2.0, 2.0, 2.0, 2.0, 2.0, 2.0, 2.0, 2.0]\n  },\n  \"narrative\": \"The ratio of the sum of x to the sum of n is consistently 2.0 across all rows with both x and n present.\"\n}"
+      },
+      {
+        "role": "user",
+        "content": "Review your initial answer independently. Check the arithmetic, missing values, row count, unit and chart. Return a corrected complete JSON report."
+      }
+    ],
+    "stream": false,
+    "format": "json",
+    "options": {
+      "temperature": 0,
+      "seed": 31415,
+      "num_ctx": 4096,
+      "num_predict": 384
+    },
+    "keep_alive": "30m"
+  },
+  "response": {
+    "model": "qwen2.5:1.5b",
+    "created_at": "2026-11-10T12:13:28.012219Z",
+    "message": {
+      "role": "assistant",
+      "content": "{\n  \"metrics\": {\n    \"value\": 2.0\n  },\n  \"unit\": \"%\",\n  \"rows_used\": 9,\n  \"chart\": {\n    \"x\": [\"23\", \"21\", \"18\", \"9\", \"16\", \"4\", \"16\", \"8\", \"7\"],\n    \"n\": [\"5\", \"8\", \"9\", \"9\", \"2\", \"1\", \"2\", \"7\", \"3\"],\n    \"value\": [2.0, 2.0, 2.0, 2.0, 2.0, 2.0, 2.0, 2.0, 2.0]\n  },\n  \"narrative\": \"The ratio of the sum of x to the sum of n is consistently 2.0 across all rows with both x and n present.\"\n}"
+    },
+    "done": true,
+    "done_reason": "stop",
+    "total_duration": 8931535250,
+    "load_duration": 5594000,
+    "prompt_eval_count": 503,
+    "prompt_eval_cached_count": 466,
+    "prompt_eval_duration": 200326000,
+    "eval_count": 191,
+    "eval_duration": 8693085000
+  },
+  "wall_seconds": 8.938451791007537,
+  "generated_at_utc": "2026-11-10T12:13:28.017348+00:00"
+}

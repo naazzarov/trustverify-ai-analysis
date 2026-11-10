@@ -1,0 +1,75 @@
+[
+  {
+    "filename": "副本NLP_LLM_Hot_Topics_EN(1).pptx",
+    "extracted_text_sha256": "cc50295ecbc1021b9945721627f16a13d31927e6752d809ed7f8bbe46a91b746",
+    "source_status": "reviewed from extraction retained in earlier chat turn"
+  },
+  {
+    "filename": "NLP_LLM_Research_Frontiers_EN(1).pptx",
+    "extracted_text_sha256": "4d4c075b5f6d6774ecb0c30a4c17b9945cc898fb1c57e4f1b58b0f4eb83d192b",
+    "source_status": "reviewed from extraction retained in earlier chat turn"
+  },
+  {
+    "filename": "data_analysis_lecture.pdf",
+    "extracted_text_sha256": "e0ab3fc6c6402436ed718b980ec2fc7a180532b482d43948f3a6f1a3bc9668b7",
+    "source_status": "reviewed from extraction retained in earlier chat turn"
+  },
+  {
+    "filename": "differential_privacy_history_scu_varied.pdf",
+    "extracted_text_sha256": "ba4b4aa4c6cfc0eaf8fe3aa3badcb09aab91645aeb01439b783f807294785290",
+    "source_status": "reviewed from extraction retained in earlier chat turn"
+  },
+  {
+    "filename": "cnn_to_transformer_lecture_20260914_010521_native_charts_tables.pptx",
+    "extracted_text_sha256": "d8ec11388fdac3e53d699940f326fa76cd0fa9dfc3728dc5e4c782a081625726",
+    "source_status": "reviewed from extraction retained in earlier chat turn"
+  },
+  {
+    "filename": "Bitcoin.pdf",
+    "extracted_text_sha256": "231012f848bdc871e9f8882ed8de1ecf69f8ea74b86f0c214b8329456644d93b",
+    "source_status": "reviewed from extraction retained in earlier chat turn"
+  },
+  {
+    "filename": "scu-course-evaluation_20261019_172209(1).pptx",
+    "extracted_text_sha256": "6ef994f6b83c983c7fd744f5f5f9e2e1624bb1532f41a3297d56c461cb9d629e",
+    "source_status": "original available",
+    "original_sha256": "60298670bb45ec2690771f3f183895c49db2bcb401b2ebc006810860f9265197"
+  },
+  {
+    "filename": "First Course.pdf",
+    "extracted_text_sha256": "35b75b4679984a8e55c489b28e44e6c91a85587bbe19e561dd049e2b152c0247",
+    "source_status": "reviewed from extraction retained in earlier chat turn"
+  },
+  {
+    "filename": "scu_course_paper_template/refs.bib",
+    "original_sha256": "7057fb6229280855de739874f8be5378157dae7ec65cfa5acf2c9719cf81c25c"
+  },
+  {
+    "filename": "scu_course_paper_template/LICENSE",
+    "original_sha256": "8486a10c4393cee1c25392769ddd3b2d6c242d6ec7928e1414efff7dfb2f07ef"
+  },
+  {
+    "filename": "scu_course_paper_template/main.tex",
+    "original_sha256": "f5e9f122dd6dbf506dfdcee758efaaad52b8a594d091e2e94c0902c9a35d5451"
+  },
+  {
+    "filename": "scu_course_paper_template/README.md",
+    "original_sha256": "ae3544b19313a32583d8115514b4a7f9ca38eea754bc88d30027e073f31e190b"
+  },
+  {
+    "filename": "scu_course_paper_template/.gitignore",
+    "original_sha256": "db9ee96bf591c3ef8e35ff730549a6542c28bc60840062f319e6774ce63f7c9a"
+  },
+  {
+    "filename": "scu_course_paper_template/latexmkrc",
+    "original_sha256": "761e6b9dd53f34ff6bc0a984c3e158a008ffc6a7e098864d529f140785f61cfb"
+  },
+  {
+    "filename": "scu_course_paper_template/figures/SCU_TITLE_BW.png",
+    "original_sha256": "3f1adbd55b7af4ed6374ec2ef5d6348d7ceffc6f40d0aaa1e15020439222008c"
+  },
+  {
+    "filename": "scu_course_paper_template/figures/SCU_TITLE.png",
+    "original_sha256": "4c4c179c735583505f1b66b0b4606be98a1658e7bc32c622560dd4967c0cbf0d"
+  }
+]

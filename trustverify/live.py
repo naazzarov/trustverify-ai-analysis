@@ -98,14 +98,14 @@ def run(root: Path, base="http://127.0.0.1:11434", model="qwen2.5:0.5b", output:
             if branch == "feedback_repair": instruction += json.dumps(verdict, allow_nan=False)
             branch_messages = messages + [{"role": "assistant", "content": text}, {"role": "user", "content": instruction}]
             outputs[branch] = call(base, model, branch_messages, output/f"raw/{task['id']}-{branch}.json")
-        for condition, output in outputs.items():
-            response = output["response"]
+        for condition, call_result in outputs.items():
+            response = call_result["response"]
             report = decode(response["message"]["content"])
-            cumulative_seconds = output["wall_seconds"] + (initial["wall_seconds"] if condition != "initial" else 0)
+            cumulative_seconds = call_result["wall_seconds"] + (initial["wall_seconds"] if condition != "initial" else 0)
             records.append({"id": task["id"], "family": task["family"], "condition": condition,
                 "correct": gold_correct(report, gold[task["id"]]), "valid_json_object": isinstance(report, dict),
                 "report": report, "verification": verify(rows, task["spec"], report),
-                "wall_seconds": output["wall_seconds"], "cumulative_wall_seconds": cumulative_seconds,
+                "wall_seconds": call_result["wall_seconds"], "cumulative_wall_seconds": cumulative_seconds,
                 "prompt_tokens": response.get("prompt_eval_count",0), "output_tokens": response.get("eval_count",0),
                 "raw_path": str((output/f"raw/{task['id']}-{condition}.json").relative_to(root))})
         start = time.perf_counter(); deterministic = repair(rows, task["spec"], initial_report)

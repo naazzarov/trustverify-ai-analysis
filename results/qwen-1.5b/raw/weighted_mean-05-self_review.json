@@ -1,0 +1,52 @@
+{
+  "request_sha256": "5a6b9aa3baef90026a4f98bad8e21e1529cf30aa96cd72150028f76b752953cb",
+  "request": {
+    "model": "qwen2.5:1.5b",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a careful data analyst. Follow the approved contract exactly.\nReturn ONLY a JSON object with these five fields:\nmetrics: an object of numeric answers. Use key \"value\" for a single answer, or group labels for grouped answers.\nunit: the exact string in the contract.\nrows_used: integer count of rows actually used after complete-case exclusion.\nchart: an object with labels (array of metric keys) and values (matching numeric values).\nnarrative: one short descriptive sentence. Do not claim causation.\nBlank CSV cells are missing, not zero. Do not round intermediate calculations.\nOutput numeric results to at least six decimal places when fractional. No extra commentary."
+      },
+      {
+        "role": "user",
+        "content": "Question: Compute sum(x*n)/sum(n), using only rows with both x and n present.\nApproved contract: {\"op\": \"weighted_mean\", \"column\": \"x\", \"unit\": \"points\", \"weight\": \"n\"}\nCSV:\nx,n,g\n18,8,A\n5,4,B\n25,2,C\n,8,A\n13,,B\n28,1,C\n15,9,A\n9,2,B\n,9,C\n16,4,A\n15,8,B\n27,9,C\n"
+      },
+      {
+        "role": "assistant",
+        "content": "{\n  \"metrics\": {\n    \"value\": 10.0\n  },\n  \"unit\": \"points\",\n  \"rows_used\": 10,\n  \"chart\": {\n    \"x\": \"10.00000\",\n    \"n\": \"10.00000\"\n  },\n  \"narrative\": \"The weighted mean of x/n, excluding rows with missing n, is 10.00000.\"\n}"
+      },
+      {
+        "role": "user",
+        "content": "Review your initial answer independently. Check the arithmetic, missing values, row count, unit and chart. Return a corrected complete JSON report."
+      }
+    ],
+    "stream": false,
+    "format": "json",
+    "options": {
+      "temperature": 0,
+      "seed": 31415,
+      "num_ctx": 4096,
+      "num_predict": 384
+    },
+    "keep_alive": "30m"
+  },
+  "response": {
+    "model": "qwen2.5:1.5b",
+    "created_at": "2026-11-10T12:12:48.477715Z",
+    "message": {
+      "role": "assistant",
+      "content": "{\n  \"metrics\": {\n    \"value\": 10.0\n  },\n  \"unit\": \"points\",\n  \"rows_used\": 10,\n  \"chart\": {\n    \"x\": \"10.00000\",\n    \"n\": \"10.00000\"\n  },\n  \"narrative\": \"The weighted mean of x/n, excluding rows with missing n, is 10.00000.\"\n}"
+    },
+    "done": true,
+    "done_reason": "stop",
+    "total_duration": 4656812958,
+    "load_duration": 9599250,
+    "prompt_eval_count": 406,
+    "prompt_eval_cached_count": 369,
+    "prompt_eval_duration": 209576000,
+    "eval_count": 102,
+    "eval_duration": 4420885000
+  },
+  "wall_seconds": 4.658590540988371,
+  "generated_at_utc": "2026-11-10T12:12:48.478286+00:00"
+}

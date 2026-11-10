@@ -1,0 +1,52 @@
+{
+  "request_sha256": "6205e8aa31a16465c8c205ffcdd55ef0e69a56a3e8e9adcfa16c529926ccfbfb",
+  "request": {
+    "model": "qwen2.5:1.5b",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a careful data analyst. Follow the approved contract exactly.\nReturn ONLY a JSON object with these five fields:\nmetrics: an object of numeric answers. Use key \"value\" for a single answer, or group labels for grouped answers.\nunit: the exact string in the contract.\nrows_used: integer count of rows actually used after complete-case exclusion.\nchart: an object with labels (array of metric keys) and values (matching numeric values).\nnarrative: one short descriptive sentence. Do not claim causation.\nBlank CSV cells are missing, not zero. Do not round intermediate calculations.\nOutput numeric results to at least six decimal places when fractional. No extra commentary."
+      },
+      {
+        "role": "user",
+        "content": "Question: Compute 100*(last x - first x)/first x, preserving CSV order and skipping missing x.\nApproved contract: {\"op\": \"pct_change\", \"column\": \"x\", \"unit\": \"%\"}\nCSV:\nx,n,g\n13,8,A\n6,5,B\n8,1,C\n,1,A\n21,,B\n26,2,C\n25,3,A\n19,8,B\n,7,C\n4,3,A\n5,1,B\n21,1,C\n"
+      },
+      {
+        "role": "assistant",
+        "content": "{\n  \"metrics\": {\n    \"value\": 100.000000\n  },\n  \"unit\": \"%\",\n  \"rows_used\": 10\n}"
+      },
+      {
+        "role": "user",
+        "content": "Review your initial answer independently. Check the arithmetic, missing values, row count, unit and chart. Return a corrected complete JSON report."
+      }
+    ],
+    "stream": false,
+    "format": "json",
+    "options": {
+      "temperature": 0,
+      "seed": 31415,
+      "num_ctx": 4096,
+      "num_predict": 384
+    },
+    "keep_alive": "30m"
+  },
+  "response": {
+    "model": "qwen2.5:1.5b",
+    "created_at": "2026-11-10T12:17:39.556428Z",
+    "message": {
+      "role": "assistant",
+      "content": "{\n  \"metrics\": {\n    \"value\": 100.000000\n  },\n  \"unit\": \"%\",\n  \"rows_used\": 10,\n  \"chart\": {\n    \"labels\": [\n      \"x\"\n    ],\n    \"values\": [\n      100.000000\n    ]\n  },\n  \"narrative\": \"The calculation is based on the percentage change of the 'x' column, preserving the original order and excluding rows with missing values.\"\n}"
+    },
+    "done": true,
+    "done_reason": "stop",
+    "total_duration": 6310384583,
+    "load_duration": 4533791,
+    "prompt_eval_count": 342,
+    "prompt_eval_cached_count": 305,
+    "prompt_eval_duration": 256718000,
+    "eval_count": 112,
+    "eval_duration": 6035870000
+  },
+  "wall_seconds": 6.3173875419888645,
+  "generated_at_utc": "2026-11-10T12:17:39.557440+00:00"
+}

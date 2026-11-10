@@ -1,0 +1,52 @@
+{
+  "request_sha256": "d2bea6960853233375a4034df3a5671934c7f44ec6d2f9dd151ba05008940c96",
+  "request": {
+    "model": "qwen2.5:1.5b",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a careful data analyst. Follow the approved contract exactly.\nReturn ONLY a JSON object with these five fields:\nmetrics: an object of numeric answers. Use key \"value\" for a single answer, or group labels for grouped answers.\nunit: the exact string in the contract.\nrows_used: integer count of rows actually used after complete-case exclusion.\nchart: an object with labels (array of metric keys) and values (matching numeric values).\nnarrative: one short descriptive sentence. Do not claim causation.\nBlank CSV cells are missing, not zero. Do not round intermediate calculations.\nOutput numeric results to at least six decimal places when fractional. No extra commentary."
+      },
+      {
+        "role": "user",
+        "content": "Question: Compute sum(x*n)/sum(n), using only rows with both x and n present.\nApproved contract: {\"op\": \"weighted_mean\", \"column\": \"x\", \"unit\": \"points\", \"weight\": \"n\"}\nCSV:\nx,n,g\n8,5,A\n23,8,B\n12,3,C\n,1,A\n5,,B\n16,4,C\n24,1,A\n15,4,B\n,4,C\n15,3,A\n9,2,B\n16,5,C\n"
+      },
+      {
+        "role": "assistant",
+        "content": "{\n  \"metrics\": {\n    \"value\": 3.642857\n  },\n  \"unit\": \"points\",\n  \"rows_used\": 9,\n  \"chart\": {\n    \"x\": \"3.642857\"\n  },\n  \"narrative\": \"The weighted mean of x values, weighted by n, is 3.642857.\"\n}"
+      },
+      {
+        "role": "user",
+        "content": "Review your initial answer independently. Check the arithmetic, missing values, row count, unit and chart. Return a corrected complete JSON report."
+      }
+    ],
+    "stream": false,
+    "format": "json",
+    "options": {
+      "temperature": 0,
+      "seed": 31415,
+      "num_ctx": 4096,
+      "num_predict": 384
+    },
+    "keep_alive": "30m"
+  },
+  "response": {
+    "model": "qwen2.5:1.5b",
+    "created_at": "2026-11-10T12:12:19.960055Z",
+    "message": {
+      "role": "assistant",
+      "content": "{\n  \"metrics\": {\n    \"value\": 3.642857\n  },\n  \"unit\": \"points\",\n  \"rows_used\": 9,\n  \"chart\": {\n    \"x\": \"3.642857\"\n  },\n  \"narrative\": \"The weighted mean of x values, weighted by n, is 3.642857.\"\n}"
+    },
+    "done": true,
+    "done_reason": "stop",
+    "total_duration": 4227079166,
+    "load_duration": 5101416,
+    "prompt_eval_count": 392,
+    "prompt_eval_cached_count": 355,
+    "prompt_eval_duration": 207668000,
+    "eval_count": 89,
+    "eval_duration": 4000841000
+  },
+  "wall_seconds": 4.230350041994825,
+  "generated_at_utc": "2026-11-10T12:12:19.960791+00:00"
+}

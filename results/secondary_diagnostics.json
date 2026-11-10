@@ -1,0 +1,88 @@
+{
+  "label": "Exploratory decomposition of the prespecified full correctness metric",
+  "models": {
+    "0.5B": {
+      "initial": {
+        "n": 24,
+        "numeric_mapping_correct": 0,
+        "finding_codes_by_task": {
+          "CHART": 19,
+          "METRIC_KEYS": 19,
+          "ROWS": 16,
+          "SCHEMA": 16,
+          "UNIT": 5
+        }
+      },
+      "self_review": {
+        "n": 24,
+        "numeric_mapping_correct": 0,
+        "finding_codes_by_task": {
+          "CHART": 19,
+          "METRIC_KEYS": 19,
+          "ROWS": 16,
+          "SCHEMA": 16,
+          "UNIT": 5
+        }
+      },
+      "feedback_repair": {
+        "n": 24,
+        "numeric_mapping_correct": 0,
+        "finding_codes_by_task": {
+          "CHART": 19,
+          "METRIC_KEYS": 19,
+          "ROWS": 16,
+          "SCHEMA": 16,
+          "UNIT": 5
+        }
+      },
+      "deterministic_recompute": {
+        "n": 24,
+        "numeric_mapping_correct": 24,
+        "finding_codes_by_task": {}
+      }
+    },
+    "1.5B": {
+      "initial": {
+        "n": 24,
+        "numeric_mapping_correct": 0,
+        "finding_codes_by_task": {
+          "CHART": 24,
+          "NUMERIC": 20,
+          "UNIT": 2,
+          "SCHEMA": 9,
+          "ROWS": 10,
+          "METRIC_KEYS": 4
+        }
+      },
+      "self_review": {
+        "n": 24,
+        "numeric_mapping_correct": 0,
+        "finding_codes_by_task": {
+          "CHART": 24,
+          "NUMERIC": 20,
+          "UNIT": 2,
+          "SCHEMA": 5,
+          "ROWS": 10,
+          "METRIC_KEYS": 4
+        }
+      },
+      "feedback_repair": {
+        "n": 24,
+        "numeric_mapping_correct": 19,
+        "finding_codes_by_task": {
+          "CHART": 20,
+          "UNIT": 2,
+          "SCHEMA": 2,
+          "METRIC_KEYS": 4,
+          "ROWS": 2,
+          "NUMERIC": 1
+        }
+      },
+      "deterministic_recompute": {
+        "n": 24,
+        "numeric_mapping_correct": 24,
+        "finding_codes_by_task": {}
+      }
+    }
+  }
+}

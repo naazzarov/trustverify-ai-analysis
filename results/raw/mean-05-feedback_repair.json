@@ -1,0 +1,52 @@
+{
+  "request_sha256": "6b866d4e05c35df40959e2e1399e70bf3ee24b646033c8b9fda06ab3483e216b",
+  "request": {
+    "model": "qwen2.5:0.5b",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a careful data analyst. Follow the approved contract exactly.\nReturn ONLY a JSON object with these five fields:\nmetrics: an object of numeric answers. Use key \"value\" for a single answer, or group labels for grouped answers.\nunit: the exact string in the contract.\nrows_used: integer count of rows actually used after complete-case exclusion.\nchart: an object with labels (array of metric keys) and values (matching numeric values).\nnarrative: one short descriptive sentence. Do not claim causation.\nBlank CSV cells are missing, not zero. Do not round intermediate calculations.\nOutput numeric results to at least six decimal places when fractional. No extra commentary."
+      },
+      {
+        "role": "user",
+        "content": "Question: Compute the arithmetic mean of nonmissing x values.\nApproved contract: {\"op\": \"mean\", \"column\": \"x\", \"unit\": \"points\"}\nCSV:\nx,n,g\n19,9,A\n10,1,B\n10,1,C\n,5,A\n26,,B\n16,5,C\n24,6,A\n12,2,B\n,2,C\n13,4,A\n18,6,B\n8,2,C\n"
+      },
+      {
+        "role": "assistant",
+        "content": "{\n  \"metrics\": {\n    \"value\": 15.0,\n    \"unit\": \"points\",\n    \"rows_used\": 10,\n    \"narrative\": \"The arithmetic mean of nonmissing x values is 15.0.\"\n  },\n  \"unit\": \"points\",\n  \"rows_used\": 10,\n  \"chart\": {\n    \"labels\": [\"x\", \"n\", \"g\"],\n    \"values\": [19, 10, 10, 16, 13, 18, 8, 24, 26, 12]\n  }\n}"
+      },
+      {
+        "role": "user",
+        "content": "Use the executable checker findings below to repair your initial answer. Return a corrected complete JSON report. Checker findings: {\"status\": \"fail\", \"profile\": \"full\", \"findings\": [{\"code\": \"SCHEMA\", \"field\": \"narrative\", \"message\": \"Required field is missing\", \"expected\": null, \"actual\": null}, {\"code\": \"SCHEMA\", \"field\": \"narrative\", \"message\": \"Narrative must be a string; its meaning is unchecked\", \"expected\": null, \"actual\": null}, {\"code\": \"METRIC_KEYS\", \"field\": \"metrics\", \"message\": \"Metric labels differ\", \"expected\": [\"value\"], \"actual\": {\"value\": 15.0, \"unit\": \"points\", \"rows_used\": 10, \"narrative\": \"The arithmetic mean of nonmissing x values is 15.0.\"}}, {\"code\": \"CHART\", \"field\": \"chart\", \"message\": \"Chart labels must uniquely cover the metrics\", \"expected\": null, \"actual\": null}], \"scope\": \"structured fields only; narrative and contract intent unchecked\"}"
+      }
+    ],
+    "stream": false,
+    "format": "json",
+    "options": {
+      "temperature": 0,
+      "seed": 31415,
+      "num_ctx": 4096,
+      "num_predict": 384
+    },
+    "keep_alive": "30m"
+  },
+  "response": {
+    "model": "qwen2.5:0.5b",
+    "created_at": "2026-11-10T11:58:27.661251Z",
+    "message": {
+      "role": "assistant",
+      "content": "{\n  \"metrics\": {\n    \"value\": 15.0,\n    \"unit\": \"points\",\n    \"rows_used\": 10,\n    \"narrative\": \"The arithmetic mean of nonmissing x values is 15.0.\"\n  },\n  \"unit\": \"points\",\n  \"rows_used\": 10,\n  \"chart\": {\n    \"labels\": [\"value\", \"unit\", \"rows_used\"],\n    \"values\": [15.0, \"points\", 10]\n  }\n}"
+    },
+    "done": true,
+    "done_reason": "stop",
+    "total_duration": 3507823167,
+    "load_duration": 27674417,
+    "prompt_eval_count": 638,
+    "prompt_eval_cached_count": 395,
+    "prompt_eval_duration": 245381000,
+    "eval_count": 112,
+    "eval_duration": 3164619000
+  },
+  "wall_seconds": 3.534599209029693,
+  "generated_at_utc": "2026-11-10T11:58:27.661959+00:00"
+}

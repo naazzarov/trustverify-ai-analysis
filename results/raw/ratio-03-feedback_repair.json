@@ -1,0 +1,52 @@
+{
+  "request_sha256": "3d56bd15df04e7f356f9fd2bffa21ee0ae54b1588ff232765c31e96b1f5b7fef",
+  "request": {
+    "model": "qwen2.5:0.5b",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a careful data analyst. Follow the approved contract exactly.\nReturn ONLY a JSON object with these five fields:\nmetrics: an object of numeric answers. Use key \"value\" for a single answer, or group labels for grouped answers.\nunit: the exact string in the contract.\nrows_used: integer count of rows actually used after complete-case exclusion.\nchart: an object with labels (array of metric keys) and values (matching numeric values).\nnarrative: one short descriptive sentence. Do not claim causation.\nBlank CSV cells are missing, not zero. Do not round intermediate calculations.\nOutput numeric results to at least six decimal places when fractional. No extra commentary."
+      },
+      {
+        "role": "user",
+        "content": "Question: Compute 100*sum(x)/sum(n), using only rows with both x and n present.\nApproved contract: {\"op\": \"ratio\", \"column\": \"x\", \"unit\": \"%\", \"denominator\": \"n\"}\nCSV:\nx,n,g\n23,5,A\n21,8,B\n18,9,C\n,9,A\n16,,B\n4,1,C\n16,2,A\n8,7,B\n,7,C\n12,2,A\n7,3,B\n2,8,C\n"
+      },
+      {
+        "role": "assistant",
+        "content": "{\n  \"metrics\": {\n    \"sum(x)\": 100,\n    \"sum(n)\": 100,\n    \"value\": 100,\n    \"unit\": \"%\",\n    \"rows_used\": 10,\n    \"chart\": {\n      \"labels\": [\"sum(x)\", \"sum(n)\"],\n      \"values\": [100, 100]\n    },\n    \"narrative\": \"The ratio of the sum of x to the sum of n is 100, which is the same as the ratio of the sum of x to the sum of n.\"\n  }\n}"
+      },
+      {
+        "role": "user",
+        "content": "Use the executable checker findings below to repair your initial answer. Return a corrected complete JSON report. Checker findings: {\"status\": \"fail\", \"profile\": \"full\", \"findings\": [{\"code\": \"SCHEMA\", \"field\": \"chart\", \"message\": \"Required field is missing\", \"expected\": null, \"actual\": null}, {\"code\": \"SCHEMA\", \"field\": \"narrative\", \"message\": \"Required field is missing\", \"expected\": null, \"actual\": null}, {\"code\": \"SCHEMA\", \"field\": \"rows_used\", \"message\": \"Required field is missing\", \"expected\": null, \"actual\": null}, {\"code\": \"SCHEMA\", \"field\": \"unit\", \"message\": \"Required field is missing\", \"expected\": null, \"actual\": null}, {\"code\": \"SCHEMA\", \"field\": \"narrative\", \"message\": \"Narrative must be a string; its meaning is unchecked\", \"expected\": null, \"actual\": null}, {\"code\": \"SCHEMA\", \"field\": \"rows_used\", \"message\": \"rows_used must be an integer\", \"expected\": null, \"actual\": null}, {\"code\": \"SCHEMA\", \"field\": \"unit\", \"message\": \"unit must be a string\", \"expected\": null, \"actual\": null}, {\"code\": \"METRIC_KEYS\", \"field\": \"metrics\", \"message\": \"Metric labels differ\", \"expected\": [\"value\"], \"actual\": {\"sum(x)\": 100, \"sum(n)\": 100, \"value\": 100, \"unit\": \"%\", \"rows_used\": 10, \"chart\": {\"labels\": [\"sum(x)\", \"sum(n)\"], \"values\": [100, 100]}, \"narrative\": \"The ratio of the sum of x to the sum of n is 100, which is the same as the ratio of the sum of x to the sum of n.\"}}, {\"code\": \"UNIT\", \"field\": \"unit\", \"message\": \"Output unit differs from approved contract\", \"expected\": \"%\", \"actual\": null}, {\"code\": \"ROWS\", \"field\": \"rows_used\", \"message\": \"Complete-case count differs\", \"expected\": 9, \"actual\": null}, {\"code\": \"CHART\", \"field\": \"chart\", \"message\": \"Chart must contain labels and values\", \"expected\": null, \"actual\": null}], \"scope\": \"structured fields only; narrative and contract intent unchecked\"}"
+      }
+    ],
+    "stream": false,
+    "format": "json",
+    "options": {
+      "temperature": 0,
+      "seed": 31415,
+      "num_ctx": 4096,
+      "num_predict": 384
+    },
+    "keep_alive": "30m"
+  },
+  "response": {
+    "model": "qwen2.5:0.5b",
+    "created_at": "2026-11-10T11:59:35.143598Z",
+    "message": {
+      "role": "assistant",
+      "content": "{\n  \"metrics\": {\n    \"value\": 100,\n    \"unit\": \"%\",\n    \"rows_used\": 10,\n    \"chart\": {\n      \"labels\": [\"sum(x)\", \"sum(n)\"],\n      \"values\": [100, 100]\n    },\n    \"narrative\": \"The ratio of the sum of x to the sum of n is 100, which is the same as the ratio of the sum of x to the sum of n.\"\n  }\n}"
+    },
+    "done": true,
+    "done_reason": "stop",
+    "total_duration": 4729832000,
+    "load_duration": 3372417,
+    "prompt_eval_count": 942,
+    "prompt_eval_cached_count": 404,
+    "prompt_eval_duration": 877517000,
+    "eval_count": 111,
+    "eval_duration": 3830362000
+  },
+  "wall_seconds": 4.7339194170199335,
+  "generated_at_utc": "2026-11-10T11:59:35.146480+00:00"
+}

@@ -1,0 +1,52 @@
+{
+  "request_sha256": "6214a0a00c354df5d71ebe42712ea2b24982c4c3f462e6ff2a7caf94dd4b55b4",
+  "request": {
+    "model": "qwen2.5:1.5b",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a careful data analyst. Follow the approved contract exactly.\nReturn ONLY a JSON object with these five fields:\nmetrics: an object of numeric answers. Use key \"value\" for a single answer, or group labels for grouped answers.\nunit: the exact string in the contract.\nrows_used: integer count of rows actually used after complete-case exclusion.\nchart: an object with labels (array of metric keys) and values (matching numeric values).\nnarrative: one short descriptive sentence. Do not claim causation.\nBlank CSV cells are missing, not zero. Do not round intermediate calculations.\nOutput numeric results to at least six decimal places when fractional. No extra commentary."
+      },
+      {
+        "role": "user",
+        "content": "Question: Compute 100*(last x - first x)/first x, preserving CSV order and skipping missing x.\nApproved contract: {\"op\": \"pct_change\", \"column\": \"x\", \"unit\": \"%\"}\nCSV:\nx,n,g\n4,8,A\n20,1,B\n14,3,C\n,2,A\n15,,B\n25,9,C\n23,9,A\n22,9,B\n,5,C\n15,5,A\n8,5,B\n28,8,C\n"
+      },
+      {
+        "role": "assistant",
+        "content": "{\n  \"metrics\": {\n    \"value\": 100.000000\n  },\n  \"unit\": \"%\",\n  \"rows_used\": 12\n}"
+      },
+      {
+        "role": "user",
+        "content": "Review your initial answer independently. Check the arithmetic, missing values, row count, unit and chart. Return a corrected complete JSON report."
+      }
+    ],
+    "stream": false,
+    "format": "json",
+    "options": {
+      "temperature": 0,
+      "seed": 31415,
+      "num_ctx": 4096,
+      "num_predict": 384
+    },
+    "keep_alive": "30m"
+  },
+  "response": {
+    "model": "qwen2.5:1.5b",
+    "created_at": "2026-11-10T12:17:09.910402Z",
+    "message": {
+      "role": "assistant",
+      "content": "{\n  \"metrics\": {\n    \"value\": 100.000000\n  },\n  \"unit\": \"%\",\n  \"rows_used\": 12,\n  \"chart\": {\n    \"labels\": [\n      \"2020-01-02\",\n      \"2020-01-14\",\n      \"2020-01-15\",\n      \"2020-01-25\",\n      \"2020-01-28\",\n      \"2020-01-23\",\n      \"2020-01-15\",\n      \"2020-01-04\",\n      \"2020-01-08\",\n      \"2020-01-15\",\n      \"2020-01-08\",\n      \"2020-01-25\"\n    ],\n    \"values\": [\n      100.000000,\n      100.000000,\n      100.000000,\n      100.000000,\n      100.000000,\n      100.000000,\n      100.000000,\n      100.000000,\n      100.000000,\n      100.000000,\n      100.000000,\n      100.000000\n    ]\n  }\n}"
+    },
+    "done": true,
+    "done_reason": "stop",
+    "total_duration": 24641108667,
+    "load_duration": 15980875,
+    "prompt_eval_count": 344,
+    "prompt_eval_cached_count": 307,
+    "prompt_eval_duration": 243270000,
+    "eval_count": 374,
+    "eval_duration": 24354596000
+  },
+  "wall_seconds": 24.652891416975763,
+  "generated_at_utc": "2026-11-10T12:17:09.920518+00:00"
+}

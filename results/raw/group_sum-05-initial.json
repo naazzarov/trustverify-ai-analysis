@@ -1,0 +1,44 @@
+{
+  "request_sha256": "5947cce5b161d78394915e559c77e199b167f2465d64adcee39f8ec33b9b5ff9",
+  "request": {
+    "model": "qwen2.5:0.5b",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a careful data analyst. Follow the approved contract exactly.\nReturn ONLY a JSON object with these five fields:\nmetrics: an object of numeric answers. Use key \"value\" for a single answer, or group labels for grouped answers.\nunit: the exact string in the contract.\nrows_used: integer count of rows actually used after complete-case exclusion.\nchart: an object with labels (array of metric keys) and values (matching numeric values).\nnarrative: one short descriptive sentence. Do not claim causation.\nBlank CSV cells are missing, not zero. Do not round intermediate calculations.\nOutput numeric results to at least six decimal places when fractional. No extra commentary."
+      },
+      {
+        "role": "user",
+        "content": "Question: Sum nonmissing x by g, excluding empty groups; sort labels alphabetically.\nApproved contract: {\"op\": \"group_sum\", \"column\": \"x\", \"unit\": \"points\", \"group\": \"g\"}\nCSV:\nx,n,g\n23,9,A\n26,5,B\n24,3,C\n,9,A\n14,,B\n8,8,C\n14,4,A\n18,8,B\n,6,C\n19,8,A\n26,8,B\n26,6,C\n"
+      }
+    ],
+    "stream": false,
+    "format": "json",
+    "options": {
+      "temperature": 0,
+      "seed": 31415,
+      "num_ctx": 4096,
+      "num_predict": 384
+    },
+    "keep_alive": "30m"
+  },
+  "response": {
+    "model": "qwen2.5:0.5b",
+    "created_at": "2026-11-10T12:00:57.146736Z",
+    "message": {
+      "role": "assistant",
+      "content": "{\n  \"metrics\": {\n    \"x\": 23.0,\n    \"n\": 9.0,\n    \"g\": \"A\"\n  },\n  \"unit\": \"points\",\n  \"rows_used\": 16,\n  \"chart\": {\n    \"labels\": [\"x\", \"n\", \"g\"],\n    \"values\": [23.0, 9.0, \"A\"],\n    \"narrative\": \"Sum nonmissing x by g, excluding empty groups; sort labels alphabetically.\"\n  },\n  \"narrative\": \"Sum nonmissing x by g, excluding empty groups; sort labels alphabetically.\"\n}"
+    },
+    "done": true,
+    "done_reason": "stop",
+    "total_duration": 3898897000,
+    "load_duration": 4190584,
+    "prompt_eval_count": 267,
+    "prompt_eval_cached_count": 196,
+    "prompt_eval_duration": 202256000,
+    "eval_count": 136,
+    "eval_duration": 3646949000
+  },
+  "wall_seconds": 3.9021793749998324,
+  "generated_at_utc": "2026-11-10T12:00:57.148013+00:00"
+}

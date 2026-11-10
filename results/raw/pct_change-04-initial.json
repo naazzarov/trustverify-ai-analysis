@@ -1,0 +1,44 @@
+{
+  "request_sha256": "64fc825450d0a402fef33d9ad9136b72fe2d15717d9dd2af3ad5c031b7cf4ab2",
+  "request": {
+    "model": "qwen2.5:0.5b",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a careful data analyst. Follow the approved contract exactly.\nReturn ONLY a JSON object with these five fields:\nmetrics: an object of numeric answers. Use key \"value\" for a single answer, or group labels for grouped answers.\nunit: the exact string in the contract.\nrows_used: integer count of rows actually used after complete-case exclusion.\nchart: an object with labels (array of metric keys) and values (matching numeric values).\nnarrative: one short descriptive sentence. Do not claim causation.\nBlank CSV cells are missing, not zero. Do not round intermediate calculations.\nOutput numeric results to at least six decimal places when fractional. No extra commentary."
+      },
+      {
+        "role": "user",
+        "content": "Question: Compute 100*(last x - first x)/first x, preserving CSV order and skipping missing x.\nApproved contract: {\"op\": \"pct_change\", \"column\": \"x\", \"unit\": \"%\"}\nCSV:\nx,n,g\n4,8,A\n20,1,B\n14,3,C\n,2,A\n15,,B\n25,9,C\n23,9,A\n22,9,B\n,5,C\n15,5,A\n8,5,B\n28,8,C\n"
+      }
+    ],
+    "stream": false,
+    "format": "json",
+    "options": {
+      "temperature": 0,
+      "seed": 31415,
+      "num_ctx": 4096,
+      "num_predict": 384
+    },
+    "keep_alive": "30m"
+  },
+  "response": {
+    "model": "qwen2.5:0.5b",
+    "created_at": "2026-11-10T12:02:06.570459Z",
+    "message": {
+      "role": "assistant",
+      "content": "{\n  \"value\": 100.0,\n  \"unit\": \"%\",\n  \"rows_used\": 14,\n  \"chart\": {\n    \"labels\": [\"x\", \"n\", \"g\"],\n    \"values\": [100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0, 100.0"
+    },
+    "done": true,
+    "done_reason": "length",
+    "total_duration": 12775788958,
+    "load_duration": 3954375,
+    "prompt_eval_count": 267,
+    "prompt_eval_cached_count": 197,
+    "prompt_eval_duration": 221990000,
+    "eval_count": 384,
+    "eval_duration": 12506077000
+  },
+  "wall_seconds": 12.780857208010275,
+  "generated_at_utc": "2026-11-10T12:02:06.574253+00:00"
+}

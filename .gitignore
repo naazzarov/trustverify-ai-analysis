@@ -16,3 +16,4 @@ paper/*.blg
 paper/*.synctex.gz
 node_modules/
 .codex-finalizer/
+.build/

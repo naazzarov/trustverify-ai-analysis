@@ -1,0 +1,52 @@
+{
+  "request_sha256": "4f2188dcf867706cdb35426e436127574b761a8419a46d403141be60c8083ad9",
+  "request": {
+    "model": "qwen2.5:0.5b",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a careful data analyst. Follow the approved contract exactly.\nReturn ONLY a JSON object with these five fields:\nmetrics: an object of numeric answers. Use key \"value\" for a single answer, or group labels for grouped answers.\nunit: the exact string in the contract.\nrows_used: integer count of rows actually used after complete-case exclusion.\nchart: an object with labels (array of metric keys) and values (matching numeric values).\nnarrative: one short descriptive sentence. Do not claim causation.\nBlank CSV cells are missing, not zero. Do not round intermediate calculations.\nOutput numeric results to at least six decimal places when fractional. No extra commentary."
+      },
+      {
+        "role": "user",
+        "content": "Question: Sum nonmissing x by g, excluding empty groups; sort labels alphabetically.\nApproved contract: {\"op\": \"group_sum\", \"column\": \"x\", \"unit\": \"points\", \"group\": \"g\"}\nCSV:\nx,n,g\n10,6,A\n23,4,B\n23,2,C\n,4,A\n15,,B\n25,8,C\n9,6,A\n19,3,B\n,3,C\n23,2,A\n24,9,B\n15,1,C\n"
+      },
+      {
+        "role": "assistant",
+        "content": "{\n  \"metrics\": {\n    \"x\": 15.0,\n    \"n\": 23.0,\n    \"g\": 4.0\n  },\n  \"unit\": \"points\",\n  \"rows_used\": 14,\n  \"chart\": {\n    \"labels\": [\"x\", \"n\", \"g\"],\n    \"values\": [15.0, 23.0, 4.0]\n  },\n  \"narrative\": \"The sum of nonmissing values for each group is calculated. The values are sorted alphabetically.\"\n}"
+      },
+      {
+        "role": "user",
+        "content": "Review your initial answer independently. Check the arithmetic, missing values, row count, unit and chart. Return a corrected complete JSON report."
+      }
+    ],
+    "stream": false,
+    "format": "json",
+    "options": {
+      "temperature": 0,
+      "seed": 31415,
+      "num_ctx": 4096,
+      "num_predict": 384
+    },
+    "keep_alive": "30m"
+  },
+  "response": {
+    "model": "qwen2.5:0.5b",
+    "created_at": "2026-11-10T12:00:26.375444Z",
+    "message": {
+      "role": "assistant",
+      "content": "{\n  \"metrics\": {\n    \"x\": 15.0,\n    \"n\": 23.0,\n    \"g\": 4.0\n  },\n  \"unit\": \"points\",\n  \"rows_used\": 14,\n  \"chart\": {\n    \"labels\": [\"x\", \"n\", \"g\"],\n    \"values\": [15.0, 23.0, 4.0]\n  },\n  \"narrative\": \"The sum of nonmissing values for each group is calculated. The values are sorted alphabetically.\"\n}"
+    },
+    "done": true,
+    "done_reason": "stop",
+    "total_duration": 3147533584,
+    "load_duration": 4513292,
+    "prompt_eval_count": 425,
+    "prompt_eval_cached_count": 388,
+    "prompt_eval_duration": 112680000,
+    "eval_count": 122,
+    "eval_duration": 3006721000
+  },
+  "wall_seconds": 3.1506767090177163,
+  "generated_at_utc": "2026-11-10T12:00:26.376381+00:00"
+}

@@ -1,0 +1,52 @@
+{
+  "request_sha256": "d5db575b1c4d11fce360af9ebe44cf95098e18050c348e150e1c435b541f02d2",
+  "request": {
+    "model": "qwen2.5:1.5b",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a careful data analyst. Follow the approved contract exactly.\nReturn ONLY a JSON object with these five fields:\nmetrics: an object of numeric answers. Use key \"value\" for a single answer, or group labels for grouped answers.\nunit: the exact string in the contract.\nrows_used: integer count of rows actually used after complete-case exclusion.\nchart: an object with labels (array of metric keys) and values (matching numeric values).\nnarrative: one short descriptive sentence. Do not claim causation.\nBlank CSV cells are missing, not zero. Do not round intermediate calculations.\nOutput numeric results to at least six decimal places when fractional. No extra commentary."
+      },
+      {
+        "role": "user",
+        "content": "Question: Sum nonmissing x values.\nApproved contract: {\"op\": \"sum\", \"column\": \"x\", \"unit\": \"points\"}\nCSV:\nx,n,g\n7,1,A\n28,3,B\n13,1,C\n,2,A\n18,,B\n5,1,C\n14,1,A\n19,2,B\n,5,C\n2,5,A\n17,1,B\n22,5,C\n"
+      },
+      {
+        "role": "assistant",
+        "content": "{\n  \"metrics\": {\n    \"value\": 100.0\n  },\n  \"unit\": \"points\",\n  \"rows_used\": 10,\n  \"chart\": {\n    \"narrative\": \"The sum of non-missing x values is 100 points.\"\n  }\n}"
+      },
+      {
+        "role": "user",
+        "content": "Use the executable checker findings below to repair your initial answer. Return a corrected complete JSON report. Checker findings: {\"status\": \"fail\", \"profile\": \"full\", \"findings\": [{\"code\": \"SCHEMA\", \"field\": \"narrative\", \"message\": \"Required field is missing\", \"expected\": null, \"actual\": null}, {\"code\": \"SCHEMA\", \"field\": \"narrative\", \"message\": \"Narrative must be a string; its meaning is unchecked\", \"expected\": null, \"actual\": null}, {\"code\": \"NUMERIC\", \"field\": \"metrics.value\", \"message\": \"Incorrect or non-finite numeric result\", \"expected\": 145.0, \"actual\": 100.0}, {\"code\": \"CHART\", \"field\": \"chart\", \"message\": \"Chart labels must uniquely cover the metrics\", \"expected\": null, \"actual\": null}], \"scope\": \"structured fields only; narrative and contract intent unchecked\"}"
+      }
+    ],
+    "stream": false,
+    "format": "json",
+    "options": {
+      "temperature": 0,
+      "seed": 31415,
+      "num_ctx": 4096,
+      "num_predict": 384
+    },
+    "keep_alive": "30m"
+  },
+  "response": {
+    "model": "qwen2.5:1.5b",
+    "created_at": "2026-11-10T12:10:01.674048Z",
+    "message": {
+      "role": "assistant",
+      "content": "{\n  \"metrics\": {\n    \"value\": 145.0\n  },\n  \"unit\": \"points\",\n  \"rows_used\": 10,\n  \"chart\": {\n    \"labels\": [\n      \"n\",\n      \"g\"\n    ],\n    \"values\": [\n      145.0,\n      100.0\n    ]\n  },\n  \"narrative\": \"The sum of non-missing x values is 145 points.\"\n}"
+    },
+    "done": true,
+    "done_reason": "stop",
+    "total_duration": 5645040042,
+    "load_duration": 3298084,
+    "prompt_eval_count": 531,
+    "prompt_eval_cached_count": 318,
+    "prompt_eval_duration": 665172000,
+    "eval_count": 104,
+    "eval_duration": 4964511000
+  },
+  "wall_seconds": 5.650969208974857,
+  "generated_at_utc": "2026-11-10T12:10:01.678995+00:00"
+}

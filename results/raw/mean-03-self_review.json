@@ -1,0 +1,52 @@
+{
+  "request_sha256": "cda4e6ab68d8d109c8c718a154fc912f494bbcca77211294f54761d73fc4f7bf",
+  "request": {
+    "model": "qwen2.5:0.5b",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a careful data analyst. Follow the approved contract exactly.\nReturn ONLY a JSON object with these five fields:\nmetrics: an object of numeric answers. Use key \"value\" for a single answer, or group labels for grouped answers.\nunit: the exact string in the contract.\nrows_used: integer count of rows actually used after complete-case exclusion.\nchart: an object with labels (array of metric keys) and values (matching numeric values).\nnarrative: one short descriptive sentence. Do not claim causation.\nBlank CSV cells are missing, not zero. Do not round intermediate calculations.\nOutput numeric results to at least six decimal places when fractional. No extra commentary."
+      },
+      {
+        "role": "user",
+        "content": "Question: Compute the arithmetic mean of nonmissing x values.\nApproved contract: {\"op\": \"mean\", \"column\": \"x\", \"unit\": \"points\"}\nCSV:\nx,n,g\n24,6,A\n11,3,B\n10,7,C\n,7,A\n13,,B\n18,2,C\n27,6,A\n27,7,B\n,5,C\n4,7,A\n14,1,B\n4,7,C\n"
+      },
+      {
+        "role": "assistant",
+        "content": "{\n  \"value\": 10.0,\n  \"unit\": \"points\",\n  \"rows_used\": 14,\n  \"chart\": {\n    \"labels\": [\"x\", \"n\", \"g\"],\n    \"values\": [24, 11, 10, 13, 18, 27, 27, 4, 4, 14, 14, 4, 11, 7, 7, 5, 7, 10, 6, 11, 10, 11, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10"
+      },
+      {
+        "role": "user",
+        "content": "Review your initial answer independently. Check the arithmetic, missing values, row count, unit and chart. Return a corrected complete JSON report."
+      }
+    ],
+    "stream": false,
+    "format": "json",
+    "options": {
+      "temperature": 0,
+      "seed": 31415,
+      "num_ctx": 4096,
+      "num_predict": 384
+    },
+    "keep_alive": "30m"
+  },
+  "response": {
+    "model": "qwen2.5:0.5b",
+    "created_at": "2026-11-10T11:57:52.464038Z",
+    "message": {
+      "role": "assistant",
+      "content": "{\n  \"value\": 10.0,\n  \"unit\": \"points\",\n  \"rows_used\": 14,\n  \"chart\": {\n    \"labels\": [\"x\", \"n\", \"g\"],\n    \"values\": [24, 11, 10, 13, 18, 27, 27, 4, 4, 14, 14, 4, 11, 7, 7, 5, 7, 10, 6, 11, 10, 11, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10"
+    },
+    "done": true,
+    "done_reason": "length",
+    "total_duration": 9793827583,
+    "load_duration": 5221625,
+    "prompt_eval_count": 674,
+    "prompt_eval_cached_count": 636,
+    "prompt_eval_duration": 107009000,
+    "eval_count": 384,
+    "eval_duration": 9643054000
+  },
+  "wall_seconds": 9.799853042000905,
+  "generated_at_utc": "2026-11-10T11:57:52.468536+00:00"
+}

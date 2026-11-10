@@ -1,0 +1,52 @@
+{
+  "request_sha256": "4f8d5b9eb9788eb513e1180a1d51816621d0ea6818cebff24b1986becb875666",
+  "request": {
+    "model": "qwen2.5:1.5b",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a careful data analyst. Follow the approved contract exactly.\nReturn ONLY a JSON object with these five fields:\nmetrics: an object of numeric answers. Use key \"value\" for a single answer, or group labels for grouped answers.\nunit: the exact string in the contract.\nrows_used: integer count of rows actually used after complete-case exclusion.\nchart: an object with labels (array of metric keys) and values (matching numeric values).\nnarrative: one short descriptive sentence. Do not claim causation.\nBlank CSV cells are missing, not zero. Do not round intermediate calculations.\nOutput numeric results to at least six decimal places when fractional. No extra commentary."
+      },
+      {
+        "role": "user",
+        "content": "Question: Sum nonmissing x values.\nApproved contract: {\"op\": \"sum\", \"column\": \"x\", \"unit\": \"points\"}\nCSV:\nx,n,g\n8,9,A\n8,7,B\n28,4,C\n,2,A\n26,,B\n15,6,C\n7,8,A\n19,4,B\n,8,C\n15,7,A\n2,9,B\n11,2,C\n"
+      },
+      {
+        "role": "assistant",
+        "content": "{\n  \"metrics\": {\n    \"value\": 100.0\n  },\n  \"rows_used\": 10,\n  \"chart\": {\n    \"labels\": [\n      \"x\"\n    ],\n    \"values\": [\n      100.0\n    ]\n  },\n  \"narrative\": \"The sum of non-missing x values is 100 points.\"\n}"
+      },
+      {
+        "role": "user",
+        "content": "Review your initial answer independently. Check the arithmetic, missing values, row count, unit and chart. Return a corrected complete JSON report."
+      }
+    ],
+    "stream": false,
+    "format": "json",
+    "options": {
+      "temperature": 0,
+      "seed": 31415,
+      "num_ctx": 4096,
+      "num_predict": 384
+    },
+    "keep_alive": "30m"
+  },
+  "response": {
+    "model": "qwen2.5:1.5b",
+    "created_at": "2026-11-10T12:09:22.346318Z",
+    "message": {
+      "role": "assistant",
+      "content": "{\n  \"metrics\": {\n    \"value\": 100.0\n  },\n  \"rows_used\": 10,\n  \"chart\": {\n    \"labels\": [\n      \"x\"\n    ],\n    \"values\": [\n      100.0\n    ]\n  },\n  \"narrative\": \"The sum of non-missing x values is 100 points.\"\n}"
+    },
+    "done": true,
+    "done_reason": "stop",
+    "total_duration": 4535207833,
+    "load_duration": 22273542,
+    "prompt_eval_count": 368,
+    "prompt_eval_cached_count": 331,
+    "prompt_eval_duration": 182992000,
+    "eval_count": 85,
+    "eval_duration": 4319374000
+  },
+  "wall_seconds": 4.5500009169918485,
+  "generated_at_utc": "2026-11-10T12:09:22.356859+00:00"
+}

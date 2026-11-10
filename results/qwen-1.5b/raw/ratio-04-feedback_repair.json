@@ -1,0 +1,52 @@
+{
+  "request_sha256": "7093eaa9052f5619f729bfe83d5a2074ea83014315e98c5f49c43da0712b4792",
+  "request": {
+    "model": "qwen2.5:1.5b",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a careful data analyst. Follow the approved contract exactly.\nReturn ONLY a JSON object with these five fields:\nmetrics: an object of numeric answers. Use key \"value\" for a single answer, or group labels for grouped answers.\nunit: the exact string in the contract.\nrows_used: integer count of rows actually used after complete-case exclusion.\nchart: an object with labels (array of metric keys) and values (matching numeric values).\nnarrative: one short descriptive sentence. Do not claim causation.\nBlank CSV cells are missing, not zero. Do not round intermediate calculations.\nOutput numeric results to at least six decimal places when fractional. No extra commentary."
+      },
+      {
+        "role": "user",
+        "content": "Question: Compute 100*sum(x)/sum(n), using only rows with both x and n present.\nApproved contract: {\"op\": \"ratio\", \"column\": \"x\", \"unit\": \"%\", \"denominator\": \"n\"}\nCSV:\nx,n,g\n4,5,A\n12,4,B\n28,8,C\n,4,A\n13,,B\n16,3,C\n3,1,A\n16,3,B\n,2,C\n13,5,A\n13,8,B\n24,1,C\n"
+      },
+      {
+        "role": "assistant",
+        "content": "{\n  \"metrics\": {\n    \"value\": 80.00000\n  },\n  \"unit\": \"%\",\n  \"rows_used\": 7,\n  \"chart\": {\n    \"x\": [],\n    \"n\": []\n  },\n  \"narrative\": \"The ratio of x to n is 80%.\"\n}"
+      },
+      {
+        "role": "user",
+        "content": "Use the executable checker findings below to repair your initial answer. Return a corrected complete JSON report. Checker findings: {\"status\": \"fail\", \"profile\": \"full\", \"findings\": [{\"code\": \"NUMERIC\", \"field\": \"metrics.value\", \"message\": \"Incorrect or non-finite numeric result\", \"expected\": 339.4736842105263, \"actual\": 80.0}, {\"code\": \"ROWS\", \"field\": \"rows_used\", \"message\": \"Complete-case count differs\", \"expected\": 9, \"actual\": 7}, {\"code\": \"CHART\", \"field\": \"chart\", \"message\": \"Chart labels must uniquely cover the metrics\", \"expected\": null, \"actual\": null}], \"scope\": \"structured fields only; narrative and contract intent unchecked\"}"
+      }
+    ],
+    "stream": false,
+    "format": "json",
+    "options": {
+      "temperature": 0,
+      "seed": 31415,
+      "num_ctx": 4096,
+      "num_predict": 384
+    },
+    "keep_alive": "30m"
+  },
+  "response": {
+    "model": "qwen2.5:1.5b",
+    "created_at": "2026-11-10T12:13:51.172088Z",
+    "message": {
+      "role": "assistant",
+      "content": "{\n  \"metrics\": {\n    \"value\": 339.4736842105263\n  },\n  \"unit\": \"%\",\n  \"rows_used\": 9,\n  \"chart\": {\n    \"x\": [],\n    \"n\": []\n  },\n  \"narrative\": \"The ratio of x to n is 339.4736842105263%.\"\n}"
+    },
+    "done": true,
+    "done_reason": "stop",
+    "total_duration": 5014784625,
+    "load_duration": 11067041,
+    "prompt_eval_count": 532,
+    "prompt_eval_cached_count": 349,
+    "prompt_eval_duration": 566852000,
+    "eval_count": 98,
+    "eval_duration": 4421065000
+  },
+  "wall_seconds": 5.020027082995512,
+  "generated_at_utc": "2026-11-10T12:13:51.175492+00:00"
+}

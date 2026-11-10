@@ -1,0 +1,44 @@
+{
+  "request_sha256": "b47b48c8ab396676cb90f202664e6f25e3589cd6ef9e751322aec3342d3041c0",
+  "request": {
+    "model": "qwen2.5:1.5b",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a careful data analyst. Follow the approved contract exactly.\nReturn ONLY a JSON object with these five fields:\nmetrics: an object of numeric answers. Use key \"value\" for a single answer, or group labels for grouped answers.\nunit: the exact string in the contract.\nrows_used: integer count of rows actually used after complete-case exclusion.\nchart: an object with labels (array of metric keys) and values (matching numeric values).\nnarrative: one short descriptive sentence. Do not claim causation.\nBlank CSV cells are missing, not zero. Do not round intermediate calculations.\nOutput numeric results to at least six decimal places when fractional. No extra commentary."
+      },
+      {
+        "role": "user",
+        "content": "Question: Compute the arithmetic mean of nonmissing x values.\nApproved contract: {\"op\": \"mean\", \"column\": \"x\", \"unit\": \"points\"}\nCSV:\nx,n,g\n19,9,A\n10,1,B\n10,1,C\n,5,A\n26,,B\n16,5,C\n24,6,A\n12,2,B\n,2,C\n13,4,A\n18,6,B\n8,2,C\n"
+      }
+    ],
+    "stream": false,
+    "format": "json",
+    "options": {
+      "temperature": 0,
+      "seed": 31415,
+      "num_ctx": 4096,
+      "num_predict": 384
+    },
+    "keep_alive": "30m"
+  },
+  "response": {
+    "model": "qwen2.5:1.5b",
+    "created_at": "2026-11-10T12:11:41.81159Z",
+    "message": {
+      "role": "assistant",
+      "content": "{\n  \"metrics\": {\n    \"value\": 12.88889\n  },\n  \"unit\": \"points\",\n  \"rows_used\": 9,\n  \"chart\": {\n    \"x\": [\n      \"19\",\n      \"10\",\n      \"26\",\n      \"16\",\n      \"24\",\n      \"12\",\n      \"13\",\n      \"8\"\n    ],\n    \"value\": [\n      19.0,\n      10.0,\n      5.0,\n      16.0,\n      24.0,\n      12.0,\n      13.0,\n      8.0\n    ]\n  },\n  \"narrative\": \"The arithmetic mean of the nonmissing x values is 12.88889 points.\"\n}"
+    },
+    "done": true,
+    "done_reason": "stop",
+    "total_duration": 8685956667,
+    "load_duration": 4721709,
+    "prompt_eval_count": 254,
+    "prompt_eval_cached_count": 184,
+    "prompt_eval_duration": 306815000,
+    "eval_count": 181,
+    "eval_duration": 8353544000
+  },
+  "wall_seconds": 8.692633832979482,
+  "generated_at_utc": "2026-11-10T12:11:41.815802+00:00"
+}

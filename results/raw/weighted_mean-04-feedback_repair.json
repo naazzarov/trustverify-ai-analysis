@@ -1,0 +1,52 @@
+{
+  "request_sha256": "9ca0a97a3725d60dd9e858e5051fd4852d50d262f278877408fa7450ce998702",
+  "request": {
+    "model": "qwen2.5:0.5b",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a careful data analyst. Follow the approved contract exactly.\nReturn ONLY a JSON object with these five fields:\nmetrics: an object of numeric answers. Use key \"value\" for a single answer, or group labels for grouped answers.\nunit: the exact string in the contract.\nrows_used: integer count of rows actually used after complete-case exclusion.\nchart: an object with labels (array of metric keys) and values (matching numeric values).\nnarrative: one short descriptive sentence. Do not claim causation.\nBlank CSV cells are missing, not zero. Do not round intermediate calculations.\nOutput numeric results to at least six decimal places when fractional. No extra commentary."
+      },
+      {
+        "role": "user",
+        "content": "Question: Compute sum(x*n)/sum(n), using only rows with both x and n present.\nApproved contract: {\"op\": \"weighted_mean\", \"column\": \"x\", \"unit\": \"points\", \"weight\": \"n\"}\nCSV:\nx,n,g\n8,9,A\n15,9,B\n3,1,C\n,5,A\n5,,B\n12,1,C\n4,3,A\n24,5,B\n,1,C\n7,4,A\n28,7,B\n2,6,C\n"
+      },
+      {
+        "role": "assistant",
+        "content": "{\n  \"value\": 10.0,\n  \"unit\": \"points\",\n  \"rows_used\": 14,\n  \"chart\": {\n    \"labels\": [\"x\", \"n\"],\n    \"values\": [10.0, 10.0]\n  },\n  \"narrative\": \"The weighted mean of the sum(x*n)/sum(n) is 10.0.\"\n}"
+      },
+      {
+        "role": "user",
+        "content": "Use the executable checker findings below to repair your initial answer. Return a corrected complete JSON report. Checker findings: {\"status\": \"fail\", \"profile\": \"full\", \"findings\": [{\"code\": \"SCHEMA\", \"field\": \"metrics\", \"message\": \"Required field is missing\", \"expected\": null, \"actual\": null}, {\"code\": \"METRIC_KEYS\", \"field\": \"metrics\", \"message\": \"Metric labels differ\", \"expected\": [\"value\"], \"actual\": null}, {\"code\": \"ROWS\", \"field\": \"rows_used\", \"message\": \"Complete-case count differs\", \"expected\": 9, \"actual\": 14}, {\"code\": \"CHART\", \"field\": \"chart\", \"message\": \"Chart labels must uniquely cover the metrics\", \"expected\": null, \"actual\": null}], \"scope\": \"structured fields only; narrative and contract intent unchecked\"}"
+      }
+    ],
+    "stream": false,
+    "format": "json",
+    "options": {
+      "temperature": 0,
+      "seed": 31415,
+      "num_ctx": 4096,
+      "num_predict": 384
+    },
+    "keep_alive": "30m"
+  },
+  "response": {
+    "model": "qwen2.5:0.5b",
+    "created_at": "2026-11-10T11:59:03.310692Z",
+    "message": {
+      "role": "assistant",
+      "content": "{\n  \"value\": 10.0,\n  \"unit\": \"points\",\n  \"rows_used\": 14,\n  \"chart\": {\n    \"labels\": [\"x\", \"n\"],\n    \"values\": [10.0, 10.0]\n  },\n  \"narrative\": \"The weighted mean of the sum(x*n)/sum(n) is 10.0.\"\n}"
+    },
+    "done": true,
+    "done_reason": "stop",
+    "total_duration": 2891397750,
+    "load_duration": 3940166,
+    "prompt_eval_count": 548,
+    "prompt_eval_cached_count": 356,
+    "prompt_eval_duration": 240618000,
+    "eval_count": 88,
+    "eval_duration": 2637435000
+  },
+  "wall_seconds": 2.8982980420114473,
+  "generated_at_utc": "2026-11-10T11:59:03.316955+00:00"
+}

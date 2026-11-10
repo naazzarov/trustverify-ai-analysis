@@ -1,0 +1,44 @@
+{
+  "request_sha256": "d3584f822f652929d12bc90e1bab79de71a9584cbf23944b213d8a26bd166f70",
+  "request": {
+    "model": "qwen2.5:0.5b",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a careful data analyst. Follow the approved contract exactly.\nReturn ONLY a JSON object with these five fields:\nmetrics: an object of numeric answers. Use key \"value\" for a single answer, or group labels for grouped answers.\nunit: the exact string in the contract.\nrows_used: integer count of rows actually used after complete-case exclusion.\nchart: an object with labels (array of metric keys) and values (matching numeric values).\nnarrative: one short descriptive sentence. Do not claim causation.\nBlank CSV cells are missing, not zero. Do not round intermediate calculations.\nOutput numeric results to at least six decimal places when fractional. No extra commentary."
+      },
+      {
+        "role": "user",
+        "content": "Question: Sum nonmissing x values.\nApproved contract: {\"op\": \"sum\", \"column\": \"x\", \"unit\": \"points\"}\nCSV:\nx,n,g\n8,9,A\n8,7,B\n28,4,C\n,2,A\n26,,B\n15,6,C\n7,8,A\n19,4,B\n,8,C\n15,7,A\n2,9,B\n11,2,C\n"
+      }
+    ],
+    "stream": false,
+    "format": "json",
+    "options": {
+      "temperature": 0,
+      "seed": 31415,
+      "num_ctx": 4096,
+      "num_predict": 384
+    },
+    "keep_alive": "30m"
+  },
+  "response": {
+    "model": "qwen2.5:0.5b",
+    "created_at": "2026-11-10T11:56:05.584236Z",
+    "message": {
+      "role": "assistant",
+      "content": "{\n  \"metrics\": {\n    \"value\": 10,\n    \"unit\": \"points\",\n    \"rows_used\": 14,\n    \"narrative\": \"The sum of nonmissing x values is 10.\"\n  },\n  \"unit\": \"points\",\n  \"rows_used\": 14,\n  \"chart\": {\n    \"labels\": [\"x\", \"g\"],\n    \"values\": [10, 10]\n  }\n}"
+    },
+    "done": true,
+    "done_reason": "stop",
+    "total_duration": 7762988500,
+    "load_duration": 5513825834,
+    "prompt_eval_count": 247,
+    "prompt_eval_cached_count": 0,
+    "prompt_eval_duration": 341970000,
+    "eval_count": 98,
+    "eval_duration": 1880615000
+  },
+  "wall_seconds": 7.782552834018134,
+  "generated_at_utc": "2026-11-10T11:56:05.603399+00:00"
+}

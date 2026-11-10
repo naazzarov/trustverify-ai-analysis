@@ -1,0 +1,52 @@
+{
+  "request_sha256": "1828349144f4d4e5f14dd2b224fa464032f6f31133fec3e7a6a0892d5bec4973",
+  "request": {
+    "model": "qwen2.5:0.5b",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a careful data analyst. Follow the approved contract exactly.\nReturn ONLY a JSON object with these five fields:\nmetrics: an object of numeric answers. Use key \"value\" for a single answer, or group labels for grouped answers.\nunit: the exact string in the contract.\nrows_used: integer count of rows actually used after complete-case exclusion.\nchart: an object with labels (array of metric keys) and values (matching numeric values).\nnarrative: one short descriptive sentence. Do not claim causation.\nBlank CSV cells are missing, not zero. Do not round intermediate calculations.\nOutput numeric results to at least six decimal places when fractional. No extra commentary."
+      },
+      {
+        "role": "user",
+        "content": "Question: Compute 100*sum(x)/sum(n), using only rows with both x and n present.\nApproved contract: {\"op\": \"ratio\", \"column\": \"x\", \"unit\": \"%\", \"denominator\": \"n\"}\nCSV:\nx,n,g\n4,6,A\n10,7,B\n4,5,C\n,3,A\n21,,B\n9,2,C\n9,8,A\n23,3,B\n,1,C\n28,5,A\n7,5,B\n8,4,C\n"
+      },
+      {
+        "role": "assistant",
+        "content": "{\n  \"metrics\": {\n    \"sum(x)\": 100,\n    \"sum(n)\": 100,\n    \"value\": 100,\n    \"unit\": \"%\",\n    \"rows_used\": 10,\n    \"chart\": {\n      \"labels\": [\"sum(x)\", \"sum(n)\"],\n      \"values\": [100, 100]\n    },\n    \"narrative\": \"The ratio of the sum of x to the sum of n is 100, which is the same as the ratio of the sum of x to the sum of n.\"\n  }\n}"
+      },
+      {
+        "role": "user",
+        "content": "Review your initial answer independently. Check the arithmetic, missing values, row count, unit and chart. Return a corrected complete JSON report."
+      }
+    ],
+    "stream": false,
+    "format": "json",
+    "options": {
+      "temperature": 0,
+      "seed": 31415,
+      "num_ctx": 4096,
+      "num_predict": 384
+    },
+    "keep_alive": "30m"
+  },
+  "response": {
+    "model": "qwen2.5:0.5b",
+    "created_at": "2026-11-10T12:00:16.417598Z",
+    "message": {
+      "role": "assistant",
+      "content": "{\n  \"metrics\": {\n    \"sum(x)\": 100,\n    \"sum(n)\": 100,\n    \"value\": 100,\n    \"unit\": \"%\",\n    \"rows_used\": 10,\n    \"chart\": {\n      \"labels\": [\"sum(x)\", \"sum(n)\"],\n      \"values\": [100, 100]\n    },\n    \"narrative\": \"The ratio of the sum of x to the sum of n is 100, which is the same as the ratio of the sum of x to the sum of n.\"\n  }\n}"
+    },
+    "done": true,
+    "done_reason": "stop",
+    "total_duration": 3443987709,
+    "load_duration": 3521417,
+    "prompt_eval_count": 434,
+    "prompt_eval_cached_count": 397,
+    "prompt_eval_duration": 126878000,
+    "eval_count": 131,
+    "eval_duration": 3295446000
+  },
+  "wall_seconds": 3.4489769999636337,
+  "generated_at_utc": "2026-11-10T12:00:16.418088+00:00"
+}

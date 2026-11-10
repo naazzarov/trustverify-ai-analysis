@@ -1,0 +1,44 @@
+{
+  "request_sha256": "390c702c404d1669bb49ee4211fcc8dfafc5dcc93ce5e15ea423b6265501c4d5",
+  "request": {
+    "model": "qwen2.5:1.5b",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a careful data analyst. Follow the approved contract exactly.\nReturn ONLY a JSON object with these five fields:\nmetrics: an object of numeric answers. Use key \"value\" for a single answer, or group labels for grouped answers.\nunit: the exact string in the contract.\nrows_used: integer count of rows actually used after complete-case exclusion.\nchart: an object with labels (array of metric keys) and values (matching numeric values).\nnarrative: one short descriptive sentence. Do not claim causation.\nBlank CSV cells are missing, not zero. Do not round intermediate calculations.\nOutput numeric results to at least six decimal places when fractional. No extra commentary."
+      },
+      {
+        "role": "user",
+        "content": "Question: Compute 100*sum(x)/sum(n), using only rows with both x and n present.\nApproved contract: {\"op\": \"ratio\", \"column\": \"x\", \"unit\": \"%\", \"denominator\": \"n\"}\nCSV:\nx,n,g\n4,6,A\n10,7,B\n4,5,C\n,3,A\n21,,B\n9,2,C\n9,8,A\n23,3,B\n,1,C\n28,5,A\n7,5,B\n8,4,C\n"
+      }
+    ],
+    "stream": false,
+    "format": "json",
+    "options": {
+      "temperature": 0,
+      "seed": 31415,
+      "num_ctx": 4096,
+      "num_predict": 384
+    },
+    "keep_alive": "30m"
+  },
+  "response": {
+    "model": "qwen2.5:1.5b",
+    "created_at": "2026-11-10T12:13:57.557365Z",
+    "message": {
+      "role": "assistant",
+      "content": "{\n  \"metrics\": {\n    \"value\": 100.000000\n  },\n  \"unit\": \"%\",\n  \"rows_used\": 10,\n  \"chart\": {\n    \"labels\": [\"x\"],\n    \"values\": [100.000000]\n  },\n  \"narrative\": \"The ratio of the sum of x to the sum of n is 100%.\"\n}"
+    },
+    "done": true,
+    "done_reason": "stop",
+    "total_duration": 6358146250,
+    "load_duration": 6672459,
+    "prompt_eval_count": 267,
+    "prompt_eval_cached_count": 203,
+    "prompt_eval_duration": 223186000,
+    "eval_count": 97,
+    "eval_duration": 6069813000
+  },
+  "wall_seconds": 6.3889579579699785,
+  "generated_at_utc": "2026-11-10T12:13:57.576021+00:00"
+}

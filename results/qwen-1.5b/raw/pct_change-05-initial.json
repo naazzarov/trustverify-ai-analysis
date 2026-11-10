@@ -1,0 +1,44 @@
+{
+  "request_sha256": "ec02b95822afc4291477e8d89324fbe519e22ec5bbebf17ef03dc3e19f6b64a1",
+  "request": {
+    "model": "qwen2.5:1.5b",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a careful data analyst. Follow the approved contract exactly.\nReturn ONLY a JSON object with these five fields:\nmetrics: an object of numeric answers. Use key \"value\" for a single answer, or group labels for grouped answers.\nunit: the exact string in the contract.\nrows_used: integer count of rows actually used after complete-case exclusion.\nchart: an object with labels (array of metric keys) and values (matching numeric values).\nnarrative: one short descriptive sentence. Do not claim causation.\nBlank CSV cells are missing, not zero. Do not round intermediate calculations.\nOutput numeric results to at least six decimal places when fractional. No extra commentary."
+      },
+      {
+        "role": "user",
+        "content": "Question: Compute 100*(last x - first x)/first x, preserving CSV order and skipping missing x.\nApproved contract: {\"op\": \"pct_change\", \"column\": \"x\", \"unit\": \"%\"}\nCSV:\nx,n,g\n13,8,A\n6,5,B\n8,1,C\n,1,A\n21,,B\n26,2,C\n25,3,A\n19,8,B\n,7,C\n4,3,A\n5,1,B\n21,1,C\n"
+      }
+    ],
+    "stream": false,
+    "format": "json",
+    "options": {
+      "temperature": 0,
+      "seed": 31415,
+      "num_ctx": 4096,
+      "num_predict": 384
+    },
+    "keep_alive": "30m"
+  },
+  "response": {
+    "model": "qwen2.5:1.5b",
+    "created_at": "2026-11-10T12:17:33.233793Z",
+    "message": {
+      "role": "assistant",
+      "content": "{\n  \"metrics\": {\n    \"value\": 100.000000\n  },\n  \"unit\": \"%\",\n  \"rows_used\": 10\n}"
+    },
+    "done": true,
+    "done_reason": "stop",
+    "total_duration": 3393111750,
+    "load_duration": 83429208,
+    "prompt_eval_count": 265,
+    "prompt_eval_cached_count": 198,
+    "prompt_eval_duration": 316346000,
+    "eval_count": 41,
+    "eval_duration": 2947883000
+  },
+  "wall_seconds": 3.399149624980055,
+  "generated_at_utc": "2026-11-10T12:17:33.237206+00:00"
+}

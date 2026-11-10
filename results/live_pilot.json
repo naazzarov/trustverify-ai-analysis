@@ -1,0 +1,6235 @@
+{
+  "metadata": {
+    "experiment": "actual_local_model_pilot",
+    "model": "qwen2.5:0.5b",
+    "options": {
+      "temperature": 0,
+      "seed": 31415,
+      "num_ctx": 4096,
+      "num_predict": 384
+    },
+    "system_prompt": "You are a careful data analyst. Follow the approved contract exactly.\nReturn ONLY a JSON object with these five fields:\nmetrics: an object of numeric answers. Use key \"value\" for a single answer, or group labels for grouped answers.\nunit: the exact string in the contract.\nrows_used: integer count of rows actually used after complete-case exclusion.\nchart: an object with labels (array of metric keys) and values (matching numeric values).\nnarrative: one short descriptive sentence. Do not claim causation.\nBlank CSV cells are missing, not zero. Do not round intermediate calculations.\nOutput numeric results to at least six decimal places when fractional. No extra commentary.",
+    "system_prompt_sha256": "7d804e8c2d9d6ede5e27cd39ad048e191ba9f7ac23ed3b14baab266520086152",
+    "protocol_sha256": "904732337e277befe5c69259c600af8be7a6546f09b012f0940d9816b9860457",
+    "task_file_sha256": "7d6b3739552c30bcdf34699afad15d9ca9dc80ebb30eb93d727df946187eac73",
+    "model_details": {
+      "parent_model": "",
+      "format": "gguf",
+      "family": "qwen2",
+      "families": [
+        "qwen2"
+      ],
+      "parameter_size": "494.03M",
+      "quantization_level": "Q4_K_M"
+    },
+    "model_info": {
+      "general.architecture": "qwen2",
+      "general.base_model.0.name": "Qwen2.5 0.5B",
+      "general.base_model.0.organization": "Qwen",
+      "general.base_model.0.repo_url": "https://huggingface.co/Qwen/Qwen2.5-0.5B",
+      "general.base_model.count": 1,
+      "general.basename": "Qwen2.5",
+      "general.file_type": 15,
+      "general.finetune": "Instruct",
+      "general.languages": [
+        "en"
+      ],
+      "general.license": "apache-2.0",
+      "general.license.link": "https://huggingface.co/Qwen/Qwen2.5-0.5B-Instruct/blob/main/LICENSE",
+      "general.parameter_count": 494032768,
+      "general.quantization_version": 2,
+      "general.size_label": "0.5B",
+      "general.tags": [
+        "chat",
+        "text-generation"
+      ],
+      "general.type": "model",
+      "qwen2.attention.head_count": 14,
+      "qwen2.attention.head_count_kv": 2,
+      "qwen2.attention.layer_norm_rms_epsilon": 1e-06,
+      "qwen2.block_count": 24,
+      "qwen2.context_length": 32768,
+      "qwen2.embedding_length": 896,
+      "qwen2.feed_forward_length": 4864,
+      "qwen2.rope.freq_base": 1000000,
+      "tokenizer.ggml.add_bos_token": false,
+      "tokenizer.ggml.bos_token_id": 151643,
+      "tokenizer.ggml.eos_token_id": 151645,
+      "tokenizer.ggml.merges": [],
+      "tokenizer.ggml.model": "gpt2",
+      "tokenizer.ggml.padding_token_id": 151643,
+      "tokenizer.ggml.pre": "qwen2",
+      "tokenizer.ggml.token_type": [],
+      "tokenizer.ggml.tokens": []
+    },
+    "model_tags": {
+      "models": [
+        {
+          "name": "qwen2.5:0.5b",
+          "model": "qwen2.5:0.5b",
+          "modified_at": "2026-11-10T19:54:19.256592185+08:00",
+          "size": 397821319,
+          "digest": "a8b0c51577010a279d933d14c2a8ab4b268079d44c5c8830c0a93900f1827c67",
+          "details": {
+            "parent_model": "",
+            "format": "gguf",
+            "family": "qwen2",
+            "families": [
+              "qwen2"
+            ],
+            "parameter_size": "494.03M",
+            "quantization_level": "Q4_K_M",
+            "context_length": 32768,
+            "embedding_length": 896
+          },
+          "capabilities": [
+            "completion",
+            "tools"
+          ]
+        }
+      ]
+    },
+    "environment": {
+      "python": "3.14.7 (main, Aug  5 2026, 10:29:49) [Clang 21.0.0 (clang-2100.1.1.101)]",
+      "platform": "macOS-26.5.2-arm64-arm-64bit-Mach-O",
+      "machine": "arm64"
+    },
+    "task_count": 24,
+    "generated_at_utc": "2026-11-10T11:55:57.819269+00:00",
+    "calls_per_task": 3
+  },
+  "summary": {
+    "initial": {
+      "n": 24,
+      "correct": 0,
+      "accuracy": 0.0,
+      "wilson_95": [
+        0,
+        0.13798057582897535
+      ],
+      "valid_json_objects": 19,
+      "mean_cumulative_wall_seconds": 5.805064788207043,
+      "completion_tokens_second_call_only": 4248,
+      "by_family": {
+        "group_sum": 0,
+        "mean": 0,
+        "pct_change": 0,
+        "ratio": 0,
+        "sum": 0,
+        "weighted_mean": 0
+      }
+    },
+    "self_review": {
+      "n": 24,
+      "correct": 0,
+      "accuracy": 0.0,
+      "wilson_95": [
+        0,
+        0.13798057582897535
+      ],
+      "valid_json_objects": 19,
+      "mean_cumulative_wall_seconds": 11.142829373124792,
+      "completion_tokens_second_call_only": 4259,
+      "by_family": {
+        "group_sum": 0,
+        "mean": 0,
+        "pct_change": 0,
+        "ratio": 0,
+        "sum": 0,
+        "weighted_mean": 0
+      }
+    },
+    "feedback_repair": {
+      "n": 24,
+      "correct": 0,
+      "accuracy": 0.0,
+      "wilson_95": [
+        0,
+        0.13798057582897535
+      ],
+      "valid_json_objects": 19,
+      "mean_cumulative_wall_seconds": 11.482909576375581,
+      "completion_tokens_second_call_only": 4146,
+      "by_family": {
+        "group_sum": 0,
+        "mean": 0,
+        "pct_change": 0,
+        "ratio": 0,
+        "sum": 0,
+        "weighted_mean": 0
+      }
+    },
+    "deterministic_recompute": {
+      "n": 24,
+      "correct": 24,
+      "accuracy": 1.0,
+      "wilson_95": [
+        0.8620194241710247,
+        1
+      ],
+      "valid_json_objects": 24,
+      "mean_cumulative_wall_seconds": 0.000182739505059241,
+      "completion_tokens_second_call_only": 0,
+      "by_family": {
+        "group_sum": 4,
+        "mean": 4,
+        "pct_change": 4,
+        "ratio": 4,
+        "sum": 4,
+        "weighted_mean": 4
+      }
+    }
+  },
+  "paired_comparison": {
+    "feedback_minus_self_review": 0.0,
+    "paired_bootstrap_95": [
+      0.0,
+      0.0
+    ],
+    "improved": 0,
+    "regressed": 0
+  },
+  "records": [
+    {
+      "id": "sum-02",
+      "family": "sum",
+      "condition": "initial",
+      "correct": false,
+      "valid_json_object": true,
+      "report": {
+        "metrics": {
+          "value": 10,
+          "unit": "points",
+          "rows_used": 14,
+          "narrative": "The sum of nonmissing x values is 10."
+        },
+        "unit": "points",
+        "rows_used": 14,
+        "chart": {
+          "labels": [
+            "x",
+            "g"
+          ],
+          "values": [
+            10,
+            10
+          ]
+        }
+      },
+      "verification": {
+        "status": "fail",
+        "profile": "full",
+        "findings": [
+          {
+            "code": "SCHEMA",
+            "field": "narrative",
+            "message": "Required field is missing",
+            "expected": null,
+            "actual": null
+          },
+          {
+            "code": "SCHEMA",
+            "field": "narrative",
+            "message": "Narrative must be a string; its meaning is unchecked",
+            "expected": null,
+            "actual": null
+          },
+          {
+            "code": "METRIC_KEYS",
+            "field": "metrics",
+            "message": "Metric labels differ",
+            "expected": [
+              "value"
+            ],
+            "actual": {
+              "value": 10,
+              "unit": "points",
+              "rows_used": 14,
+              "narrative": "The sum of nonmissing x values is 10."
+            }
+          },
+          {
+            "code": "ROWS",
+            "field": "rows_used",
+            "message": "Complete-case count differs",
+            "expected": 10,
+            "actual": 14
+          },
+          {
+            "code": "CHART",
+            "field": "chart",
+            "message": "Chart labels must uniquely cover the metrics",
+            "expected": null,
+            "actual": null
+          }
+        ],
+        "scope": "structured fields only; narrative and contract intent unchecked"
+      },
+      "wall_seconds": 7.782552834018134,
+      "cumulative_wall_seconds": 7.782552834018134,
+      "prompt_tokens": 247,
+      "output_tokens": 98,
+      "raw_path": "results/raw/sum-02-initial.json"
+    },
+    {
+      "id": "sum-02",
+      "family": "sum",
+      "condition": "self_review",
+      "correct": false,
+      "valid_json_object": true,
+      "report": {
+        "metrics": {
+          "value": 10.0,
+          "unit": "points",
+          "rows_used": 14,
+          "narrative": "The sum of nonmissing x values is 10."
+        },
+        "unit": "points",
+        "rows_used": 14,
+        "chart": {
+          "labels": [
+            "x",
+            "g"
+          ],
+          "values": [
+            10,
+            10
+          ]
+        }
+      },
+      "verification": {
+        "status": "fail",
+        "profile": "full",
+        "findings": [
+          {
+            "code": "SCHEMA",
+            "field": "narrative",
+            "message": "Required field is missing",
+            "expected": null,
+            "actual": null
+          },
+          {
+            "code": "SCHEMA",
+            "field": "narrative",
+            "message": "Narrative must be a string; its meaning is unchecked",
+            "expected": null,
+            "actual": null
+          },
+          {
+            "code": "METRIC_KEYS",
+            "field": "metrics",
+            "message": "Metric labels differ",
+            "expected": [
+              "value"
+            ],
+            "actual": {
+              "value": 10.0,
+              "unit": "points",
+              "rows_used": 14,
+              "narrative": "The sum of nonmissing x values is 10."
+            }
+          },
+          {
+            "code": "ROWS",
+            "field": "rows_used",
+            "message": "Complete-case count differs",
+            "expected": 10,
+            "actual": 14
+          },
+          {
+            "code": "CHART",
+            "field": "chart",
+            "message": "Chart labels must uniquely cover the metrics",
+            "expected": null,
+            "actual": null
+          }
+        ],
+        "scope": "structured fields only; narrative and contract intent unchecked"
+      },
+      "wall_seconds": 2.5992314579780214,
+      "cumulative_wall_seconds": 10.381784291996155,
+      "prompt_tokens": 381,
+      "output_tokens": 105,
+      "raw_path": "results/raw/sum-02-self_review.json"
+    },
+    {
+      "id": "sum-02",
+      "family": "sum",
+      "condition": "feedback_repair",
+      "correct": false,
+      "valid_json_object": true,
+      "report": {
+        "metrics": {
+          "value": 10,
+          "unit": "points",
+          "rows_used": 14,
+          "narrative": "The sum of nonmissing x values is 10."
+        },
+        "unit": "points",
+        "rows_used": 14,
+        "chart": {
+          "labels": [
+            "x",
+            "g"
+          ],
+          "values": [
+            10,
+            10
+          ]
+        }
+      },
+      "verification": {
+        "status": "fail",
+        "profile": "full",
+        "findings": [
+          {
+            "code": "SCHEMA",
+            "field": "narrative",
+            "message": "Required field is missing",
+            "expected": null,
+            "actual": null
+          },
+          {
+            "code": "SCHEMA",
+            "field": "narrative",
+            "message": "Narrative must be a string; its meaning is unchecked",
+            "expected": null,
+            "actual": null
+          },
+          {
+            "code": "METRIC_KEYS",
+            "field": "metrics",
+            "message": "Metric labels differ",
+            "expected": [
+              "value"
+            ],
+            "actual": {
+              "value": 10,
+              "unit": "points",
+              "rows_used": 14,
+              "narrative": "The sum of nonmissing x values is 10."
+            }
+          },
+          {
+            "code": "ROWS",
+            "field": "rows_used",
+            "message": "Complete-case count differs",
+            "expected": 10,
+            "actual": 14
+          },
+          {
+            "code": "CHART",
+            "field": "chart",
+            "message": "Chart labels must uniquely cover the metrics",
+            "expected": null,
+            "actual": null
+          }
+        ],
+        "scope": "structured fields only; narrative and contract intent unchecked"
+      },
+      "wall_seconds": 2.564968916994985,
+      "cumulative_wall_seconds": 10.347521751013119,
+      "prompt_tokens": 623,
+      "output_tokens": 98,
+      "raw_path": "results/raw/sum-02-feedback_repair.json"
+    },
+    {
+      "id": "sum-02",
+      "family": "sum",
+      "condition": "deterministic_recompute",
+      "correct": true,
+      "valid_json_object": true,
+      "report": {
+        "metrics": {
+          "value": 139.0
+        },
+        "unit": "points",
+        "rows_used": 10,
+        "chart": {
+          "labels": [
+            "value"
+          ],
+          "values": [
+            139.0
+          ]
+        },
+        "narrative": "Structured fields recomputed from the approved contract. No causal conclusion established."
+      },
+      "wall_seconds": 0.00016925000818446279,
+      "cumulative_wall_seconds": 0.0001700000138953328,
+      "prompt_tokens": 0,
+      "output_tokens": 0
+    },
+    {
+      "id": "sum-03",
+      "family": "sum",
+      "condition": "initial",
+      "correct": false,
+      "valid_json_object": true,
+      "report": {
+        "metrics": {
+          "x": 10.0,
+          "n": 1.0,
+          "g": 1.0
+        },
+        "unit": "points",
+        "rows_used": 14,
+        "chart": {
+          "labels": [
+            "x",
+            "n",
+            "g"
+          ],
+          "values": [
+            10.0,
+            1.0,
+            1.0
+          ]
+        },
+        "narrative": "The sum of nonmissing x values is 10.0."
+      },
+      "verification": {
+        "status": "fail",
+        "profile": "full",
+        "findings": [
+          {
+            "code": "METRIC_KEYS",
+            "field": "metrics",
+            "message": "Metric labels differ",
+            "expected": [
+              "value"
+            ],
+            "actual": {
+              "x": 10.0,
+              "n": 1.0,
+              "g": 1.0
+            }
+          },
+          {
+            "code": "ROWS",
+            "field": "rows_used",
+            "message": "Complete-case count differs",
+            "expected": 10,
+            "actual": 14
+          },
+          {
+            "code": "CHART",
+            "field": "chart",
+            "message": "Chart labels must uniquely cover the metrics",
+            "expected": null,
+            "actual": null
+          }
+        ],
+        "scope": "structured fields only; narrative and contract intent unchecked"
+      },
+      "wall_seconds": 2.807025749993045,
+      "cumulative_wall_seconds": 2.807025749993045,
+      "prompt_tokens": 248,
+      "output_tokens": 115,
+      "raw_path": "results/raw/sum-03-initial.json"
+    },
+    {
+      "id": "sum-03",
+      "family": "sum",
+      "condition": "self_review",
+      "correct": false,
+      "valid_json_object": true,
+      "report": {
+        "metrics": {
+          "x": 10.0,
+          "n": 1.0,
+          "g": 1.0
+        },
+        "unit": "points",
+        "rows_used": 14,
+        "chart": {
+          "labels": [
+            "x",
+            "n",
+            "g"
+          ],
+          "values": [
+            10.0,
+            1.0,
+            1.0
+          ]
+        },
+        "narrative": "The sum of nonmissing x values is 10.0."
+      },
+      "verification": {
+        "status": "fail",
+        "profile": "full",
+        "findings": [
+          {
+            "code": "METRIC_KEYS",
+            "field": "metrics",
+            "message": "Metric labels differ",
+            "expected": [
+              "value"
+            ],
+            "actual": {
+              "x": 10.0,
+              "n": 1.0,
+              "g": 1.0
+            }
+          },
+          {
+            "code": "ROWS",
+            "field": "rows_used",
+            "message": "Complete-case count differs",
+            "expected": 10,
+            "actual": 14
+          },
+          {
+            "code": "CHART",
+            "field": "chart",
+            "message": "Chart labels must uniquely cover the metrics",
+            "expected": null,
+            "actual": null
+          }
+        ],
+        "scope": "structured fields only; narrative and contract intent unchecked"
+      },
+      "wall_seconds": 3.153104291006457,
+      "cumulative_wall_seconds": 5.960130040999502,
+      "prompt_tokens": 399,
+      "output_tokens": 115,
+      "raw_path": "results/raw/sum-03-self_review.json"
+    },
+    {
+      "id": "sum-03",
+      "family": "sum",
+      "condition": "feedback_repair",
+      "correct": false,
+      "valid_json_object": true,
+      "report": {
+        "metrics": {
+          "x": 10.0,
+          "n": 1.0,
+          "g": 1.0
+        },
+        "unit": "points",
+        "rows_used": 14,
+        "chart": {
+          "labels": [
+            "x",
+            "n",
+            "g"
+          ],
+          "values": [
+            10.0,
+            1.0,
+            1.0
+          ]
+        },
+        "narrative": "The sum of nonmissing x values is 10.0."
+      },
+      "verification": {
+        "status": "fail",
+        "profile": "full",
+        "findings": [
+          {
+            "code": "METRIC_KEYS",
+            "field": "metrics",
+            "message": "Metric labels differ",
+            "expected": [
+              "value"
+            ],
+            "actual": {
+              "x": 10.0,
+              "n": 1.0,
+              "g": 1.0
+            }
+          },
+          {
+            "code": "ROWS",
+            "field": "rows_used",
+            "message": "Complete-case count differs",
+            "expected": 10,
+            "actual": 14
+          },
+          {
+            "code": "CHART",
+            "field": "chart",
+            "message": "Chart labels must uniquely cover the metrics",
+            "expected": null,
+            "actual": null
+          }
+        ],
+        "scope": "structured fields only; narrative and contract intent unchecked"
+      },
+      "wall_seconds": 3.9617180000059307,
+      "cumulative_wall_seconds": 6.7687437499989755,
+      "prompt_tokens": 551,
+      "output_tokens": 115,
+      "raw_path": "results/raw/sum-03-feedback_repair.json"
+    },
+    {
+      "id": "sum-03",
+      "family": "sum",
+      "condition": "deterministic_recompute",
+      "correct": true,
+      "valid_json_object": true,
+      "report": {
+        "metrics": {
+          "value": 145.0
+        },
+        "unit": "points",
+        "rows_used": 10,
+        "chart": {
+          "labels": [
+            "value"
+          ],
+          "values": [
+            145.0
+          ]
+        },
+        "narrative": "Structured fields recomputed from the approved contract. No causal conclusion established."
+      },
+      "wall_seconds": 0.00011533295037224889,
+      "cumulative_wall_seconds": 0.00011579098645597696,
+      "prompt_tokens": 0,
+      "output_tokens": 0
+    },
+    {
+      "id": "sum-04",
+      "family": "sum",
+      "condition": "initial",
+      "correct": false,
+      "valid_json_object": true,
+      "report": {
+        "metrics": {
+          "x": 16.0,
+          "n": 9.0,
+          "g": 4.0
+        },
+        "unit": "points",
+        "rows_used": 16,
+        "chart": {
+          "labels": [
+            "x",
+            "n",
+            "g"
+          ],
+          "values": [
+            16.0,
+            9.0,
+            4.0
+          ]
+        },
+        "narrative": "The sum of nonmissing x values is 16.0."
+      },
+      "verification": {
+        "status": "fail",
+        "profile": "full",
+        "findings": [
+          {
+            "code": "METRIC_KEYS",
+            "field": "metrics",
+            "message": "Metric labels differ",
+            "expected": [
+              "value"
+            ],
+            "actual": {
+              "x": 16.0,
+              "n": 9.0,
+              "g": 4.0
+            }
+          },
+          {
+            "code": "ROWS",
+            "field": "rows_used",
+            "message": "Complete-case count differs",
+            "expected": 10,
+            "actual": 16
+          },
+          {
+            "code": "CHART",
+            "field": "chart",
+            "message": "Chart labels must uniquely cover the metrics",
+            "expected": null,
+            "actual": null
+          }
+        ],
+        "scope": "structured fields only; narrative and contract intent unchecked"
+      },
+      "wall_seconds": 10.063992084003985,
+      "cumulative_wall_seconds": 10.063992084003985,
+      "prompt_tokens": 248,
+      "output_tokens": 115,
+      "raw_path": "results/raw/sum-04-initial.json"
+    },
+    {
+      "id": "sum-04",
+      "family": "sum",
+      "condition": "self_review",
+      "correct": false,
+      "valid_json_object": true,
+      "report": {
+        "metrics": {
+          "x": 16.0,
+          "n": 9.0,
+          "g": 4.0
+        },
+        "unit": "points",
+        "rows_used": 16,
+        "chart": {
+          "labels": [
+            "x",
+            "n",
+            "g"
+          ],
+          "values": [
+            16.0,
+            9.0,
+            4.0
+          ]
+        },
+        "narrative": "The sum of nonmissing x values is 16.0."
+      },
+      "verification": {
+        "status": "fail",
+        "profile": "full",
+        "findings": [
+          {
+            "code": "METRIC_KEYS",
+            "field": "metrics",
+            "message": "Metric labels differ",
+            "expected": [
+              "value"
+            ],
+            "actual": {
+              "x": 16.0,
+              "n": 9.0,
+              "g": 4.0
+            }
+          },
+          {
+            "code": "ROWS",
+            "field": "rows_used",
+            "message": "Complete-case count differs",
+            "expected": 10,
+            "actual": 16
+          },
+          {
+            "code": "CHART",
+            "field": "chart",
+            "message": "Chart labels must uniquely cover the metrics",
+            "expected": null,
+            "actual": null
+          }
+        ],
+        "scope": "structured fields only; narrative and contract intent unchecked"
+      },
+      "wall_seconds": 7.023450958018657,
+      "cumulative_wall_seconds": 17.08744304202264,
+      "prompt_tokens": 399,
+      "output_tokens": 115,
+      "raw_path": "results/raw/sum-04-self_review.json"
+    },
+    {
+      "id": "sum-04",
+      "family": "sum",
+      "condition": "feedback_repair",
+      "correct": false,
+      "valid_json_object": true,
+      "report": {
+        "metrics": {
+          "x": 16.0,
+          "n": 9.0,
+          "g": 4.0
+        },
+        "unit": "points",
+        "rows_used": 16,
+        "chart": {
+          "labels": [
+            "x",
+            "n",
+            "g"
+          ],
+          "values": [
+            16.0,
+            9.0,
+            4.0
+          ]
+        },
+        "narrative": "The sum of nonmissing x values is 16.0."
+      },
+      "verification": {
+        "status": "fail",
+        "profile": "full",
+        "findings": [
+          {
+            "code": "METRIC_KEYS",
+            "field": "metrics",
+            "message": "Metric labels differ",
+            "expected": [
+              "value"
+            ],
+            "actual": {
+              "x": 16.0,
+              "n": 9.0,
+              "g": 4.0
+            }
+          },
+          {
+            "code": "ROWS",
+            "field": "rows_used",
+            "message": "Complete-case count differs",
+            "expected": 10,
+            "actual": 16
+          },
+          {
+            "code": "CHART",
+            "field": "chart",
+            "message": "Chart labels must uniquely cover the metrics",
+            "expected": null,
+            "actual": null
+          }
+        ],
+        "scope": "structured fields only; narrative and contract intent unchecked"
+      },
+      "wall_seconds": 5.074766290956177,
+      "cumulative_wall_seconds": 15.138758374960162,
+      "prompt_tokens": 551,
+      "output_tokens": 115,
+      "raw_path": "results/raw/sum-04-feedback_repair.json"
+    },
+    {
+      "id": "sum-04",
+      "family": "sum",
+      "condition": "deterministic_recompute",
+      "correct": true,
+      "valid_json_object": true,
+      "report": {
+        "metrics": {
+          "value": 151.0
+        },
+        "unit": "points",
+        "rows_used": 10,
+        "chart": {
+          "labels": [
+            "value"
+          ],
+          "values": [
+            151.0
+          ]
+        },
+        "narrative": "Structured fields recomputed from the approved contract. No causal conclusion established."
+      },
+      "wall_seconds": 0.0002852079924196005,
+      "cumulative_wall_seconds": 0.00028604199178516865,
+      "prompt_tokens": 0,
+      "output_tokens": 0
+    },
+    {
+      "id": "sum-05",
+      "family": "sum",
+      "condition": "initial",
+      "correct": false,
+      "valid_json_object": true,
+      "report": {
+        "metrics": {
+          "x": 11.0,
+          "g": 8.0
+        },
+        "unit": "points",
+        "rows_used": 10,
+        "chart": {
+          "labels": [
+            "x",
+            "g"
+          ],
+          "values": [
+            11,
+            8
+          ]
+        },
+        "narrative": "The sum of nonmissing x values is 19."
+      },
+      "verification": {
+        "status": "fail",
+        "profile": "full",
+        "findings": [
+          {
+            "code": "METRIC_KEYS",
+            "field": "metrics",
+            "message": "Metric labels differ",
+            "expected": [
+              "value"
+            ],
+            "actual": {
+              "x": 11.0,
+              "g": 8.0
+            }
+          },
+          {
+            "code": "CHART",
+            "field": "chart",
+            "message": "Chart labels must uniquely cover the metrics",
+            "expected": null,
+            "actual": null
+          }
+        ],
+        "scope": "structured fields only; narrative and contract intent unchecked"
+      },
+      "wall_seconds": 4.363690416968893,
+      "cumulative_wall_seconds": 4.363690416968893,
+      "prompt_tokens": 249,
+      "output_tokens": 102,
+      "raw_path": "results/raw/sum-05-initial.json"
+    },
+    {
+      "id": "sum-05",
+      "family": "sum",
+      "condition": "self_review",
+      "correct": false,
+      "valid_json_object": true,
+      "report": {
+        "metrics": {
+          "x": 11.0,
+          "g": 8.0
+        },
+        "unit": "points",
+        "rows_used": 10,
+        "chart": {
+          "labels": [
+            "x",
+            "g"
+          ],
+          "values": [
+            11,
+            8
+          ]
+        },
+        "narrative": "The sum of nonmissing x values is 19."
+      },
+      "verification": {
+        "status": "fail",
+        "profile": "full",
+        "findings": [
+          {
+            "code": "METRIC_KEYS",
+            "field": "metrics",
+            "message": "Metric labels differ",
+            "expected": [
+              "value"
+            ],
+            "actual": {
+              "x": 11.0,
+              "g": 8.0
+            }
+          },
+          {
+            "code": "CHART",
+            "field": "chart",
+            "message": "Chart labels must uniquely cover the metrics",
+            "expected": null,
+            "actual": null
+          }
+        ],
+        "scope": "structured fields only; narrative and contract intent unchecked"
+      },
+      "wall_seconds": 3.2562603330006823,
+      "cumulative_wall_seconds": 7.6199507499695756,
+      "prompt_tokens": 387,
+      "output_tokens": 102,
+      "raw_path": "results/raw/sum-05-self_review.json"
+    },
+    {
+      "id": "sum-05",
+      "family": "sum",
+      "condition": "feedback_repair",
+      "correct": false,
+      "valid_json_object": true,
+      "report": {
+        "metrics": {
+          "x": 11.0,
+          "g": 8.0
+        },
+        "unit": "points",
+        "rows_used": 10,
+        "chart": {
+          "labels": [
+            "x",
+            "g"
+          ],
+          "values": [
+            11,
+            8
+          ]
+        },
+        "narrative": "The sum of nonmissing x values is 19."
+      },
+      "verification": {
+        "status": "fail",
+        "profile": "full",
+        "findings": [
+          {
+            "code": "METRIC_KEYS",
+            "field": "metrics",
+            "message": "Metric labels differ",
+            "expected": [
+              "value"
+            ],
+            "actual": {
+              "x": 11.0,
+              "g": 8.0
+            }
+          },
+          {
+            "code": "CHART",
+            "field": "chart",
+            "message": "Chart labels must uniquely cover the metrics",
+            "expected": null,
+            "actual": null
+          }
+        ],
+        "scope": "structured fields only; narrative and contract intent unchecked"
+      },
+      "wall_seconds": 4.598268124973401,
+      "cumulative_wall_seconds": 8.961958541942295,
+      "prompt_tokens": 495,
+      "output_tokens": 102,
+      "raw_path": "results/raw/sum-05-feedback_repair.json"
+    },
+    {
+      "id": "sum-05",
+      "family": "sum",
+      "condition": "deterministic_recompute",
+      "correct": true,
+      "valid_json_object": true,
+      "report": {
+        "metrics": {
+          "value": 163.0
+        },
+        "unit": "points",
+        "rows_used": 10,
+        "chart": {
+          "labels": [
+            "value"
+          ],
+          "values": [
+            163.0
+          ]
+        },
+        "narrative": "Structured fields recomputed from the approved contract. No causal conclusion established."
+      },
+      "wall_seconds": 8.937501115724444e-05,
+      "cumulative_wall_seconds": 8.970801718533039e-05,
+      "prompt_tokens": 0,
+      "output_tokens": 0
+    },
+    {
+      "id": "mean-02",
+      "family": "mean",
+      "condition": "initial",
+      "correct": false,
+      "valid_json_object": false,
+      "report": null,
+      "verification": {
+        "status": "fail",
+        "profile": "full",
+        "findings": [
+          {
+            "code": "SCHEMA",
+            "field": "$",
+            "message": "Report must be a JSON object",
+            "expected": null,
+            "actual": null
+          }
+        ],
+        "scope": "structured fields only"
+      },
+      "wall_seconds": 14.433714500046335,
+      "cumulative_wall_seconds": 14.433714500046335,
+      "prompt_tokens": 250,
+      "output_tokens": 384,
+      "raw_path": "results/raw/mean-02-initial.json"
+    },
+    {
+      "id": "mean-02",
+      "family": "mean",
+      "condition": "self_review",
+      "correct": false,
+      "valid_json_object": false,
+      "report": null,
+      "verification": {
+        "status": "fail",
+        "profile": "full",
+        "findings": [
+          {
+            "code": "SCHEMA",
+            "field": "$",
+            "message": "Report must be a JSON object",
+            "expected": null,
+            "actual": null
+          }
+        ],
+        "scope": "structured fields only"
+      },
+      "wall_seconds": 12.063269791018683,
+      "cumulative_wall_seconds": 26.49698429106502,
+      "prompt_tokens": 671,
+      "output_tokens": 384,
+      "raw_path": "results/raw/mean-02-self_review.json"
+    },
+    {
+      "id": "mean-02",
+      "family": "mean",
+      "condition": "feedback_repair",
+      "correct": false,
+      "valid_json_object": false,
+      "report": null,
+      "verification": {
+        "status": "fail",
+        "profile": "full",
+        "findings": [
+          {
+            "code": "SCHEMA",
+            "field": "$",
+            "message": "Report must be a JSON object",
+            "expected": null,
+            "actual": null
+          }
+        ],
+        "scope": "structured fields only"
+      },
+      "wall_seconds": 11.060307167004794,
+      "cumulative_wall_seconds": 25.49402166705113,
+      "prompt_tokens": 723,
+      "output_tokens": 384,
+      "raw_path": "results/raw/mean-02-feedback_repair.json"
+    },
+    {
+      "id": "mean-02",
+      "family": "mean",
+      "condition": "deterministic_recompute",
+      "correct": true,
+      "valid_json_object": true,
+      "report": {
+        "metrics": {
+          "value": 9.7
+        },
+        "unit": "points",
+        "rows_used": 10,
+        "chart": {
+          "labels": [
+            "value"
+          ],
+          "values": [
+            9.7
+          ]
+        },
+        "narrative": "Structured fields recomputed from the approved contract. No causal conclusion established."
+      },
+      "wall_seconds": 0.00013395800488069654,
+      "cumulative_wall_seconds": 0.0001342499745078385,
+      "prompt_tokens": 0,
+      "output_tokens": 0
+    },
+    {
+      "id": "mean-03",
+      "family": "mean",
+      "condition": "initial",
+      "correct": false,
+      "valid_json_object": false,
+      "report": null,
+      "verification": {
+        "status": "fail",
+        "profile": "full",
+        "findings": [
+          {
+            "code": "SCHEMA",
+            "field": "$",
+            "message": "Report must be a JSON object",
+            "expected": null,
+            "actual": null
+          }
+        ],
+        "scope": "structured fields only"
+      },
+      "wall_seconds": 9.911088249995373,
+      "cumulative_wall_seconds": 9.911088249995373,
+      "prompt_tokens": 253,
+      "output_tokens": 384,
+      "raw_path": "results/raw/mean-03-initial.json"
+    },
+    {
+      "id": "mean-03",
+      "family": "mean",
+      "condition": "self_review",
+      "correct": false,
+      "valid_json_object": false,
+      "report": null,
+      "verification": {
+        "status": "fail",
+        "profile": "full",
+        "findings": [
+          {
+            "code": "SCHEMA",
+            "field": "$",
+            "message": "Report must be a JSON object",
+            "expected": null,
+            "actual": null
+          }
+        ],
+        "scope": "structured fields only"
+      },
+      "wall_seconds": 9.799853042000905,
+      "cumulative_wall_seconds": 19.710941291996278,
+      "prompt_tokens": 674,
+      "output_tokens": 384,
+      "raw_path": "results/raw/mean-03-self_review.json"
+    },
+    {
+      "id": "mean-03",
+      "family": "mean",
+      "condition": "feedback_repair",
+      "correct": false,
+      "valid_json_object": false,
+      "report": null,
+      "verification": {
+        "status": "fail",
+        "profile": "full",
+        "findings": [
+          {
+            "code": "SCHEMA",
+            "field": "$",
+            "message": "Report must be a JSON object",
+            "expected": null,
+            "actual": null
+          }
+        ],
+        "scope": "structured fields only"
+      },
+      "wall_seconds": 10.078697375021875,
+      "cumulative_wall_seconds": 19.989785625017248,
+      "prompt_tokens": 726,
+      "output_tokens": 384,
+      "raw_path": "results/raw/mean-03-feedback_repair.json"
+    },
+    {
+      "id": "mean-03",
+      "family": "mean",
+      "condition": "deterministic_recompute",
+      "correct": true,
+      "valid_json_object": true,
+      "report": {
+        "metrics": {
+          "value": 15.2
+        },
+        "unit": "points",
+        "rows_used": 10,
+        "chart": {
+          "labels": [
+            "value"
+          ],
+          "values": [
+            15.2
+          ]
+        },
+        "narrative": "Structured fields recomputed from the approved contract. No causal conclusion established."
+      },
+      "wall_seconds": 0.00012095796409994364,
+      "cumulative_wall_seconds": 0.00012137496378272772,
+      "prompt_tokens": 0,
+      "output_tokens": 0
+    },
+    {
+      "id": "mean-04",
+      "family": "mean",
+      "condition": "initial",
+      "correct": false,
+      "valid_json_object": true,
+      "report": {
+        "metrics": {
+          "value": 15.0,
+          "unit": "points",
+          "rows_used": 14,
+          "narrative": "The arithmetic mean of nonmissing x values is 15.0."
+        },
+        "unit": "points",
+        "rows_used": 14,
+        "chart": {
+          "labels": [
+            "x",
+            "n",
+            "g"
+          ],
+          "values": [
+            14,
+            12,
+            19,
+            28,
+            27,
+            10,
+            19,
+            28,
+            19,
+            28
+          ]
+        }
+      },
+      "verification": {
+        "status": "fail",
+        "profile": "full",
+        "findings": [
+          {
+            "code": "SCHEMA",
+            "field": "narrative",
+            "message": "Required field is missing",
+            "expected": null,
+            "actual": null
+          },
+          {
+            "code": "SCHEMA",
+            "field": "narrative",
+            "message": "Narrative must be a string; its meaning is unchecked",
+            "expected": null,
+            "actual": null
+          },
+          {
+            "code": "METRIC_KEYS",
+            "field": "metrics",
+            "message": "Metric labels differ",
+            "expected": [
+              "value"
+            ],
+            "actual": {
+              "value": 15.0,
+              "unit": "points",
+              "rows_used": 14,
+              "narrative": "The arithmetic mean of nonmissing x values is 15.0."
+            }
+          },
+          {
+            "code": "ROWS",
+            "field": "rows_used",
+            "message": "Complete-case count differs",
+            "expected": 10,
+            "actual": 14
+          },
+          {
+            "code": "CHART",
+            "field": "chart",
+            "message": "Chart labels must uniquely cover the metrics",
+            "expected": null,
+            "actual": null
+          }
+        ],
+        "scope": "structured fields only; narrative and contract intent unchecked"
+      },
+      "wall_seconds": 3.7721759579726495,
+      "cumulative_wall_seconds": 3.7721759579726495,
+      "prompt_tokens": 255,
+      "output_tokens": 138,
+      "raw_path": "results/raw/mean-04-initial.json"
+    },
+    {
+      "id": "mean-04",
+      "family": "mean",
+      "condition": "self_review",
+      "correct": false,
+      "valid_json_object": true,
+      "report": {
+        "metrics": {
+          "value": 15.0,
+          "unit": "points",
+          "rows_used": 14,
+          "narrative": "The arithmetic mean of nonmissing x values is 15.0."
+        },
+        "unit": "points",
+        "rows_used": 14,
+        "chart": {
+          "labels": [
+            "x",
+            "n",
+            "g"
+          ],
+          "values": [
+            14,
+            12,
+            19,
+            28,
+            27,
+            10,
+            19,
+            28,
+            19,
+            28
+          ]
+        }
+      },
+      "verification": {
+        "status": "fail",
+        "profile": "full",
+        "findings": [
+          {
+            "code": "SCHEMA",
+            "field": "narrative",
+            "message": "Required field is missing",
+            "expected": null,
+            "actual": null
+          },
+          {
+            "code": "SCHEMA",
+            "field": "narrative",
+            "message": "Narrative must be a string; its meaning is unchecked",
+            "expected": null,
+            "actual": null
+          },
+          {
+            "code": "METRIC_KEYS",
+            "field": "metrics",
+            "message": "Metric labels differ",
+            "expected": [
+              "value"
+            ],
+            "actual": {
+              "value": 15.0,
+              "unit": "points",
+              "rows_used": 14,
+              "narrative": "The arithmetic mean of nonmissing x values is 15.0."
+            }
+          },
+          {
+            "code": "ROWS",
+            "field": "rows_used",
+            "message": "Complete-case count differs",
+            "expected": 10,
+            "actual": 14
+          },
+          {
+            "code": "CHART",
+            "field": "chart",
+            "message": "Chart labels must uniquely cover the metrics",
+            "expected": null,
+            "actual": null
+          }
+        ],
+        "scope": "structured fields only; narrative and contract intent unchecked"
+      },
+      "wall_seconds": 4.164847457956057,
+      "cumulative_wall_seconds": 7.9370234159287065,
+      "prompt_tokens": 429,
+      "output_tokens": 138,
+      "raw_path": "results/raw/mean-04-self_review.json"
+    },
+    {
+      "id": "mean-04",
+      "family": "mean",
+      "condition": "feedback_repair",
+      "correct": false,
+      "valid_json_object": true,
+      "report": {
+        "metrics": {
+          "value": 15.0,
+          "unit": "points",
+          "rows_used": 14,
+          "narrative": "The arithmetic mean of nonmissing x values is 15.0."
+        },
+        "unit": "points",
+        "rows_used": 14,
+        "chart": {
+          "labels": [
+            "value",
+            "unit",
+            "rows_used"
+          ],
+          "values": [
+            15.0,
+            "points",
+            14
+          ]
+        }
+      },
+      "verification": {
+        "status": "fail",
+        "profile": "full",
+        "findings": [
+          {
+            "code": "SCHEMA",
+            "field": "narrative",
+            "message": "Required field is missing",
+            "expected": null,
+            "actual": null
+          },
+          {
+            "code": "SCHEMA",
+            "field": "narrative",
+            "message": "Narrative must be a string; its meaning is unchecked",
+            "expected": null,
+            "actual": null
+          },
+          {
+            "code": "METRIC_KEYS",
+            "field": "metrics",
+            "message": "Metric labels differ",
+            "expected": [
+              "value"
+            ],
+            "actual": {
+              "value": 15.0,
+              "unit": "points",
+              "rows_used": 14,
+              "narrative": "The arithmetic mean of nonmissing x values is 15.0."
+            }
+          },
+          {
+            "code": "ROWS",
+            "field": "rows_used",
+            "message": "Complete-case count differs",
+            "expected": 10,
+            "actual": 14
+          },
+          {
+            "code": "CHART",
+            "field": "chart",
+            "message": "Chart labels must uniquely cover the metrics",
+            "expected": null,
+            "actual": null
+          }
+        ],
+        "scope": "structured fields only; narrative and contract intent unchecked"
+      },
+      "wall_seconds": 4.485925832996145,
+      "cumulative_wall_seconds": 8.258101790968794,
+      "prompt_tokens": 676,
+      "output_tokens": 112,
+      "raw_path": "results/raw/mean-04-feedback_repair.json"
+    },
+    {
+      "id": "mean-04",
+      "family": "mean",
+      "condition": "deterministic_recompute",
+      "correct": true,
+      "valid_json_object": true,
+      "report": {
+        "metrics": {
+          "value": 19.0
+        },
+        "unit": "points",
+        "rows_used": 10,
+        "chart": {
+          "labels": [
+            "value"
+          ],
+          "values": [
+            19.0
+          ]
+        },
+        "narrative": "Structured fields recomputed from the approved contract. No causal conclusion established."
+      },
+      "wall_seconds": 8.229201193898916e-05,
+      "cumulative_wall_seconds": 8.258403977379203e-05,
+      "prompt_tokens": 0,
+      "output_tokens": 0
+    },
+    {
+      "id": "mean-05",
+      "family": "mean",
+      "condition": "initial",
+      "correct": false,
+      "valid_json_object": true,
+      "report": {
+        "metrics": {
+          "value": 15.0,
+          "unit": "points",
+          "rows_used": 10,
+          "narrative": "The arithmetic mean of nonmissing x values is 15.0."
+        },
+        "unit": "points",
+        "rows_used": 10,
+        "chart": {
+          "labels": [
+            "x",
+            "n",
+            "g"
+          ],
+          "values": [
+            19,
+            10,
+            10,
+            16,
+            13,
+            18,
+            8,
+            24,
+            26,
+            12
+          ]
+        }
+      },
+      "verification": {
+        "status": "fail",
+        "profile": "full",
+        "findings": [
+          {
+            "code": "SCHEMA",
+            "field": "narrative",
+            "message": "Required field is missing",
+            "expected": null,
+            "actual": null
+          },
+          {
+            "code": "SCHEMA",
+            "field": "narrative",
+            "message": "Narrative must be a string; its meaning is unchecked",
+            "expected": null,
+            "actual": null
+          },
+          {
+            "code": "METRIC_KEYS",
+            "field": "metrics",
+            "message": "Metric labels differ",
+            "expected": [
+              "value"
+            ],
+            "actual": {
+              "value": 15.0,
+              "unit": "points",
+              "rows_used": 10,
+              "narrative": "The arithmetic mean of nonmissing x values is 15.0."
+            }
+          },
+          {
+            "code": "CHART",
+            "field": "chart",
+            "message": "Chart labels must uniquely cover the metrics",
+            "expected": null,
+            "actual": null
+          }
+        ],
+        "scope": "structured fields only; narrative and contract intent unchecked"
+      },
+      "wall_seconds": 5.24733974999981,
+      "cumulative_wall_seconds": 5.24733974999981,
+      "prompt_tokens": 254,
+      "output_tokens": 137,
+      "raw_path": "results/raw/mean-05-initial.json"
+    },
+    {
+      "id": "mean-05",
+      "family": "mean",
+      "condition": "self_review",
+      "correct": false,
+      "valid_json_object": true,
+      "report": {
+        "metrics": {
+          "value": 15.0,
+          "unit": "points",
+          "rows_used": 10,
+          "narrative": "The arithmetic mean of nonmissing x values is 15.0."
+        },
+        "unit": "points",
+        "rows_used": 10,
+        "chart": {
+          "labels": [
+            "x",
+            "n",
+            "g"
+          ],
+          "values": [
+            19,
+            10,
+            10,
+            16,
+            13,
+            18,
+            8,
+            24,
+            26,
+            12
+          ]
+        }
+      },
+      "verification": {
+        "status": "fail",
+        "profile": "full",
+        "findings": [
+          {
+            "code": "SCHEMA",
+            "field": "narrative",
+            "message": "Required field is missing",
+            "expected": null,
+            "actual": null
+          },
+          {
+            "code": "SCHEMA",
+            "field": "narrative",
+            "message": "Narrative must be a string; its meaning is unchecked",
+            "expected": null,
+            "actual": null
+          },
+          {
+            "code": "METRIC_KEYS",
+            "field": "metrics",
+            "message": "Metric labels differ",
+            "expected": [
+              "value"
+            ],
+            "actual": {
+              "value": 15.0,
+              "unit": "points",
+              "rows_used": 10,
+              "narrative": "The arithmetic mean of nonmissing x values is 15.0."
+            }
+          },
+          {
+            "code": "CHART",
+            "field": "chart",
+            "message": "Chart labels must uniquely cover the metrics",
+            "expected": null,
+            "actual": null
+          }
+        ],
+        "scope": "structured fields only; narrative and contract intent unchecked"
+      },
+      "wall_seconds": 3.864076041034423,
+      "cumulative_wall_seconds": 9.111415791034233,
+      "prompt_tokens": 427,
+      "output_tokens": 137,
+      "raw_path": "results/raw/mean-05-self_review.json"
+    },
+    {
+      "id": "mean-05",
+      "family": "mean",
+      "condition": "feedback_repair",
+      "correct": false,
+      "valid_json_object": true,
+      "report": {
+        "metrics": {
+          "value": 15.0,
+          "unit": "points",
+          "rows_used": 10,
+          "narrative": "The arithmetic mean of nonmissing x values is 15.0."
+        },
+        "unit": "points",
+        "rows_used": 10,
+        "chart": {
+          "labels": [
+            "value",
+            "unit",
+            "rows_used"
+          ],
+          "values": [
+            15.0,
+            "points",
+            10
+          ]
+        }
+      },
+      "verification": {
+        "status": "fail",
+        "profile": "full",
+        "findings": [
+          {
+            "code": "SCHEMA",
+            "field": "narrative",
+            "message": "Required field is missing",
+            "expected": null,
+            "actual": null
+          },
+          {
+            "code": "SCHEMA",
+            "field": "narrative",
+            "message": "Narrative must be a string; its meaning is unchecked",
+            "expected": null,
+            "actual": null
+          },
+          {
+            "code": "METRIC_KEYS",
+            "field": "metrics",
+            "message": "Metric labels differ",
+            "expected": [
+              "value"
+            ],
+            "actual": {
+              "value": 15.0,
+              "unit": "points",
+              "rows_used": 10,
+              "narrative": "The arithmetic mean of nonmissing x values is 15.0."
+            }
+          },
+          {
+            "code": "CHART",
+            "field": "chart",
+            "message": "Chart labels must uniquely cover the metrics",
+            "expected": null,
+            "actual": null
+          }
+        ],
+        "scope": "structured fields only; narrative and contract intent unchecked"
+      },
+      "wall_seconds": 3.534599209029693,
+      "cumulative_wall_seconds": 8.781938959029503,
+      "prompt_tokens": 638,
+      "output_tokens": 112,
+      "raw_path": "results/raw/mean-05-feedback_repair.json"
+    },
+    {
+      "id": "mean-05",
+      "family": "mean",
+      "condition": "deterministic_recompute",
+      "correct": true,
+      "valid_json_object": true,
+      "report": {
+        "metrics": {
+          "value": 15.6
+        },
+        "unit": "points",
+        "rows_used": 10,
+        "chart": {
+          "labels": [
+            "value"
+          ],
+          "values": [
+            15.6
+          ]
+        },
+        "narrative": "Structured fields recomputed from the approved contract. No causal conclusion established."
+      },
+      "wall_seconds": 0.0002937910030595958,
+      "cumulative_wall_seconds": 0.0002947910106740892,
+      "prompt_tokens": 0,
+      "output_tokens": 0
+    },
+    {
+      "id": "weighted_mean-02",
+      "family": "weighted_mean",
+      "condition": "initial",
+      "correct": false,
+      "valid_json_object": true,
+      "report": {
+        "metrics": {
+          "x": 26.0,
+          "n": 5.0,
+          "sum(x*n)": 70.0,
+          "sum(n)": 110.0,
+          "narrative": "The weighted mean of x and n is 70.0, with a sum of 110.0."
+        },
+        "unit": "points",
+        "rows_used": 10,
+        "chart": {
+          "labels": [
+            "x",
+            "n",
+            "sum(x*n)"
+          ],
+          "values": [
+            26.0,
+            5.0,
+            70.0,
+            110.0,
+            26.0,
+            5.0,
+            70.0,
+            110.0,
+            26.0,
+            5.0
+          ]
+        }
+      },
+      "verification": {
+        "status": "fail",
+        "profile": "full",
+        "findings": [
+          {
+            "code": "SCHEMA",
+            "field": "narrative",
+            "message": "Required field is missing",
+            "expected": null,
+            "actual": null
+          },
+          {
+            "code": "SCHEMA",
+            "field": "narrative",
+            "message": "Narrative must be a string; its meaning is unchecked",
+            "expected": null,
+            "actual": null
+          },
+          {
+            "code": "METRIC_KEYS",
+            "field": "metrics",
+            "message": "Metric labels differ",
+            "expected": [
+              "value"
+            ],
+            "actual": {
+              "x": 26.0,
+              "n": 5.0,
+              "sum(x*n)": 70.0,
+              "sum(n)": 110.0,
+              "narrative": "The weighted mean of x and n is 70.0, with a sum of 110.0."
+            }
+          },
+          {
+            "code": "ROWS",
+            "field": "rows_used",
+            "message": "Complete-case count differs",
+            "expected": 9,
+            "actual": 10
+          },
+          {
+            "code": "CHART",
+            "field": "chart",
+            "message": "Chart labels must uniquely cover the metrics",
+            "expected": null,
+            "actual": null
+          }
+        ],
+        "scope": "structured fields only; narrative and contract intent unchecked"
+      },
+      "wall_seconds": 5.083584667008836,
+      "cumulative_wall_seconds": 5.083584667008836,
+      "prompt_tokens": 268,
+      "output_tokens": 187,
+      "raw_path": "results/raw/weighted_mean-02-initial.json"
+    },
+    {
+      "id": "weighted_mean-02",
+      "family": "weighted_mean",
+      "condition": "self_review",
+      "correct": false,
+      "valid_json_object": true,
+      "report": {
+        "metrics": {
+          "x": 26.0,
+          "n": 5.0,
+          "sum(x*n)": 70.0,
+          "sum(n)": 110.0,
+          "narrative": "The weighted mean of x and n is 70.0, with a sum of 110.0."
+        },
+        "unit": "points",
+        "rows_used": 10,
+        "chart": {
+          "labels": [
+            "x",
+            "n",
+            "sum(x*n)"
+          ],
+          "values": [
+            26.0,
+            5.0,
+            70.0,
+            110.0,
+            26.0,
+            5.0,
+            70.0,
+            110.0,
+            26.0,
+            5.0
+          ]
+        }
+      },
+      "verification": {
+        "status": "fail",
+        "profile": "full",
+        "findings": [
+          {
+            "code": "SCHEMA",
+            "field": "narrative",
+            "message": "Required field is missing",
+            "expected": null,
+            "actual": null
+          },
+          {
+            "code": "SCHEMA",
+            "field": "narrative",
+            "message": "Narrative must be a string; its meaning is unchecked",
+            "expected": null,
+            "actual": null
+          },
+          {
+            "code": "METRIC_KEYS",
+            "field": "metrics",
+            "message": "Metric labels differ",
+            "expected": [
+              "value"
+            ],
+            "actual": {
+              "x": 26.0,
+              "n": 5.0,
+              "sum(x*n)": 70.0,
+              "sum(n)": 110.0,
+              "narrative": "The weighted mean of x and n is 70.0, with a sum of 110.0."
+            }
+          },
+          {
+            "code": "ROWS",
+            "field": "rows_used",
+            "message": "Complete-case count differs",
+            "expected": 9,
+            "actual": 10
+          },
+          {
+            "code": "CHART",
+            "field": "chart",
+            "message": "Chart labels must uniquely cover the metrics",
+            "expected": null,
+            "actual": null
+          }
+        ],
+        "scope": "structured fields only; narrative and contract intent unchecked"
+      },
+      "wall_seconds": 4.879849040997215,
+      "cumulative_wall_seconds": 9.96343370800605,
+      "prompt_tokens": 491,
+      "output_tokens": 187,
+      "raw_path": "results/raw/weighted_mean-02-self_review.json"
+    },
+    {
+      "id": "weighted_mean-02",
+      "family": "weighted_mean",
+      "condition": "feedback_repair",
+      "correct": false,
+      "valid_json_object": true,
+      "report": {
+        "metrics": {
+          "x": 26.0,
+          "n": 5.0,
+          "sum(x*n)": 70.0,
+          "sum(n)": 110.0,
+          "narrative": "The weighted mean of x and n is 70.0, with a sum of 110.0."
+        },
+        "unit": "points",
+        "rows_used": 10,
+        "chart": {
+          "labels": [
+            "x",
+            "n",
+            "sum(x*n)"
+          ],
+          "values": [
+            26.0,
+            5.0,
+            70.0,
+            110.0,
+            26.0,
+            5.0,
+            70.0,
+            110.0,
+            26.0,
+            5.0
+          ]
+        }
+      },
+      "verification": {
+        "status": "fail",
+        "profile": "full",
+        "findings": [
+          {
+            "code": "SCHEMA",
+            "field": "narrative",
+            "message": "Required field is missing",
+            "expected": null,
+            "actual": null
+          },
+          {
+            "code": "SCHEMA",
+            "field": "narrative",
+            "message": "Narrative must be a string; its meaning is unchecked",
+            "expected": null,
+            "actual": null
+          },
+          {
+            "code": "METRIC_KEYS",
+            "field": "metrics",
+            "message": "Metric labels differ",
+            "expected": [
+              "value"
+            ],
+            "actual": {
+              "x": 26.0,
+              "n": 5.0,
+              "sum(x*n)": 70.0,
+              "sum(n)": 110.0,
+              "narrative": "The weighted mean of x and n is 70.0, with a sum of 110.0."
+            }
+          },
+          {
+            "code": "ROWS",
+            "field": "rows_used",
+            "message": "Complete-case count differs",
+            "expected": 9,
+            "actual": 10
+          },
+          {
+            "code": "CHART",
+            "field": "chart",
+            "message": "Chart labels must uniquely cover the metrics",
+            "expected": null,
+            "actual": null
+          }
+        ],
+        "scope": "structured fields only; narrative and contract intent unchecked"
+      },
+      "wall_seconds": 5.292858625005465,
+      "cumulative_wall_seconds": 10.3764432920143,
+      "prompt_tokens": 763,
+      "output_tokens": 187,
+      "raw_path": "results/raw/weighted_mean-02-feedback_repair.json"
+    },
+    {
+      "id": "weighted_mean-02",
+      "family": "weighted_mean",
+      "condition": "deterministic_recompute",
+      "correct": true,
+      "valid_json_object": true,
+      "report": {
+        "metrics": {
+          "value": 18.9375
+        },
+        "unit": "points",
+        "rows_used": 9,
+        "chart": {
+          "labels": [
+            "value"
+          ],
+          "values": [
+            18.9375
+          ]
+        },
+        "narrative": "Structured fields recomputed from the approved contract. No causal conclusion established."
+      },
+      "wall_seconds": 0.00045187503565102816,
+      "cumulative_wall_seconds": 0.00045237503945827484,
+      "prompt_tokens": 0,
+      "output_tokens": 0
+    },
+    {
+      "id": "weighted_mean-03",
+      "family": "weighted_mean",
+      "condition": "initial",
+      "correct": false,
+      "valid_json_object": true,
+      "report": {
+        "metrics": {
+          "x": 10.0,
+          "n": 10.0,
+          "value": 10.0,
+          "unit": "points",
+          "rows_used": 10,
+          "chart": {
+            "labels": [
+              "x",
+              "n"
+            ],
+            "values": [
+              10.0,
+              10.0
+            ]
+          },
+          "narrative": "The weighted mean of the values for x and n is 10.000000."
+        }
+      },
+      "verification": {
+        "status": "fail",
+        "profile": "full",
+        "findings": [
+          {
+            "code": "SCHEMA",
+            "field": "chart",
+            "message": "Required field is missing",
+            "expected": null,
+            "actual": null
+          },
+          {
+            "code": "SCHEMA",
+            "field": "narrative",
+            "message": "Required field is missing",
+            "expected": null,
+            "actual": null
+          },
+          {
+            "code": "SCHEMA",
+            "field": "rows_used",
+            "message": "Required field is missing",
+            "expected": null,
+            "actual": null
+          },
+          {
+            "code": "SCHEMA",
+            "field": "unit",
+            "message": "Required field is missing",
+            "expected": null,
+            "actual": null
+          },
+          {
+            "code": "SCHEMA",
+            "field": "narrative",
+            "message": "Narrative must be a string; its meaning is unchecked",
+            "expected": null,
+            "actual": null
+          },
+          {
+            "code": "SCHEMA",
+            "field": "rows_used",
+            "message": "rows_used must be an integer",
+            "expected": null,
+            "actual": null
+          },
+          {
+            "code": "SCHEMA",
+            "field": "unit",
+            "message": "unit must be a string",
+            "expected": null,
+            "actual": null
+          },
+          {
+            "code": "METRIC_KEYS",
+            "field": "metrics",
+            "message": "Metric labels differ",
+            "expected": [
+              "value"
+            ],
+            "actual": {
+              "x": 10.0,
+              "n": 10.0,
+              "value": 10.0,
+              "unit": "points",
+              "rows_used": 10,
+              "chart": {
+                "labels": [
+                  "x",
+                  "n"
+                ],
+                "values": [
+                  10.0,
+                  10.0
+                ]
+              },
+              "narrative": "The weighted mean of the values for x and n is 10.000000."
+            }
+          },
+          {
+            "code": "UNIT",
+            "field": "unit",
+            "message": "Output unit differs from approved contract",
+            "expected": "points",
+            "actual": null
+          },
+          {
+            "code": "ROWS",
+            "field": "rows_used",
+            "message": "Complete-case count differs",
+            "expected": 9,
+            "actual": null
+          },
+          {
+            "code": "CHART",
+            "field": "chart",
+            "message": "Chart must contain labels and values",
+            "expected": null,
+            "actual": null
+          }
+        ],
+        "scope": "structured fields only; narrative and contract intent unchecked"
+      },
+      "wall_seconds": 3.5202837079996243,
+      "cumulative_wall_seconds": 3.5202837079996243,
+      "prompt_tokens": 267,
+      "output_tokens": 133,
+      "raw_path": "results/raw/weighted_mean-03-initial.json"
+    },
+    {
+      "id": "weighted_mean-03",
+      "family": "weighted_mean",
+      "condition": "self_review",
+      "correct": false,
+      "valid_json_object": true,
+      "report": {
+        "metrics": {
+          "x": 10.0,
+          "n": 10.0,
+          "value": 10.0,
+          "unit": "points",
+          "rows_used": 10,
+          "chart": {
+            "labels": [
+              "x",
+              "n"
+            ],
+            "values": [
+              10.0,
+              10.0
+            ]
+          },
+          "narrative": "The weighted mean of the values for x and n is 10.000000."
+        }
+      },
+      "verification": {
+        "status": "fail",
+        "profile": "full",
+        "findings": [
+          {
+            "code": "SCHEMA",
+            "field": "chart",
+            "message": "Required field is missing",
+            "expected": null,
+            "actual": null
+          },
+          {
+            "code": "SCHEMA",
+            "field": "narrative",
+            "message": "Required field is missing",
+            "expected": null,
+            "actual": null
+          },
+          {
+            "code": "SCHEMA",
+            "field": "rows_used",
+            "message": "Required field is missing",
+            "expected": null,
+            "actual": null
+          },
+          {
+            "code": "SCHEMA",
+            "field": "unit",
+            "message": "Required field is missing",
+            "expected": null,
+            "actual": null
+          },
+          {
+            "code": "SCHEMA",
+            "field": "narrative",
+            "message": "Narrative must be a string; its meaning is unchecked",
+            "expected": null,
+            "actual": null
+          },
+          {
+            "code": "SCHEMA",
+            "field": "rows_used",
+            "message": "rows_used must be an integer",
+            "expected": null,
+            "actual": null
+          },
+          {
+            "code": "SCHEMA",
+            "field": "unit",
+            "message": "unit must be a string",
+            "expected": null,
+            "actual": null
+          },
+          {
+            "code": "METRIC_KEYS",
+            "field": "metrics",
+            "message": "Metric labels differ",
+            "expected": [
+              "value"
+            ],
+            "actual": {
+              "x": 10.0,
+              "n": 10.0,
+              "value": 10.0,
+              "unit": "points",
+              "rows_used": 10,
+              "chart": {
+                "labels": [
+                  "x",
+                  "n"
+                ],
+                "values": [
+                  10.0,
+                  10.0
+                ]
+              },
+              "narrative": "The weighted mean of the values for x and n is 10.000000."
+            }
+          },
+          {
+            "code": "UNIT",
+            "field": "unit",
+            "message": "Output unit differs from approved contract",
+            "expected": "points",
+            "actual": null
+          },
+          {
+            "code": "ROWS",
+            "field": "rows_used",
+            "message": "Complete-case count differs",
+            "expected": 9,
+            "actual": null
+          },
+          {
+            "code": "CHART",
+            "field": "chart",
+            "message": "Chart must contain labels and values",
+            "expected": null,
+            "actual": null
+          }
+        ],
+        "scope": "structured fields only; narrative and contract intent unchecked"
+      },
+      "wall_seconds": 3.8543839170015417,
+      "cumulative_wall_seconds": 7.374667625001166,
+      "prompt_tokens": 436,
+      "output_tokens": 133,
+      "raw_path": "results/raw/weighted_mean-03-self_review.json"
+    },
+    {
+      "id": "weighted_mean-03",
+      "family": "weighted_mean",
+      "condition": "feedback_repair",
+      "correct": false,
+      "valid_json_object": true,
+      "report": {
+        "metrics": {
+          "x": 10.0,
+          "n": 10.0,
+          "value": 10.0,
+          "unit": "points",
+          "rows_used": 9,
+          "chart": {
+            "labels": [
+              "x",
+              "n"
+            ],
+            "values": [
+              10.0,
+              10.0
+            ]
+          },
+          "narrative": "The weighted mean of the values for x and n is 10.000000."
+        }
+      },
+      "verification": {
+        "status": "fail",
+        "profile": "full",
+        "findings": [
+          {
+            "code": "SCHEMA",
+            "field": "chart",
+            "message": "Required field is missing",
+            "expected": null,
+            "actual": null
+          },
+          {
+            "code": "SCHEMA",
+            "field": "narrative",
+            "message": "Required field is missing",
+            "expected": null,
+            "actual": null
+          },
+          {
+            "code": "SCHEMA",
+            "field": "rows_used",
+            "message": "Required field is missing",
+            "expected": null,
+            "actual": null
+          },
+          {
+            "code": "SCHEMA",
+            "field": "unit",
+            "message": "Required field is missing",
+            "expected": null,
+            "actual": null
+          },
+          {
+            "code": "SCHEMA",
+            "field": "narrative",
+            "message": "Narrative must be a string; its meaning is unchecked",
+            "expected": null,
+            "actual": null
+          },
+          {
+            "code": "SCHEMA",
+            "field": "rows_used",
+            "message": "rows_used must be an integer",
+            "expected": null,
+            "actual": null
+          },
+          {
+            "code": "SCHEMA",
+            "field": "unit",
+            "message": "unit must be a string",
+            "expected": null,
+            "actual": null
+          },
+          {
+            "code": "METRIC_KEYS",
+            "field": "metrics",
+            "message": "Metric labels differ",
+            "expected": [
+              "value"
+            ],
+            "actual": {
+              "x": 10.0,
+              "n": 10.0,
+              "value": 10.0,
+              "unit": "points",
+              "rows_used": 9,
+              "chart": {
+                "labels": [
+                  "x",
+                  "n"
+                ],
+                "values": [
+                  10.0,
+                  10.0
+                ]
+              },
+              "narrative": "The weighted mean of the values for x and n is 10.000000."
+            }
+          },
+          {
+            "code": "UNIT",
+            "field": "unit",
+            "message": "Output unit differs from approved contract",
+            "expected": "points",
+            "actual": null
+          },
+          {
+            "code": "ROWS",
+            "field": "rows_used",
+            "message": "Complete-case count differs",
+            "expected": 9,
+            "actual": null
+          },
+          {
+            "code": "CHART",
+            "field": "chart",
+            "message": "Chart must contain labels and values",
+            "expected": null,
+            "actual": null
+          }
+        ],
+        "scope": "structured fields only; narrative and contract intent unchecked"
+      },
+      "wall_seconds": 5.195432040956803,
+      "cumulative_wall_seconds": 8.715715748956427,
+      "prompt_tokens": 930,
+      "output_tokens": 117,
+      "raw_path": "results/raw/weighted_mean-03-feedback_repair.json"
+    },
+    {
+      "id": "weighted_mean-03",
+      "family": "weighted_mean",
+      "condition": "deterministic_recompute",
+      "correct": true,
+      "valid_json_object": true,
+      "report": {
+        "metrics": {
+          "value": 15.742857142857142
+        },
+        "unit": "points",
+        "rows_used": 9,
+        "chart": {
+          "labels": [
+            "value"
+          ],
+          "values": [
+            15.742857142857142
+          ]
+        },
+        "narrative": "Structured fields recomputed from the approved contract. No causal conclusion established."
+      },
+      "wall_seconds": 0.00014129100600257516,
+      "cumulative_wall_seconds": 0.00014191603986546397,
+      "prompt_tokens": 0,
+      "output_tokens": 0
+    },
+    {
+      "id": "weighted_mean-04",
+      "family": "weighted_mean",
+      "condition": "initial",
+      "correct": false,
+      "valid_json_object": true,
+      "report": {
+        "value": 10.0,
+        "unit": "points",
+        "rows_used": 14,
+        "chart": {
+          "labels": [
+            "x",
+            "n"
+          ],
+          "values": [
+            10.0,
+            10.0
+          ]
+        },
+        "narrative": "The weighted mean of the sum(x*n)/sum(n) is 10.0."
+      },
+      "verification": {
+        "status": "fail",
+        "profile": "full",
+        "findings": [
+          {
+            "code": "SCHEMA",
+            "field": "metrics",
+            "message": "Required field is missing",
+            "expected": null,
+            "actual": null
+          },
+          {
+            "code": "METRIC_KEYS",
+            "field": "metrics",
+            "message": "Metric labels differ",
+            "expected": [
+              "value"
+            ],
+            "actual": null
+          },
+          {
+            "code": "ROWS",
+            "field": "rows_used",
+            "message": "Complete-case count differs",
+            "expected": 9,
+            "actual": 14
+          },
+          {
+            "code": "CHART",
+            "field": "chart",
+            "message": "Chart labels must uniquely cover the metrics",
+            "expected": null,
+            "actual": null
+          }
+        ],
+        "scope": "structured fields only; narrative and contract intent unchecked"
+      },
+      "wall_seconds": 2.513736583001446,
+      "cumulative_wall_seconds": 2.513736583001446,
+      "prompt_tokens": 264,
+      "output_tokens": 88,
+      "raw_path": "results/raw/weighted_mean-04-initial.json"
+    },
+    {
+      "id": "weighted_mean-04",
+      "family": "weighted_mean",
+      "condition": "self_review",
+      "correct": false,
+      "valid_json_object": true,
+      "report": {
+        "value": 10.0,
+        "unit": "points",
+        "rows_used": 14,
+        "chart": {
+          "labels": [
+            "x",
+            "n"
+          ],
+          "values": [
+            10.0,
+            10.0
+          ]
+        },
+        "narrative": "The weighted mean of the sum(x*n)/sum(n) is 10.0."
+      },
+      "verification": {
+        "status": "fail",
+        "profile": "full",
+        "findings": [
+          {
+            "code": "SCHEMA",
+            "field": "metrics",
+            "message": "Required field is missing",
+            "expected": null,
+            "actual": null
+          },
+          {
+            "code": "METRIC_KEYS",
+            "field": "metrics",
+            "message": "Metric labels differ",
+            "expected": [
+              "value"
+            ],
+            "actual": null
+          },
+          {
+            "code": "ROWS",
+            "field": "rows_used",
+            "message": "Complete-case count differs",
+            "expected": 9,
+            "actual": 14
+          },
+          {
+            "code": "CHART",
+            "field": "chart",
+            "message": "Chart labels must uniquely cover the metrics",
+            "expected": null,
+            "actual": null
+          }
+        ],
+        "scope": "structured fields only; narrative and contract intent unchecked"
+      },
+      "wall_seconds": 2.365164624992758,
+      "cumulative_wall_seconds": 4.878901207994204,
+      "prompt_tokens": 388,
+      "output_tokens": 88,
+      "raw_path": "results/raw/weighted_mean-04-self_review.json"
+    },
+    {
+      "id": "weighted_mean-04",
+      "family": "weighted_mean",
+      "condition": "feedback_repair",
+      "correct": false,
+      "valid_json_object": true,
+      "report": {
+        "value": 10.0,
+        "unit": "points",
+        "rows_used": 14,
+        "chart": {
+          "labels": [
+            "x",
+            "n"
+          ],
+          "values": [
+            10.0,
+            10.0
+          ]
+        },
+        "narrative": "The weighted mean of the sum(x*n)/sum(n) is 10.0."
+      },
+      "verification": {
+        "status": "fail",
+        "profile": "full",
+        "findings": [
+          {
+            "code": "SCHEMA",
+            "field": "metrics",
+            "message": "Required field is missing",
+            "expected": null,
+            "actual": null
+          },
+          {
+            "code": "METRIC_KEYS",
+            "field": "metrics",
+            "message": "Metric labels differ",
+            "expected": [
+              "value"
+            ],
+            "actual": null
+          },
+          {
+            "code": "ROWS",
+            "field": "rows_used",
+            "message": "Complete-case count differs",
+            "expected": 9,
+            "actual": 14
+          },
+          {
+            "code": "CHART",
+            "field": "chart",
+            "message": "Chart labels must uniquely cover the metrics",
+            "expected": null,
+            "actual": null
+          }
+        ],
+        "scope": "structured fields only; narrative and contract intent unchecked"
+      },
+      "wall_seconds": 2.8982980420114473,
+      "cumulative_wall_seconds": 5.412034625012893,
+      "prompt_tokens": 548,
+      "output_tokens": 88,
+      "raw_path": "results/raw/weighted_mean-04-feedback_repair.json"
+    },
+    {
+      "id": "weighted_mean-04",
+      "family": "weighted_mean",
+      "condition": "deterministic_recompute",
+      "correct": true,
+      "valid_json_object": true,
+      "report": {
+        "metrics": {
+          "value": 13.11111111111111
+        },
+        "unit": "points",
+        "rows_used": 9,
+        "chart": {
+          "labels": [
+            "value"
+          ],
+          "values": [
+            13.11111111111111
+          ]
+        },
+        "narrative": "Structured fields recomputed from the approved contract. No causal conclusion established."
+      },
+      "wall_seconds": 0.00013958301860839128,
+      "cumulative_wall_seconds": 0.00013991602463647723,
+      "prompt_tokens": 0,
+      "output_tokens": 0
+    },
+    {
+      "id": "weighted_mean-05",
+      "family": "weighted_mean",
+      "condition": "initial",
+      "correct": false,
+      "valid_json_object": true,
+      "report": {
+        "metrics": {
+          "x": 18.0,
+          "n": 8.0,
+          "g": 1.0
+        },
+        "unit": "points",
+        "rows_used": 16,
+        "chart": {
+          "labels": [
+            "x",
+            "n",
+            "g"
+          ],
+          "values": [
+            18.0,
+            8.0,
+            1.0
+          ]
+        },
+        "narrative": "The weighted mean of the values for x and n is 18.0, with a weight of 1.0."
+      },
+      "verification": {
+        "status": "fail",
+        "profile": "full",
+        "findings": [
+          {
+            "code": "METRIC_KEYS",
+            "field": "metrics",
+            "message": "Metric labels differ",
+            "expected": [
+              "value"
+            ],
+            "actual": {
+              "x": 18.0,
+              "n": 8.0,
+              "g": 1.0
+            }
+          },
+          {
+            "code": "ROWS",
+            "field": "rows_used",
+            "message": "Complete-case count differs",
+            "expected": 9,
+            "actual": 16
+          },
+          {
+            "code": "CHART",
+            "field": "chart",
+            "message": "Chart labels must uniquely cover the metrics",
+            "expected": null,
+            "actual": null
+          }
+        ],
+        "scope": "structured fields only; narrative and contract intent unchecked"
+      },
+      "wall_seconds": 3.488400125002954,
+      "cumulative_wall_seconds": 3.488400125002954,
+      "prompt_tokens": 268,
+      "output_tokens": 127,
+      "raw_path": "results/raw/weighted_mean-05-initial.json"
+    },
+    {
+      "id": "weighted_mean-05",
+      "family": "weighted_mean",
+      "condition": "self_review",
+      "correct": false,
+      "valid_json_object": true,
+      "report": {
+        "metrics": {
+          "x": 18.0,
+          "n": 8.0,
+          "g": 1.0
+        },
+        "unit": "points",
+        "rows_used": 16,
+        "chart": {
+          "labels": [
+            "x",
+            "n",
+            "g"
+          ],
+          "values": [
+            18.0,
+            8.0,
+            1.0
+          ]
+        },
+        "narrative": "The weighted mean of the values for x and n is 18.0, with a weight of 1.0."
+      },
+      "verification": {
+        "status": "fail",
+        "profile": "full",
+        "findings": [
+          {
+            "code": "METRIC_KEYS",
+            "field": "metrics",
+            "message": "Metric labels differ",
+            "expected": [
+              "value"
+            ],
+            "actual": {
+              "x": 18.0,
+              "n": 8.0,
+              "g": 1.0
+            }
+          },
+          {
+            "code": "ROWS",
+            "field": "rows_used",
+            "message": "Complete-case count differs",
+            "expected": 9,
+            "actual": 16
+          },
+          {
+            "code": "CHART",
+            "field": "chart",
+            "message": "Chart labels must uniquely cover the metrics",
+            "expected": null,
+            "actual": null
+          }
+        ],
+        "scope": "structured fields only; narrative and contract intent unchecked"
+      },
+      "wall_seconds": 3.5687895829905756,
+      "cumulative_wall_seconds": 7.05718970799353,
+      "prompt_tokens": 431,
+      "output_tokens": 127,
+      "raw_path": "results/raw/weighted_mean-05-self_review.json"
+    },
+    {
+      "id": "weighted_mean-05",
+      "family": "weighted_mean",
+      "condition": "feedback_repair",
+      "correct": false,
+      "valid_json_object": true,
+      "report": {
+        "metrics": {
+          "x": 18.0,
+          "n": 8.0,
+          "g": 1.0
+        },
+        "unit": "points",
+        "rows_used": 16,
+        "chart": {
+          "labels": [
+            "x",
+            "n",
+            "g"
+          ],
+          "values": [
+            18.0,
+            8.0,
+            1.0
+          ]
+        },
+        "narrative": "The corrected answer is: The weighted mean of the values for x and n is 18.0, with a weight of 1.0."
+      },
+      "verification": {
+        "status": "fail",
+        "profile": "full",
+        "findings": [
+          {
+            "code": "METRIC_KEYS",
+            "field": "metrics",
+            "message": "Metric labels differ",
+            "expected": [
+              "value"
+            ],
+            "actual": {
+              "x": 18.0,
+              "n": 8.0,
+              "g": 1.0
+            }
+          },
+          {
+            "code": "ROWS",
+            "field": "rows_used",
+            "message": "Complete-case count differs",
+            "expected": 9,
+            "actual": 16
+          },
+          {
+            "code": "CHART",
+            "field": "chart",
+            "message": "Chart labels must uniquely cover the metrics",
+            "expected": null,
+            "actual": null
+          }
+        ],
+        "scope": "structured fields only; narrative and contract intent unchecked"
+      },
+      "wall_seconds": 3.9893880000454374,
+      "cumulative_wall_seconds": 7.4777881250483915,
+      "prompt_tokens": 582,
+      "output_tokens": 132,
+      "raw_path": "results/raw/weighted_mean-05-feedback_repair.json"
+    },
+    {
+      "id": "weighted_mean-05",
+      "family": "weighted_mean",
+      "condition": "deterministic_recompute",
+      "correct": true,
+      "valid_json_object": true,
+      "report": {
+        "metrics": {
+          "value": 17.48936170212766
+        },
+        "unit": "points",
+        "rows_used": 9,
+        "chart": {
+          "labels": [
+            "value"
+          ],
+          "values": [
+            17.48936170212766
+          ]
+        },
+        "narrative": "Structured fields recomputed from the approved contract. No causal conclusion established."
+      },
+      "wall_seconds": 0.0003414170350879431,
+      "cumulative_wall_seconds": 0.00034304201835766435,
+      "prompt_tokens": 0,
+      "output_tokens": 0
+    },
+    {
+      "id": "ratio-02",
+      "family": "ratio",
+      "condition": "initial",
+      "correct": false,
+      "valid_json_object": true,
+      "report": {
+        "value": 100.0,
+        "unit": "%",
+        "rows_used": 14,
+        "chart": {
+          "labels": [
+            "x",
+            "n"
+          ],
+          "values": [
+            100.0,
+            100.0
+          ]
+        },
+        "narrative": "The ratio of 100*sum(x)/sum(n) is calculated for rows with both x and n present."
+      },
+      "verification": {
+        "status": "fail",
+        "profile": "full",
+        "findings": [
+          {
+            "code": "SCHEMA",
+            "field": "metrics",
+            "message": "Required field is missing",
+            "expected": null,
+            "actual": null
+          },
+          {
+            "code": "METRIC_KEYS",
+            "field": "metrics",
+            "message": "Metric labels differ",
+            "expected": [
+              "value"
+            ],
+            "actual": null
+          },
+          {
+            "code": "ROWS",
+            "field": "rows_used",
+            "message": "Complete-case count differs",
+            "expected": 9,
+            "actual": 14
+          },
+          {
+            "code": "CHART",
+            "field": "chart",
+            "message": "Chart labels must uniquely cover the metrics",
+            "expected": null,
+            "actual": null
+          }
+        ],
+        "scope": "structured fields only; narrative and contract intent unchecked"
+      },
+      "wall_seconds": 2.7908210000023246,
+      "cumulative_wall_seconds": 2.7908210000023246,
+      "prompt_tokens": 269,
+      "output_tokens": 96,
+      "raw_path": "results/raw/ratio-02-initial.json"
+    },
+    {
+      "id": "ratio-02",
+      "family": "ratio",
+      "condition": "self_review",
+      "correct": false,
+      "valid_json_object": true,
+      "report": {
+        "value": 100.0,
+        "unit": "%",
+        "rows_used": 14,
+        "chart": {
+          "labels": [
+            "x",
+            "n"
+          ],
+          "values": [
+            100.0,
+            100.0
+          ]
+        },
+        "narrative": "The ratio of 100*sum(x)/sum(n) is calculated for rows with both x and n present."
+      },
+      "verification": {
+        "status": "fail",
+        "profile": "full",
+        "findings": [
+          {
+            "code": "SCHEMA",
+            "field": "metrics",
+            "message": "Required field is missing",
+            "expected": null,
+            "actual": null
+          },
+          {
+            "code": "METRIC_KEYS",
+            "field": "metrics",
+            "message": "Metric labels differ",
+            "expected": [
+              "value"
+            ],
+            "actual": null
+          },
+          {
+            "code": "ROWS",
+            "field": "rows_used",
+            "message": "Complete-case count differs",
+            "expected": 9,
+            "actual": 14
+          },
+          {
+            "code": "CHART",
+            "field": "chart",
+            "message": "Chart labels must uniquely cover the metrics",
+            "expected": null,
+            "actual": null
+          }
+        ],
+        "scope": "structured fields only; narrative and contract intent unchecked"
+      },
+      "wall_seconds": 2.4963448750204407,
+      "cumulative_wall_seconds": 5.287165875022765,
+      "prompt_tokens": 401,
+      "output_tokens": 96,
+      "raw_path": "results/raw/ratio-02-self_review.json"
+    },
+    {
+      "id": "ratio-02",
+      "family": "ratio",
+      "condition": "feedback_repair",
+      "correct": false,
+      "valid_json_object": true,
+      "report": {
+        "value": 100.0,
+        "unit": "%",
+        "rows_used": 14,
+        "chart": {
+          "labels": [
+            "x",
+            "n"
+          ],
+          "values": [
+            100.0,
+            100.0
+          ]
+        },
+        "narrative": "The ratio of 100*sum(x)/sum(n) is calculated for rows with both x and n present."
+      },
+      "verification": {
+        "status": "fail",
+        "profile": "full",
+        "findings": [
+          {
+            "code": "SCHEMA",
+            "field": "metrics",
+            "message": "Required field is missing",
+            "expected": null,
+            "actual": null
+          },
+          {
+            "code": "METRIC_KEYS",
+            "field": "metrics",
+            "message": "Metric labels differ",
+            "expected": [
+              "value"
+            ],
+            "actual": null
+          },
+          {
+            "code": "ROWS",
+            "field": "rows_used",
+            "message": "Complete-case count differs",
+            "expected": 9,
+            "actual": 14
+          },
+          {
+            "code": "CHART",
+            "field": "chart",
+            "message": "Chart labels must uniquely cover the metrics",
+            "expected": null,
+            "actual": null
+          }
+        ],
+        "scope": "structured fields only; narrative and contract intent unchecked"
+      },
+      "wall_seconds": 2.957620124972891,
+      "cumulative_wall_seconds": 5.748441124975216,
+      "prompt_tokens": 561,
+      "output_tokens": 96,
+      "raw_path": "results/raw/ratio-02-feedback_repair.json"
+    },
+    {
+      "id": "ratio-02",
+      "family": "ratio",
+      "condition": "deterministic_recompute",
+      "correct": true,
+      "valid_json_object": true,
+      "report": {
+        "metrics": {
+          "value": 263.46153846153845
+        },
+        "unit": "%",
+        "rows_used": 9,
+        "chart": {
+          "labels": [
+            "value"
+          ],
+          "values": [
+            263.46153846153845
+          ]
+        },
+        "narrative": "Structured fields recomputed from the approved contract. No causal conclusion established."
+      },
+      "wall_seconds": 0.000122375029604882,
+      "cumulative_wall_seconds": 0.00012283300748094916,
+      "prompt_tokens": 0,
+      "output_tokens": 0
+    },
+    {
+      "id": "ratio-03",
+      "family": "ratio",
+      "condition": "initial",
+      "correct": false,
+      "valid_json_object": true,
+      "report": {
+        "metrics": {
+          "sum(x)": 100,
+          "sum(n)": 100,
+          "value": 100,
+          "unit": "%",
+          "rows_used": 10,
+          "chart": {
+            "labels": [
+              "sum(x)",
+              "sum(n)"
+            ],
+            "values": [
+              100,
+              100
+            ]
+          },
+          "narrative": "The ratio of the sum of x to the sum of n is 100, which is the same as the ratio of the sum of x to the sum of n."
+        }
+      },
+      "verification": {
+        "status": "fail",
+        "profile": "full",
+        "findings": [
+          {
+            "code": "SCHEMA",
+            "field": "chart",
+            "message": "Required field is missing",
+            "expected": null,
+            "actual": null
+          },
+          {
+            "code": "SCHEMA",
+            "field": "narrative",
+            "message": "Required field is missing",
+            "expected": null,
+            "actual": null
+          },
+          {
+            "code": "SCHEMA",
+            "field": "rows_used",
+            "message": "Required field is missing",
+            "expected": null,
+            "actual": null
+          },
+          {
+            "code": "SCHEMA",
+            "field": "unit",
+            "message": "Required field is missing",
+            "expected": null,
+            "actual": null
+          },
+          {
+            "code": "SCHEMA",
+            "field": "narrative",
+            "message": "Narrative must be a string; its meaning is unchecked",
+            "expected": null,
+            "actual": null
+          },
+          {
+            "code": "SCHEMA",
+            "field": "rows_used",
+            "message": "rows_used must be an integer",
+            "expected": null,
+            "actual": null
+          },
+          {
+            "code": "SCHEMA",
+            "field": "unit",
+            "message": "unit must be a string",
+            "expected": null,
+            "actual": null
+          },
+          {
+            "code": "METRIC_KEYS",
+            "field": "metrics",
+            "message": "Metric labels differ",
+            "expected": [
+              "value"
+            ],
+            "actual": {
+              "sum(x)": 100,
+              "sum(n)": 100,
+              "value": 100,
+              "unit": "%",
+              "rows_used": 10,
+              "chart": {
+                "labels": [
+                  "sum(x)",
+                  "sum(n)"
+                ],
+                "values": [
+                  100,
+                  100
+                ]
+              },
+              "narrative": "The ratio of the sum of x to the sum of n is 100, which is the same as the ratio of the sum of x to the sum of n."
+            }
+          },
+          {
+            "code": "UNIT",
+            "field": "unit",
+            "message": "Output unit differs from approved contract",
+            "expected": "%",
+            "actual": null
+          },
+          {
+            "code": "ROWS",
+            "field": "rows_used",
+            "message": "Complete-case count differs",
+            "expected": 9,
+            "actual": null
+          },
+          {
+            "code": "CHART",
+            "field": "chart",
+            "message": "Chart must contain labels and values",
+            "expected": null,
+            "actual": null
+          }
+        ],
+        "scope": "structured fields only; narrative and contract intent unchecked"
+      },
+      "wall_seconds": 4.03449112502858,
+      "cumulative_wall_seconds": 4.03449112502858,
+      "prompt_tokens": 269,
+      "output_tokens": 131,
+      "raw_path": "results/raw/ratio-03-initial.json"
+    },
+    {
+      "id": "ratio-03",
+      "family": "ratio",
+      "condition": "self_review",
+      "correct": false,
+      "valid_json_object": true,
+      "report": {
+        "metrics": {
+          "sum(x)": 100,
+          "sum(n)": 100,
+          "value": 100,
+          "unit": "%",
+          "rows_used": 10,
+          "chart": {
+            "labels": [
+              "sum(x)",
+              "sum(n)"
+            ],
+            "values": [
+              100,
+              100
+            ]
+          },
+          "narrative": "The ratio of the sum of x to the sum of n is 100, which is the same as the ratio of the sum of x to the sum of n."
+        }
+      },
+      "verification": {
+        "status": "fail",
+        "profile": "full",
+        "findings": [
+          {
+            "code": "SCHEMA",
+            "field": "chart",
+            "message": "Required field is missing",
+            "expected": null,
+            "actual": null
+          },
+          {
+            "code": "SCHEMA",
+            "field": "narrative",
+            "message": "Required field is missing",
+            "expected": null,
+            "actual": null
+          },
+          {
+            "code": "SCHEMA",
+            "field": "rows_used",
+            "message": "Required field is missing",
+            "expected": null,
+            "actual": null
+          },
+          {
+            "code": "SCHEMA",
+            "field": "unit",
+            "message": "Required field is missing",
+            "expected": null,
+            "actual": null
+          },
+          {
+            "code": "SCHEMA",
+            "field": "narrative",
+            "message": "Narrative must be a string; its meaning is unchecked",
+            "expected": null,
+            "actual": null
+          },
+          {
+            "code": "SCHEMA",
+            "field": "rows_used",
+            "message": "rows_used must be an integer",
+            "expected": null,
+            "actual": null
+          },
+          {
+            "code": "SCHEMA",
+            "field": "unit",
+            "message": "unit must be a string",
+            "expected": null,
+            "actual": null
+          },
+          {
+            "code": "METRIC_KEYS",
+            "field": "metrics",
+            "message": "Metric labels differ",
+            "expected": [
+              "value"
+            ],
+            "actual": {
+              "sum(x)": 100,
+              "sum(n)": 100,
+              "value": 100,
+              "unit": "%",
+              "rows_used": 10,
+              "chart": {
+                "labels": [
+                  "sum(x)",
+                  "sum(n)"
+                ],
+                "values": [
+                  100,
+                  100
+                ]
+              },
+              "narrative": "The ratio of the sum of x to the sum of n is 100, which is the same as the ratio of the sum of x to the sum of n."
+            }
+          },
+          {
+            "code": "UNIT",
+            "field": "unit",
+            "message": "Output unit differs from approved contract",
+            "expected": "%",
+            "actual": null
+          },
+          {
+            "code": "ROWS",
+            "field": "rows_used",
+            "message": "Complete-case count differs",
+            "expected": 9,
+            "actual": null
+          },
+          {
+            "code": "CHART",
+            "field": "chart",
+            "message": "Chart must contain labels and values",
+            "expected": null,
+            "actual": null
+          }
+        ],
+        "scope": "structured fields only; narrative and contract intent unchecked"
+      },
+      "wall_seconds": 3.7255812500370666,
+      "cumulative_wall_seconds": 7.760072375065647,
+      "prompt_tokens": 436,
+      "output_tokens": 131,
+      "raw_path": "results/raw/ratio-03-self_review.json"
+    },
+    {
+      "id": "ratio-03",
+      "family": "ratio",
+      "condition": "feedback_repair",
+      "correct": false,
+      "valid_json_object": true,
+      "report": {
+        "metrics": {
+          "value": 100,
+          "unit": "%",
+          "rows_used": 10,
+          "chart": {
+            "labels": [
+              "sum(x)",
+              "sum(n)"
+            ],
+            "values": [
+              100,
+              100
+            ]
+          },
+          "narrative": "The ratio of the sum of x to the sum of n is 100, which is the same as the ratio of the sum of x to the sum of n."
+        }
+      },
+      "verification": {
+        "status": "fail",
+        "profile": "full",
+        "findings": [
+          {
+            "code": "SCHEMA",
+            "field": "chart",
+            "message": "Required field is missing",
+            "expected": null,
+            "actual": null
+          },
+          {
+            "code": "SCHEMA",
+            "field": "narrative",
+            "message": "Required field is missing",
+            "expected": null,
+            "actual": null
+          },
+          {
+            "code": "SCHEMA",
+            "field": "rows_used",
+            "message": "Required field is missing",
+            "expected": null,
+            "actual": null
+          },
+          {
+            "code": "SCHEMA",
+            "field": "unit",
+            "message": "Required field is missing",
+            "expected": null,
+            "actual": null
+          },
+          {
+            "code": "SCHEMA",
+            "field": "narrative",
+            "message": "Narrative must be a string; its meaning is unchecked",
+            "expected": null,
+            "actual": null
+          },
+          {
+            "code": "SCHEMA",
+            "field": "rows_used",
+            "message": "rows_used must be an integer",
+            "expected": null,
+            "actual": null
+          },
+          {
+            "code": "SCHEMA",
+            "field": "unit",
+            "message": "unit must be a string",
+            "expected": null,
+            "actual": null
+          },
+          {
+            "code": "METRIC_KEYS",
+            "field": "metrics",
+            "message": "Metric labels differ",
+            "expected": [
+              "value"
+            ],
+            "actual": {
+              "value": 100,
+              "unit": "%",
+              "rows_used": 10,
+              "chart": {
+                "labels": [
+                  "sum(x)",
+                  "sum(n)"
+                ],
+                "values": [
+                  100,
+                  100
+                ]
+              },
+              "narrative": "The ratio of the sum of x to the sum of n is 100, which is the same as the ratio of the sum of x to the sum of n."
+            }
+          },
+          {
+            "code": "UNIT",
+            "field": "unit",
+            "message": "Output unit differs from approved contract",
+            "expected": "%",
+            "actual": null
+          },
+          {
+            "code": "ROWS",
+            "field": "rows_used",
+            "message": "Complete-case count differs",
+            "expected": 9,
+            "actual": null
+          },
+          {
+            "code": "CHART",
+            "field": "chart",
+            "message": "Chart must contain labels and values",
+            "expected": null,
+            "actual": null
+          }
+        ],
+        "scope": "structured fields only; narrative and contract intent unchecked"
+      },
+      "wall_seconds": 4.7339194170199335,
+      "cumulative_wall_seconds": 8.768410542048514,
+      "prompt_tokens": 942,
+      "output_tokens": 111,
+      "raw_path": "results/raw/ratio-03-feedback_repair.json"
+    },
+    {
+      "id": "ratio-03",
+      "family": "ratio",
+      "condition": "deterministic_recompute",
+      "correct": true,
+      "valid_json_object": true,
+      "report": {
+        "metrics": {
+          "value": 246.66666666666666
+        },
+        "unit": "%",
+        "rows_used": 9,
+        "chart": {
+          "labels": [
+            "value"
+          ],
+          "values": [
+            246.66666666666666
+          ]
+        },
+        "narrative": "Structured fields recomputed from the approved contract. No causal conclusion established."
+      },
+      "wall_seconds": 0.00026999996043741703,
+      "cumulative_wall_seconds": 0.00027083297027274966,
+      "prompt_tokens": 0,
+      "output_tokens": 0
+    },
+    {
+      "id": "ratio-04",
+      "family": "ratio",
+      "condition": "initial",
+      "correct": false,
+      "valid_json_object": false,
+      "report": null,
+      "verification": {
+        "status": "fail",
+        "profile": "full",
+        "findings": [
+          {
+            "code": "SCHEMA",
+            "field": "$",
+            "message": "Report must be a JSON object",
+            "expected": null,
+            "actual": null
+          }
+        ],
+        "scope": "structured fields only"
+      },
+      "wall_seconds": 10.267236249987036,
+      "cumulative_wall_seconds": 10.267236249987036,
+      "prompt_tokens": 271,
+      "output_tokens": 384,
+      "raw_path": "results/raw/ratio-04-initial.json"
+    },
+    {
+      "id": "ratio-04",
+      "family": "ratio",
+      "condition": "self_review",
+      "correct": false,
+      "valid_json_object": false,
+      "report": null,
+      "verification": {
+        "status": "fail",
+        "profile": "full",
+        "findings": [
+          {
+            "code": "SCHEMA",
+            "field": "$",
+            "message": "Report must be a JSON object",
+            "expected": null,
+            "actual": null
+          }
+        ],
+        "scope": "structured fields only"
+      },
+      "wall_seconds": 11.557222875009757,
+      "cumulative_wall_seconds": 21.824459124996793,
+      "prompt_tokens": 692,
+      "output_tokens": 384,
+      "raw_path": "results/raw/ratio-04-self_review.json"
+    },
+    {
+      "id": "ratio-04",
+      "family": "ratio",
+      "condition": "feedback_repair",
+      "correct": false,
+      "valid_json_object": false,
+      "report": null,
+      "verification": {
+        "status": "fail",
+        "profile": "full",
+        "findings": [
+          {
+            "code": "SCHEMA",
+            "field": "$",
+            "message": "Report must be a JSON object",
+            "expected": null,
+            "actual": null
+          }
+        ],
+        "scope": "structured fields only"
+      },
+      "wall_seconds": 12.487749417021405,
+      "cumulative_wall_seconds": 22.75498566700844,
+      "prompt_tokens": 744,
+      "output_tokens": 384,
+      "raw_path": "results/raw/ratio-04-feedback_repair.json"
+    },
+    {
+      "id": "ratio-04",
+      "family": "ratio",
+      "condition": "deterministic_recompute",
+      "correct": true,
+      "valid_json_object": true,
+      "report": {
+        "metrics": {
+          "value": 339.4736842105263
+        },
+        "unit": "%",
+        "rows_used": 9,
+        "chart": {
+          "labels": [
+            "value"
+          ],
+          "values": [
+            339.4736842105263
+          ]
+        },
+        "narrative": "Structured fields recomputed from the approved contract. No causal conclusion established."
+      },
+      "wall_seconds": 0.00015258300118148327,
+      "cumulative_wall_seconds": 0.00015295803314074874,
+      "prompt_tokens": 0,
+      "output_tokens": 0
+    },
+    {
+      "id": "ratio-05",
+      "family": "ratio",
+      "condition": "initial",
+      "correct": false,
+      "valid_json_object": true,
+      "report": {
+        "metrics": {
+          "sum(x)": 100,
+          "sum(n)": 100,
+          "value": 100,
+          "unit": "%",
+          "rows_used": 10,
+          "chart": {
+            "labels": [
+              "sum(x)",
+              "sum(n)"
+            ],
+            "values": [
+              100,
+              100
+            ]
+          },
+          "narrative": "The ratio of the sum of x to the sum of n is 100, which is the same as the ratio of the sum of x to the sum of n."
+        }
+      },
+      "verification": {
+        "status": "fail",
+        "profile": "full",
+        "findings": [
+          {
+            "code": "SCHEMA",
+            "field": "chart",
+            "message": "Required field is missing",
+            "expected": null,
+            "actual": null
+          },
+          {
+            "code": "SCHEMA",
+            "field": "narrative",
+            "message": "Required field is missing",
+            "expected": null,
+            "actual": null
+          },
+          {
+            "code": "SCHEMA",
+            "field": "rows_used",
+            "message": "Required field is missing",
+            "expected": null,
+            "actual": null
+          },
+          {
+            "code": "SCHEMA",
+            "field": "unit",
+            "message": "Required field is missing",
+            "expected": null,
+            "actual": null
+          },
+          {
+            "code": "SCHEMA",
+            "field": "narrative",
+            "message": "Narrative must be a string; its meaning is unchecked",
+            "expected": null,
+            "actual": null
+          },
+          {
+            "code": "SCHEMA",
+            "field": "rows_used",
+            "message": "rows_used must be an integer",
+            "expected": null,
+            "actual": null
+          },
+          {
+            "code": "SCHEMA",
+            "field": "unit",
+            "message": "unit must be a string",
+            "expected": null,
+            "actual": null
+          },
+          {
+            "code": "METRIC_KEYS",
+            "field": "metrics",
+            "message": "Metric labels differ",
+            "expected": [
+              "value"
+            ],
+            "actual": {
+              "sum(x)": 100,
+              "sum(n)": 100,
+              "value": 100,
+              "unit": "%",
+              "rows_used": 10,
+              "chart": {
+                "labels": [
+                  "sum(x)",
+                  "sum(n)"
+                ],
+                "values": [
+                  100,
+                  100
+                ]
+              },
+              "narrative": "The ratio of the sum of x to the sum of n is 100, which is the same as the ratio of the sum of x to the sum of n."
+            }
+          },
+          {
+            "code": "UNIT",
+            "field": "unit",
+            "message": "Output unit differs from approved contract",
+            "expected": "%",
+            "actual": null
+          },
+          {
+            "code": "ROWS",
+            "field": "rows_used",
+            "message": "Complete-case count differs",
+            "expected": 9,
+            "actual": null
+          },
+          {
+            "code": "CHART",
+            "field": "chart",
+            "message": "Chart must contain labels and values",
+            "expected": null,
+            "actual": null
+          }
+        ],
+        "scope": "structured fields only; narrative and contract intent unchecked"
+      },
+      "wall_seconds": 3.4679032919812016,
+      "cumulative_wall_seconds": 3.4679032919812016,
+      "prompt_tokens": 267,
+      "output_tokens": 131,
+      "raw_path": "results/raw/ratio-05-initial.json"
+    },
+    {
+      "id": "ratio-05",
+      "family": "ratio",
+      "condition": "self_review",
+      "correct": false,
+      "valid_json_object": true,
+      "report": {
+        "metrics": {
+          "sum(x)": 100,
+          "sum(n)": 100,
+          "value": 100,
+          "unit": "%",
+          "rows_used": 10,
+          "chart": {
+            "labels": [
+              "sum(x)",
+              "sum(n)"
+            ],
+            "values": [
+              100,
+              100
+            ]
+          },
+          "narrative": "The ratio of the sum of x to the sum of n is 100, which is the same as the ratio of the sum of x to the sum of n."
+        }
+      },
+      "verification": {
+        "status": "fail",
+        "profile": "full",
+        "findings": [
+          {
+            "code": "SCHEMA",
+            "field": "chart",
+            "message": "Required field is missing",
+            "expected": null,
+            "actual": null
+          },
+          {
+            "code": "SCHEMA",
+            "field": "narrative",
+            "message": "Required field is missing",
+            "expected": null,
+            "actual": null
+          },
+          {
+            "code": "SCHEMA",
+            "field": "rows_used",
+            "message": "Required field is missing",
+            "expected": null,
+            "actual": null
+          },
+          {
+            "code": "SCHEMA",
+            "field": "unit",
+            "message": "Required field is missing",
+            "expected": null,
+            "actual": null
+          },
+          {
+            "code": "SCHEMA",
+            "field": "narrative",
+            "message": "Narrative must be a string; its meaning is unchecked",
+            "expected": null,
+            "actual": null
+          },
+          {
+            "code": "SCHEMA",
+            "field": "rows_used",
+            "message": "rows_used must be an integer",
+            "expected": null,
+            "actual": null
+          },
+          {
+            "code": "SCHEMA",
+            "field": "unit",
+            "message": "unit must be a string",
+            "expected": null,
+            "actual": null
+          },
+          {
+            "code": "METRIC_KEYS",
+            "field": "metrics",
+            "message": "Metric labels differ",
+            "expected": [
+              "value"
+            ],
+            "actual": {
+              "sum(x)": 100,
+              "sum(n)": 100,
+              "value": 100,
+              "unit": "%",
+              "rows_used": 10,
+              "chart": {
+                "labels": [
+                  "sum(x)",
+                  "sum(n)"
+                ],
+                "values": [
+                  100,
+                  100
+                ]
+              },
+              "narrative": "The ratio of the sum of x to the sum of n is 100, which is the same as the ratio of the sum of x to the sum of n."
+            }
+          },
+          {
+            "code": "UNIT",
+            "field": "unit",
+            "message": "Output unit differs from approved contract",
+            "expected": "%",
+            "actual": null
+          },
+          {
+            "code": "ROWS",
+            "field": "rows_used",
+            "message": "Complete-case count differs",
+            "expected": 9,
+            "actual": null
+          },
+          {
+            "code": "CHART",
+            "field": "chart",
+            "message": "Chart must contain labels and values",
+            "expected": null,
+            "actual": null
+          }
+        ],
+        "scope": "structured fields only; narrative and contract intent unchecked"
+      },
+      "wall_seconds": 3.4489769999636337,
+      "cumulative_wall_seconds": 6.916880291944835,
+      "prompt_tokens": 434,
+      "output_tokens": 131,
+      "raw_path": "results/raw/ratio-05-self_review.json"
+    },
+    {
+      "id": "ratio-05",
+      "family": "ratio",
+      "condition": "feedback_repair",
+      "correct": false,
+      "valid_json_object": true,
+      "report": {
+        "metrics": {
+          "value": 100,
+          "unit": "%",
+          "rows_used": 10,
+          "chart": {
+            "labels": [
+              "sum(x)",
+              "sum(n)"
+            ],
+            "values": [
+              100,
+              100
+            ]
+          },
+          "narrative": "The ratio of the sum of x to the sum of n is 100, which is the same as the ratio of the sum of x to the sum of n."
+        }
+      },
+      "verification": {
+        "status": "fail",
+        "profile": "full",
+        "findings": [
+          {
+            "code": "SCHEMA",
+            "field": "chart",
+            "message": "Required field is missing",
+            "expected": null,
+            "actual": null
+          },
+          {
+            "code": "SCHEMA",
+            "field": "narrative",
+            "message": "Required field is missing",
+            "expected": null,
+            "actual": null
+          },
+          {
+            "code": "SCHEMA",
+            "field": "rows_used",
+            "message": "Required field is missing",
+            "expected": null,
+            "actual": null
+          },
+          {
+            "code": "SCHEMA",
+            "field": "unit",
+            "message": "Required field is missing",
+            "expected": null,
+            "actual": null
+          },
+          {
+            "code": "SCHEMA",
+            "field": "narrative",
+            "message": "Narrative must be a string; its meaning is unchecked",
+            "expected": null,
+            "actual": null
+          },
+          {
+            "code": "SCHEMA",
+            "field": "rows_used",
+            "message": "rows_used must be an integer",
+            "expected": null,
+            "actual": null
+          },
+          {
+            "code": "SCHEMA",
+            "field": "unit",
+            "message": "unit must be a string",
+            "expected": null,
+            "actual": null
+          },
+          {
+            "code": "METRIC_KEYS",
+            "field": "metrics",
+            "message": "Metric labels differ",
+            "expected": [
+              "value"
+            ],
+            "actual": {
+              "value": 100,
+              "unit": "%",
+              "rows_used": 10,
+              "chart": {
+                "labels": [
+                  "sum(x)",
+                  "sum(n)"
+                ],
+                "values": [
+                  100,
+                  100
+                ]
+              },
+              "narrative": "The ratio of the sum of x to the sum of n is 100, which is the same as the ratio of the sum of x to the sum of n."
+            }
+          },
+          {
+            "code": "UNIT",
+            "field": "unit",
+            "message": "Output unit differs from approved contract",
+            "expected": "%",
+            "actual": null
+          },
+          {
+            "code": "ROWS",
+            "field": "rows_used",
+            "message": "Complete-case count differs",
+            "expected": 9,
+            "actual": null
+          },
+          {
+            "code": "CHART",
+            "field": "chart",
+            "message": "Chart must contain labels and values",
+            "expected": null,
+            "actual": null
+          }
+        ],
+        "scope": "structured fields only; narrative and contract intent unchecked"
+      },
+      "wall_seconds": 3.3553772079758346,
+      "cumulative_wall_seconds": 6.823280499957036,
+      "prompt_tokens": 940,
+      "output_tokens": 111,
+      "raw_path": "results/raw/ratio-05-feedback_repair.json"
+    },
+    {
+      "id": "ratio-05",
+      "family": "ratio",
+      "condition": "deterministic_recompute",
+      "correct": true,
+      "valid_json_object": true,
+      "report": {
+        "metrics": {
+          "value": 226.66666666666666
+        },
+        "unit": "%",
+        "rows_used": 9,
+        "chart": {
+          "labels": [
+            "value"
+          ],
+          "values": [
+            226.66666666666666
+          ]
+        },
+        "narrative": "Structured fields recomputed from the approved contract. No causal conclusion established."
+      },
+      "wall_seconds": 0.0001533330068923533,
+      "cumulative_wall_seconds": 0.00015366700245067477,
+      "prompt_tokens": 0,
+      "output_tokens": 0
+    },
+    {
+      "id": "group_sum-02",
+      "family": "group_sum",
+      "condition": "initial",
+      "correct": false,
+      "valid_json_object": true,
+      "report": {
+        "metrics": {
+          "x": 15.0,
+          "n": 23.0,
+          "g": 4.0
+        },
+        "unit": "points",
+        "rows_used": 14,
+        "chart": {
+          "labels": [
+            "x",
+            "n",
+            "g"
+          ],
+          "values": [
+            15.0,
+            23.0,
+            4.0
+          ]
+        },
+        "narrative": "The sum of nonmissing values for each group is calculated. The values are sorted alphabetically."
+      },
+      "verification": {
+        "status": "fail",
+        "profile": "full",
+        "findings": [
+          {
+            "code": "METRIC_KEYS",
+            "field": "metrics",
+            "message": "Metric labels differ",
+            "expected": [
+              "A",
+              "B",
+              "C"
+            ],
+            "actual": {
+              "x": 15.0,
+              "n": 23.0,
+              "g": 4.0
+            }
+          },
+          {
+            "code": "ROWS",
+            "field": "rows_used",
+            "message": "Complete-case count differs",
+            "expected": 10,
+            "actual": 14
+          },
+          {
+            "code": "CHART",
+            "field": "chart",
+            "message": "Chart labels must uniquely cover the metrics",
+            "expected": null,
+            "actual": null
+          }
+        ],
+        "scope": "structured fields only; narrative and contract intent unchecked"
+      },
+      "wall_seconds": 3.435741874971427,
+      "cumulative_wall_seconds": 3.435741874971427,
+      "prompt_tokens": 267,
+      "output_tokens": 122,
+      "raw_path": "results/raw/group_sum-02-initial.json"
+    },
+    {
+      "id": "group_sum-02",
+      "family": "group_sum",
+      "condition": "self_review",
+      "correct": false,
+      "valid_json_object": true,
+      "report": {
+        "metrics": {
+          "x": 15.0,
+          "n": 23.0,
+          "g": 4.0
+        },
+        "unit": "points",
+        "rows_used": 14,
+        "chart": {
+          "labels": [
+            "x",
+            "n",
+            "g"
+          ],
+          "values": [
+            15.0,
+            23.0,
+            4.0
+          ]
+        },
+        "narrative": "The sum of nonmissing values for each group is calculated. The values are sorted alphabetically."
+      },
+      "verification": {
+        "status": "fail",
+        "profile": "full",
+        "findings": [
+          {
+            "code": "METRIC_KEYS",
+            "field": "metrics",
+            "message": "Metric labels differ",
+            "expected": [
+              "A",
+              "B",
+              "C"
+            ],
+            "actual": {
+              "x": 15.0,
+              "n": 23.0,
+              "g": 4.0
+            }
+          },
+          {
+            "code": "ROWS",
+            "field": "rows_used",
+            "message": "Complete-case count differs",
+            "expected": 10,
+            "actual": 14
+          },
+          {
+            "code": "CHART",
+            "field": "chart",
+            "message": "Chart labels must uniquely cover the metrics",
+            "expected": null,
+            "actual": null
+          }
+        ],
+        "scope": "structured fields only; narrative and contract intent unchecked"
+      },
+      "wall_seconds": 3.1506767090177163,
+      "cumulative_wall_seconds": 6.586418583989143,
+      "prompt_tokens": 425,
+      "output_tokens": 122,
+      "raw_path": "results/raw/group_sum-02-self_review.json"
+    },
+    {
+      "id": "group_sum-02",
+      "family": "group_sum",
+      "condition": "feedback_repair",
+      "correct": false,
+      "valid_json_object": true,
+      "report": {
+        "metrics": {
+          "x": 15.0,
+          "n": 23.0,
+          "g": 4.0
+        },
+        "unit": "points",
+        "rows_used": 14,
+        "chart": {
+          "labels": [
+            "x",
+            "n",
+            "g"
+          ],
+          "values": [
+            15.0,
+            23.0,
+            4.0
+          ]
+        },
+        "narrative": "The sum of nonmissing values for each group is calculated. The values are sorted alphabetically."
+      },
+      "verification": {
+        "status": "fail",
+        "profile": "full",
+        "findings": [
+          {
+            "code": "METRIC_KEYS",
+            "field": "metrics",
+            "message": "Metric labels differ",
+            "expected": [
+              "A",
+              "B",
+              "C"
+            ],
+            "actual": {
+              "x": 15.0,
+              "n": 23.0,
+              "g": 4.0
+            }
+          },
+          {
+            "code": "ROWS",
+            "field": "rows_used",
+            "message": "Complete-case count differs",
+            "expected": 10,
+            "actual": 14
+          },
+          {
+            "code": "CHART",
+            "field": "chart",
+            "message": "Chart labels must uniquely cover the metrics",
+            "expected": null,
+            "actual": null
+          }
+        ],
+        "scope": "structured fields only; narrative and contract intent unchecked"
+      },
+      "wall_seconds": 3.2895239999634214,
+      "cumulative_wall_seconds": 6.725265874934848,
+      "prompt_tokens": 584,
+      "output_tokens": 122,
+      "raw_path": "results/raw/group_sum-02-feedback_repair.json"
+    },
+    {
+      "id": "group_sum-02",
+      "family": "group_sum",
+      "condition": "deterministic_recompute",
+      "correct": true,
+      "valid_json_object": true,
+      "report": {
+        "metrics": {
+          "A": 42.0,
+          "B": 81.0,
+          "C": 63.0
+        },
+        "unit": "points",
+        "rows_used": 10,
+        "chart": {
+          "labels": [
+            "A",
+            "B",
+            "C"
+          ],
+          "values": [
+            42.0,
+            81.0,
+            63.0
+          ]
+        },
+        "narrative": "Structured fields recomputed from the approved contract. No causal conclusion established."
+      },
+      "wall_seconds": 0.00015304097905755043,
+      "cumulative_wall_seconds": 0.00015349994646385312,
+      "prompt_tokens": 0,
+      "output_tokens": 0
+    },
+    {
+      "id": "group_sum-03",
+      "family": "group_sum",
+      "condition": "initial",
+      "correct": false,
+      "valid_json_object": true,
+      "report": {
+        "metrics": {
+          "x": 18,
+          "g": 2
+        },
+        "unit": "points",
+        "rows_used": 14,
+        "chart": {
+          "labels": [
+            "g",
+            "x"
+          ],
+          "values": [
+            2,
+            18
+          ]
+        },
+        "narrative": "The sum of nonmissing values for each group (g) is calculated. The values are sorted alphabetically."
+      },
+      "verification": {
+        "status": "fail",
+        "profile": "full",
+        "findings": [
+          {
+            "code": "METRIC_KEYS",
+            "field": "metrics",
+            "message": "Metric labels differ",
+            "expected": [
+              "A",
+              "B",
+              "C"
+            ],
+            "actual": {
+              "x": 18,
+              "g": 2
+            }
+          },
+          {
+            "code": "ROWS",
+            "field": "rows_used",
+            "message": "Complete-case count differs",
+            "expected": 10,
+            "actual": 14
+          },
+          {
+            "code": "CHART",
+            "field": "chart",
+            "message": "Chart labels must uniquely cover the metrics",
+            "expected": null,
+            "actual": null
+          }
+        ],
+        "scope": "structured fields only; narrative and contract intent unchecked"
+      },
+      "wall_seconds": 2.5757541250204667,
+      "cumulative_wall_seconds": 2.5757541250204667,
+      "prompt_tokens": 264,
+      "output_tokens": 98,
+      "raw_path": "results/raw/group_sum-03-initial.json"
+    },
+    {
+      "id": "group_sum-03",
+      "family": "group_sum",
+      "condition": "self_review",
+      "correct": false,
+      "valid_json_object": true,
+      "report": {
+        "metrics": {
+          "x": 18.0,
+          "g": 2.0
+        },
+        "unit": "points",
+        "rows_used": 14,
+        "chart": {
+          "labels": [
+            "g",
+            "x"
+          ],
+          "values": [
+            2,
+            18
+          ]
+        },
+        "narrative": "The sum of nonmissing values for each group (g) is calculated. The values are sorted alphabetically."
+      },
+      "verification": {
+        "status": "fail",
+        "profile": "full",
+        "findings": [
+          {
+            "code": "METRIC_KEYS",
+            "field": "metrics",
+            "message": "Metric labels differ",
+            "expected": [
+              "A",
+              "B",
+              "C"
+            ],
+            "actual": {
+              "x": 18.0,
+              "g": 2.0
+            }
+          },
+          {
+            "code": "ROWS",
+            "field": "rows_used",
+            "message": "Complete-case count differs",
+            "expected": 10,
+            "actual": 14
+          },
+          {
+            "code": "CHART",
+            "field": "chart",
+            "message": "Chart labels must uniquely cover the metrics",
+            "expected": null,
+            "actual": null
+          }
+        ],
+        "scope": "structured fields only; narrative and contract intent unchecked"
+      },
+      "wall_seconds": 2.6375439160037786,
+      "cumulative_wall_seconds": 5.213298041024245,
+      "prompt_tokens": 398,
+      "output_tokens": 102,
+      "raw_path": "results/raw/group_sum-03-self_review.json"
+    },
+    {
+      "id": "group_sum-03",
+      "family": "group_sum",
+      "condition": "feedback_repair",
+      "correct": false,
+      "valid_json_object": true,
+      "report": {
+        "metrics": {
+          "x": 18,
+          "g": 2
+        },
+        "unit": "points",
+        "rows_used": 14,
+        "chart": {
+          "labels": [
+            "g",
+            "x"
+          ],
+          "values": [
+            2,
+            18
+          ]
+        },
+        "narrative": "The sum of nonmissing values for each group (g) is calculated. The values are sorted alphabetically."
+      },
+      "verification": {
+        "status": "fail",
+        "profile": "full",
+        "findings": [
+          {
+            "code": "METRIC_KEYS",
+            "field": "metrics",
+            "message": "Metric labels differ",
+            "expected": [
+              "A",
+              "B",
+              "C"
+            ],
+            "actual": {
+              "x": 18,
+              "g": 2
+            }
+          },
+          {
+            "code": "ROWS",
+            "field": "rows_used",
+            "message": "Complete-case count differs",
+            "expected": 10,
+            "actual": 14
+          },
+          {
+            "code": "CHART",
+            "field": "chart",
+            "message": "Chart labels must uniquely cover the metrics",
+            "expected": null,
+            "actual": null
+          }
+        ],
+        "scope": "structured fields only; narrative and contract intent unchecked"
+      },
+      "wall_seconds": 2.6928652910282835,
+      "cumulative_wall_seconds": 5.26861941604875,
+      "prompt_tokens": 544,
+      "output_tokens": 98,
+      "raw_path": "results/raw/group_sum-03-feedback_repair.json"
+    },
+    {
+      "id": "group_sum-03",
+      "family": "group_sum",
+      "condition": "deterministic_recompute",
+      "correct": true,
+      "valid_json_object": true,
+      "report": {
+        "metrics": {
+          "A": 44.0,
+          "B": 42.0,
+          "C": 59.0
+        },
+        "unit": "points",
+        "rows_used": 10,
+        "chart": {
+          "labels": [
+            "A",
+            "B",
+            "C"
+          ],
+          "values": [
+            44.0,
+            42.0,
+            59.0
+          ]
+        },
+        "narrative": "Structured fields recomputed from the approved contract. No causal conclusion established."
+      },
+      "wall_seconds": 0.00010662496788427234,
+      "cumulative_wall_seconds": 0.00010699999984353781,
+      "prompt_tokens": 0,
+      "output_tokens": 0
+    },
+    {
+      "id": "group_sum-04",
+      "family": "group_sum",
+      "condition": "initial",
+      "correct": false,
+      "valid_json_object": true,
+      "report": {
+        "metrics": {
+          "x": 11.0,
+          "y": 2.0,
+          "z": 18.0,
+          "a": 8.0,
+          "b": 11.0
+        },
+        "unit": "points",
+        "rows_used": 10,
+        "chart": {
+          "labels": [
+            "x",
+            "y",
+            "z",
+            "a",
+            "b"
+          ],
+          "values": [
+            11.0,
+            2.0,
+            18.0,
+            8.0,
+            11.0
+          ]
+        },
+        "narrative": "The sum of nonmissing values for each group is calculated. The values are sorted alphabetically."
+      },
+      "verification": {
+        "status": "fail",
+        "profile": "full",
+        "findings": [
+          {
+            "code": "METRIC_KEYS",
+            "field": "metrics",
+            "message": "Metric labels differ",
+            "expected": [
+              "A",
+              "B",
+              "C"
+            ],
+            "actual": {
+              "x": 11.0,
+              "y": 2.0,
+              "z": 18.0,
+              "a": 8.0,
+              "b": 11.0
+            }
+          },
+          {
+            "code": "CHART",
+            "field": "chart",
+            "message": "Chart labels must uniquely cover the metrics",
+            "expected": null,
+            "actual": null
+          }
+        ],
+        "scope": "structured fields only; narrative and contract intent unchecked"
+      },
+      "wall_seconds": 4.019450083025731,
+      "cumulative_wall_seconds": 4.019450083025731,
+      "prompt_tokens": 265,
+      "output_tokens": 158,
+      "raw_path": "results/raw/group_sum-04-initial.json"
+    },
+    {
+      "id": "group_sum-04",
+      "family": "group_sum",
+      "condition": "self_review",
+      "correct": false,
+      "valid_json_object": true,
+      "report": {
+        "metrics": {
+          "x": 11.0,
+          "y": 2.0,
+          "z": 18.0,
+          "a": 8.0,
+          "b": 11.0
+        },
+        "unit": "points",
+        "rows_used": 10,
+        "chart": {
+          "labels": [
+            "x",
+            "y",
+            "z",
+            "a",
+            "b"
+          ],
+          "values": [
+            11.0,
+            2.0,
+            18.0,
+            8.0,
+            11.0
+          ]
+        },
+        "narrative": "The sum of nonmissing values for each group is calculated. The values are sorted alphabetically."
+      },
+      "verification": {
+        "status": "fail",
+        "profile": "full",
+        "findings": [
+          {
+            "code": "METRIC_KEYS",
+            "field": "metrics",
+            "message": "Metric labels differ",
+            "expected": [
+              "A",
+              "B",
+              "C"
+            ],
+            "actual": {
+              "x": 11.0,
+              "y": 2.0,
+              "z": 18.0,
+              "a": 8.0,
+              "b": 11.0
+            }
+          },
+          {
+            "code": "CHART",
+            "field": "chart",
+            "message": "Chart labels must uniquely cover the metrics",
+            "expected": null,
+            "actual": null
+          }
+        ],
+        "scope": "structured fields only; narrative and contract intent unchecked"
+      },
+      "wall_seconds": 5.316331624984741,
+      "cumulative_wall_seconds": 9.335781708010472,
+      "prompt_tokens": 459,
+      "output_tokens": 158,
+      "raw_path": "results/raw/group_sum-04-self_review.json"
+    },
+    {
+      "id": "group_sum-04",
+      "family": "group_sum",
+      "condition": "feedback_repair",
+      "correct": false,
+      "valid_json_object": true,
+      "report": {
+        "metrics": {
+          "x": 11.0,
+          "y": 2.0,
+          "z": 18.0,
+          "a": 8.0,
+          "b": 11.0
+        },
+        "unit": "points",
+        "rows_used": 10,
+        "chart": {
+          "labels": [
+            "x",
+            "y",
+            "z",
+            "a",
+            "b"
+          ],
+          "values": [
+            11.0,
+            2.0,
+            18.0,
+            8.0,
+            11.0
+          ]
+        },
+        "narrative": "The sum of nonmissing values for each group is calculated. The values are sorted alphabetically."
+      },
+      "verification": {
+        "status": "fail",
+        "profile": "full",
+        "findings": [
+          {
+            "code": "METRIC_KEYS",
+            "field": "metrics",
+            "message": "Metric labels differ",
+            "expected": [
+              "A",
+              "B",
+              "C"
+            ],
+            "actual": {
+              "x": 11.0,
+              "y": 2.0,
+              "z": 18.0,
+              "a": 8.0,
+              "b": 11.0
+            }
+          },
+          {
+            "code": "CHART",
+            "field": "chart",
+            "message": "Chart labels must uniquely cover the metrics",
+            "expected": null,
+            "actual": null
+          }
+        ],
+        "scope": "structured fields only; narrative and contract intent unchecked"
+      },
+      "wall_seconds": 6.289437458035536,
+      "cumulative_wall_seconds": 10.308887541061267,
+      "prompt_tokens": 599,
+      "output_tokens": 158,
+      "raw_path": "results/raw/group_sum-04-feedback_repair.json"
+    },
+    {
+      "id": "group_sum-04",
+      "family": "group_sum",
+      "condition": "deterministic_recompute",
+      "correct": true,
+      "valid_json_object": true,
+      "report": {
+        "metrics": {
+          "A": 35.0,
+          "B": 47.0,
+          "C": 42.0
+        },
+        "unit": "points",
+        "rows_used": 10,
+        "chart": {
+          "labels": [
+            "A",
+            "B",
+            "C"
+          ],
+          "values": [
+            35.0,
+            47.0,
+            42.0
+          ]
+        },
+        "narrative": "Structured fields recomputed from the approved contract. No causal conclusion established."
+      },
+      "wall_seconds": 0.00011408398859202862,
+      "cumulative_wall_seconds": 0.00011445896234363317,
+      "prompt_tokens": 0,
+      "output_tokens": 0
+    },
+    {
+      "id": "group_sum-05",
+      "family": "group_sum",
+      "condition": "initial",
+      "correct": false,
+      "valid_json_object": true,
+      "report": {
+        "metrics": {
+          "x": 23.0,
+          "n": 9.0,
+          "g": "A"
+        },
+        "unit": "points",
+        "rows_used": 16,
+        "chart": {
+          "labels": [
+            "x",
+            "n",
+            "g"
+          ],
+          "values": [
+            23.0,
+            9.0,
+            "A"
+          ],
+          "narrative": "Sum nonmissing x by g, excluding empty groups; sort labels alphabetically."
+        },
+        "narrative": "Sum nonmissing x by g, excluding empty groups; sort labels alphabetically."
+      },
+      "verification": {
+        "status": "fail",
+        "profile": "full",
+        "findings": [
+          {
+            "code": "METRIC_KEYS",
+            "field": "metrics",
+            "message": "Metric labels differ",
+            "expected": [
+              "A",
+              "B",
+              "C"
+            ],
+            "actual": {
+              "x": 23.0,
+              "n": 9.0,
+              "g": "A"
+            }
+          },
+          {
+            "code": "ROWS",
+            "field": "rows_used",
+            "message": "Complete-case count differs",
+            "expected": 10,
+            "actual": 16
+          },
+          {
+            "code": "CHART",
+            "field": "chart",
+            "message": "Chart labels must uniquely cover the metrics",
+            "expected": null,
+            "actual": null
+          }
+        ],
+        "scope": "structured fields only; narrative and contract intent unchecked"
+      },
+      "wall_seconds": 3.9021793749998324,
+      "cumulative_wall_seconds": 3.9021793749998324,
+      "prompt_tokens": 267,
+      "output_tokens": 136,
+      "raw_path": "results/raw/group_sum-05-initial.json"
+    },
+    {
+      "id": "group_sum-05",
+      "family": "group_sum",
+      "condition": "self_review",
+      "correct": false,
+      "valid_json_object": true,
+      "report": {
+        "metrics": {
+          "x": 23.0,
+          "n": 9.0,
+          "g": "A"
+        },
+        "unit": "points",
+        "rows_used": 16,
+        "chart": {
+          "labels": [
+            "x",
+            "n",
+            "g"
+          ],
+          "values": [
+            23.0,
+            9.0,
+            "A"
+          ],
+          "narrative": "Sum nonmissing x by g, excluding empty groups; sort labels alphabetically."
+        },
+        "narrative": "Sum nonmissing x by g, excluding empty groups; sort labels alphabetically."
+      },
+      "verification": {
+        "status": "fail",
+        "profile": "full",
+        "findings": [
+          {
+            "code": "METRIC_KEYS",
+            "field": "metrics",
+            "message": "Metric labels differ",
+            "expected": [
+              "A",
+              "B",
+              "C"
+            ],
+            "actual": {
+              "x": 23.0,
+              "n": 9.0,
+              "g": "A"
+            }
+          },
+          {
+            "code": "ROWS",
+            "field": "rows_used",
+            "message": "Complete-case count differs",
+            "expected": 10,
+            "actual": 16
+          },
+          {
+            "code": "CHART",
+            "field": "chart",
+            "message": "Chart labels must uniquely cover the metrics",
+            "expected": null,
+            "actual": null
+          }
+        ],
+        "scope": "structured fields only; narrative and contract intent unchecked"
+      },
+      "wall_seconds": 3.623349417001009,
+      "cumulative_wall_seconds": 7.525528792000841,
+      "prompt_tokens": 439,
+      "output_tokens": 136,
+      "raw_path": "results/raw/group_sum-05-self_review.json"
+    },
+    {
+      "id": "group_sum-05",
+      "family": "group_sum",
+      "condition": "feedback_repair",
+      "correct": false,
+      "valid_json_object": true,
+      "report": {
+        "metrics": {
+          "x": 23.0,
+          "n": 9.0,
+          "g": "A"
+        },
+        "unit": "points",
+        "rows_used": 16,
+        "chart": {
+          "labels": [
+            "x",
+            "n",
+            "g"
+          ],
+          "values": [
+            23.0,
+            9.0,
+            "A"
+          ],
+          "narrative": "Sum nonmissing x by g, excluding empty groups; sort labels alphabetically."
+        },
+        "narrative": "Sum nonmissing x by g, excluding empty groups; sort labels alphabetically."
+      },
+      "verification": {
+        "status": "fail",
+        "profile": "full",
+        "findings": [
+          {
+            "code": "METRIC_KEYS",
+            "field": "metrics",
+            "message": "Metric labels differ",
+            "expected": [
+              "A",
+              "B",
+              "C"
+            ],
+            "actual": {
+              "x": 23.0,
+              "n": 9.0,
+              "g": "A"
+            }
+          },
+          {
+            "code": "ROWS",
+            "field": "rows_used",
+            "message": "Complete-case count differs",
+            "expected": 10,
+            "actual": 16
+          },
+          {
+            "code": "CHART",
+            "field": "chart",
+            "message": "Chart labels must uniquely cover the metrics",
+            "expected": null,
+            "actual": null
+          }
+        ],
+        "scope": "structured fields only; narrative and contract intent unchecked"
+      },
+      "wall_seconds": 4.509511667012703,
+      "cumulative_wall_seconds": 8.411691042012535,
+      "prompt_tokens": 596,
+      "output_tokens": 136,
+      "raw_path": "results/raw/group_sum-05-feedback_repair.json"
+    },
+    {
+      "id": "group_sum-05",
+      "family": "group_sum",
+      "condition": "deterministic_recompute",
+      "correct": true,
+      "valid_json_object": true,
+      "report": {
+        "metrics": {
+          "A": 56.0,
+          "B": 84.0,
+          "C": 58.0
+        },
+        "unit": "points",
+        "rows_used": 10,
+        "chart": {
+          "labels": [
+            "A",
+            "B",
+            "C"
+          ],
+          "values": [
+            56.0,
+            84.0,
+            58.0
+          ]
+        },
+        "narrative": "Structured fields recomputed from the approved contract. No causal conclusion established."
+      },
+      "wall_seconds": 0.000167582998983562,
+      "cumulative_wall_seconds": 0.00016795803094282746,
+      "prompt_tokens": 0,
+      "output_tokens": 0
+    },
+    {
+      "id": "pct_change-02",
+      "family": "pct_change",
+      "condition": "initial",
+      "correct": false,
+      "valid_json_object": false,
+      "report": null,
+      "verification": {
+        "status": "fail",
+        "profile": "full",
+        "findings": [
+          {
+            "code": "SCHEMA",
+            "field": "$",
+            "message": "Report must be a JSON object",
+            "expected": null,
+            "actual": null
+          }
+        ],
+        "scope": "structured fields only"
+      },
+      "wall_seconds": 12.301221707952209,
+      "cumulative_wall_seconds": 12.301221707952209,
+      "prompt_tokens": 267,
+      "output_tokens": 384,
+      "raw_path": "results/raw/pct_change-02-initial.json"
+    },
+    {
+      "id": "pct_change-02",
+      "family": "pct_change",
+      "condition": "self_review",
+      "correct": false,
+      "valid_json_object": false,
+      "report": null,
+      "verification": {
+        "status": "fail",
+        "profile": "full",
+        "findings": [
+          {
+            "code": "SCHEMA",
+            "field": "$",
+            "message": "Report must be a JSON object",
+            "expected": null,
+            "actual": null
+          }
+        ],
+        "scope": "structured fields only"
+      },
+      "wall_seconds": 12.485239540983457,
+      "cumulative_wall_seconds": 24.786461248935666,
+      "prompt_tokens": 688,
+      "output_tokens": 384,
+      "raw_path": "results/raw/pct_change-02-self_review.json"
+    },
+    {
+      "id": "pct_change-02",
+      "family": "pct_change",
+      "condition": "feedback_repair",
+      "correct": false,
+      "valid_json_object": false,
+      "report": null,
+      "verification": {
+        "status": "fail",
+        "profile": "full",
+        "findings": [
+          {
+            "code": "SCHEMA",
+            "field": "$",
+            "message": "Report must be a JSON object",
+            "expected": null,
+            "actual": null
+          }
+        ],
+        "scope": "structured fields only"
+      },
+      "wall_seconds": 11.824477625021245,
+      "cumulative_wall_seconds": 24.125699332973454,
+      "prompt_tokens": 740,
+      "output_tokens": 384,
+      "raw_path": "results/raw/pct_change-02-feedback_repair.json"
+    },
+    {
+      "id": "pct_change-02",
+      "family": "pct_change",
+      "condition": "deterministic_recompute",
+      "correct": true,
+      "valid_json_object": true,
+      "report": {
+        "metrics": {
+          "value": -13.043478260869565
+        },
+        "unit": "%",
+        "rows_used": 10,
+        "chart": {
+          "labels": [
+            "value"
+          ],
+          "values": [
+            -13.043478260869565
+          ]
+        },
+        "narrative": "Structured fields recomputed from the approved contract. No causal conclusion established."
+      },
+      "wall_seconds": 0.00037283299025148153,
+      "cumulative_wall_seconds": 0.00037329201586544514,
+      "prompt_tokens": 0,
+      "output_tokens": 0
+    },
+    {
+      "id": "pct_change-03",
+      "family": "pct_change",
+      "condition": "initial",
+      "correct": false,
+      "valid_json_object": true,
+      "report": {
+        "metrics": {
+          "value": 100.0,
+          "unit": "%",
+          "rows_used": 14,
+          "chart": [
+            "x",
+            "n",
+            "g"
+          ],
+          "narrative": "The calculation is based on the formula 100*(last x - first x)/first x, which is applied to the 'x' column. The result is the percentage change between the last and first values of the 'x' column."
+        }
+      },
+      "verification": {
+        "status": "fail",
+        "profile": "full",
+        "findings": [
+          {
+            "code": "SCHEMA",
+            "field": "chart",
+            "message": "Required field is missing",
+            "expected": null,
+            "actual": null
+          },
+          {
+            "code": "SCHEMA",
+            "field": "narrative",
+            "message": "Required field is missing",
+            "expected": null,
+            "actual": null
+          },
+          {
+            "code": "SCHEMA",
+            "field": "rows_used",
+            "message": "Required field is missing",
+            "expected": null,
+            "actual": null
+          },
+          {
+            "code": "SCHEMA",
+            "field": "unit",
+            "message": "Required field is missing",
+            "expected": null,
+            "actual": null
+          },
+          {
+            "code": "SCHEMA",
+            "field": "narrative",
+            "message": "Narrative must be a string; its meaning is unchecked",
+            "expected": null,
+            "actual": null
+          },
+          {
+            "code": "SCHEMA",
+            "field": "rows_used",
+            "message": "rows_used must be an integer",
+            "expected": null,
+            "actual": null
+          },
+          {
+            "code": "SCHEMA",
+            "field": "unit",
+            "message": "unit must be a string",
+            "expected": null,
+            "actual": null
+          },
+          {
+            "code": "METRIC_KEYS",
+            "field": "metrics",
+            "message": "Metric labels differ",
+            "expected": [
+              "value"
+            ],
+            "actual": {
+              "value": 100.0,
+              "unit": "%",
+              "rows_used": 14,
+              "chart": [
+                "x",
+                "n",
+                "g"
+              ],
+              "narrative": "The calculation is based on the formula 100*(last x - first x)/first x, which is applied to the 'x' column. The result is the percentage change between the last and first values of the 'x' column."
+            }
+          },
+          {
+            "code": "UNIT",
+            "field": "unit",
+            "message": "Output unit differs from approved contract",
+            "expected": "%",
+            "actual": null
+          },
+          {
+            "code": "ROWS",
+            "field": "rows_used",
+            "message": "Complete-case count differs",
+            "expected": 10,
+            "actual": null
+          },
+          {
+            "code": "CHART",
+            "field": "chart",
+            "message": "Chart must contain labels and values",
+            "expected": null,
+            "actual": null
+          }
+        ],
+        "scope": "structured fields only; narrative and contract intent unchecked"
+      },
+      "wall_seconds": 3.4856493329862133,
+      "cumulative_wall_seconds": 3.4856493329862133,
+      "prompt_tokens": 265,
+      "output_tokens": 112,
+      "raw_path": "results/raw/pct_change-03-initial.json"
+    },
+    {
+      "id": "pct_change-03",
+      "family": "pct_change",
+      "condition": "self_review",
+      "correct": false,
+      "valid_json_object": true,
+      "report": {
+        "metrics": {
+          "value": 100.0,
+          "unit": "%",
+          "rows_used": 14,
+          "chart": [
+            "x",
+            "n",
+            "g"
+          ],
+          "narrative": "The calculation is based on the formula 100*(last x - first x)/first x, which is applied to the 'x' column. The result is the percentage change between the last and first values of the 'x' column."
+        }
+      },
+      "verification": {
+        "status": "fail",
+        "profile": "full",
+        "findings": [
+          {
+            "code": "SCHEMA",
+            "field": "chart",
+            "message": "Required field is missing",
+            "expected": null,
+            "actual": null
+          },
+          {
+            "code": "SCHEMA",
+            "field": "narrative",
+            "message": "Required field is missing",
+            "expected": null,
+            "actual": null
+          },
+          {
+            "code": "SCHEMA",
+            "field": "rows_used",
+            "message": "Required field is missing",
+            "expected": null,
+            "actual": null
+          },
+          {
+            "code": "SCHEMA",
+            "field": "unit",
+            "message": "Required field is missing",
+            "expected": null,
+            "actual": null
+          },
+          {
+            "code": "SCHEMA",
+            "field": "narrative",
+            "message": "Narrative must be a string; its meaning is unchecked",
+            "expected": null,
+            "actual": null
+          },
+          {
+            "code": "SCHEMA",
+            "field": "rows_used",
+            "message": "rows_used must be an integer",
+            "expected": null,
+            "actual": null
+          },
+          {
+            "code": "SCHEMA",
+            "field": "unit",
+            "message": "unit must be a string",
+            "expected": null,
+            "actual": null
+          },
+          {
+            "code": "METRIC_KEYS",
+            "field": "metrics",
+            "message": "Metric labels differ",
+            "expected": [
+              "value"
+            ],
+            "actual": {
+              "value": 100.0,
+              "unit": "%",
+              "rows_used": 14,
+              "chart": [
+                "x",
+                "n",
+                "g"
+              ],
+              "narrative": "The calculation is based on the formula 100*(last x - first x)/first x, which is applied to the 'x' column. The result is the percentage change between the last and first values of the 'x' column."
+            }
+          },
+          {
+            "code": "UNIT",
+            "field": "unit",
+            "message": "Output unit differs from approved contract",
+            "expected": "%",
+            "actual": null
+          },
+          {
+            "code": "ROWS",
+            "field": "rows_used",
+            "message": "Complete-case count differs",
+            "expected": 10,
+            "actual": null
+          },
+          {
+            "code": "CHART",
+            "field": "chart",
+            "message": "Chart must contain labels and values",
+            "expected": null,
+            "actual": null
+          }
+        ],
+        "scope": "structured fields only; narrative and contract intent unchecked"
+      },
+      "wall_seconds": 3.4753989999881014,
+      "cumulative_wall_seconds": 6.961048332974315,
+      "prompt_tokens": 413,
+      "output_tokens": 112,
+      "raw_path": "results/raw/pct_change-03-self_review.json"
+    },
+    {
+      "id": "pct_change-03",
+      "family": "pct_change",
+      "condition": "feedback_repair",
+      "correct": false,
+      "valid_json_object": true,
+      "report": {
+        "metrics": {
+          "value": 100.0,
+          "unit": "%",
+          "rows_used": 14,
+          "chart": [
+            "x",
+            "n",
+            "g"
+          ],
+          "narrative": "The calculation is based on the formula 100*(last x - first x)/first x, which is applied to the 'x' column. The result is the percentage change between the last and first values of the 'x' column."
+        }
+      },
+      "verification": {
+        "status": "fail",
+        "profile": "full",
+        "findings": [
+          {
+            "code": "SCHEMA",
+            "field": "chart",
+            "message": "Required field is missing",
+            "expected": null,
+            "actual": null
+          },
+          {
+            "code": "SCHEMA",
+            "field": "narrative",
+            "message": "Required field is missing",
+            "expected": null,
+            "actual": null
+          },
+          {
+            "code": "SCHEMA",
+            "field": "rows_used",
+            "message": "Required field is missing",
+            "expected": null,
+            "actual": null
+          },
+          {
+            "code": "SCHEMA",
+            "field": "unit",
+            "message": "Required field is missing",
+            "expected": null,
+            "actual": null
+          },
+          {
+            "code": "SCHEMA",
+            "field": "narrative",
+            "message": "Narrative must be a string; its meaning is unchecked",
+            "expected": null,
+            "actual": null
+          },
+          {
+            "code": "SCHEMA",
+            "field": "rows_used",
+            "message": "rows_used must be an integer",
+            "expected": null,
+            "actual": null
+          },
+          {
+            "code": "SCHEMA",
+            "field": "unit",
+            "message": "unit must be a string",
+            "expected": null,
+            "actual": null
+          },
+          {
+            "code": "METRIC_KEYS",
+            "field": "metrics",
+            "message": "Metric labels differ",
+            "expected": [
+              "value"
+            ],
+            "actual": {
+              "value": 100.0,
+              "unit": "%",
+              "rows_used": 14,
+              "chart": [
+                "x",
+                "n",
+                "g"
+              ],
+              "narrative": "The calculation is based on the formula 100*(last x - first x)/first x, which is applied to the 'x' column. The result is the percentage change between the last and first values of the 'x' column."
+            }
+          },
+          {
+            "code": "UNIT",
+            "field": "unit",
+            "message": "Output unit differs from approved contract",
+            "expected": "%",
+            "actual": null
+          },
+          {
+            "code": "ROWS",
+            "field": "rows_used",
+            "message": "Complete-case count differs",
+            "expected": 10,
+            "actual": null
+          },
+          {
+            "code": "CHART",
+            "field": "chart",
+            "message": "Chart must contain labels and values",
+            "expected": null,
+            "actual": null
+          }
+        ],
+        "scope": "structured fields only; narrative and contract intent unchecked"
+      },
+      "wall_seconds": 4.875498083012644,
+      "cumulative_wall_seconds": 8.361147415998857,
+      "prompt_tokens": 902,
+      "output_tokens": 112,
+      "raw_path": "results/raw/pct_change-03-feedback_repair.json"
+    },
+    {
+      "id": "pct_change-03",
+      "family": "pct_change",
+      "condition": "deterministic_recompute",
+      "correct": true,
+      "valid_json_object": true,
+      "report": {
+        "metrics": {
+          "value": 9.090909090909092
+        },
+        "unit": "%",
+        "rows_used": 10,
+        "chart": {
+          "labels": [
+            "value"
+          ],
+          "values": [
+            9.090909090909092
+          ]
+        },
+        "narrative": "Structured fields recomputed from the approved contract. No causal conclusion established."
+      },
+      "wall_seconds": 0.000147333019413054,
+      "cumulative_wall_seconds": 0.00014762498904019594,
+      "prompt_tokens": 0,
+      "output_tokens": 0
+    },
+    {
+      "id": "pct_change-04",
+      "family": "pct_change",
+      "condition": "initial",
+      "correct": false,
+      "valid_json_object": false,
+      "report": null,
+      "verification": {
+        "status": "fail",
+        "profile": "full",
+        "findings": [
+          {
+            "code": "SCHEMA",
+            "field": "$",
+            "message": "Report must be a JSON object",
+            "expected": null,
+            "actual": null
+          }
+        ],
+        "scope": "structured fields only"
+      },
+      "wall_seconds": 12.780857208010275,
+      "cumulative_wall_seconds": 12.780857208010275,
+      "prompt_tokens": 267,
+      "output_tokens": 384,
+      "raw_path": "results/raw/pct_change-04-initial.json"
+    },
+    {
+      "id": "pct_change-04",
+      "family": "pct_change",
+      "condition": "self_review",
+      "correct": false,
+      "valid_json_object": false,
+      "report": null,
+      "verification": {
+        "status": "fail",
+        "profile": "full",
+        "findings": [
+          {
+            "code": "SCHEMA",
+            "field": "$",
+            "message": "Report must be a JSON object",
+            "expected": null,
+            "actual": null
+          }
+        ],
+        "scope": "structured fields only"
+      },
+      "wall_seconds": 12.358993291971274,
+      "cumulative_wall_seconds": 25.13985049998155,
+      "prompt_tokens": 688,
+      "output_tokens": 384,
+      "raw_path": "results/raw/pct_change-04-self_review.json"
+    },
+    {
+      "id": "pct_change-04",
+      "family": "pct_change",
+      "condition": "feedback_repair",
+      "correct": false,
+      "valid_json_object": false,
+      "report": null,
+      "verification": {
+        "status": "fail",
+        "profile": "full",
+        "findings": [
+          {
+            "code": "SCHEMA",
+            "field": "$",
+            "message": "Report must be a JSON object",
+            "expected": null,
+            "actual": null
+          }
+        ],
+        "scope": "structured fields only"
+      },
+      "wall_seconds": 12.736951541970484,
+      "cumulative_wall_seconds": 25.51780874998076,
+      "prompt_tokens": 740,
+      "output_tokens": 384,
+      "raw_path": "results/raw/pct_change-04-feedback_repair.json"
+    },
+    {
+      "id": "pct_change-04",
+      "family": "pct_change",
+      "condition": "deterministic_recompute",
+      "correct": true,
+      "valid_json_object": true,
+      "report": {
+        "metrics": {
+          "value": 600.0
+        },
+        "unit": "%",
+        "rows_used": 10,
+        "chart": {
+          "labels": [
+            "value"
+          ],
+          "values": [
+            600.0
+          ]
+        },
+        "narrative": "Structured fields recomputed from the approved contract. No causal conclusion established."
+      },
+      "wall_seconds": 0.00013583304826170206,
+      "cumulative_wall_seconds": 0.00013645802391692996,
+      "prompt_tokens": 0,
+      "output_tokens": 0
+    },
+    {
+      "id": "pct_change-05",
+      "family": "pct_change",
+      "condition": "initial",
+      "correct": false,
+      "valid_json_object": true,
+      "report": {
+        "metrics": {
+          "value": 100.0,
+          "unit": "%",
+          "rows_used": 14,
+          "chart": [
+            "x",
+            "n",
+            "g"
+          ],
+          "narrative": "The calculation is based on the formula 100*(last x - first x)/first x, which is applied to the 'x' column. The result is 100.0%."
+        }
+      },
+      "verification": {
+        "status": "fail",
+        "profile": "full",
+        "findings": [
+          {
+            "code": "SCHEMA",
+            "field": "chart",
+            "message": "Required field is missing",
+            "expected": null,
+            "actual": null
+          },
+          {
+            "code": "SCHEMA",
+            "field": "narrative",
+            "message": "Required field is missing",
+            "expected": null,
+            "actual": null
+          },
+          {
+            "code": "SCHEMA",
+            "field": "rows_used",
+            "message": "Required field is missing",
+            "expected": null,
+            "actual": null
+          },
+          {
+            "code": "SCHEMA",
+            "field": "unit",
+            "message": "Required field is missing",
+            "expected": null,
+            "actual": null
+          },
+          {
+            "code": "SCHEMA",
+            "field": "narrative",
+            "message": "Narrative must be a string; its meaning is unchecked",
+            "expected": null,
+            "actual": null
+          },
+          {
+            "code": "SCHEMA",
+            "field": "rows_used",
+            "message": "rows_used must be an integer",
+            "expected": null,
+            "actual": null
+          },
+          {
+            "code": "SCHEMA",
+            "field": "unit",
+            "message": "unit must be a string",
+            "expected": null,
+            "actual": null
+          },
+          {
+            "code": "METRIC_KEYS",
+            "field": "metrics",
+            "message": "Metric labels differ",
+            "expected": [
+              "value"
+            ],
+            "actual": {
+              "value": 100.0,
+              "unit": "%",
+              "rows_used": 14,
+              "chart": [
+                "x",
+                "n",
+                "g"
+              ],
+              "narrative": "The calculation is based on the formula 100*(last x - first x)/first x, which is applied to the 'x' column. The result is 100.0%."
+            }
+          },
+          {
+            "code": "UNIT",
+            "field": "unit",
+            "message": "Output unit differs from approved contract",
+            "expected": "%",
+            "actual": null
+          },
+          {
+            "code": "ROWS",
+            "field": "rows_used",
+            "message": "Complete-case count differs",
+            "expected": 10,
+            "actual": null
+          },
+          {
+            "code": "CHART",
+            "field": "chart",
+            "message": "Chart must contain labels and values",
+            "expected": null,
+            "actual": null
+          }
+        ],
+        "scope": "structured fields only; narrative and contract intent unchecked"
+      },
+      "wall_seconds": 3.272664916992653,
+      "cumulative_wall_seconds": 3.272664916992653,
+      "prompt_tokens": 265,
+      "output_tokens": 104,
+      "raw_path": "results/raw/pct_change-05-initial.json"
+    },
+    {
+      "id": "pct_change-05",
+      "family": "pct_change",
+      "condition": "self_review",
+      "correct": false,
+      "valid_json_object": true,
+      "report": {
+        "metrics": {
+          "value": 100.0,
+          "unit": "%",
+          "rows_used": 14,
+          "chart": [
+            "x",
+            "n",
+            "g"
+          ],
+          "narrative": "The calculation is based on the formula 100*(last x - first x)/first x, which is applied to the 'x' column. The result is 100.0%."
+        }
+      },
+      "verification": {
+        "status": "fail",
+        "profile": "full",
+        "findings": [
+          {
+            "code": "SCHEMA",
+            "field": "chart",
+            "message": "Required field is missing",
+            "expected": null,
+            "actual": null
+          },
+          {
+            "code": "SCHEMA",
+            "field": "narrative",
+            "message": "Required field is missing",
+            "expected": null,
+            "actual": null
+          },
+          {
+            "code": "SCHEMA",
+            "field": "rows_used",
+            "message": "Required field is missing",
+            "expected": null,
+            "actual": null
+          },
+          {
+            "code": "SCHEMA",
+            "field": "unit",
+            "message": "Required field is missing",
+            "expected": null,
+            "actual": null
+          },
+          {
+            "code": "SCHEMA",
+            "field": "narrative",
+            "message": "Narrative must be a string; its meaning is unchecked",
+            "expected": null,
+            "actual": null
+          },
+          {
+            "code": "SCHEMA",
+            "field": "rows_used",
+            "message": "rows_used must be an integer",
+            "expected": null,
+            "actual": null
+          },
+          {
+            "code": "SCHEMA",
+            "field": "unit",
+            "message": "unit must be a string",
+            "expected": null,
+            "actual": null
+          },
+          {
+            "code": "METRIC_KEYS",
+            "field": "metrics",
+            "message": "Metric labels differ",
+            "expected": [
+              "value"
+            ],
+            "actual": {
+              "value": 100.0,
+              "unit": "%",
+              "rows_used": 14,
+              "chart": [
+                "x",
+                "n",
+                "g"
+              ],
+              "narrative": "The calculation is based on the formula 100*(last x - first x)/first x, which is applied to the 'x' column. The result is 100.0%."
+            }
+          },
+          {
+            "code": "UNIT",
+            "field": "unit",
+            "message": "Output unit differs from approved contract",
+            "expected": "%",
+            "actual": null
+          },
+          {
+            "code": "ROWS",
+            "field": "rows_used",
+            "message": "Complete-case count differs",
+            "expected": 10,
+            "actual": null
+          },
+          {
+            "code": "CHART",
+            "field": "chart",
+            "message": "Chart must contain labels and values",
+            "expected": null,
+            "actual": null
+          }
+        ],
+        "scope": "structured fields only; narrative and contract intent unchecked"
+      },
+      "wall_seconds": 3.2384100000490434,
+      "cumulative_wall_seconds": 6.511074917041697,
+      "prompt_tokens": 405,
+      "output_tokens": 104,
+      "raw_path": "results/raw/pct_change-05-self_review.json"
+    },
+    {
+      "id": "pct_change-05",
+      "family": "pct_change",
+      "condition": "feedback_repair",
+      "correct": false,
+      "valid_json_object": true,
+      "report": {
+        "metrics": {
+          "value": 100.0,
+          "unit": "%",
+          "rows_used": 14,
+          "chart": [
+            "x",
+            "n",
+            "g"
+          ],
+          "narrative": "The calculation is based on the formula 100*(last x - first x)/first x, which is applied to the 'x' column. The result is 100.0%."
+        }
+      },
+      "verification": {
+        "status": "fail",
+        "profile": "full",
+        "findings": [
+          {
+            "code": "SCHEMA",
+            "field": "chart",
+            "message": "Required field is missing",
+            "expected": null,
+            "actual": null
+          },
+          {
+            "code": "SCHEMA",
+            "field": "narrative",
+            "message": "Required field is missing",
+            "expected": null,
+            "actual": null
+          },
+          {
+            "code": "SCHEMA",
+            "field": "rows_used",
+            "message": "Required field is missing",
+            "expected": null,
+            "actual": null
+          },
+          {
+            "code": "SCHEMA",
+            "field": "unit",
+            "message": "Required field is missing",
+            "expected": null,
+            "actual": null
+          },
+          {
+            "code": "SCHEMA",
+            "field": "narrative",
+            "message": "Narrative must be a string; its meaning is unchecked",
+            "expected": null,
+            "actual": null
+          },
+          {
+            "code": "SCHEMA",
+            "field": "rows_used",
+            "message": "rows_used must be an integer",
+            "expected": null,
+            "actual": null
+          },
+          {
+            "code": "SCHEMA",
+            "field": "unit",
+            "message": "unit must be a string",
+            "expected": null,
+            "actual": null
+          },
+          {
+            "code": "METRIC_KEYS",
+            "field": "metrics",
+            "message": "Metric labels differ",
+            "expected": [
+              "value"
+            ],
+            "actual": {
+              "value": 100.0,
+              "unit": "%",
+              "rows_used": 14,
+              "chart": [
+                "x",
+                "n",
+                "g"
+              ],
+              "narrative": "The calculation is based on the formula 100*(last x - first x)/first x, which is applied to the 'x' column. The result is 100.0%."
+            }
+          },
+          {
+            "code": "UNIT",
+            "field": "unit",
+            "message": "Output unit differs from approved contract",
+            "expected": "%",
+            "actual": null
+          },
+          {
+            "code": "ROWS",
+            "field": "rows_used",
+            "message": "Complete-case count differs",
+            "expected": 10,
+            "actual": null
+          },
+          {
+            "code": "CHART",
+            "field": "chart",
+            "message": "Chart must contain labels and values",
+            "expected": null,
+            "actual": null
+          }
+        ],
+        "scope": "structured fields only; narrative and contract intent unchecked"
+      },
+      "wall_seconds": 3.7801154580083676,
+      "cumulative_wall_seconds": 7.052780375001021,
+      "prompt_tokens": 886,
+      "output_tokens": 104,
+      "raw_path": "results/raw/pct_change-05-feedback_repair.json"
+    },
+    {
+      "id": "pct_change-05",
+      "family": "pct_change",
+      "condition": "deterministic_recompute",
+      "correct": true,
+      "valid_json_object": true,
+      "report": {
+        "metrics": {
+          "value": 61.53846153846154
+        },
+        "unit": "%",
+        "rows_used": 10,
+        "chart": {
+          "labels": [
+            "value"
+          ],
+          "values": [
+            61.53846153846154
+          ]
+        },
+        "narrative": "Structured fields recomputed from the approved contract. No causal conclusion established."
+      },
+      "wall_seconds": 0.00011308299144729972,
+      "cumulative_wall_seconds": 0.00011337501928210258,
+      "prompt_tokens": 0,
+      "output_tokens": 0
+    }
+  ]
+}

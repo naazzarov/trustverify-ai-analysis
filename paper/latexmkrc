@@ -1,0 +1,5 @@
+# Overleaf / TeX Live 编译配置：强制使用 XeLaTeX
+# （中文模板必须用 XeLaTeX，不能用 pdfLaTeX）
+$pdf_mode = 5;        # 5 = xelatex
+$postscript_mode = 0;
+$dvi_mode = 0;

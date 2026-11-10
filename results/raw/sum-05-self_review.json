@@ -1,0 +1,52 @@
+{
+  "request_sha256": "5e600b7c8bacfa31db650454205875cc3193eaa737134dedd5b4e1901002798e",
+  "request": {
+    "model": "qwen2.5:0.5b",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a careful data analyst. Follow the approved contract exactly.\nReturn ONLY a JSON object with these five fields:\nmetrics: an object of numeric answers. Use key \"value\" for a single answer, or group labels for grouped answers.\nunit: the exact string in the contract.\nrows_used: integer count of rows actually used after complete-case exclusion.\nchart: an object with labels (array of metric keys) and values (matching numeric values).\nnarrative: one short descriptive sentence. Do not claim causation.\nBlank CSV cells are missing, not zero. Do not round intermediate calculations.\nOutput numeric results to at least six decimal places when fractional. No extra commentary."
+      },
+      {
+        "role": "user",
+        "content": "Question: Sum nonmissing x values.\nApproved contract: {\"op\": \"sum\", \"column\": \"x\", \"unit\": \"points\"}\nCSV:\nx,n,g\n11,1,A\n17,3,B\n13,3,C\n,8,A\n22,,B\n25,2,C\n3,4,A\n18,3,B\n,2,C\n19,8,A\n7,9,B\n28,6,C\n"
+      },
+      {
+        "role": "assistant",
+        "content": "{\n  \"metrics\": {\n    \"x\": 11.000000,\n    \"g\": 8.000000\n  },\n  \"unit\": \"points\",\n  \"rows_used\": 10,\n  \"chart\": {\n    \"labels\": [\"x\", \"g\"],\n    \"values\": [11, 8]\n  },\n  \"narrative\": \"The sum of nonmissing x values is 19.\"\n}"
+      },
+      {
+        "role": "user",
+        "content": "Review your initial answer independently. Check the arithmetic, missing values, row count, unit and chart. Return a corrected complete JSON report."
+      }
+    ],
+    "stream": false,
+    "format": "json",
+    "options": {
+      "temperature": 0,
+      "seed": 31415,
+      "num_ctx": 4096,
+      "num_predict": 384
+    },
+    "keep_alive": "30m"
+  },
+  "response": {
+    "model": "qwen2.5:0.5b",
+    "created_at": "2026-11-10T11:56:50.551451Z",
+    "message": {
+      "role": "assistant",
+      "content": "{\n  \"metrics\": {\n    \"x\": 11.000000,\n    \"g\": 8.000000\n  },\n  \"unit\": \"points\",\n  \"rows_used\": 10,\n  \"chart\": {\n    \"labels\": [\"x\", \"g\"],\n    \"values\": [11, 8]\n  },\n  \"narrative\": \"The sum of nonmissing x values is 19.\"\n}"
+    },
+    "done": true,
+    "done_reason": "stop",
+    "total_duration": 3246950041,
+    "load_duration": 44281291,
+    "prompt_eval_count": 387,
+    "prompt_eval_cached_count": 350,
+    "prompt_eval_duration": 159415000,
+    "eval_count": 102,
+    "eval_duration": 3009242000
+  },
+  "wall_seconds": 3.2562603330006823,
+  "generated_at_utc": "2026-11-10T11:56:50.554609+00:00"
+}
