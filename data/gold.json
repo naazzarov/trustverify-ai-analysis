@@ -1,0 +1,1022 @@
+{
+  "sum-00": {
+    "metrics": {
+      "value": 194.0
+    },
+    "unit": "points",
+    "rows_used": 10,
+    "chart": {
+      "labels": [
+        "value"
+      ],
+      "values": [
+        194.0
+      ]
+    },
+    "narrative": "Reference values from an independent SQLite oracle."
+  },
+  "sum-01": {
+    "metrics": {
+      "value": 124.0
+    },
+    "unit": "points",
+    "rows_used": 10,
+    "chart": {
+      "labels": [
+        "value"
+      ],
+      "values": [
+        124.0
+      ]
+    },
+    "narrative": "Reference values from an independent SQLite oracle."
+  },
+  "sum-02": {
+    "metrics": {
+      "value": 139.0
+    },
+    "unit": "points",
+    "rows_used": 10,
+    "chart": {
+      "labels": [
+        "value"
+      ],
+      "values": [
+        139.0
+      ]
+    },
+    "narrative": "Reference values from an independent SQLite oracle."
+  },
+  "sum-03": {
+    "metrics": {
+      "value": 145.0
+    },
+    "unit": "points",
+    "rows_used": 10,
+    "chart": {
+      "labels": [
+        "value"
+      ],
+      "values": [
+        145.0
+      ]
+    },
+    "narrative": "Reference values from an independent SQLite oracle."
+  },
+  "sum-04": {
+    "metrics": {
+      "value": 151.0
+    },
+    "unit": "points",
+    "rows_used": 10,
+    "chart": {
+      "labels": [
+        "value"
+      ],
+      "values": [
+        151.0
+      ]
+    },
+    "narrative": "Reference values from an independent SQLite oracle."
+  },
+  "sum-05": {
+    "metrics": {
+      "value": 163.0
+    },
+    "unit": "points",
+    "rows_used": 10,
+    "chart": {
+      "labels": [
+        "value"
+      ],
+      "values": [
+        163.0
+      ]
+    },
+    "narrative": "Reference values from an independent SQLite oracle."
+  },
+  "sum-06": {
+    "metrics": {
+      "value": 183.0
+    },
+    "unit": "points",
+    "rows_used": 10,
+    "chart": {
+      "labels": [
+        "value"
+      ],
+      "values": [
+        183.0
+      ]
+    },
+    "narrative": "Reference values from an independent SQLite oracle."
+  },
+  "sum-07": {
+    "metrics": {
+      "value": 116.0
+    },
+    "unit": "points",
+    "rows_used": 10,
+    "chart": {
+      "labels": [
+        "value"
+      ],
+      "values": [
+        116.0
+      ]
+    },
+    "narrative": "Reference values from an independent SQLite oracle."
+  },
+  "sum-08": {
+    "metrics": {
+      "value": 120.0
+    },
+    "unit": "points",
+    "rows_used": 10,
+    "chart": {
+      "labels": [
+        "value"
+      ],
+      "values": [
+        120.0
+      ]
+    },
+    "narrative": "Reference values from an independent SQLite oracle."
+  },
+  "sum-09": {
+    "metrics": {
+      "value": 172.0
+    },
+    "unit": "points",
+    "rows_used": 10,
+    "chart": {
+      "labels": [
+        "value"
+      ],
+      "values": [
+        172.0
+      ]
+    },
+    "narrative": "Reference values from an independent SQLite oracle."
+  },
+  "mean-00": {
+    "metrics": {
+      "value": 14.2
+    },
+    "unit": "points",
+    "rows_used": 10,
+    "chart": {
+      "labels": [
+        "value"
+      ],
+      "values": [
+        14.2
+      ]
+    },
+    "narrative": "Reference values from an independent SQLite oracle."
+  },
+  "mean-01": {
+    "metrics": {
+      "value": 16.1
+    },
+    "unit": "points",
+    "rows_used": 10,
+    "chart": {
+      "labels": [
+        "value"
+      ],
+      "values": [
+        16.1
+      ]
+    },
+    "narrative": "Reference values from an independent SQLite oracle."
+  },
+  "mean-02": {
+    "metrics": {
+      "value": 9.7
+    },
+    "unit": "points",
+    "rows_used": 10,
+    "chart": {
+      "labels": [
+        "value"
+      ],
+      "values": [
+        9.7
+      ]
+    },
+    "narrative": "Reference values from an independent SQLite oracle."
+  },
+  "mean-03": {
+    "metrics": {
+      "value": 15.2
+    },
+    "unit": "points",
+    "rows_used": 10,
+    "chart": {
+      "labels": [
+        "value"
+      ],
+      "values": [
+        15.2
+      ]
+    },
+    "narrative": "Reference values from an independent SQLite oracle."
+  },
+  "mean-04": {
+    "metrics": {
+      "value": 19.0
+    },
+    "unit": "points",
+    "rows_used": 10,
+    "chart": {
+      "labels": [
+        "value"
+      ],
+      "values": [
+        19.0
+      ]
+    },
+    "narrative": "Reference values from an independent SQLite oracle."
+  },
+  "mean-05": {
+    "metrics": {
+      "value": 15.6
+    },
+    "unit": "points",
+    "rows_used": 10,
+    "chart": {
+      "labels": [
+        "value"
+      ],
+      "values": [
+        15.6
+      ]
+    },
+    "narrative": "Reference values from an independent SQLite oracle."
+  },
+  "mean-06": {
+    "metrics": {
+      "value": 14.3
+    },
+    "unit": "points",
+    "rows_used": 10,
+    "chart": {
+      "labels": [
+        "value"
+      ],
+      "values": [
+        14.3
+      ]
+    },
+    "narrative": "Reference values from an independent SQLite oracle."
+  },
+  "mean-07": {
+    "metrics": {
+      "value": 14.3
+    },
+    "unit": "points",
+    "rows_used": 10,
+    "chart": {
+      "labels": [
+        "value"
+      ],
+      "values": [
+        14.3
+      ]
+    },
+    "narrative": "Reference values from an independent SQLite oracle."
+  },
+  "mean-08": {
+    "metrics": {
+      "value": 15.8
+    },
+    "unit": "points",
+    "rows_used": 10,
+    "chart": {
+      "labels": [
+        "value"
+      ],
+      "values": [
+        15.8
+      ]
+    },
+    "narrative": "Reference values from an independent SQLite oracle."
+  },
+  "mean-09": {
+    "metrics": {
+      "value": 13.3
+    },
+    "unit": "points",
+    "rows_used": 10,
+    "chart": {
+      "labels": [
+        "value"
+      ],
+      "values": [
+        13.3
+      ]
+    },
+    "narrative": "Reference values from an independent SQLite oracle."
+  },
+  "weighted_mean-00": {
+    "metrics": {
+      "value": 12.06060606060606
+    },
+    "unit": "points",
+    "rows_used": 9,
+    "chart": {
+      "labels": [
+        "value"
+      ],
+      "values": [
+        12.06060606060606
+      ]
+    },
+    "narrative": "Reference values from an independent SQLite oracle."
+  },
+  "weighted_mean-01": {
+    "metrics": {
+      "value": 19.547619047619047
+    },
+    "unit": "points",
+    "rows_used": 9,
+    "chart": {
+      "labels": [
+        "value"
+      ],
+      "values": [
+        19.547619047619047
+      ]
+    },
+    "narrative": "Reference values from an independent SQLite oracle."
+  },
+  "weighted_mean-02": {
+    "metrics": {
+      "value": 18.9375
+    },
+    "unit": "points",
+    "rows_used": 9,
+    "chart": {
+      "labels": [
+        "value"
+      ],
+      "values": [
+        18.9375
+      ]
+    },
+    "narrative": "Reference values from an independent SQLite oracle."
+  },
+  "weighted_mean-03": {
+    "metrics": {
+      "value": 15.742857142857142
+    },
+    "unit": "points",
+    "rows_used": 9,
+    "chart": {
+      "labels": [
+        "value"
+      ],
+      "values": [
+        15.742857142857142
+      ]
+    },
+    "narrative": "Reference values from an independent SQLite oracle."
+  },
+  "weighted_mean-04": {
+    "metrics": {
+      "value": 13.11111111111111
+    },
+    "unit": "points",
+    "rows_used": 9,
+    "chart": {
+      "labels": [
+        "value"
+      ],
+      "values": [
+        13.11111111111111
+      ]
+    },
+    "narrative": "Reference values from an independent SQLite oracle."
+  },
+  "weighted_mean-05": {
+    "metrics": {
+      "value": 17.48936170212766
+    },
+    "unit": "points",
+    "rows_used": 9,
+    "chart": {
+      "labels": [
+        "value"
+      ],
+      "values": [
+        17.48936170212766
+      ]
+    },
+    "narrative": "Reference values from an independent SQLite oracle."
+  },
+  "weighted_mean-06": {
+    "metrics": {
+      "value": 13.944444444444445
+    },
+    "unit": "points",
+    "rows_used": 9,
+    "chart": {
+      "labels": [
+        "value"
+      ],
+      "values": [
+        13.944444444444445
+      ]
+    },
+    "narrative": "Reference values from an independent SQLite oracle."
+  },
+  "weighted_mean-07": {
+    "metrics": {
+      "value": 16.138461538461538
+    },
+    "unit": "points",
+    "rows_used": 9,
+    "chart": {
+      "labels": [
+        "value"
+      ],
+      "values": [
+        16.138461538461538
+      ]
+    },
+    "narrative": "Reference values from an independent SQLite oracle."
+  },
+  "weighted_mean-08": {
+    "metrics": {
+      "value": 16.96875
+    },
+    "unit": "points",
+    "rows_used": 9,
+    "chart": {
+      "labels": [
+        "value"
+      ],
+      "values": [
+        16.96875
+      ]
+    },
+    "narrative": "Reference values from an independent SQLite oracle."
+  },
+  "weighted_mean-09": {
+    "metrics": {
+      "value": 13.242424242424242
+    },
+    "unit": "points",
+    "rows_used": 9,
+    "chart": {
+      "labels": [
+        "value"
+      ],
+      "values": [
+        13.242424242424242
+      ]
+    },
+    "narrative": "Reference values from an independent SQLite oracle."
+  },
+  "ratio-00": {
+    "metrics": {
+      "value": 538.2352941176471
+    },
+    "unit": "%",
+    "rows_used": 9,
+    "chart": {
+      "labels": [
+        "value"
+      ],
+      "values": [
+        538.2352941176471
+      ]
+    },
+    "narrative": "Reference values from an independent SQLite oracle."
+  },
+  "ratio-01": {
+    "metrics": {
+      "value": 325.0
+    },
+    "unit": "%",
+    "rows_used": 9,
+    "chart": {
+      "labels": [
+        "value"
+      ],
+      "values": [
+        325.0
+      ]
+    },
+    "narrative": "Reference values from an independent SQLite oracle."
+  },
+  "ratio-02": {
+    "metrics": {
+      "value": 263.46153846153845
+    },
+    "unit": "%",
+    "rows_used": 9,
+    "chart": {
+      "labels": [
+        "value"
+      ],
+      "values": [
+        263.46153846153845
+      ]
+    },
+    "narrative": "Reference values from an independent SQLite oracle."
+  },
+  "ratio-03": {
+    "metrics": {
+      "value": 246.66666666666666
+    },
+    "unit": "%",
+    "rows_used": 9,
+    "chart": {
+      "labels": [
+        "value"
+      ],
+      "values": [
+        246.66666666666666
+      ]
+    },
+    "narrative": "Reference values from an independent SQLite oracle."
+  },
+  "ratio-04": {
+    "metrics": {
+      "value": 339.4736842105263
+    },
+    "unit": "%",
+    "rows_used": 9,
+    "chart": {
+      "labels": [
+        "value"
+      ],
+      "values": [
+        339.4736842105263
+      ]
+    },
+    "narrative": "Reference values from an independent SQLite oracle."
+  },
+  "ratio-05": {
+    "metrics": {
+      "value": 226.66666666666666
+    },
+    "unit": "%",
+    "rows_used": 9,
+    "chart": {
+      "labels": [
+        "value"
+      ],
+      "values": [
+        226.66666666666666
+      ]
+    },
+    "narrative": "Reference values from an independent SQLite oracle."
+  },
+  "ratio-06": {
+    "metrics": {
+      "value": 230.95238095238096
+    },
+    "unit": "%",
+    "rows_used": 9,
+    "chart": {
+      "labels": [
+        "value"
+      ],
+      "values": [
+        230.95238095238096
+      ]
+    },
+    "narrative": "Reference values from an independent SQLite oracle."
+  },
+  "ratio-07": {
+    "metrics": {
+      "value": 208.16326530612244
+    },
+    "unit": "%",
+    "rows_used": 9,
+    "chart": {
+      "labels": [
+        "value"
+      ],
+      "values": [
+        208.16326530612244
+      ]
+    },
+    "narrative": "Reference values from an independent SQLite oracle."
+  },
+  "ratio-08": {
+    "metrics": {
+      "value": 380.0
+    },
+    "unit": "%",
+    "rows_used": 9,
+    "chart": {
+      "labels": [
+        "value"
+      ],
+      "values": [
+        380.0
+      ]
+    },
+    "narrative": "Reference values from an independent SQLite oracle."
+  },
+  "ratio-09": {
+    "metrics": {
+      "value": 254.76190476190476
+    },
+    "unit": "%",
+    "rows_used": 9,
+    "chart": {
+      "labels": [
+        "value"
+      ],
+      "values": [
+        254.76190476190476
+      ]
+    },
+    "narrative": "Reference values from an independent SQLite oracle."
+  },
+  "group_sum-00": {
+    "metrics": {
+      "A": 33.0,
+      "B": 61.0,
+      "C": 29.0
+    },
+    "unit": "points",
+    "rows_used": 10,
+    "chart": {
+      "labels": [
+        "A",
+        "B",
+        "C"
+      ],
+      "values": [
+        33.0,
+        61.0,
+        29.0
+      ]
+    },
+    "narrative": "Reference values from an independent SQLite oracle."
+  },
+  "group_sum-01": {
+    "metrics": {
+      "A": 62.0,
+      "B": 42.0,
+      "C": 77.0
+    },
+    "unit": "points",
+    "rows_used": 10,
+    "chart": {
+      "labels": [
+        "A",
+        "B",
+        "C"
+      ],
+      "values": [
+        62.0,
+        42.0,
+        77.0
+      ]
+    },
+    "narrative": "Reference values from an independent SQLite oracle."
+  },
+  "group_sum-02": {
+    "metrics": {
+      "A": 42.0,
+      "B": 81.0,
+      "C": 63.0
+    },
+    "unit": "points",
+    "rows_used": 10,
+    "chart": {
+      "labels": [
+        "A",
+        "B",
+        "C"
+      ],
+      "values": [
+        42.0,
+        81.0,
+        63.0
+      ]
+    },
+    "narrative": "Reference values from an independent SQLite oracle."
+  },
+  "group_sum-03": {
+    "metrics": {
+      "A": 44.0,
+      "B": 42.0,
+      "C": 59.0
+    },
+    "unit": "points",
+    "rows_used": 10,
+    "chart": {
+      "labels": [
+        "A",
+        "B",
+        "C"
+      ],
+      "values": [
+        44.0,
+        42.0,
+        59.0
+      ]
+    },
+    "narrative": "Reference values from an independent SQLite oracle."
+  },
+  "group_sum-04": {
+    "metrics": {
+      "A": 35.0,
+      "B": 47.0,
+      "C": 42.0
+    },
+    "unit": "points",
+    "rows_used": 10,
+    "chart": {
+      "labels": [
+        "A",
+        "B",
+        "C"
+      ],
+      "values": [
+        35.0,
+        47.0,
+        42.0
+      ]
+    },
+    "narrative": "Reference values from an independent SQLite oracle."
+  },
+  "group_sum-05": {
+    "metrics": {
+      "A": 56.0,
+      "B": 84.0,
+      "C": 58.0
+    },
+    "unit": "points",
+    "rows_used": 10,
+    "chart": {
+      "labels": [
+        "A",
+        "B",
+        "C"
+      ],
+      "values": [
+        56.0,
+        84.0,
+        58.0
+      ]
+    },
+    "narrative": "Reference values from an independent SQLite oracle."
+  },
+  "group_sum-06": {
+    "metrics": {
+      "A": 33.0,
+      "B": 47.0,
+      "C": 27.0
+    },
+    "unit": "points",
+    "rows_used": 10,
+    "chart": {
+      "labels": [
+        "A",
+        "B",
+        "C"
+      ],
+      "values": [
+        33.0,
+        47.0,
+        27.0
+      ]
+    },
+    "narrative": "Reference values from an independent SQLite oracle."
+  },
+  "group_sum-07": {
+    "metrics": {
+      "A": 56.0,
+      "B": 58.0,
+      "C": 46.0
+    },
+    "unit": "points",
+    "rows_used": 10,
+    "chart": {
+      "labels": [
+        "A",
+        "B",
+        "C"
+      ],
+      "values": [
+        56.0,
+        58.0,
+        46.0
+      ]
+    },
+    "narrative": "Reference values from an independent SQLite oracle."
+  },
+  "group_sum-08": {
+    "metrics": {
+      "A": 42.0,
+      "B": 69.0,
+      "C": 44.0
+    },
+    "unit": "points",
+    "rows_used": 10,
+    "chart": {
+      "labels": [
+        "A",
+        "B",
+        "C"
+      ],
+      "values": [
+        42.0,
+        69.0,
+        44.0
+      ]
+    },
+    "narrative": "Reference values from an independent SQLite oracle."
+  },
+  "group_sum-09": {
+    "metrics": {
+      "A": 25.0,
+      "B": 29.0,
+      "C": 59.0
+    },
+    "unit": "points",
+    "rows_used": 10,
+    "chart": {
+      "labels": [
+        "A",
+        "B",
+        "C"
+      ],
+      "values": [
+        25.0,
+        29.0,
+        59.0
+      ]
+    },
+    "narrative": "Reference values from an independent SQLite oracle."
+  },
+  "pct_change-00": {
+    "metrics": {
+      "value": -8.333333333333334
+    },
+    "unit": "%",
+    "rows_used": 10,
+    "chart": {
+      "labels": [
+        "value"
+      ],
+      "values": [
+        -8.333333333333334
+      ]
+    },
+    "narrative": "Reference values from an independent SQLite oracle."
+  },
+  "pct_change-01": {
+    "metrics": {
+      "value": 60.0
+    },
+    "unit": "%",
+    "rows_used": 10,
+    "chart": {
+      "labels": [
+        "value"
+      ],
+      "values": [
+        60.0
+      ]
+    },
+    "narrative": "Reference values from an independent SQLite oracle."
+  },
+  "pct_change-02": {
+    "metrics": {
+      "value": -13.043478260869565
+    },
+    "unit": "%",
+    "rows_used": 10,
+    "chart": {
+      "labels": [
+        "value"
+      ],
+      "values": [
+        -13.043478260869565
+      ]
+    },
+    "narrative": "Reference values from an independent SQLite oracle."
+  },
+  "pct_change-03": {
+    "metrics": {
+      "value": 9.090909090909092
+    },
+    "unit": "%",
+    "rows_used": 10,
+    "chart": {
+      "labels": [
+        "value"
+      ],
+      "values": [
+        9.090909090909092
+      ]
+    },
+    "narrative": "Reference values from an independent SQLite oracle."
+  },
+  "pct_change-04": {
+    "metrics": {
+      "value": 600.0
+    },
+    "unit": "%",
+    "rows_used": 10,
+    "chart": {
+      "labels": [
+        "value"
+      ],
+      "values": [
+        600.0
+      ]
+    },
+    "narrative": "Reference values from an independent SQLite oracle."
+  },
+  "pct_change-05": {
+    "metrics": {
+      "value": 61.53846153846154
+    },
+    "unit": "%",
+    "rows_used": 10,
+    "chart": {
+      "labels": [
+        "value"
+      ],
+      "values": [
+        61.53846153846154
+      ]
+    },
+    "narrative": "Reference values from an independent SQLite oracle."
+  },
+  "pct_change-06": {
+    "metrics": {
+      "value": 0.0
+    },
+    "unit": "%",
+    "rows_used": 10,
+    "chart": {
+      "labels": [
+        "value"
+      ],
+      "values": [
+        0.0
+      ]
+    },
+    "narrative": "Reference values from an independent SQLite oracle."
+  },
+  "pct_change-07": {
+    "metrics": {
+      "value": 200.0
+    },
+    "unit": "%",
+    "rows_used": 10,
+    "chart": {
+      "labels": [
+        "value"
+      ],
+      "values": [
+        200.0
+      ]
+    },
+    "narrative": "Reference values from an independent SQLite oracle."
+  },
+  "pct_change-08": {
+    "metrics": {
+      "value": 177.77777777777777
+    },
+    "unit": "%",
+    "rows_used": 10,
+    "chart": {
+      "labels": [
+        "value"
+      ],
+      "values": [
+        177.77777777777777
+      ]
+    },
+    "narrative": "Reference values from an independent SQLite oracle."
+  },
+  "pct_change-09": {
+    "metrics": {
+      "value": 37.5
+    },
+    "unit": "%",
+    "rows_used": 10,
+    "chart": {
+      "labels": [
+        "value"
+      ],
+      "values": [
+        37.5
+      ]
+    },
+    "narrative": "Reference values from an independent SQLite oracle."
+  }
+}
