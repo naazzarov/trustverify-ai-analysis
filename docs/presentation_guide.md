@@ -11,7 +11,7 @@ structured check does not prove that the whole report is true."
 
 ## Live demonstration
 
-1. From the repository root run `python3 -m trustverify.server` and open http://127.0.0.1:8765 .
+1. From the repository root run `python3 -m trustverify.server` and open http://127.0.0.1:8765/#theme=dark .
 2. Choose ratio-02 and Wrong numeric answer. Explain ratio of sums and missing-value exclusion.
 3. Press Verify structured fields. Show the metric discrepancy and its expected value.
 4. Press Recompute from contract. Explain that this uses deterministic computation, not model repair.

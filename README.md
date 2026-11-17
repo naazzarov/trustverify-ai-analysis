@@ -23,18 +23,22 @@ python3 -m trustverify.server
 ```
 
 Open [the local demo](http://127.0.0.1:8765). Choose a fault, verify the report, then recompute.
+The [dark view](http://127.0.0.1:8765/#theme=dark) matches the research presentation.
+
 Try the **unsupported causal prose** example: its structured values pass while its causal
 assertion remains unsupported. This is an intentional demonstration of the tool's boundary.
 
 ## Project deliverables
 
 - [Final report PDF](paper/main.pdf) and [editable LaTeX source](paper/main.tex)
-- [PowerPoint presentation](presentation/TrustVerify-Research-Defense.pptx), [matching PDF slides](presentation/main.pdf) and [speaker notes](docs/presentation_guide.md)
+- [PowerPoint presentation](presentation/TrustVerify-Dark-Defense.pptx), [matching PDF slides](presentation/main.pdf) and [speaker notes](docs/presentation_guide.md)
 - [Project description](docs/project_description.md)
 - [Research protocol](docs/protocol.md), [initial pilot specification](docs/protocol_v1.md) and [dataset card](docs/dataset_card.md)
 - [Course rubric evidence map](docs/course_alignment.md)
 - [Actual recorded results](results/) and raw model requests/responses in `results/raw/` and `results/qwen-1.5b/raw/`
 - [Reliability boundaries](docs/limitations.md)
+
+![Presentation design overview](presentation/overview.png)
 
 ## Measured results
 
@@ -155,7 +159,7 @@ xelatex main
 
 The report adapts the supplied SCU course-paper template in English: A4 paper, 2.5 cm side margins, 2.75 cm top and 3 cm bottom margins, 12-point text, 1.5 line spacing, centered section headings and GB/T 7714 numerical references. The formal cover uses English labels. Public copies contain the author name; the submission edition also includes the student number.
 
-The 16-slide research presentation includes editable charts, tables, diagrams and speaker notes. Its PDF edition preserves the presentation layout. Figures trace to the saved experiment results.
+The 16-slide research presentation uses a dark navy palette with syntax-highlighted JSON, editable charts, tables, diagrams and speaker notes. Its PDF edition preserves the presentation layout. Figures trace to the saved experiment results.
 
 ## Research foundations
 
