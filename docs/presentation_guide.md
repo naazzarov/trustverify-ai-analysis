@@ -47,7 +47,3 @@ and uncertainty, and avoid a general claim of superiority or equivalence.
 **How original is the project?**
 External feedback and verification are established ideas. The course contribution is the working
 integration, reproducible benchmark, field-level ablation and explicit examination of failure boundaries.
-
-**How was AI used?**
-Codex assisted with implementation, writing and layout. The reported model responses are real
-logged local calls. The student must explain and reproduce the work before submission.

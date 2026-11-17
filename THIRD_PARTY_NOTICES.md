@@ -1,13 +1,6 @@
 # Third-party notices
 
-The SCU report formatting and the two SCU title images derive from the supplied
-scu_course_paper_template, whose README attributes kevinleeex/scu_thesis_2020:
-https://github.com/kevinleeex/scu_thesis_2020 .
-
-The supplied README calls its licence GPL-3.0, but the actual LICENSE file is the
-**GNU Affero General Public License, version 3**. This repository preserves that file
-verbatim and adopts AGPL-3.0-only for the combined project. Modified template portions
-are identified in paper/main.tex. University names/images do not imply endorsement.
+The project retains the AGPL-3.0 licence inherited from the initial supplied course-paper template. The current English report and presentation use a new layout; the earlier template attribution is retained for provenance: https://github.com/kevinleeex/scu_thesis_2020 . University names identify the course affiliation.
 
 No lecturer-owned PDF or presentation is redistributed. docs/source_manifest.json
 identifies the materials used to understand the course. Relevant course requirements

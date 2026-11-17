@@ -1,56 +1,39 @@
 % !TEX program = xelatex
-% SCU course-paper template adapted for this project; see THIRD_PARTY_NOTICES.md.
 \input{format.tex}
 \input{results_macros.tex}
-\papertype{课程论文}
-\coursename{新型软件技术}
-\papertitle{AI数据分析的可执行校验}
-\college{}
-\majorname{}
-\studentname{\fontsize{10.5}{13}\selectfont BAHODIR KODIRJON UGLI NAZAROV}
-\studentid{\small Omitted from public copy}
-\teachername{胡大裟博士}
-\termpaper{2026--2027 学年第 1 学期}
+\newcommand{\AuthorName}{BAHODIR KODIRJON UGLI NAZAROV}
+\newcommand{\StudentID}{}
+\IfFileExists{identity.tex}{\input{identity.tex}}{}
+\hypersetup{pdftitle={TrustVerify: Executable Verification of AI-Generated Data Analysis},pdfauthor={BAHODIR KODIRJON UGLI NAZAROV}}
 \begin{document}
 \hypersetup{pageanchor=false}
-\makecover
+\begin{titlepage}
+\thispagestyle{empty}
+{\sffamily\small\bfseries\color{Cobalt}SICHUAN UNIVERSITY}\par
+\vspace{5mm}
+{\sffamily\small\color{Muted}NEW SOFTWARE TECHNOLOGY}\par
+\vspace{37mm}
+{\fontsize{39}{43}\selectfont\bfseries\color{Ink}TrustVerify}\par
+\vspace{8mm}
+{\fontsize{23}{29}\selectfont\color{Ink}Executable Verification of\par AI-Generated Data Analysis}\par
+\vspace{10mm}
+{\sffamily\normalsize\color{Muted}FINAL PROJECT REPORT}\par
+\vspace{20mm}
+{\large\AuthorName}\par
+\vspace{4mm}
+\ifdefempty{\StudentID}{}{{\sffamily\small Student ID: \StudentID}\par}
+\vspace{10mm}
+{\sffamily\normalsize Instructor: Dr. Hu Dasha}\par
+\vfill
+{\sffamily\small\color{Muted}November 2026}\par
+\end{titlepage}
+\setcounter{page}{1}
 \hypersetup{pageanchor=true}
-\thispagestyle{plain}
-\section*{摘\hspace{1em}要}
-大语言模型生成的数据分析可能同时包含计算错误、单位错误、有效样本数错误和图表数据不一致。
-本文实现 TrustVerify，依据人工确认的分析契约，对结构化分析结果执行独立重算与逐字段校验。
-系统支持六类描述性统计操作，并在无法支持的输入上拒绝给出校验结论。
-实验区分受控错误注入与真实本地模型调用：前者用于检验校验层的覆盖范围，后者比较初始生成、
-自我检查及可执行反馈修正。参考答案由独立的 SQLite 实现产生，生产校验器使用 Decimal 运算。
-受控实验中，完整校验器检测到全部 288 个预设结构化错误，对 48 个正确报告未产生误报；
-但全部 48 个仅含无依据因果叙述的报告仍通过结构化检查。真实模型实验中，1.5B 模型接受反馈后，
-24 项任务中有 19 项的数值映射正确，但完整报告仍全部失败。该结果说明，通过数值与格式校验
-不等同于整篇报告可信。本文同时公开模型原始响应、实验设置及复现代码，讨论契约错误、
-叙述真实性、模型能力与小样本评估等限制。
-
-\par\vspace{1em}
-\noindent{\heiti 关键词：}大语言模型；数据分析；可执行校验；错误修正；可复现评估
-
-\newpage
 \section*{Abstract}
-AI-generated analyses can contain arithmetic errors while presenting plausible prose.
-TrustVerify recomputes six supported descriptive operations from a human-approved contract
-and checks metric values, units, valid-row counts and chart data. We distinguish a controlled
-mutation study from actual local-model generation. Sixty synthetic datasets provide 12
-development and 48 test tasks, with an independent SQLite oracle. Across 336 injected faulty
-reports, full verification detects 288 supported structured faults and misses all 48
-unsupported causal narratives, with no false alarms on 48 clean reports. An actual-model
-pilot compares initial generation, one self-review call and one executable-feedback repair
-call on 24 paired tasks per model. The 0.5B model achieves no fully correct structured
-reports in any generation condition. The 1.5B model also produces no fully correct reports, although executable feedback
-corrects the numeric metric mapping on 19 of 24 tasks in an exploratory decomposition. Deterministic recomputation is sufficient for the approved contracts
-and is reported separately from model improvement. The project contributes a working
-prototype, field-level ablations, preserved raw calls and explicit reliability boundaries.
-\par\vspace{1em}
-\noindent\textbf{Keywords:} language models; data analysis; executable verification; feedback; reproducibility
+AI-generated data analyses may contain correct-looking calculations alongside incorrect units, row counts or chart data. This study develops TrustVerify, an executable verifier for six descriptive operations under an approved analysis contract. A reproducible benchmark contains 60 synthetic datasets with an independent SQLite oracle. In 336 controlled faulty reports, full verification detects 288 structured faults (85.7\%) and misses 48 unsupported causal narratives, with zero false alarms on 48 clean reports. A separate pilot records 144 calls to two local Qwen2.5 models. Executable feedback produces correct numerical mappings on 19 of 24 tasks for the 1.5B model, compared with none under self-review. Full-report correctness remains zero because other fields still fail. Deterministic recomputation matches the oracle on all supported generated tasks. The results show that computational evidence can repair selected claims, while reliable report production also requires explicit output validation.
 
-\newpage{\small\linespread{1.05}\selectfont\tableofcontents}
-\newpage
+\noindent\textbf{Keywords:} data analysis; language models; executable verification; structured reporting; reproducibility
+
 \section{Introduction}
 Language models provide an accessible interface for data analysis, but a fluent explanation
 does not establish that its calculations are correct. A report may use the wrong denominator,
@@ -69,14 +52,11 @@ Three research questions organize the study. RQ1 asks which error classes differ
 layers detect. RQ2 asks whether executable feedback improves structured correctness compared
 with an equal-call self-review condition. RQ3 asks what role remains for the model when the
 analysis contract is already explicit. The third question is essential: direct computation is
-already sufficient for the six implemented operations. Any successful tool condition must
-not be misrepresented as evidence that an LLM learned to reason more accurately.
+already sufficient for the six implemented operations. The evaluation therefore separates conventional execution from model repair.
 
 The contributions are a dependency-free Python prototype, a reproducible synthetic benchmark
 with an independent oracle, a controlled ablation, actual local-model response logs, and a
-demonstration of both successful checks and failure boundaries. This is a course-scale
-engineering and evaluation study. External feedback and arithmetic verification are established
-ideas; the work does not claim a new general verification theory or a new language model.
+demonstration of both successful checks and failure boundaries. The implementation combines field-level verification with an independent evaluation oracle and a reproducible comparison of review strategies.
 
 \section{Related work}
 \subsection{Evaluating data-science systems}
@@ -239,12 +219,12 @@ all 288 supported structured mutations, while missing all 48 causal-narrative mu
 Figure~\ref{fig:coverage} shows the aggregate ablation and Figure~\ref{fig:matrix} separates
 the fault categories.
 
-\begin{figure}[H]\centering
+\begin{figure}[!htbp]\centering
 \includegraphics[width=0.97\textwidth]{figures/fault_coverage.pdf}
 \caption{Detection of controlled injected faults. The denominator includes the intentionally
 unsupported narrative mutation. These are checker-coverage results, not natural model error rates.}
 \label{fig:coverage}\end{figure}
-\begin{figure}[H]\centering
+\begin{figure}[!htbp]\centering
 \includegraphics[width=0.98\textwidth]{figures/fault_matrix.pdf}
 \caption{Detection counts by field and profile. Each cell contains 48 controlled cases.}
 \label{fig:matrix}\end{figure}
@@ -255,8 +235,9 @@ a present chart with wrong values. Full checking adds independent evidence for t
 However, because the mutations directly exercise designed checks, perfect supported-fault
 detection is a coverage observation, not proof against arbitrary failures.
 
+\FloatBarrier
 \subsection{Model outcomes}
-\begin{table}[H]\centering\small
+\begin{table}[!htbp]\centering\small
 \caption{Measured actual-model pilot. Each generation condition uses 24 paired tasks.
 Intervals are descriptive Wilson 95\% intervals for structured correctness.}
 \label{tab:live}
@@ -264,9 +245,9 @@ Intervals are descriptive Wilson 95\% intervals for structured correctness.}
 \end{table}
 \ComparisonText
 
-\begin{figure}[H]\centering
+\begin{figure}[!htbp]\centering
 \includegraphics[width=0.98\textwidth]{figures/live_accuracy.pdf}
-\caption{Observed structured correctness for actual local-model responses. Whiskers show
+\caption{Primary structured correctness for both tested local models. Whiskers show
 Wilson 95\% intervals. Deterministic recomputation scores 24/24 separately for each task set.}
 \label{fig:live}\end{figure}
 
@@ -280,6 +261,18 @@ effect visible instead of silently removing it from the evaluation.
 
 \LargeErrorText
 
+Figure~\ref{fig:numeric} decomposes numerical correctness by operation. Feedback repairs all sum, mean, weighted-mean and ratio tasks, three of four percentage-change tasks, and none of the grouped-sum tasks. Figure~\ref{fig:fields} shows why those numerical gains do not produce fully correct reports: chart consistency remains the weakest output field.
+\begin{figure}[!htbp]\centering
+\includegraphics[width=0.98\textwidth]{figures/numeric_by_family.pdf}
+\caption{Exploratory numerical correctness for Qwen2.5 1.5B. Each operation contains four held-out tasks. This endpoint excludes unit, row-count and chart requirements.}
+\label{fig:numeric}\end{figure}
+\begin{figure}[!htbp]\centering
+\includegraphics[width=0.98\textwidth]{figures/field_compliance.pdf}
+\caption{Independent field compliance for Qwen2.5 1.5B. A report must satisfy all fields to meet the primary endpoint. Numerical mappings include exact metric-key agreement.}
+\label{fig:fields}\end{figure}
+
+
+\FloatBarrier
 \subsection{What deterministic execution establishes}
 Deterministic recomputation matches the independent oracle on all 60 generated tasks,
 including all 48 held-out checker tasks and the 24-task pilot subset. This is an expected
@@ -290,8 +283,7 @@ known, conventional software is the appropriate source of the result.
 
 The model may still be useful for proposing a readable interface or a narrative, but those
 roles require additional validation. Our reported correctness metric cannot evaluate them.
-It would be misleading to translate 24/24 deterministic accuracy into a claim that the
-entire assistant is fully reliable.
+The deterministic score applies to supported computations under the approved contract.
 
 \section{Threats to validity and limitations}
 \subsection{Internal validity}
@@ -346,28 +338,15 @@ The first command runs the tests, the second regenerates data, the third reprodu
 controlled results, the fourth checks saved model evidence without new calls, and the
 last starts the demonstration. The README gives full model and manuscript instructions.
 
-The report adapts the supplied SCU format, preserving A4 geometry, bilingual abstracts,
-section numbering and GB/T 7714 references. The supplied licence file is AGPL-3.0 despite
-a GPL reference in its README; the original file and attribution are retained. Lecturer
-slides are identified in a source manifest and are not redistributed.
-
 \section{Conclusion}
-TrustVerify provides executable evidence for a deliberately limited set of analysis claims.
-The ablation shows how schema, unit, row-count and chart checks expand coverage beyond
-numeric comparison. The causal-narrative and wrong-contract examples demonstrate why that
-coverage cannot establish whole-report truth. In the 1.5B pilot, an exploratory decomposition finds that executable feedback produces
-19/24 correct numeric mappings, compared with 0/24 for self-review, while full-report
-correctness remains 0/24 in both branches. The actual-model comparison therefore exposes
-the gap between arithmetic repair and complete-report compliance. The deterministic
-baseline shows that conventional computation already solves approved descriptive contracts.
-The practical outcome is a reproducible checking tool with inspectable failure boundaries.
+TrustVerify demonstrates how independent execution can verify selected analysis claims.
+Full checking detects 288 of 336 controlled faults, including all supported structured
+mutations, while unsupported causal narratives remain unchecked. In the 1.5B pilot,
+feedback yields 19/24 correct numeric mappings versus 0/24 under self-review; complete-report
+correctness remains 0/24. The findings distinguish arithmetic repair from report compliance
+and support gating generated reports with explicit field-level checks.
 
-\par\smallskip\noindent\textbf{AI assistance and author responsibility.}\quad
-Codex assisted with implementation, experiment execution, drafting and layout. Reported
-model outputs are preserved local Ollama calls; controlled errors are synthetic. The author
-must reproduce and understand the work before submission. No instructor approval or grade
-is claimed.
-
-\clearpage
-{\zihao{5}\bibliographystyle{gbt7714-numerical}\bibliography{refs}}
+\FloatBarrier
+\bibliographystyle{unsrtnat}
+\bibliography{refs}
 \end{document}

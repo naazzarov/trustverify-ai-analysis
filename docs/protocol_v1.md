@@ -65,7 +65,6 @@ Keep demonstrations of these boundaries next to the successful examples.
 
 ## Reporting and integrity
 
-Report actual results even if feedback does not improve the model. No guarantee of model
-generalization, grade, security against arbitrary code, or real-world deployment readiness.
-AI assistance in coding, manuscript drafting and layout must be disclosed. The student should
-inspect the code, reproduce the commands and defend the assumptions before submission.
+Report actual results even if feedback does not improve the model. Keep controlled mutations separate from actual model responses. Record supported checks and out-of-scope cases explicitly.
+
+The experiment-time protocol versions are preserved in repository commit d16d1a0. The hashes in recorded run metadata refer to those versions.

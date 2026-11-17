@@ -17,8 +17,7 @@ All experiments were executed on 10 November 2026. Model-call timestamps are UTC
 - `live_progress.json` files are complete task-level checkpoints retained for transparency.
   `*-run.log` files are captured orchestrator progress, not separate experiments.
 
-The original protocol is `docs/protocol_v1.md`; its hash matches the first pilot metadata.
-`docs/protocol.md` includes the later capacity-check amendment. This project was not
+Experiment-time protocol versions are preserved in repository commit `d16d1a0`; the hashes in the recorded metadata identify those versions. Current `docs/protocol_v1.md` and `docs/protocol.md` retain the experimental specification, including the capacity-check amendment, with editorial cleanup. This project was not
 externally preregistered. Model-call count and output-token limits are matched between
 review branches, but available computation and prompt length differ.
 

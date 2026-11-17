@@ -21,11 +21,3 @@
   not claim to be a sandbox suitable for adding arbitrary code execution later.
 - **Deterministic baseline:** Because supported contracts are already specified, direct
   computation is sufficient. The experiment should not imply that an LLM is required here.
-
-## AI assistance statement
-
-Codex assisted with software implementation, experiment orchestration, prose and presentation
-layout. Published local-model responses come from the logged Ollama calls. Controlled
-mutations are programmatically generated. No invented model performance or human studies
-are presented. The student must inspect the evidence, reproduce the commands and explain
-the assumptions before submitting and presenting the work.

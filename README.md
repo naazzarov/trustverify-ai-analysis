@@ -28,17 +28,13 @@ assertion remains unsupported. This is an intentional demonstration of the tool'
 
 ## Project deliverables
 
-- [SCU-format final report PDF](paper/main.pdf) and [editable LaTeX source](paper/main.tex)
-- [Editable presentation](presentation/TrustVerify-final.pptx) and [speaker/demo guide](docs/presentation_guide.md)
+- [Final report PDF](paper/main.pdf) and [editable LaTeX source](paper/main.tex)
+- [PowerPoint presentation](presentation/TrustVerify-2026.pptx), [PDF slides](presentation/main.pdf), [LaTeX slides](presentation/main.tex) and [speaker notes](docs/presentation_guide.md)
 - [Project description](docs/project_description.md)
-- [Research protocol](docs/protocol.md), [original pilot protocol](docs/protocol_v1.md) and [dataset card](docs/dataset_card.md)
+- [Research protocol](docs/protocol.md), [initial pilot specification](docs/protocol_v1.md) and [dataset card](docs/dataset_card.md)
 - [Course rubric evidence map](docs/course_alignment.md)
 - [Actual recorded results](results/) and raw model requests/responses in `results/raw/` and `results/qwen-1.5b/raw/`
-- [Reliability boundaries and AI disclosure](docs/limitations.md)
-
-The public report omits the student ID. College and program fields require author confirmation.
-The submission copy supplied separately contains the provided student ID. No grade or instructor
-approval is implied by this repository.
+- [Reliability boundaries](docs/limitations.md)
 
 ## Measured results
 
@@ -59,7 +55,7 @@ For the 1.5B model, correct numeric mappings increase from **0/24 with self-revi
 
 ![Checking-layer ablation](paper/figures/fault_coverage.png)
 
-![Actual-model pilot](paper/figures/live_accuracy.png)
+![Numerical correctness by operation](paper/figures/numeric_by_family.png)
 
 ## How verification works
 
@@ -147,7 +143,7 @@ python3 -m venv .venv
 .venv/bin/python scripts/make_figures.py
 ```
 
-Compile the report using the supplied template's XeLaTeX workflow:
+Compile the English report and the LaTeX presentation with XeLaTeX:
 
 ```bash
 cd paper
@@ -155,14 +151,12 @@ xelatex main
 bibtex main
 xelatex main
 xelatex main
+cd ../presentation
+xelatex main
+xelatex main
 ```
 
-The delivered PDF was compiled with Tectonic's XeTeX-based engine and checked visually.
-The SCU cover, A4 geometry, bilingual abstracts and GB/T 7714 references are retained.
-The editable slide deck can be opened directly in PowerPoint. Its authoring source uses
-Codex's bundled `@oai/artifact-tool`, which is not a public npm dependency. Rebuilding the
-PPTX therefore requires that runtime plus `PRESENTATION_SKILL_DIR`, `RUNTIME_NODE_MODULES` and `RUNTIME_PYTHON`.
-The application, experiments, figures and manuscript do not depend on that authoring runtime.
+The report uses an English academic layout on A4 paper. The presentation is available as an editable PowerPoint file and a PDF, with a LaTeX/Beamer source for the PDF edition. Figures are regenerated directly from the saved experiment results. Public report copies contain the author name; the submission edition also includes the student number.
 
 ## Research foundations
 
@@ -179,7 +173,3 @@ These works motivate the design. Their benchmark scores are not directly compara
 the GPL wording in its README. Its licence and upstream attribution are preserved in
 [third-party notices](THIRD_PARTY_NOTICES.md). Model weights and lecturer-owned slides
 are not redistributed. University branding does not imply endorsement.
-
-Codex assisted with code, experiment orchestration, writing and layout. All reported
-model responses are actual logged calls. The author should inspect, reproduce and be
-able to explain the work before submission and presentation.

@@ -1,0 +1,67 @@
+{
+  "fault_detection": {
+    "detected": [
+      96,
+      144,
+      288
+    ],
+    "total": 336,
+    "supported": 288,
+    "clean": 48,
+    "false_positives": 0
+  },
+  "numeric_by_family": {
+    "sum": 4,
+    "mean": 4,
+    "weighted_mean": 4,
+    "ratio": 4,
+    "pct_change": 3,
+    "group_sum": 0
+  },
+  "fields": {
+    "initial": [
+      0,
+      22,
+      14,
+      0
+    ],
+    "self_review": [
+      0,
+      22,
+      14,
+      0
+    ],
+    "feedback_repair": [
+      19,
+      22,
+      22,
+      4
+    ]
+  },
+  "numeric_correct": {
+    "0.5B": {
+      "initial": 0,
+      "self_review": 0,
+      "feedback_repair": 0,
+      "deterministic_recompute": 24
+    },
+    "1.5B": {
+      "initial": 0,
+      "self_review": 0,
+      "feedback_repair": 19,
+      "deterministic_recompute": 24
+    }
+  },
+  "primary": {
+    "0.5B": {
+      "initial": 0,
+      "self_review": 0,
+      "feedback_repair": 0
+    },
+    "1.5B": {
+      "initial": 0,
+      "self_review": 0,
+      "feedback_repair": 0
+    }
+  }
+}

@@ -15,5 +15,13 @@ paper/*.bbl
 paper/*.blg
 paper/*.synctex.gz
 node_modules/
-.codex-finalizer/
 .build/
+
+paper/identity.tex
+presentation/*.aux
+presentation/*.log
+presentation/*.nav
+presentation/*.out
+presentation/*.snm
+presentation/*.toc
+presentation/*.vrb

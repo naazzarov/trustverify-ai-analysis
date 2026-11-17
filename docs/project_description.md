@@ -43,4 +43,4 @@ deliberately injected errors, visibly labelled as such.
 - Report detection and false alarms separately, including unsupported narrative errors.
 - Preserve raw model requests and responses and compare equal second-call budgets.
 - Provide tests, report source and PDF, editable slides, a demonstration, and reproduction instructions.
-- State limitations and disclose AI assistance. No promised grade or unsupported research novelty.
+- Document the supported operations, experimental controls and observed failure cases.

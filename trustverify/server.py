@@ -24,8 +24,12 @@ def make_handler(root):
             elif self.path=="/api/tasks":self.send(200,list(tasks.values()))
             elif self.path=="/api/results":
                 live=root/"results/live_pilot.json"
+                large=root/"results/qwen-1.5b/live_pilot.json"
+                diagnostics=root/"results/secondary_diagnostics.json"
                 self.send(200,{"faults":json.loads((root/"results/fault_injection.json").read_text())["profiles"],
-                               "live":json.loads(live.read_text())["summary"] if live.exists() else None})
+                               "live":json.loads(live.read_text())["summary"] if live.exists() else None,
+                               "large":json.loads(large.read_text())["summary"] if large.exists() else None,
+                               "numeric":json.loads(diagnostics.read_text())["models"] if diagnostics.exists() else None})
             else:self.send(404,{"error":"Unknown route"})
         def do_POST(self):
             if self.path not in {"/api/example","/api/verify","/api/repair"}:
