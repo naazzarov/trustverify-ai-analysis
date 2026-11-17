@@ -8,7 +8,7 @@ This is a checklist of evidence, not a self-awarded score.
 | Topic selection quality | 20 | Concrete analytics reliability problem; project_description.md; bounded research questions |
 | Literature application | 10 | paper/refs.bib; report related work; primary-source links and discussion |
 | Research and investigation | 20 | Frozen protocol, independent SQL oracle, actual model logs, ablations, paired analysis |
-| Report format | 10 | English academic cover and abstract, A4 geometry, numbered figures/equations, linked references and editable LaTeX source |
+| Report format | 10 | English adaptation of the supplied SCU template, 12-point text, 1.5 line spacing, numbered figures/equations, GB/T 7714 references and editable LaTeX source |
 | Report quality | 20 | Methods, actual results, error analysis, threats to validity and reproducibility instructions |
 | Innovation | 10 | Structured claim verification across several fields, execution feedback and explicit blind-spot experiment |
 | Workload and attitude | 10 | Working prototype, tests, raw results, repeatable scripts and demonstration |

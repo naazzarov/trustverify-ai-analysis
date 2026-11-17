@@ -71,5 +71,10 @@
   {
     "filename": "scu_course_paper_template/figures/SCU_TITLE.png",
     "original_sha256": "4c4c179c735583505f1b66b0b4606be98a1658e7bc32c622560dd4967c0cbf0d"
+  },
+  {
+    "filename": "scu_course_paper_template.zip",
+    "sha256": "4174338498c0f14e815e57b3bc60ff5b866871ec1d39cf101f123ce915377f08",
+    "note": "Report layout reference: English adaptation of cover fields, margins, line spacing, headings, numbering and bibliography style."
   }
 ]

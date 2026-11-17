@@ -1,6 +1,6 @@
 # Third-party notices
 
-The project retains the AGPL-3.0 licence inherited from the initial supplied course-paper template. The current English report and presentation use a new layout; the earlier template attribution is retained for provenance: https://github.com/kevinleeex/scu_thesis_2020 . University names identify the course affiliation.
+The project retains the AGPL-3.0 licence inherited from the initial supplied course-paper template. The report adapts the supplied template’s cover structure, page geometry, typography and reference format into English. Template attribution is retained: https://github.com/kevinleeex/scu_thesis_2020 . University names identify the course affiliation.
 
 No lecturer-owned PDF or presentation is redistributed. docs/source_manifest.json
 identifies the materials used to understand the course. Relevant course requirements

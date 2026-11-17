@@ -9,31 +9,38 @@
 \hypersetup{pageanchor=false}
 \begin{titlepage}
 \thispagestyle{empty}
-{\sffamily\small\bfseries\color{Cobalt}SICHUAN UNIVERSITY}\par
-\vspace{5mm}
-{\sffamily\small\color{Muted}NEW SOFTWARE TECHNOLOGY}\par
-\vspace{37mm}
-{\fontsize{39}{43}\selectfont\bfseries\color{Ink}TrustVerify}\par
-\vspace{8mm}
-{\fontsize{23}{29}\selectfont\color{Ink}Executable Verification of\par AI-Generated Data Analysis}\par
-\vspace{10mm}
-{\sffamily\normalsize\color{Muted}FINAL PROJECT REPORT}\par
-\vspace{20mm}
-{\large\AuthorName}\par
-\vspace{4mm}
-\ifdefempty{\StudentID}{}{{\sffamily\small Student ID: \StudentID}\par}
-\vspace{10mm}
-{\sffamily\normalsize Instructor: Dr. Hu Dasha}\par
+\begin{center}
+\vspace*{1cm}
+{\fontsize{32}{38}\selectfont\bfseries\color{SCURed}SICHUAN UNIVERSITY}\par
+\vspace{1.5cm}
+{\fontsize{26}{32}\selectfont\sffamily\bfseries Course Paper}\par
+\vspace{2cm}
+{\fontsize{20}{26}\selectfont\bfseries TrustVerify}\par
+\vspace{1cm}
+\begingroup\setstretch{1.1}\renewcommand{\arraystretch}{1.2}
+\begin{tabular}{@{}r@{\hspace{.7cm}}l@{}}
+\coverfield{Project title}{Executable Verification of\\AI-Generated Data Analysis}
+\coverfield{Course}{New Software Technology}
+\coverfield{Student}{\small\AuthorName}
+\ifdefempty{\StudentID}{}{\coverfield{Student ID}{\StudentID}}
+\coverfield{Instructor}{Dr. Hu Dasha}
+\end{tabular}
+\endgroup
 \vfill
-{\sffamily\small\color{Muted}November 2026}\par
+{\large Academic Year 2026--2027, Semester 1}\par
+\vspace{4mm}{\normalsize November 2026}\par
+\vspace{1cm}
+\end{center}
 \end{titlepage}
 \setcounter{page}{1}
 \hypersetup{pageanchor=true}
+\thispagestyle{plain}
 \section*{Abstract}
 AI-generated data analyses may contain correct-looking calculations alongside incorrect units, row counts or chart data. This study develops TrustVerify, an executable verifier for six descriptive operations under an approved analysis contract. A reproducible benchmark contains 60 synthetic datasets with an independent SQLite oracle. In 336 controlled faulty reports, full verification detects 288 structured faults (85.7\%) and misses 48 unsupported causal narratives, with zero false alarms on 48 clean reports. A separate pilot records 144 calls to two local Qwen2.5 models. Executable feedback produces correct numerical mappings on 19 of 24 tasks for the 1.5B model, compared with none under self-review. Full-report correctness remains zero because other fields still fail. Deterministic recomputation matches the oracle on all supported generated tasks. The results show that computational evidence can repair selected claims, while reliable report production also requires explicit output validation.
 
 \noindent\textbf{Keywords:} data analysis; language models; executable verification; structured reporting; reproducibility
 
+\clearpage
 \section{Introduction}
 Language models provide an accessible interface for data analysis, but a fluent explanation
 does not establish that its calculations are correct. A report may use the wrong denominator,
@@ -347,6 +354,6 @@ correctness remains 0/24. The findings distinguish arithmetic repair from report
 and support gating generated reports with explicit field-level checks.
 
 \FloatBarrier
-\bibliographystyle{unsrtnat}
+\bibliographystyle{gbt7714-numerical}
 \bibliography{refs}
 \end{document}

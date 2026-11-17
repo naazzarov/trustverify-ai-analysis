@@ -1,6 +1,6 @@
 # TrustVerify
 
-**Trust but Verify: Detecting and Repairing Errors in AI-Generated Data Analysis**
+**Executable Verification of AI-Generated Data Analysis**
 
 An individual New Software Technology course project at Sichuan University by
 **BAHODIR KODIRJON UGLI NAZAROV**. Instructor: Dr. Hu Dasha.
@@ -9,7 +9,7 @@ TrustVerify checks selected structured claims against a human-approved analysis 
 It recomputes numbers and checks units, valid-row counts and chart data. A passing check
 does **not** certify the narrative, data quality, choice of analysis or entire report.
 
-![Working local verification interface](demo/screenshot.png)
+![TrustVerify research presentation](presentation/preview.png)
 
 ## Run locally
 
@@ -29,7 +29,7 @@ assertion remains unsupported. This is an intentional demonstration of the tool'
 ## Project deliverables
 
 - [Final report PDF](paper/main.pdf) and [editable LaTeX source](paper/main.tex)
-- [PowerPoint presentation](presentation/TrustVerify-2026.pptx), [PDF slides](presentation/main.pdf), [LaTeX slides](presentation/main.tex) and [speaker notes](docs/presentation_guide.md)
+- [PowerPoint presentation](presentation/TrustVerify-Research-Defense.pptx), [matching PDF slides](presentation/main.pdf) and [speaker notes](docs/presentation_guide.md)
 - [Project description](docs/project_description.md)
 - [Research protocol](docs/protocol.md), [initial pilot specification](docs/protocol_v1.md) and [dataset card](docs/dataset_card.md)
 - [Course rubric evidence map](docs/course_alignment.md)
@@ -143,7 +143,7 @@ python3 -m venv .venv
 .venv/bin/python scripts/make_figures.py
 ```
 
-Compile the English report and the LaTeX presentation with XeLaTeX:
+Compile the English report with XeLaTeX and BibTeX:
 
 ```bash
 cd paper
@@ -151,12 +151,11 @@ xelatex main
 bibtex main
 xelatex main
 xelatex main
-cd ../presentation
-xelatex main
-xelatex main
 ```
 
-The report uses an English academic layout on A4 paper. The presentation is available as an editable PowerPoint file and a PDF, with a LaTeX/Beamer source for the PDF edition. Figures are regenerated directly from the saved experiment results. Public report copies contain the author name; the submission edition also includes the student number.
+The report adapts the supplied SCU course-paper template in English: A4 paper, 2.5 cm side margins, 2.75 cm top and 3 cm bottom margins, 12-point text, 1.5 line spacing, centered section headings and GB/T 7714 numerical references. The formal cover uses English labels. Public copies contain the author name; the submission edition also includes the student number.
+
+The 16-slide research presentation includes editable charts, tables, diagrams and speaker notes. Its PDF edition preserves the presentation layout. Figures trace to the saved experiment results.
 
 ## Research foundations
 

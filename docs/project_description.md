@@ -1,6 +1,6 @@
 # Project description
 
-**Title:** Trust but Verify: Detecting and Repairing Errors in AI-Generated Data Analysis
+**Title:** TrustVerify: Executable Verification of AI-Generated Data Analysis
 
 **Author:** BAHODIR KODIRJON UGLI NAZAROV  
 **Course:** New Software Technology, Sichuan University  
