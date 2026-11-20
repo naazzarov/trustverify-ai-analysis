@@ -1,0 +1,100 @@
+{
+  "request_sha256": "3c9a401f1d0bac9c6b416fd8f36e17b05fb2e71f09d79b42d51f694f1339cbff",
+  "context_sha256": "b7e0c9673a79e1dd812627ada361f80f24e30c5c9870987fc18f59544536b4cc",
+  "response_sha256": "63c185ee45c0b9f91c23817bbbb9c99762d0b64f0364cf81f51a141bf22fc0e6",
+  "request": {
+    "model": "qwen2.5:1.5b",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a careful data analyst. Follow the approved contract exactly.\nReturn ONLY one JSON object matching the schema below.\nUse metric key \"value\" for a single answer, or group labels for grouped answers.\nunit must equal the exact contract unit. rows_used counts complete observations.\nChart labels must be metric keys; chart values must match those metric values.\nNarrative must be one short descriptive sentence. Do not claim causation.\nBlank CSV cells are missing, not zero. Do not round intermediate calculations.\nOutput fractional numeric results to at least six decimal places.\nRequired JSON schema (structure only; it contains no reference answer):\n{\"additionalProperties\":false,\"properties\":{\"chart\":{\"additionalProperties\":false,\"properties\":{\"labels\":{\"items\":{\"type\":\"string\"},\"minItems\":1,\"type\":\"array\"},\"values\":{\"items\":{\"type\":\"number\"},\"minItems\":1,\"type\":\"array\"}},\"required\":[\"labels\",\"values\"],\"type\":\"object\"},\"metrics\":{\"additionalProperties\":{\"type\":\"number\"},\"minProperties\":1,\"type\":\"object\"},\"narrative\":{\"maxLength\":160,\"type\":\"string\"},\"rows_used\":{\"minimum\":0,\"type\":\"integer\"},\"unit\":{\"type\":\"string\"}},\"required\":[\"metrics\",\"unit\",\"rows_used\",\"chart\",\"narrative\"],\"type\":\"object\"}"
+      },
+      {
+        "role": "user",
+        "content": "Question: Sum population across the listed countries in 2024.\nApproved contract: {\"op\": \"sum\", \"column\": \"population\", \"unit\": \"people\"}\nCSV:\ncountry,year,population,urban_population,urban_share,region\nARG,2024,45696159,42165780,92.274233,LCN\nBGD,2024,173562364,56717264,32.678320,SAS\nCOL,2024,52886363,41526944,78.521081,LCN\nETH,2024,132059767,31195533,23.622284,SSF\nGBR,2024,69281000,57671551,83.242954,ECS\nGEO,2024,3812518,2328646,61.078951,ECS\nITA,2024,58952704,41033884,69.604753,ECS\nJPN,2024,123975371,114293108,92.190172,EAS\nLKA,2024,21916000,4448882,20.299699,SAS\nTUR,2024,85518661,76406060,89.344313,ECS\nVNM,2024,100987686,38870231,38.490070,EAS\nZAF,2024,64007187,40767329,63.691799,SSF\n"
+      }
+    ],
+    "stream": false,
+    "format": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "metrics",
+        "unit",
+        "rows_used",
+        "chart",
+        "narrative"
+      ],
+      "properties": {
+        "metrics": {
+          "type": "object",
+          "minProperties": 1,
+          "additionalProperties": {
+            "type": "number"
+          }
+        },
+        "unit": {
+          "type": "string"
+        },
+        "rows_used": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "chart": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "labels",
+            "values"
+          ],
+          "properties": {
+            "labels": {
+              "type": "array",
+              "minItems": 1,
+              "items": {
+                "type": "string"
+              }
+            },
+            "values": {
+              "type": "array",
+              "minItems": 1,
+              "items": {
+                "type": "number"
+              }
+            }
+          }
+        },
+        "narrative": {
+          "type": "string",
+          "maxLength": 160
+        }
+      }
+    },
+    "options": {
+      "temperature": 0,
+      "seed": 31415,
+      "num_ctx": 4096,
+      "num_predict": 512
+    },
+    "keep_alive": "30m"
+  },
+  "response": {
+    "model": "qwen2.5:1.5b",
+    "created_at": "2026-11-20T11:00:46.107012Z",
+    "message": {
+      "role": "assistant",
+      "content": "{\n  \"metrics\": {\n    \"value\": 123975371\n  },\n  \"unit\": \"people\",\n  \"rows_used\": 11,\n  \"chart\": {\n    \"labels\": [\n      \"ARG\",\n      \"BGD\",\n      \"COL\",\n      \"ETH\",\n      \"GBR\",\n      \"GEO\",\n      \"ITA\",\n      \"JPN\",\n      \"LKA\",\n      \"TUR\",\n      \"VNM\",\n      \"ZAF\"\n    ],\n    \"values\": [\n      45696159,\n      173562364,\n      52886363,\n      132059767,\n      69281000,\n      3812518,\n      58952704,\n      123975371,\n      21916000,\n      85518661,\n      100987686,\n      64007187\n    ]\n  },\n  \"narrative\": \"The sum of population across the listed countries in 2024 is 123,975,371 people.\"\n}"
+    },
+    "done": true,
+    "done_reason": "stop",
+    "total_duration": 5025855542,
+    "load_duration": 1147500,
+    "prompt_eval_count": 777,
+    "prompt_eval_cached_count": 316,
+    "prompt_eval_duration": 577311000,
+    "eval_count": 289,
+    "eval_duration": 4439418000
+  },
+  "wall_seconds": 5.027060749998782,
+  "generated_at_utc": "2026-11-20T11:00:46.107542+00:00"
+}

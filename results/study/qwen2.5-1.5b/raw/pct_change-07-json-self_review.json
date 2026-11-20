@@ -1,0 +1,54 @@
+{
+  "request_sha256": "02c0a3e35dc50b8a13a0ed25c1ddf0ba5a6e593be86b8f4a7efa1e60d137c8ef",
+  "context_sha256": "b7e0c9673a79e1dd812627ada361f80f24e30c5c9870987fc18f59544536b4cc",
+  "response_sha256": "d35f34b3e672282d48fbea585d838e1edaf35ed97ce3747adef205b02f194a0c",
+  "request": {
+    "model": "qwen2.5:1.5b",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a careful data analyst. Follow the approved contract exactly.\nReturn ONLY one JSON object matching the schema below.\nUse metric key \"value\" for a single answer, or group labels for grouped answers.\nunit must equal the exact contract unit. rows_used counts complete observations.\nChart labels must be metric keys; chart values must match those metric values.\nNarrative must be one short descriptive sentence. Do not claim causation.\nBlank CSV cells are missing, not zero. Do not round intermediate calculations.\nOutput fractional numeric results to at least six decimal places.\nRequired JSON schema (structure only; it contains no reference answer):\n{\"additionalProperties\":false,\"properties\":{\"chart\":{\"additionalProperties\":false,\"properties\":{\"labels\":{\"items\":{\"type\":\"string\"},\"minItems\":1,\"type\":\"array\"},\"values\":{\"items\":{\"type\":\"number\"},\"minItems\":1,\"type\":\"array\"}},\"required\":[\"labels\",\"values\"],\"type\":\"object\"},\"metrics\":{\"additionalProperties\":{\"type\":\"number\"},\"minProperties\":1,\"type\":\"object\"},\"narrative\":{\"maxLength\":160,\"type\":\"string\"},\"rows_used\":{\"minimum\":0,\"type\":\"integer\"},\"unit\":{\"type\":\"string\"}},\"required\":[\"metrics\",\"unit\",\"rows_used\",\"chart\",\"narrative\"],\"type\":\"object\"}"
+      },
+      {
+        "role": "user",
+        "content": "Question: Compute 100*(last x - first x)/first x, preserving CSV order and skipping missing x.\nApproved contract: {\"op\": \"pct_change\", \"column\": \"x\", \"unit\": \"%\"}\nCSV:\nx,n,g\n3,6,A\n5,5,B\n17,7,C\n,5,A\n16,,B\n7,2,C\n6,1,A\n6,1,B\n,3,C\n7,2,A\n4,3,B\n9,2,C\n"
+      },
+      {
+        "role": "assistant",
+        "content": "{\n  \"metrics\": {\n    \"value\": 100.000000\n  },\n  \"unit\": \"%\",\n  \"rows_used\": 11,\n  \"chart\": {\n    \"labels\": [\"5\", \"6\", \"7\", \"16\", \"17\", \"16\", \"7\", \"6\", \"6\", \"7\", \"4\", \"9\"],\n    \"values\": [0.0, -0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, -0.0]\n  },\n  \"narrative\": \"The data shows a consistent 0% change in the 'x' column.\"\n}"
+      },
+      {
+        "role": "user",
+        "content": "Review your initial answer independently. Check the arithmetic, missing values, row count, unit and chart. Return a corrected complete JSON report."
+      }
+    ],
+    "stream": false,
+    "format": "json",
+    "options": {
+      "temperature": 0,
+      "seed": 31415,
+      "num_ctx": 4096,
+      "num_predict": 512
+    },
+    "keep_alive": "30m"
+  },
+  "response": {
+    "model": "qwen2.5:1.5b",
+    "created_at": "2026-11-20T10:59:27.643756Z",
+    "message": {
+      "role": "assistant",
+      "content": "{\n  \"metrics\": {\n    \"value\": 100.000000\n  },\n  \"unit\": \"%\",\n  \"rows_used\": 11,\n  \"chart\": {\n    \"labels\": [\"5\", \"6\", \"7\", \"16\", \"17\", \"16\", \"7\", \"6\", \"6\", \"7\", \"4\", \"9\"],\n    \"values\": [0.0, -0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, -0.0]\n  },\n  \"narrative\": \"The data shows a consistent 0% change in the 'x' column.\"\n}"
+    },
+    "done": true,
+    "done_reason": "stop",
+    "total_duration": 2828632583,
+    "load_duration": 2111000,
+    "prompt_eval_count": 589,
+    "prompt_eval_cached_count": 557,
+    "prompt_eval_duration": 55014000,
+    "eval_count": 173,
+    "eval_duration": 2765152000
+  },
+  "wall_seconds": 2.8301495000050636,
+  "generated_at_utc": "2026-11-20T10:59:27.644546+00:00"
+}

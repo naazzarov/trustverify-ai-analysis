@@ -1,0 +1,46 @@
+{
+  "request_sha256": "e277d774bf1c6d9d57475a309a626891d0a29b1b9c865d9fc3f73c4a98998d3e",
+  "context_sha256": "b7e0c9673a79e1dd812627ada361f80f24e30c5c9870987fc18f59544536b4cc",
+  "response_sha256": "b3134dffad7af142803c8a4c50fe7ce4e4f9b68d8086d11a77064c00c676936e",
+  "request": {
+    "model": "qwen2.5:1.5b",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a careful data analyst. Follow the approved contract exactly.\nReturn ONLY one JSON object matching the schema below.\nUse metric key \"value\" for a single answer, or group labels for grouped answers.\nunit must equal the exact contract unit. rows_used counts complete observations.\nChart labels must be metric keys; chart values must match those metric values.\nNarrative must be one short descriptive sentence. Do not claim causation.\nBlank CSV cells are missing, not zero. Do not round intermediate calculations.\nOutput fractional numeric results to at least six decimal places.\nRequired JSON schema (structure only; it contains no reference answer):\n{\"additionalProperties\":false,\"properties\":{\"chart\":{\"additionalProperties\":false,\"properties\":{\"labels\":{\"items\":{\"type\":\"string\"},\"minItems\":1,\"type\":\"array\"},\"values\":{\"items\":{\"type\":\"number\"},\"minItems\":1,\"type\":\"array\"}},\"required\":[\"labels\",\"values\"],\"type\":\"object\"},\"metrics\":{\"additionalProperties\":{\"type\":\"number\"},\"minProperties\":1,\"type\":\"object\"},\"narrative\":{\"maxLength\":160,\"type\":\"string\"},\"rows_used\":{\"minimum\":0,\"type\":\"integer\"},\"unit\":{\"type\":\"string\"}},\"required\":[\"metrics\",\"unit\",\"rows_used\",\"chart\",\"narrative\"],\"type\":\"object\"}"
+      },
+      {
+        "role": "user",
+        "content": "Question: Sum nonmissing x by g, excluding empty groups; sort labels alphabetically.\nApproved contract: {\"op\": \"group_sum\", \"column\": \"x\", \"unit\": \"points\", \"group\": \"g\"}\nCSV:\nx,n,g\n27,3,A\n18,7,B\n11,4,C\n,6,A\n12,,B\n22,9,C\n15,9,A\n18,5,B\n,4,C\n14,9,A\n10,1,B\n13,4,C\n"
+      }
+    ],
+    "stream": false,
+    "format": "json",
+    "options": {
+      "temperature": 0,
+      "seed": 31415,
+      "num_ctx": 4096,
+      "num_predict": 512
+    },
+    "keep_alive": "30m"
+  },
+  "response": {
+    "model": "qwen2.5:1.5b",
+    "created_at": "2026-11-20T10:56:17.654285Z",
+    "message": {
+      "role": "assistant",
+      "content": "{\n  \"metrics\": {\n    \"value\": 10.0\n  },\n  \"unit\": \"points\",\n  \"rows_used\": 9,\n  \"chart\": {\n    \"labels\": [\"A\", \"B\", \"C\"],\n    \"values\": [15.0, 1.0, 10.0]\n  },\n  \"narrative\": \"The total nonmissing value of x by group g, excluding empty groups, is 10 points.\"\n}"
+    },
+    "done": true,
+    "done_reason": "stop",
+    "total_duration": 1649340584,
+    "load_duration": 23060875,
+    "prompt_eval_count": 387,
+    "prompt_eval_cached_count": 386,
+    "prompt_eval_duration": 17714000,
+    "eval_count": 104,
+    "eval_duration": 1605939000
+  },
+  "wall_seconds": 1.6504471670050407,
+  "generated_at_utc": "2026-11-20T10:56:17.655011+00:00"
+}

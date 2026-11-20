@@ -1,0 +1,54 @@
+{
+  "request_sha256": "58cdc2dfd5b111c35f6f639982f03f0dec10a6e22292f2f3be4ba89dba0a5abd",
+  "context_sha256": "b7e0c9673a79e1dd812627ada361f80f24e30c5c9870987fc18f59544536b4cc",
+  "response_sha256": "b25e0bc966cff014833570915f6ff8c254c72b7a96042dc1f3379eafdd84feed",
+  "request": {
+    "model": "qwen2.5:1.5b",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a careful data analyst. Follow the approved contract exactly.\nReturn ONLY one JSON object matching the schema below.\nUse metric key \"value\" for a single answer, or group labels for grouped answers.\nunit must equal the exact contract unit. rows_used counts complete observations.\nChart labels must be metric keys; chart values must match those metric values.\nNarrative must be one short descriptive sentence. Do not claim causation.\nBlank CSV cells are missing, not zero. Do not round intermediate calculations.\nOutput fractional numeric results to at least six decimal places.\nRequired JSON schema (structure only; it contains no reference answer):\n{\"additionalProperties\":false,\"properties\":{\"chart\":{\"additionalProperties\":false,\"properties\":{\"labels\":{\"items\":{\"type\":\"string\"},\"minItems\":1,\"type\":\"array\"},\"values\":{\"items\":{\"type\":\"number\"},\"minItems\":1,\"type\":\"array\"}},\"required\":[\"labels\",\"values\"],\"type\":\"object\"},\"metrics\":{\"additionalProperties\":{\"type\":\"number\"},\"minProperties\":1,\"type\":\"object\"},\"narrative\":{\"maxLength\":160,\"type\":\"string\"},\"rows_used\":{\"minimum\":0,\"type\":\"integer\"},\"unit\":{\"type\":\"string\"}},\"required\":[\"metrics\",\"unit\",\"rows_used\",\"chart\",\"narrative\"],\"type\":\"object\"}"
+      },
+      {
+        "role": "user",
+        "content": "Question: Compute sum(x*n)/sum(n), using only rows with both x and n present.\nApproved contract: {\"op\": \"weighted_mean\", \"column\": \"x\", \"unit\": \"points\", \"weight\": \"n\"}\nCSV:\nx,n,g\n25,4,A\n4,1,B\n22,4,C\n,5,A\n9,,B\n15,2,C\n10,2,A\n15,8,B\n,5,C\n25,2,A\n18,4,B\n2,9,C\n"
+      },
+      {
+        "role": "assistant",
+        "content": "{\n  \"metrics\": {\n    \"value\": 1.85714\n  },\n  \"unit\": \"points\",\n  \"rows_used\": 9,\n  \"chart\": {\n    \"labels\": [\"A\", \"B\", \"C\"],\n    \"values\": [1.85714, 1.85714, 1.85714]\n  },\n  \"narrative\": \"The weighted mean of x*n divided by the sum of n, using only rows with both x and n present, is 1.85714 points.\"\n}"
+      },
+      {
+        "role": "user",
+        "content": "Use the executable checker findings below to repair your initial answer. Return a corrected complete JSON report. Checker findings: {\"status\": \"fail\", \"profile\": \"full\", \"findings\": [{\"code\": \"NUMERIC\", \"field\": \"metrics.value\", \"message\": \"Incorrect or non-finite numeric result\", \"expected\": 13.944444444444445, \"actual\": 1.85714}, {\"code\": \"CHART\", \"field\": \"chart\", \"message\": \"Chart labels must uniquely cover the metrics\", \"expected\": null, \"actual\": null}], \"scope\": \"structured fields only; narrative and contract intent unchecked\"}"
+      }
+    ],
+    "stream": false,
+    "format": "json",
+    "options": {
+      "temperature": 0,
+      "seed": 31415,
+      "num_ctx": 4096,
+      "num_predict": 512
+    },
+    "keep_alive": "30m"
+  },
+  "response": {
+    "model": "qwen2.5:1.5b",
+    "created_at": "2026-11-20T11:02:20.45871Z",
+    "message": {
+      "role": "assistant",
+      "content": "{\n  \"metrics\": {\n    \"value\": 13.94444\n  },\n  \"unit\": \"points\",\n  \"rows_used\": 9,\n  \"chart\": {\n    \"labels\": [\"A\", \"B\", \"C\"],\n    \"values\": [13.94444, 13.94444, 13.94444]\n  },\n  \"narrative\": \"The weighted mean of x*n divided by the sum of n, using only rows with both x and n present, is 13.94444 points.\"\n}"
+    },
+    "done": true,
+    "done_reason": "stop",
+    "total_duration": 2365949583,
+    "load_duration": 1429000,
+    "prompt_eval_count": 673,
+    "prompt_eval_cached_count": 520,
+    "prompt_eval_duration": 202889000,
+    "eval_count": 135,
+    "eval_duration": 2157401000
+  },
+  "wall_seconds": 2.3671614170016255,
+  "generated_at_utc": "2026-11-20T11:02:20.459356+00:00"
+}

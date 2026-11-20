@@ -1,0 +1,46 @@
+{
+  "request_sha256": "9e88a685bf30d7a5a750a2f44608fd281ad11d01d21f02bd268e98c26a1c57d1",
+  "context_sha256": "b7e0c9673a79e1dd812627ada361f80f24e30c5c9870987fc18f59544536b4cc",
+  "response_sha256": "1876d9c2385bba2af4378c6ade7103e2c28b232b82dbe58a7be0c364d5e2611a",
+  "request": {
+    "model": "qwen2.5:1.5b",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a careful data analyst. Follow the approved contract exactly.\nReturn ONLY one JSON object matching the schema below.\nUse metric key \"value\" for a single answer, or group labels for grouped answers.\nunit must equal the exact contract unit. rows_used counts complete observations.\nChart labels must be metric keys; chart values must match those metric values.\nNarrative must be one short descriptive sentence. Do not claim causation.\nBlank CSV cells are missing, not zero. Do not round intermediate calculations.\nOutput fractional numeric results to at least six decimal places.\nRequired JSON schema (structure only; it contains no reference answer):\n{\"additionalProperties\":false,\"properties\":{\"chart\":{\"additionalProperties\":false,\"properties\":{\"labels\":{\"items\":{\"type\":\"string\"},\"minItems\":1,\"type\":\"array\"},\"values\":{\"items\":{\"type\":\"number\"},\"minItems\":1,\"type\":\"array\"}},\"required\":[\"labels\",\"values\"],\"type\":\"object\"},\"metrics\":{\"additionalProperties\":{\"type\":\"number\"},\"minProperties\":1,\"type\":\"object\"},\"narrative\":{\"maxLength\":160,\"type\":\"string\"},\"rows_used\":{\"minimum\":0,\"type\":\"integer\"},\"unit\":{\"type\":\"string\"}},\"required\":[\"metrics\",\"unit\",\"rows_used\",\"chart\",\"narrative\"],\"type\":\"object\"}"
+      },
+      {
+        "role": "user",
+        "content": "Question: Compute 100*sum(x)/sum(n), using only rows with both x and n present.\nApproved contract: {\"op\": \"ratio\", \"column\": \"x\", \"unit\": \"%\", \"denominator\": \"n\"}\nCSV:\nx,n,g\n13,6,A\n22,3,B\n17,7,C\n,6,A\n3,,B\n11,8,C\n9,5,A\n2,8,B\n,7,C\n16,4,A\n3,3,B\n9,5,C\n"
+      }
+    ],
+    "stream": false,
+    "format": "json",
+    "options": {
+      "temperature": 0,
+      "seed": 31415,
+      "num_ctx": 4096,
+      "num_predict": 512
+    },
+    "keep_alive": "30m"
+  },
+  "response": {
+    "model": "qwen2.5:1.5b",
+    "created_at": "2026-11-20T11:00:10.649664Z",
+    "message": {
+      "role": "assistant",
+      "content": "{\n  \"metrics\": {\n    \"value\": 1.0\n  },\n  \"unit\": \"%\",\n  \"rows_used\": 10,\n  \"chart\": {\n    \"labels\": [\"x\"],\n    \"values\": [1.0]\n  },\n  \"narrative\": \"The ratio of x to n is 1.0.\"\n}"
+    },
+    "done": true,
+    "done_reason": "stop",
+    "total_duration": 1201377417,
+    "load_duration": 1297167,
+    "prompt_eval_count": 387,
+    "prompt_eval_cached_count": 386,
+    "prompt_eval_duration": 17536000,
+    "eval_count": 76,
+    "eval_duration": 1179625000
+  },
+  "wall_seconds": 1.2026940000068862,
+  "generated_at_utc": "2026-11-20T11:00:10.650400+00:00"
+}

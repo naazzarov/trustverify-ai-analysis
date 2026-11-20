@@ -1,0 +1,46 @@
+{
+  "request_sha256": "992732049cd6f16e94cf6330dcbe7eefd21b6c428810346a86626b57068c88c0",
+  "context_sha256": "b7e0c9673a79e1dd812627ada361f80f24e30c5c9870987fc18f59544536b4cc",
+  "response_sha256": "e9364d36868acfaabffb6d1bd07142bd0b85974e43472c792c96fdb302aa53bc",
+  "request": {
+    "model": "qwen2.5:1.5b",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a careful data analyst. Follow the approved contract exactly.\nReturn ONLY one JSON object matching the schema below.\nUse metric key \"value\" for a single answer, or group labels for grouped answers.\nunit must equal the exact contract unit. rows_used counts complete observations.\nChart labels must be metric keys; chart values must match those metric values.\nNarrative must be one short descriptive sentence. Do not claim causation.\nBlank CSV cells are missing, not zero. Do not round intermediate calculations.\nOutput fractional numeric results to at least six decimal places.\nRequired JSON schema (structure only; it contains no reference answer):\n{\"additionalProperties\":false,\"properties\":{\"chart\":{\"additionalProperties\":false,\"properties\":{\"labels\":{\"items\":{\"type\":\"string\"},\"minItems\":1,\"type\":\"array\"},\"values\":{\"items\":{\"type\":\"number\"},\"minItems\":1,\"type\":\"array\"}},\"required\":[\"labels\",\"values\"],\"type\":\"object\"},\"metrics\":{\"additionalProperties\":{\"type\":\"number\"},\"minProperties\":1,\"type\":\"object\"},\"narrative\":{\"maxLength\":160,\"type\":\"string\"},\"rows_used\":{\"minimum\":0,\"type\":\"integer\"},\"unit\":{\"type\":\"string\"}},\"required\":[\"metrics\",\"unit\",\"rows_used\",\"chart\",\"narrative\"],\"type\":\"object\"}"
+      },
+      {
+        "role": "user",
+        "content": "Question: Sum nonmissing x values.\nApproved contract: {\"op\": \"sum\", \"column\": \"x\", \"unit\": \"points\"}\nCSV:\nx,n,g\n8,4,A\n22,7,B\n12,9,C\n,6,A\n20,,B\n18,4,C\n24,1,A\n26,9,B\n,6,C\n18,4,A\n20,9,B\n15,9,C\n"
+      }
+    ],
+    "stream": false,
+    "format": "json",
+    "options": {
+      "temperature": 0,
+      "seed": 31415,
+      "num_ctx": 4096,
+      "num_predict": 512
+    },
+    "keep_alive": "30m"
+  },
+  "response": {
+    "model": "qwen2.5:1.5b",
+    "created_at": "2026-11-20T11:01:11.294304Z",
+    "message": {
+      "role": "assistant",
+      "content": "{\n  \"metrics\": {\n    \"value\": 100.0\n  },\n  \"unit\": \"points\",\n  \"rows_used\": 9,\n  \"chart\": {\n    \"labels\": [\"A\", \"B\", \"C\"],\n    \"values\": [40.0, 35.0, 25.0]\n  },\n  \"narrative\": \"The sum of non-missing x values is 100 points.\"\n}"
+    },
+    "done": true,
+    "done_reason": "stop",
+    "total_duration": 1744460792,
+    "load_duration": 1345334,
+    "prompt_eval_count": 369,
+    "prompt_eval_cached_count": 269,
+    "prompt_eval_duration": 159887000,
+    "eval_count": 100,
+    "eval_duration": 1563235000
+  },
+  "wall_seconds": 1.7455973339965567,
+  "generated_at_utc": "2026-11-20T11:01:11.294866+00:00"
+}

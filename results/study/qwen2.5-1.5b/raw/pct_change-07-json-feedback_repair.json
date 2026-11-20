@@ -1,0 +1,54 @@
+{
+  "request_sha256": "3b3a8a2c13cb5c0bf72cd7dbfc162accd94a788d131d360731d14001104026ac",
+  "context_sha256": "b7e0c9673a79e1dd812627ada361f80f24e30c5c9870987fc18f59544536b4cc",
+  "response_sha256": "94668229f20371aa38d0bb772dd659ead4a5287cd189783ee038bb8bf3b31b32",
+  "request": {
+    "model": "qwen2.5:1.5b",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a careful data analyst. Follow the approved contract exactly.\nReturn ONLY one JSON object matching the schema below.\nUse metric key \"value\" for a single answer, or group labels for grouped answers.\nunit must equal the exact contract unit. rows_used counts complete observations.\nChart labels must be metric keys; chart values must match those metric values.\nNarrative must be one short descriptive sentence. Do not claim causation.\nBlank CSV cells are missing, not zero. Do not round intermediate calculations.\nOutput fractional numeric results to at least six decimal places.\nRequired JSON schema (structure only; it contains no reference answer):\n{\"additionalProperties\":false,\"properties\":{\"chart\":{\"additionalProperties\":false,\"properties\":{\"labels\":{\"items\":{\"type\":\"string\"},\"minItems\":1,\"type\":\"array\"},\"values\":{\"items\":{\"type\":\"number\"},\"minItems\":1,\"type\":\"array\"}},\"required\":[\"labels\",\"values\"],\"type\":\"object\"},\"metrics\":{\"additionalProperties\":{\"type\":\"number\"},\"minProperties\":1,\"type\":\"object\"},\"narrative\":{\"maxLength\":160,\"type\":\"string\"},\"rows_used\":{\"minimum\":0,\"type\":\"integer\"},\"unit\":{\"type\":\"string\"}},\"required\":[\"metrics\",\"unit\",\"rows_used\",\"chart\",\"narrative\"],\"type\":\"object\"}"
+      },
+      {
+        "role": "user",
+        "content": "Question: Compute 100*(last x - first x)/first x, preserving CSV order and skipping missing x.\nApproved contract: {\"op\": \"pct_change\", \"column\": \"x\", \"unit\": \"%\"}\nCSV:\nx,n,g\n3,6,A\n5,5,B\n17,7,C\n,5,A\n16,,B\n7,2,C\n6,1,A\n6,1,B\n,3,C\n7,2,A\n4,3,B\n9,2,C\n"
+      },
+      {
+        "role": "assistant",
+        "content": "{\n  \"metrics\": {\n    \"value\": 100.000000\n  },\n  \"unit\": \"%\",\n  \"rows_used\": 11,\n  \"chart\": {\n    \"labels\": [\"5\", \"6\", \"7\", \"16\", \"17\", \"16\", \"7\", \"6\", \"6\", \"7\", \"4\", \"9\"],\n    \"values\": [0.0, -0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, -0.0]\n  },\n  \"narrative\": \"The data shows a consistent 0% change in the 'x' column.\"\n}"
+      },
+      {
+        "role": "user",
+        "content": "Use the executable checker findings below to repair your initial answer. Return a corrected complete JSON report. Checker findings: {\"status\": \"fail\", \"profile\": \"full\", \"findings\": [{\"code\": \"NUMERIC\", \"field\": \"metrics.value\", \"message\": \"Incorrect or non-finite numeric result\", \"expected\": 200.0, \"actual\": 100.0}, {\"code\": \"ROWS\", \"field\": \"rows_used\", \"message\": \"Complete-case count differs\", \"expected\": 10, \"actual\": 11}, {\"code\": \"CHART\", \"field\": \"chart\", \"message\": \"Chart labels must uniquely cover the metrics\", \"expected\": null, \"actual\": null}], \"scope\": \"structured fields only; narrative and contract intent unchecked\"}"
+      }
+    ],
+    "stream": false,
+    "format": "json",
+    "options": {
+      "temperature": 0,
+      "seed": 31415,
+      "num_ctx": 4096,
+      "num_predict": 512
+    },
+    "keep_alive": "30m"
+  },
+  "response": {
+    "model": "qwen2.5:1.5b",
+    "created_at": "2026-11-20T10:59:24.811946Z",
+    "message": {
+      "role": "assistant",
+      "content": "{\n  \"metrics\": {\n    \"value\": 200.000000\n  },\n  \"unit\": \"%\",\n  \"rows_used\": 10,\n  \"chart\": {\n    \"labels\": [\"5\", \"6\", \"7\", \"16\", \"17\", \"16\", \"7\", \"6\", \"6\", \"7\"],\n    \"values\": [0.0, -0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]\n  },\n  \"narrative\": \"The data shows a consistent 200% change in the 'x' column.\"\n}"
+    },
+    "done": true,
+    "done_reason": "stop",
+    "total_duration": 2815430375,
+    "load_duration": 1236209,
+    "prompt_eval_count": 731,
+    "prompt_eval_cached_count": 552,
+    "prompt_eval_duration": 244478000,
+    "eval_count": 164,
+    "eval_duration": 2565031000
+  },
+  "wall_seconds": 2.817175207994296,
+  "generated_at_utc": "2026-11-20T10:59:24.813321+00:00"
+}

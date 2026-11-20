@@ -1,0 +1,108 @@
+{
+  "request_sha256": "9b907ba5e8f7ef9c82cce367ef3032c4d659a4c309f63c7437a44728a87d3fb5",
+  "context_sha256": "b7e0c9673a79e1dd812627ada361f80f24e30c5c9870987fc18f59544536b4cc",
+  "response_sha256": "375b66bd141b5dec58c3ecf97116fa6f3b7a165c710f26e727478128fed08302",
+  "request": {
+    "model": "qwen2.5:1.5b",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a careful data analyst. Follow the approved contract exactly.\nReturn ONLY one JSON object matching the schema below.\nUse metric key \"value\" for a single answer, or group labels for grouped answers.\nunit must equal the exact contract unit. rows_used counts complete observations.\nChart labels must be metric keys; chart values must match those metric values.\nNarrative must be one short descriptive sentence. Do not claim causation.\nBlank CSV cells are missing, not zero. Do not round intermediate calculations.\nOutput fractional numeric results to at least six decimal places.\nRequired JSON schema (structure only; it contains no reference answer):\n{\"additionalProperties\":false,\"properties\":{\"chart\":{\"additionalProperties\":false,\"properties\":{\"labels\":{\"items\":{\"type\":\"string\"},\"minItems\":1,\"type\":\"array\"},\"values\":{\"items\":{\"type\":\"number\"},\"minItems\":1,\"type\":\"array\"}},\"required\":[\"labels\",\"values\"],\"type\":\"object\"},\"metrics\":{\"additionalProperties\":{\"type\":\"number\"},\"minProperties\":1,\"type\":\"object\"},\"narrative\":{\"maxLength\":160,\"type\":\"string\"},\"rows_used\":{\"minimum\":0,\"type\":\"integer\"},\"unit\":{\"type\":\"string\"}},\"required\":[\"metrics\",\"unit\",\"rows_used\",\"chart\",\"narrative\"],\"type\":\"object\"}"
+      },
+      {
+        "role": "user",
+        "content": "Question: Compute 100*(last x - first x)/first x, preserving CSV order and skipping missing x.\nApproved contract: {\"op\": \"pct_change\", \"column\": \"x\", \"unit\": \"%\"}\nCSV:\nx,n,g\n4,7,A\n22,4,B\n5,3,C\n,3,A\n3,,B\n22,6,C\n23,1,A\n7,3,B\n,2,C\n4,5,A\n8,8,B\n4,9,C\n"
+      },
+      {
+        "role": "assistant",
+        "content": "{\n  \"metrics\": {\n    \"value\": 100.000000\n  },\n  \"unit\": \"%\",\n  \"rows_used\": 10,\n  \"chart\": {\n    \"labels\": [\"4\", \"22\", \"5\", \"3\", \"3\", \"22\", \"23\", \"7\", \"2\", \"4\", \"8\"],\n    \"values\": [7.0, 4.0, 3.0, 3.0, 3.0, 6.0, 1.0, 3.0, 2.0, 8.0]\n  },\n  \"narrative\": \"The change in the 'x' column from the first row to the last row is 100%.\"\n}"
+      },
+      {
+        "role": "user",
+        "content": "Review your initial answer independently. Check the arithmetic, missing values, row count, unit and chart. Return a corrected complete JSON report."
+      }
+    ],
+    "stream": false,
+    "format": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "metrics",
+        "unit",
+        "rows_used",
+        "chart",
+        "narrative"
+      ],
+      "properties": {
+        "metrics": {
+          "type": "object",
+          "minProperties": 1,
+          "additionalProperties": {
+            "type": "number"
+          }
+        },
+        "unit": {
+          "type": "string"
+        },
+        "rows_used": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "chart": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "labels",
+            "values"
+          ],
+          "properties": {
+            "labels": {
+              "type": "array",
+              "minItems": 1,
+              "items": {
+                "type": "string"
+              }
+            },
+            "values": {
+              "type": "array",
+              "minItems": 1,
+              "items": {
+                "type": "number"
+              }
+            }
+          }
+        },
+        "narrative": {
+          "type": "string",
+          "maxLength": 160
+        }
+      }
+    },
+    "options": {
+      "temperature": 0,
+      "seed": 31415,
+      "num_ctx": 4096,
+      "num_predict": 512
+    },
+    "keep_alive": "30m"
+  },
+  "response": {
+    "model": "qwen2.5:1.5b",
+    "created_at": "2026-11-20T10:59:07.920525Z",
+    "message": {
+      "role": "assistant",
+      "content": "{\n  \"metrics\": {\n    \"value\": 100.000000\n  },\n  \"unit\": \"%\",\n  \"rows_used\": 10,\n  \"chart\": {\n    \"labels\": [\"4\", \"22\", \"5\", \"3\", \"3\", \"22\", \"23\", \"7\", \"2\", \"4\", \"8\"],\n    \"values\": [7.0, 4.0, 3.0, 3.0, 3.0, 6.0, 1.0, 3.0, 2.0, 8.0]\n  },\n  \"narrative\": \"The change in the 'x' column from the first row to the last row is 100%.\"\n}"
+    },
+    "done": true,
+    "done_reason": "stop",
+    "total_duration": 2888667917,
+    "load_duration": 1418167,
+    "prompt_eval_count": 589,
+    "prompt_eval_cached_count": 552,
+    "prompt_eval_duration": 86584000,
+    "eval_count": 172,
+    "eval_duration": 2796201000
+  },
+  "wall_seconds": 2.8908024999982445,
+  "generated_at_utc": "2026-11-20T10:59:07.922044+00:00"
+}

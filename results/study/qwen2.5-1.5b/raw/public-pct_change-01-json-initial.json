@@ -1,0 +1,46 @@
+{
+  "request_sha256": "082fb5ec0e01d1653e433037331cfc28b8675dbd5c4dc09cc287bd23d17dfd84",
+  "context_sha256": "b7e0c9673a79e1dd812627ada361f80f24e30c5c9870987fc18f59544536b4cc",
+  "response_sha256": "bc2bd51210eeaf6d794f2e8ebcd71d3de5477bb10e914440679db6a9fb53f3e0",
+  "request": {
+    "model": "qwen2.5:1.5b",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a careful data analyst. Follow the approved contract exactly.\nReturn ONLY one JSON object matching the schema below.\nUse metric key \"value\" for a single answer, or group labels for grouped answers.\nunit must equal the exact contract unit. rows_used counts complete observations.\nChart labels must be metric keys; chart values must match those metric values.\nNarrative must be one short descriptive sentence. Do not claim causation.\nBlank CSV cells are missing, not zero. Do not round intermediate calculations.\nOutput fractional numeric results to at least six decimal places.\nRequired JSON schema (structure only; it contains no reference answer):\n{\"additionalProperties\":false,\"properties\":{\"chart\":{\"additionalProperties\":false,\"properties\":{\"labels\":{\"items\":{\"type\":\"string\"},\"minItems\":1,\"type\":\"array\"},\"values\":{\"items\":{\"type\":\"number\"},\"minItems\":1,\"type\":\"array\"}},\"required\":[\"labels\",\"values\"],\"type\":\"object\"},\"metrics\":{\"additionalProperties\":{\"type\":\"number\"},\"minProperties\":1,\"type\":\"object\"},\"narrative\":{\"maxLength\":160,\"type\":\"string\"},\"rows_used\":{\"minimum\":0,\"type\":\"integer\"},\"unit\":{\"type\":\"string\"}},\"required\":[\"metrics\",\"unit\",\"rows_used\",\"chart\",\"narrative\"],\"type\":\"object\"}"
+      },
+      {
+        "role": "user",
+        "content": "Question: Compute population percentage change for JPN from the first to last nonmissing year in this 2013-2024 series. Preserve CSV order.\nApproved contract: {\"op\": \"pct_change\", \"column\": \"population\", \"unit\": \"%\"}\nCSV:\ncountry,year,population,urban_population,urban_share,region\nJPN,2013,127445000,116168233,91.151660,EAS\nJPN,2014,127276000,116145580,91.254895,EAS\nJPN,2015,127141000,116147454,91.353264,EAS\nJPN,2016,127076000,116216245,91.454126,EAS\nJPN,2017,126972000,116242665,91.549842,EAS\nJPN,2018,126811000,116206724,91.637732,EAS\nJPN,2019,126633000,116143255,91.716421,EAS\nJPN,2020,126261000,115883599,91.780993,EAS\nJPN,2021,125681593,115468839,91.874105,EAS\nJPN,2022,125124989,115087029,91.977654,EAS\nJPN,2023,124516650,114658281,92.082690,EAS\nJPN,2024,123975371,114293108,92.190172,EAS\n"
+      }
+    ],
+    "stream": false,
+    "format": "json",
+    "options": {
+      "temperature": 0,
+      "seed": 31415,
+      "num_ctx": 4096,
+      "num_predict": 512
+    },
+    "keep_alive": "30m"
+  },
+  "response": {
+    "model": "qwen2.5:1.5b",
+    "created_at": "2026-11-20T10:58:44.063542Z",
+    "message": {
+      "role": "assistant",
+      "content": "{\n  \"metrics\": {\n    \"value\": 1.25\n  },\n  \"unit\": \"%\",\n  \"rows_used\": 11,\n  \"chart\": {\n    \"labels\": [\n      \"2013\",\n      \"2014\",\n      \"2015\",\n      \"2016\",\n      \"2017\",\n      \"2018\",\n      \"2019\",\n      \"2020\",\n      \"2021\",\n      \"2022\",\n      \"2023\",\n      \"2024\"\n    ],\n    \"values\": [\n      1.25,\n      0.75,\n      0.55,\n      0.35,\n      0.15,\n      0.05,\n      0.05,\n      0.05,\n      0.05,\n      0.05,\n      0.05,\n      0.05\n    ]\n  },\n  \"narrative\": \"The population percentage change for Japan (JPN) from the first to the last nonmissing year in the 2013-2024 series is 1.25%.\"\n}"
+    },
+    "done": true,
+    "done_reason": "stop",
+    "total_duration": 4259288458,
+    "load_duration": 1542250,
+    "prompt_eval_count": 822,
+    "prompt_eval_cached_count": 821,
+    "prompt_eval_duration": 19219000,
+    "eval_count": 271,
+    "eval_duration": 4232376000
+  },
+  "wall_seconds": 4.261087708000559,
+  "generated_at_utc": "2026-11-20T10:58:44.064384+00:00"
+}

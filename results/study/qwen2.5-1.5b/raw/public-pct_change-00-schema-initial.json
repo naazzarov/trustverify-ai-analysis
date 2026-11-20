@@ -1,0 +1,100 @@
+{
+  "request_sha256": "a0d70499569620f6e1d90679cbb44052f22cdb0b3601b3b608fbbddc2cdf655a",
+  "context_sha256": "b7e0c9673a79e1dd812627ada361f80f24e30c5c9870987fc18f59544536b4cc",
+  "response_sha256": "0110079accb32f2bea3ba82bdf38d9ef30d84f792f12937c9188039e4755a930",
+  "request": {
+    "model": "qwen2.5:1.5b",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a careful data analyst. Follow the approved contract exactly.\nReturn ONLY one JSON object matching the schema below.\nUse metric key \"value\" for a single answer, or group labels for grouped answers.\nunit must equal the exact contract unit. rows_used counts complete observations.\nChart labels must be metric keys; chart values must match those metric values.\nNarrative must be one short descriptive sentence. Do not claim causation.\nBlank CSV cells are missing, not zero. Do not round intermediate calculations.\nOutput fractional numeric results to at least six decimal places.\nRequired JSON schema (structure only; it contains no reference answer):\n{\"additionalProperties\":false,\"properties\":{\"chart\":{\"additionalProperties\":false,\"properties\":{\"labels\":{\"items\":{\"type\":\"string\"},\"minItems\":1,\"type\":\"array\"},\"values\":{\"items\":{\"type\":\"number\"},\"minItems\":1,\"type\":\"array\"}},\"required\":[\"labels\",\"values\"],\"type\":\"object\"},\"metrics\":{\"additionalProperties\":{\"type\":\"number\"},\"minProperties\":1,\"type\":\"object\"},\"narrative\":{\"maxLength\":160,\"type\":\"string\"},\"rows_used\":{\"minimum\":0,\"type\":\"integer\"},\"unit\":{\"type\":\"string\"}},\"required\":[\"metrics\",\"unit\",\"rows_used\",\"chart\",\"narrative\"],\"type\":\"object\"}"
+      },
+      {
+        "role": "user",
+        "content": "Question: Compute population percentage change for UZB from the first to last nonmissing year in this 2013-2024 series. Preserve CSV order.\nApproved contract: {\"op\": \"pct_change\", \"column\": \"population\", \"unit\": \"%\"}\nCSV:\ncountry,year,population,urban_population,urban_share,region\nUZB,2013,29724065,15197230,51.127697,ECS\nUZB,2014,30222994,15379536,50.886871,ECS\nUZB,2015,30749346,15577537,50.659734,ECS\nUZB,2016,31284568,15847892,50.657219,ECS\nUZB,2017,31819178,16125558,50.678738,ECS\nUZB,2018,32373490,16374996,50.581497,ECS\nUZB,2019,32964701,16677505,50.592011,ECS\nUZB,2020,33586372,17050807,50.767040,ECS\nUZB,2021,34243696,17439284,50.926991,ECS\nUZB,2022,34938955,17813536,50.984742,ECS\nUZB,2023,35652307,18181423,50.996484,ECS\nUZB,2024,36361859,18544064,50.998669,ECS\n"
+      }
+    ],
+    "stream": false,
+    "format": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "metrics",
+        "unit",
+        "rows_used",
+        "chart",
+        "narrative"
+      ],
+      "properties": {
+        "metrics": {
+          "type": "object",
+          "minProperties": 1,
+          "additionalProperties": {
+            "type": "number"
+          }
+        },
+        "unit": {
+          "type": "string"
+        },
+        "rows_used": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "chart": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "labels",
+            "values"
+          ],
+          "properties": {
+            "labels": {
+              "type": "array",
+              "minItems": 1,
+              "items": {
+                "type": "string"
+              }
+            },
+            "values": {
+              "type": "array",
+              "minItems": 1,
+              "items": {
+                "type": "number"
+              }
+            }
+          }
+        },
+        "narrative": {
+          "type": "string",
+          "maxLength": 160
+        }
+      }
+    },
+    "options": {
+      "temperature": 0,
+      "seed": 31415,
+      "num_ctx": 4096,
+      "num_predict": 512
+    },
+    "keep_alive": "30m"
+  },
+  "response": {
+    "model": "qwen2.5:1.5b",
+    "created_at": "2026-11-20T10:58:13.915261Z",
+    "message": {
+      "role": "assistant",
+      "content": "{\n  \"metrics\": {\n    \"population\": 1000000.000000\n  },\n  \"unit\": \"%\",\n  \"rows_used\": 11,\n  \"chart\": {\n    \"labels\": [\n      \"2013\",\n      \"2014\",\n      \"2015\",\n      \"2016\",\n      \"2017\",\n      \"2018\",\n      \"2019\",\n      \"2020\",\n      \"2021\",\n      \"2022\",\n      \"2023\",\n      \"2024\"\n    ],\n    \"values\": [\n      100.000000,\n      100.000000,\n      100.000000,\n      100.000000,\n      100.000000,\n      100.000000,\n      100.000000,\n      100.000000,\n      100.000000,\n      100.000000,\n      100.000000,\n      100.000000\n    ]\n  },\n  \"narrative\": \"The population percentage change for UZB from the first to the last nonmissing year in the 2013-2024 series is 0.000000%.\"\n}"
+    },
+    "done": true,
+    "done_reason": "stop",
+    "total_duration": 5607998208,
+    "load_duration": 1436125,
+    "prompt_eval_count": 811,
+    "prompt_eval_cached_count": 810,
+    "prompt_eval_duration": 19774000,
+    "eval_count": 355,
+    "eval_duration": 5577411000
+  },
+  "wall_seconds": 5.611371332997805,
+  "generated_at_utc": "2026-11-20T10:58:13.918030+00:00"
+}

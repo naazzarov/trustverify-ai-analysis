@@ -1,0 +1,46 @@
+{
+  "request_sha256": "1fdc75708495714ac96dcfbe440ca471d43ded7cdc440b486656c0e694064c79",
+  "context_sha256": "b7e0c9673a79e1dd812627ada361f80f24e30c5c9870987fc18f59544536b4cc",
+  "response_sha256": "7c26eb1da043ff83cf7a086ff75752cf3995ec0ed4cf83b9793d0658b8fc2bfd",
+  "request": {
+    "model": "qwen2.5:1.5b",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a careful data analyst. Follow the approved contract exactly.\nReturn ONLY one JSON object matching the schema below.\nUse metric key \"value\" for a single answer, or group labels for grouped answers.\nunit must equal the exact contract unit. rows_used counts complete observations.\nChart labels must be metric keys; chart values must match those metric values.\nNarrative must be one short descriptive sentence. Do not claim causation.\nBlank CSV cells are missing, not zero. Do not round intermediate calculations.\nOutput fractional numeric results to at least six decimal places.\nRequired JSON schema (structure only; it contains no reference answer):\n{\"additionalProperties\":false,\"properties\":{\"chart\":{\"additionalProperties\":false,\"properties\":{\"labels\":{\"items\":{\"type\":\"string\"},\"minItems\":1,\"type\":\"array\"},\"values\":{\"items\":{\"type\":\"number\"},\"minItems\":1,\"type\":\"array\"}},\"required\":[\"labels\",\"values\"],\"type\":\"object\"},\"metrics\":{\"additionalProperties\":{\"type\":\"number\"},\"minProperties\":1,\"type\":\"object\"},\"narrative\":{\"maxLength\":160,\"type\":\"string\"},\"rows_used\":{\"minimum\":0,\"type\":\"integer\"},\"unit\":{\"type\":\"string\"}},\"required\":[\"metrics\",\"unit\",\"rows_used\",\"chart\",\"narrative\"],\"type\":\"object\"}"
+      },
+      {
+        "role": "user",
+        "content": "Question: Sum population across the listed countries in 2024.\nApproved contract: {\"op\": \"sum\", \"column\": \"population\", \"unit\": \"people\"}\nCSV:\ncountry,year,population,urban_population,urban_share,region\nBRA,2024,211998573,186337958,87.895855,LCN\nCHN,2024,1408975000,928439823,65.894698,EAS\nDEU,2024,83516593,68501264,82.021143,ECS\nFRA,2024,68551653,54018685,78.799974,ECS\nIDN,2024,283487931,166551891,58.750964,EAS\nIND,2024,1450935791,513325082,35.378897,SAS\nKAZ,2024,20592571,12782330,62.072531,ECS\nKEN,2024,56432944,17998601,31.893784,SSF\nMEX,2024,130861007,104366731,79.753880,LCN\nNGA,2024,232679478,146531222,62.975568,SSF\nPAK,2024,251269164,98430767,39.173437,MEA\nUZB,2024,36361859,18544064,50.998669,ECS\n"
+      }
+    ],
+    "stream": false,
+    "format": "json",
+    "options": {
+      "temperature": 0,
+      "seed": 31415,
+      "num_ctx": 4096,
+      "num_predict": 512
+    },
+    "keep_alive": "30m"
+  },
+  "response": {
+    "model": "qwen2.5:1.5b",
+    "created_at": "2026-11-20T11:00:19.0333Z",
+    "message": {
+      "role": "assistant",
+      "content": "{\n  \"metrics\": {\n    \"value\": 1408975000\n  },\n  \"unit\": \"people\",\n  \"rows_used\": 11,\n  \"chart\": {\n    \"labels\": [\n      \"CHN\",\n      \"DEU\",\n      \"FRA\",\n      \"IDN\",\n      \"IND\",\n      \"KEN\",\n      \"MEX\",\n      \"NGA\",\n      \"PAK\",\n      \"UZB\"\n    ],\n    \"values\": [\n      1408975000,\n      83516593,\n      68551653,\n      283487931,\n      1450935791,\n      56432944,\n      130861007,\n      232679478,\n      251269164,\n      36361859\n    ]\n  },\n  \"narrative\": \"The sum of populations across the listed countries in 2024 is 1,408,975,000 people.\"\n}"
+    },
+    "done": true,
+    "done_reason": "stop",
+    "total_duration": 4858504625,
+    "load_duration": 1045834,
+    "prompt_eval_count": 793,
+    "prompt_eval_cached_count": 265,
+    "prompt_eval_duration": 680182000,
+    "eval_count": 268,
+    "eval_duration": 4172848000
+  },
+  "wall_seconds": 4.859983292000834,
+  "generated_at_utc": "2026-11-20T11:00:19.034250+00:00"
+}

@@ -1,0 +1,46 @@
+{
+  "request_sha256": "458dfda208a12c6b886108e485cf9ecebcbe790e9b1b64dcab721a4f51555dbb",
+  "context_sha256": "b7e0c9673a79e1dd812627ada361f80f24e30c5c9870987fc18f59544536b4cc",
+  "response_sha256": "35ee8be46fbb793b5eb1751860ff67e6dbacbf9fab511a0ad66620e99d091293",
+  "request": {
+    "model": "qwen2.5:1.5b",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a careful data analyst. Follow the approved contract exactly.\nReturn ONLY one JSON object matching the schema below.\nUse metric key \"value\" for a single answer, or group labels for grouped answers.\nunit must equal the exact contract unit. rows_used counts complete observations.\nChart labels must be metric keys; chart values must match those metric values.\nNarrative must be one short descriptive sentence. Do not claim causation.\nBlank CSV cells are missing, not zero. Do not round intermediate calculations.\nOutput fractional numeric results to at least six decimal places.\nRequired JSON schema (structure only; it contains no reference answer):\n{\"additionalProperties\":false,\"properties\":{\"chart\":{\"additionalProperties\":false,\"properties\":{\"labels\":{\"items\":{\"type\":\"string\"},\"minItems\":1,\"type\":\"array\"},\"values\":{\"items\":{\"type\":\"number\"},\"minItems\":1,\"type\":\"array\"}},\"required\":[\"labels\",\"values\"],\"type\":\"object\"},\"metrics\":{\"additionalProperties\":{\"type\":\"number\"},\"minProperties\":1,\"type\":\"object\"},\"narrative\":{\"maxLength\":160,\"type\":\"string\"},\"rows_used\":{\"minimum\":0,\"type\":\"integer\"},\"unit\":{\"type\":\"string\"}},\"required\":[\"metrics\",\"unit\",\"rows_used\",\"chart\",\"narrative\"],\"type\":\"object\"}"
+      },
+      {
+        "role": "user",
+        "content": "Question: Sum the listed 2024 country populations by World Bank region code; use region codes as metric keys.\nApproved contract: {\"op\": \"group_sum\", \"column\": \"population\", \"unit\": \"people\", \"group\": \"region\"}\nCSV:\ncountry,year,population,urban_population,urban_share,region\nBRA,2024,211998573,186337958,87.895855,LCN\nCHN,2024,1408975000,928439823,65.894698,EAS\nDEU,2024,83516593,68501264,82.021143,ECS\nFRA,2024,68551653,54018685,78.799974,ECS\nIDN,2024,283487931,166551891,58.750964,EAS\nIND,2024,1450935791,513325082,35.378897,SAS\nKAZ,2024,20592571,12782330,62.072531,ECS\nKEN,2024,56432944,17998601,31.893784,SSF\nMEX,2024,130861007,104366731,79.753880,LCN\nNGA,2024,232679478,146531222,62.975568,SSF\nPAK,2024,251269164,98430767,39.173437,MEA\nUZB,2024,36361859,18544064,50.998669,ECS\n"
+      }
+    ],
+    "stream": false,
+    "format": "json",
+    "options": {
+      "temperature": 0,
+      "seed": 31415,
+      "num_ctx": 4096,
+      "num_predict": 512
+    },
+    "keep_alive": "30m"
+  },
+  "response": {
+    "model": "qwen2.5:1.5b",
+    "created_at": "2026-11-20T10:55:08.652483Z",
+    "message": {
+      "role": "assistant",
+      "content": "{\n  \"metrics\": {\n    \"LCN\": 211998573,\n    \"EAS\": 1408975000,\n    \"ECS\": 83516593,\n    \"SAS\": 1450935791,\n    \"SSF\": 232679478,\n    \"MEA\": 251269164\n  },\n  \"narrative\": \"The 2024 country populations by World Bank region code are as follows:\",\n  \"unit\": \"people\",\n  \"rows_used\": 10,\n  \"chart\": {\n    \"labels\": [\"LCN\", \"EAS\", \"ECS\", \"SAS\", \"SSF\", \"MEA\"],\n    \"values\": [211998573, 1408975000, 83516593, 1450935791, 232679478, 251269164]\n  }\n}"
+    },
+    "done": true,
+    "done_reason": "stop",
+    "total_duration": 7706095709,
+    "load_duration": 2366141125,
+    "prompt_eval_count": 810,
+    "prompt_eval_cached_count": 0,
+    "prompt_eval_duration": 1372112000,
+    "eval_count": 249,
+    "eval_duration": 3951868000
+  },
+  "wall_seconds": 7.710699250004836,
+  "generated_at_utc": "2026-11-20T10:55:08.656713+00:00"
+}

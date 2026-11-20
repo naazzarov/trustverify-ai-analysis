@@ -1,0 +1,54 @@
+{
+  "request_sha256": "3cc28907b07503127cacfdf3a0777bf0c0063240371702ed50f853255d096063",
+  "context_sha256": "b7e0c9673a79e1dd812627ada361f80f24e30c5c9870987fc18f59544536b4cc",
+  "response_sha256": "b0a0796542edb0fc60fc10595404fc70948d2c3b2cd6795980b1355f0ada152a",
+  "request": {
+    "model": "qwen2.5:1.5b",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a careful data analyst. Follow the approved contract exactly.\nReturn ONLY one JSON object matching the schema below.\nUse metric key \"value\" for a single answer, or group labels for grouped answers.\nunit must equal the exact contract unit. rows_used counts complete observations.\nChart labels must be metric keys; chart values must match those metric values.\nNarrative must be one short descriptive sentence. Do not claim causation.\nBlank CSV cells are missing, not zero. Do not round intermediate calculations.\nOutput fractional numeric results to at least six decimal places.\nRequired JSON schema (structure only; it contains no reference answer):\n{\"additionalProperties\":false,\"properties\":{\"chart\":{\"additionalProperties\":false,\"properties\":{\"labels\":{\"items\":{\"type\":\"string\"},\"minItems\":1,\"type\":\"array\"},\"values\":{\"items\":{\"type\":\"number\"},\"minItems\":1,\"type\":\"array\"}},\"required\":[\"labels\",\"values\"],\"type\":\"object\"},\"metrics\":{\"additionalProperties\":{\"type\":\"number\"},\"minProperties\":1,\"type\":\"object\"},\"narrative\":{\"maxLength\":160,\"type\":\"string\"},\"rows_used\":{\"minimum\":0,\"type\":\"integer\"},\"unit\":{\"type\":\"string\"}},\"required\":[\"metrics\",\"unit\",\"rows_used\",\"chart\",\"narrative\"],\"type\":\"object\"}"
+      },
+      {
+        "role": "user",
+        "content": "Question: Sum the listed 2024 country populations by World Bank region code; use region codes as metric keys.\nApproved contract: {\"op\": \"group_sum\", \"column\": \"population\", \"unit\": \"people\", \"group\": \"region\"}\nCSV:\ncountry,year,population,urban_population,urban_share,region\nARG,2024,45696159,42165780,92.274233,LCN\nBGD,2024,173562364,56717264,32.678320,SAS\nCOL,2024,52886363,41526944,78.521081,LCN\nETH,2024,132059767,31195533,23.622284,SSF\nGBR,2024,69281000,57671551,83.242954,ECS\nGEO,2024,3812518,2328646,61.078951,ECS\nITA,2024,58952704,41033884,69.604753,ECS\nJPN,2024,123975371,114293108,92.190172,EAS\nLKA,2024,21916000,4448882,20.299699,SAS\nTUR,2024,85518661,76406060,89.344313,ECS\nVNM,2024,100987686,38870231,38.490070,EAS\nZAF,2024,64007187,40767329,63.691799,SSF\n"
+      },
+      {
+        "role": "assistant",
+        "content": "{\n  \"metrics\": {\n    \"LCN\": 45696159,\n    \"SAS\": 173562364,\n    \"SSF\": 69281000,\n    \"ECS\": 58952704,\n    \"EAS\": 123975371\n  },\n  \"narrative\": \"The 2024 country populations by World Bank region code are as follows: LCN (Latin America and the Caribbean) has 45,696,159 people, SAS (Sub-Saharan Africa) has 173,562,364 people,SSF (South and Southeast Asia) has 69,281,000 people, ECS (East Asia and Pacific) has 58,952,704 people, and EAS (Europe and Central Asia) has 123,975,371 people.\",\n  \"unit\": \"people\",\n  \"rows_used\": 10,\n  \"chart\": {\n    \"labels\": [\"LCN\", \"SAS\", \"SSF\", \"ECS\", \"EAS\"],\n    \"values\": [45696159, 173562364, 69281000, 58952704, 123975371]\n  }\n}"
+      },
+      {
+        "role": "user",
+        "content": "Use the executable checker findings below to repair your initial answer. Return a corrected complete JSON report. Checker findings: {\"status\": \"fail\", \"profile\": \"full\", \"findings\": [{\"code\": \"NUMERIC\", \"field\": \"metrics.EAS\", \"message\": \"Incorrect or non-finite numeric result\", \"expected\": 224963057.0, \"actual\": 123975371}, {\"code\": \"NUMERIC\", \"field\": \"metrics.ECS\", \"message\": \"Incorrect or non-finite numeric result\", \"expected\": 217564883.0, \"actual\": 58952704}, {\"code\": \"NUMERIC\", \"field\": \"metrics.LCN\", \"message\": \"Incorrect or non-finite numeric result\", \"expected\": 98582522.0, \"actual\": 45696159}, {\"code\": \"NUMERIC\", \"field\": \"metrics.SAS\", \"message\": \"Incorrect or non-finite numeric result\", \"expected\": 195478364.0, \"actual\": 173562364}, {\"code\": \"NUMERIC\", \"field\": \"metrics.SSF\", \"message\": \"Incorrect or non-finite numeric result\", \"expected\": 196066954.0, \"actual\": 69281000}, {\"code\": \"ROWS\", \"field\": \"rows_used\", \"message\": \"Complete-case count differs\", \"expected\": 12, \"actual\": 10}, {\"code\": \"CHART\", \"field\": \"chart.LCN\", \"message\": \"Chart data disagrees with recomputation\", \"expected\": 98582522.0, \"actual\": 45696159}, {\"code\": \"CHART\", \"field\": \"chart.SAS\", \"message\": \"Chart data disagrees with recomputation\", \"expected\": 195478364.0, \"actual\": 173562364}, {\"code\": \"CHART\", \"field\": \"chart.SSF\", \"message\": \"Chart data disagrees with recomputation\", \"expected\": 196066954.0, \"actual\": 69281000}, {\"code\": \"CHART\", \"field\": \"chart.ECS\", \"message\": \"Chart data disagrees with recomputation\", \"expected\": 217564883.0, \"actual\": 58952704}, {\"code\": \"CHART\", \"field\": \"chart.EAS\", \"message\": \"Chart data disagrees with recomputation\", \"expected\": 224963057.0, \"actual\": 123975371}], \"scope\": \"structured fields only; narrative and contract intent unchecked\"}"
+      }
+    ],
+    "stream": false,
+    "format": "json",
+    "options": {
+      "temperature": 0,
+      "seed": 31415,
+      "num_ctx": 4096,
+      "num_predict": 512
+    },
+    "keep_alive": "30m"
+  },
+  "response": {
+    "model": "qwen2.5:1.5b",
+    "created_at": "2026-11-20T10:55:55.305901Z",
+    "message": {
+      "role": "assistant",
+      "content": "{\n  \"metrics\": {\n    \"LCN\": 98582522.0,\n    \"SAS\": 195478364.0,\n    \"SSF\": 196066954.0,\n    \"ECS\": 58952704.0,\n    \"EAS\": 224963057.0\n  },\n  \"narrative\": \"The 2024 country populations by World Bank region code are as follows: LCN (Latin America and the Caribbean) has 98,582,522 people, SAS (Sub-Saharan Africa) has 195,478,364 people,SSF (South and Southeast Asia) has 196,066,954 people, ECS (East Asia and Pacific) has 58,952,704 people, and EAS (Europe and Central Asia) has 224,963,057 people.\",\n  \"unit\": \"people\",\n  \"rows_used\": 10,\n  \"chart\": {\n    \"labels\": [\"LCN\", \"SAS\", \"SSF\", \"ECS\", \"EAS\"],\n    \"values\": [98582522.0, 195478364.0, 196066954.0, 58952704.0, 224963057.0]\n  }\n}"
+    },
+    "done": true,
+    "done_reason": "stop",
+    "total_duration": 6833633417,
+    "load_duration": 1354084,
+    "prompt_eval_count": 1770,
+    "prompt_eval_cached_count": 1115,
+    "prompt_eval_duration": 877752000,
+    "eval_count": 345,
+    "eval_duration": 5946005000
+  },
+  "wall_seconds": 6.847664999993867,
+  "generated_at_utc": "2026-11-20T10:55:55.319196+00:00"
+}

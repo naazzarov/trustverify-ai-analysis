@@ -1,0 +1,54 @@
+{
+  "request_sha256": "a67ef4725a20b8cec8046536baf4f9aed86a76b6712228a150ed952e22dc1445",
+  "context_sha256": "b7e0c9673a79e1dd812627ada361f80f24e30c5c9870987fc18f59544536b4cc",
+  "response_sha256": "25a7828f8c7cfedd87086f2b9c9d16cbe96b9f7ee3b5b27dc406c5d91473e530",
+  "request": {
+    "model": "qwen2.5:1.5b",
+    "messages": [
+      {
+        "role": "system",
+        "content": "You are a careful data analyst. Follow the approved contract exactly.\nReturn ONLY one JSON object matching the schema below.\nUse metric key \"value\" for a single answer, or group labels for grouped answers.\nunit must equal the exact contract unit. rows_used counts complete observations.\nChart labels must be metric keys; chart values must match those metric values.\nNarrative must be one short descriptive sentence. Do not claim causation.\nBlank CSV cells are missing, not zero. Do not round intermediate calculations.\nOutput fractional numeric results to at least six decimal places.\nRequired JSON schema (structure only; it contains no reference answer):\n{\"additionalProperties\":false,\"properties\":{\"chart\":{\"additionalProperties\":false,\"properties\":{\"labels\":{\"items\":{\"type\":\"string\"},\"minItems\":1,\"type\":\"array\"},\"values\":{\"items\":{\"type\":\"number\"},\"minItems\":1,\"type\":\"array\"}},\"required\":[\"labels\",\"values\"],\"type\":\"object\"},\"metrics\":{\"additionalProperties\":{\"type\":\"number\"},\"minProperties\":1,\"type\":\"object\"},\"narrative\":{\"maxLength\":160,\"type\":\"string\"},\"rows_used\":{\"minimum\":0,\"type\":\"integer\"},\"unit\":{\"type\":\"string\"}},\"required\":[\"metrics\",\"unit\",\"rows_used\",\"chart\",\"narrative\"],\"type\":\"object\"}"
+      },
+      {
+        "role": "user",
+        "content": "Question: Compute the population-weighted mean of urban_share in 2024, using only complete observations.\nApproved contract: {\"op\": \"weighted_mean\", \"column\": \"urban_share\", \"unit\": \"%\", \"weight\": \"population\"}\nCSV:\ncountry,year,population,urban_population,urban_share,region\nBRA,2024,211998573,186337958,87.895855,LCN\nCHN,2024,1408975000,928439823,65.894698,EAS\nDEU,2024,83516593,68501264,82.021143,ECS\nFRA,2024,68551653,54018685,78.799974,ECS\nIDN,2024,283487931,166551891,58.750964,EAS\nIND,2024,1450935791,513325082,35.378897,SAS\nKAZ,2024,20592571,12782330,62.072531,ECS\nKEN,2024,56432944,17998601,31.893784,SSF\nMEX,2024,130861007,104366731,79.753880,LCN\nNGA,2024,232679478,146531222,62.975568,SSF\nPAK,2024,251269164,98430767,39.173437,MEA\nUZB,2024,36361859,18544064,50.998669,ECS\n"
+      },
+      {
+        "role": "assistant",
+        "content": "{\n  \"metrics\": {\n    \"value\": 80.000000\n  },\n  \"narrative\": \"The population-weighted mean of urban_share in 2024 is 80.000000%.\",\n  \"rows_used\": 14,\n  \"unit\": \"%\"\n}"
+      },
+      {
+        "role": "user",
+        "content": "Use the executable checker findings below to repair your initial answer. Return a corrected complete JSON report. Checker findings: {\"status\": \"fail\", \"profile\": \"full\", \"findings\": [{\"code\": \"SCHEMA\", \"field\": \"chart\", \"message\": \"Required field is missing\", \"expected\": null, \"actual\": null}, {\"code\": \"NUMERIC\", \"field\": \"metrics.value\", \"message\": \"Incorrect or non-finite numeric result\", \"expected\": 54.67452567689149, \"actual\": 80.0}, {\"code\": \"ROWS\", \"field\": \"rows_used\", \"message\": \"Complete-case count differs\", \"expected\": 12, \"actual\": 14}, {\"code\": \"CHART\", \"field\": \"chart\", \"message\": \"Chart must contain labels and values\", \"expected\": null, \"actual\": null}], \"scope\": \"structured fields only; narrative and contract intent unchecked\"}"
+      }
+    ],
+    "stream": false,
+    "format": "json",
+    "options": {
+      "temperature": 0,
+      "seed": 31415,
+      "num_ctx": 4096,
+      "num_predict": 512
+    },
+    "keep_alive": "30m"
+  },
+  "response": {
+    "model": "qwen2.5:1.5b",
+    "created_at": "2026-11-20T11:01:35.072558Z",
+    "message": {
+      "role": "assistant",
+      "content": "{\n  \"metrics\": {\n    \"value\": 54.674526\n  },\n  \"narrative\": \"The population-weighted mean of urban_share in 2024 is 54.674526%.\",\n  \"rows_used\": 12,\n  \"unit\": \"%\"\n}"
+    },
+    "done": true,
+    "done_reason": "stop",
+    "total_duration": 1444366625,
+    "load_duration": 1249458,
+    "prompt_eval_count": 1102,
+    "prompt_eval_cached_count": 886,
+    "prompt_eval_duration": 286806000,
+    "eval_count": 74,
+    "eval_duration": 1151956000
+  },
+  "wall_seconds": 1.446013499997207,
+  "generated_at_utc": "2026-11-20T11:01:35.073407+00:00"
+}
