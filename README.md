@@ -216,7 +216,7 @@ xelatex main
 
 The report adapts the supplied SCU course-paper template in English: A4 paper, 2.5 cm side margins, 2.75 cm top and 3 cm bottom margins, 12-point text, 1.5 line spacing, centered section headings and GB/T 7714 numerical references. The formal cover uses English labels. Public copies contain the author name; the submission edition also includes the student number.
 
-The 22-slide research presentation (18 main slides and four appendices) uses a dark navy palette with syntax-highlighted JSON, editable charts, tables, diagrams and speaker notes. It uses Avenir Next and Menlo, a navy/cobalt/cyan palette, and the supplied unchanged SCU wordmark. Its PDF edition provides a fixed-layout viewing copy. All four charts and eight tables are native editable objects; chart data workbooks are embedded. Figures trace to saved results. The [slide source and rebuild instructions](presentation/source/) are included.
+The research presentation has 18 main slides and four appendices. It uses Georgia for headings, Arial for body text and Courier New for the syntax-highlighted code. The dark graphite and teal design pairs mint and lavender for the generation modes and uses amber for recorded discrepancies. The cover uses the supplied SCU wordmark. All four charts and eight tables are editable, with embedded chart workbooks and speaker notes. The PDF preserves the layout for viewing. [Slide source and rebuild instructions](presentation/source/)
 
 ## Research foundations
 

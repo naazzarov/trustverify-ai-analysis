@@ -41,10 +41,15 @@
 \pagenumbering{roman}
 \thispagestyle{plain}
 \section*{Abstract}
-AI-generated analyses can contain plausible prose alongside incorrect calculations, units, row counts or chart data. TrustVerify checks selected structured claims by recomputing six descriptive operations under a human-approved analysis contract. Its independent evaluator uses SQLite rather than the production Decimal implementation. A controlled experiment contains 48 clean and 336 faulty reports: full verification detects all 288 supported structured mutations and misses all 48 causal-narrative mutations, with no clean-report false alarms. An initial 144-call local-model pilot exposes a distinction between numerical repair and complete-report correctness. A separate post-pilot extension records \StudyCalls\ calls on 24 new tasks, half derived from attributed World Bank observations, comparing JSON mode with schema-constrained generation and equal-call review branches. \StudyAbstract\ The prototype additionally accepts custom CSVs and produces portable receipts that replay each bounded verification result. The study demonstrates the value of independent computation while showing why format compliance, arithmetic consistency and scientific validity require separate evidence.
+AI-generated analyses can report a correct statistic beside a contradictory chart. \mbox{TrustVerify} independently recomputes six descriptive operations from a CSV and a human-approved analysis contract, then checks the reported metrics, units, valid-row counts and chart data. An independently implemented SQLite evaluator supplies reference answers for the experiments. In controlled testing, the checker detects 288 of 336 injected faults, including every supported structured mutation, with zero false alarms on 48 clean reports. The 48 unsupported causal claims pass the structured checks.
+
+The evaluation archives 288 model calls across an initial pilot and a paired extension. The extension uses Qwen2.5 1.5B on 24 new tasks, including 12 derived from World Bank data. Initial schema compliance is 20/24 in JSON mode and 23/24 with schema constraints. After executable feedback, 19/24 and 18/24 numerical results agree with the reference in the respective modes. Complete structured correctness remains 0/24 in every condition, with chart agreement a persistent failure. The prototype accepts custom CSVs and generates receipts that reproduce individual verification decisions. The results show why format compliance, numerical agreement and the validity of a report's interpretation each require their own evidence.
+
+\vspace{3mm}
+\noindent\textbf{Reproducibility.} Code, data and model outputs are in the \href{https://github.com/naazzarov/trustverify-ai-analysis}{\textcolor{Cobalt}{TrustVerify GitHub repository}}.
 
 \vspace{4mm}
-\noindent\textbf{Keywords:} language models; data analysis; executable verification; structured generation; reproducibility
+\noindent\textbf{Keywords:} language models, verification, data analysis, JSON Schema, reproducibility
 \clearpage
 \setcounter{tocdepth}{2}
 \begingroup\small\setstretch{1.05}

@@ -8,7 +8,7 @@ PowerPoint is already editable; this source is optional for programmatic revisio
 - Node.js with `@oai/artifact-tool` resolvable in the module search path; the deck was
   built with the bundled artifact runtime 26.1117.11355, not a plain Node installation.
 - Python 3 for document metadata.
-- Avenir Next and Menlo installed. The PDF is the fixed-layout viewing copy.
+- Georgia, Arial and Courier New installed. The PDF is the fixed-layout viewing copy.
 - For release validation and embedded chart-data workbooks, the presentation toolkit
   directory supplied as `PRESENTATION_SKILL` and its runtime environment. This authoring
   library/toolkit is not redistributed in this repository.
@@ -19,7 +19,7 @@ From the repository root in that configured runtime:
 node presentation/source/build.mjs
 ```
 
-Output goes to ignored `.build/slides/`; `SLIDE_OUTPUT` can select a new filename.
+Output goes to ignored `.build/redesign/`. Set `SLIDE_OUTPUT` to select a new filename.
 The release finalizer refuses to overwrite an existing output. Without the presentation
 toolkit, the source exports a draft PPTX and PNGs but does not claim full release validation
 or workbook materialization. The checked-in release includes four native charts, their
