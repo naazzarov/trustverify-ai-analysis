@@ -1,0 +1,221 @@
+{
+  "public-sum-00": {
+    "metrics": {
+      "value": 4235662564.0
+    },
+    "unit": "people",
+    "rows_used": 12,
+    "chart": {
+      "labels": [
+        "value"
+      ],
+      "values": [
+        4235662564.0
+      ]
+    },
+    "narrative": "Reference values from an independent SQLite oracle."
+  },
+  "public-sum-01": {
+    "metrics": {
+      "value": 932655780.0
+    },
+    "unit": "people",
+    "rows_used": 12,
+    "chart": {
+      "labels": [
+        "value"
+      ],
+      "values": [
+        932655780.0
+      ]
+    },
+    "narrative": "Reference values from an independent SQLite oracle."
+  },
+  "public-mean-00": {
+    "metrics": {
+      "value": 61.300783333333335
+    },
+    "unit": "%",
+    "rows_used": 12,
+    "chart": {
+      "labels": [
+        "value"
+      ],
+      "values": [
+        61.300783333333335
+      ]
+    },
+    "narrative": "Reference values from an independent SQLite oracle."
+  },
+  "public-mean-01": {
+    "metrics": {
+      "value": 62.08655241666667
+    },
+    "unit": "%",
+    "rows_used": 12,
+    "chart": {
+      "labels": [
+        "value"
+      ],
+      "values": [
+        62.08655241666667
+      ]
+    },
+    "narrative": "Reference values from an independent SQLite oracle."
+  },
+  "public-weighted_mean-00": {
+    "metrics": {
+      "value": 54.67452567689149
+    },
+    "unit": "%",
+    "rows_used": 12,
+    "chart": {
+      "labels": [
+        "value"
+      ],
+      "values": [
+        54.67452567689149
+      ]
+    },
+    "narrative": "Reference values from an independent SQLite oracle."
+  },
+  "public-weighted_mean-01": {
+    "metrics": {
+      "value": 58.695311245238436
+    },
+    "unit": "%",
+    "rows_used": 12,
+    "chart": {
+      "labels": [
+        "value"
+      ],
+      "values": [
+        58.695311245238436
+      ]
+    },
+    "narrative": "Reference values from an independent SQLite oracle."
+  },
+  "public-ratio-00": {
+    "metrics": {
+      "value": 54.67452572078874
+    },
+    "unit": "%",
+    "rows_used": 12,
+    "chart": {
+      "labels": [
+        "value"
+      ],
+      "values": [
+        54.67452572078874
+      ]
+    },
+    "narrative": "Reference values from an independent SQLite oracle."
+  },
+  "public-ratio-01": {
+    "metrics": {
+      "value": 58.695311146841334
+    },
+    "unit": "%",
+    "rows_used": 12,
+    "chart": {
+      "labels": [
+        "value"
+      ],
+      "values": [
+        58.695311146841334
+      ]
+    },
+    "narrative": "Reference values from an independent SQLite oracle."
+  },
+  "public-group_sum-00": {
+    "metrics": {
+      "EAS": 1692462931.0,
+      "ECS": 209022676.0,
+      "LCN": 342859580.0,
+      "MEA": 251269164.0,
+      "SAS": 1450935791.0,
+      "SSF": 289112422.0
+    },
+    "unit": "people",
+    "rows_used": 12,
+    "chart": {
+      "labels": [
+        "EAS",
+        "ECS",
+        "LCN",
+        "MEA",
+        "SAS",
+        "SSF"
+      ],
+      "values": [
+        1692462931.0,
+        209022676.0,
+        342859580.0,
+        251269164.0,
+        1450935791.0,
+        289112422.0
+      ]
+    },
+    "narrative": "Reference values from an independent SQLite oracle."
+  },
+  "public-group_sum-01": {
+    "metrics": {
+      "EAS": 224963057.0,
+      "ECS": 217564883.0,
+      "LCN": 98582522.0,
+      "SAS": 195478364.0,
+      "SSF": 196066954.0
+    },
+    "unit": "people",
+    "rows_used": 12,
+    "chart": {
+      "labels": [
+        "EAS",
+        "ECS",
+        "LCN",
+        "SAS",
+        "SSF"
+      ],
+      "values": [
+        224963057.0,
+        217564883.0,
+        98582522.0,
+        195478364.0,
+        196066954.0
+      ]
+    },
+    "narrative": "Reference values from an independent SQLite oracle."
+  },
+  "public-pct_change-00": {
+    "metrics": {
+      "value": 22.331380314233602
+    },
+    "unit": "%",
+    "rows_used": 12,
+    "chart": {
+      "labels": [
+        "value"
+      ],
+      "values": [
+        22.331380314233602
+      ]
+    },
+    "narrative": "Reference values from an independent SQLite oracle."
+  },
+  "public-pct_change-01": {
+    "metrics": {
+      "value": -2.722452038134097
+    },
+    "unit": "%",
+    "rows_used": 12,
+    "chart": {
+      "labels": [
+        "value"
+      ],
+      "values": [
+        -2.722452038134097
+      ]
+    },
+    "narrative": "Reference values from an independent SQLite oracle."
+  }
+}

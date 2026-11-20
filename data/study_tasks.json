@@ -1,0 +1,398 @@
+[
+  {
+    "id": "public-group_sum-00",
+    "domain": "public",
+    "family": "group_sum",
+    "split": "extension_test",
+    "data": "data/public/csv/public-group_sum-00.csv",
+    "data_sha256": "bde8bf42af9ee4c97134445512c198f748926d214b06fa6330827f0f148cad04",
+    "spec": {
+      "op": "group_sum",
+      "column": "population",
+      "unit": "people",
+      "group": "region"
+    },
+    "question": "Sum the listed 2024 country populations by World Bank region code; use region codes as metric keys.",
+    "source": "World Bank WDI",
+    "source_snapshot_sha256": "46c48e7bee87c73fd647ecaa068e43a473b9a02576c58e02c18a02632ec7b54b",
+    "cohort": 0,
+    "rows": 12
+  },
+  {
+    "id": "public-group_sum-01",
+    "domain": "public",
+    "family": "group_sum",
+    "split": "extension_test",
+    "data": "data/public/csv/public-group_sum-01.csv",
+    "data_sha256": "4793a09545f05a53d2d62f4a812db8057ddaa8004f09ea78390593c27b76376d",
+    "spec": {
+      "op": "group_sum",
+      "column": "population",
+      "unit": "people",
+      "group": "region"
+    },
+    "question": "Sum the listed 2024 country populations by World Bank region code; use region codes as metric keys.",
+    "source": "World Bank WDI",
+    "source_snapshot_sha256": "46c48e7bee87c73fd647ecaa068e43a473b9a02576c58e02c18a02632ec7b54b",
+    "cohort": 1,
+    "rows": 12
+  },
+  {
+    "id": "group_sum-06",
+    "split": "test",
+    "family": "group_sum",
+    "data": "data/csv/group_sum-06.csv",
+    "spec": {
+      "op": "group_sum",
+      "column": "x",
+      "unit": "points",
+      "group": "g"
+    },
+    "question": "Sum nonmissing x by g, excluding empty groups; sort labels alphabetically.",
+    "data_sha256": "f97864350ccaab581a690b8264d47a8569c387f56eb9dc23c39777905b19f149",
+    "domain": "synthetic"
+  },
+  {
+    "id": "group_sum-07",
+    "split": "test",
+    "family": "group_sum",
+    "data": "data/csv/group_sum-07.csv",
+    "spec": {
+      "op": "group_sum",
+      "column": "x",
+      "unit": "points",
+      "group": "g"
+    },
+    "question": "Sum nonmissing x by g, excluding empty groups; sort labels alphabetically.",
+    "data_sha256": "dc5e49aebe29861f6275d50d5557b6a481f34e5ec6aa0c2adc7cdfcbcf579a3c",
+    "domain": "synthetic"
+  },
+  {
+    "id": "public-mean-00",
+    "domain": "public",
+    "family": "mean",
+    "split": "extension_test",
+    "data": "data/public/csv/public-mean-00.csv",
+    "data_sha256": "bde8bf42af9ee4c97134445512c198f748926d214b06fa6330827f0f148cad04",
+    "spec": {
+      "op": "mean",
+      "column": "urban_share",
+      "unit": "%"
+    },
+    "question": "Compute the unweighted arithmetic mean of urban_share across the listed countries in 2024.",
+    "source": "World Bank WDI",
+    "source_snapshot_sha256": "46c48e7bee87c73fd647ecaa068e43a473b9a02576c58e02c18a02632ec7b54b",
+    "cohort": 0,
+    "rows": 12
+  },
+  {
+    "id": "public-mean-01",
+    "domain": "public",
+    "family": "mean",
+    "split": "extension_test",
+    "data": "data/public/csv/public-mean-01.csv",
+    "data_sha256": "4793a09545f05a53d2d62f4a812db8057ddaa8004f09ea78390593c27b76376d",
+    "spec": {
+      "op": "mean",
+      "column": "urban_share",
+      "unit": "%"
+    },
+    "question": "Compute the unweighted arithmetic mean of urban_share across the listed countries in 2024.",
+    "source": "World Bank WDI",
+    "source_snapshot_sha256": "46c48e7bee87c73fd647ecaa068e43a473b9a02576c58e02c18a02632ec7b54b",
+    "cohort": 1,
+    "rows": 12
+  },
+  {
+    "id": "mean-06",
+    "split": "test",
+    "family": "mean",
+    "data": "data/csv/mean-06.csv",
+    "spec": {
+      "op": "mean",
+      "column": "x",
+      "unit": "points"
+    },
+    "question": "Compute the arithmetic mean of nonmissing x values.",
+    "data_sha256": "886e35bc8d268c0810c848af63087b2417b4357d5bd0948fe49f36cda599eb8b",
+    "domain": "synthetic"
+  },
+  {
+    "id": "mean-07",
+    "split": "test",
+    "family": "mean",
+    "data": "data/csv/mean-07.csv",
+    "spec": {
+      "op": "mean",
+      "column": "x",
+      "unit": "points"
+    },
+    "question": "Compute the arithmetic mean of nonmissing x values.",
+    "data_sha256": "4d058c321a47d6e5ae5cca5c61ed26e52a494904516a2a677667d4abb0a3fd16",
+    "domain": "synthetic"
+  },
+  {
+    "id": "public-pct_change-00",
+    "domain": "public",
+    "family": "pct_change",
+    "split": "extension_test",
+    "data": "data/public/csv/public-pct_change-00.csv",
+    "data_sha256": "87bda8fbf0b88b328e86fb7e3da3f37d961f7eb3e1e097ce48cf648547741a74",
+    "spec": {
+      "op": "pct_change",
+      "column": "population",
+      "unit": "%"
+    },
+    "question": "Compute population percentage change for UZB from the first to last nonmissing year in this 2013-2024 series. Preserve CSV order.",
+    "source": "World Bank WDI",
+    "source_snapshot_sha256": "46c48e7bee87c73fd647ecaa068e43a473b9a02576c58e02c18a02632ec7b54b",
+    "cohort": 0,
+    "rows": 12
+  },
+  {
+    "id": "public-pct_change-01",
+    "domain": "public",
+    "family": "pct_change",
+    "split": "extension_test",
+    "data": "data/public/csv/public-pct_change-01.csv",
+    "data_sha256": "5178ad5fd4f6ebf8f9348562f01cdc390219cb46ad40e4c10e02b3fcc4582c03",
+    "spec": {
+      "op": "pct_change",
+      "column": "population",
+      "unit": "%"
+    },
+    "question": "Compute population percentage change for JPN from the first to last nonmissing year in this 2013-2024 series. Preserve CSV order.",
+    "source": "World Bank WDI",
+    "source_snapshot_sha256": "46c48e7bee87c73fd647ecaa068e43a473b9a02576c58e02c18a02632ec7b54b",
+    "cohort": 1,
+    "rows": 12
+  },
+  {
+    "id": "pct_change-06",
+    "split": "test",
+    "family": "pct_change",
+    "data": "data/csv/pct_change-06.csv",
+    "spec": {
+      "op": "pct_change",
+      "column": "x",
+      "unit": "%"
+    },
+    "question": "Compute 100*(last x - first x)/first x, preserving CSV order and skipping missing x.",
+    "data_sha256": "128762377e1b5f188ddcb7d0ea1b43f2907fb052c2750c31cd456e9794b52bc4",
+    "domain": "synthetic"
+  },
+  {
+    "id": "pct_change-07",
+    "split": "test",
+    "family": "pct_change",
+    "data": "data/csv/pct_change-07.csv",
+    "spec": {
+      "op": "pct_change",
+      "column": "x",
+      "unit": "%"
+    },
+    "question": "Compute 100*(last x - first x)/first x, preserving CSV order and skipping missing x.",
+    "data_sha256": "c24e6e77c6db523fef43e4da861f1e460f64a1a5aa6696cdcd9267ecc575a399",
+    "domain": "synthetic"
+  },
+  {
+    "id": "public-ratio-00",
+    "domain": "public",
+    "family": "ratio",
+    "split": "extension_test",
+    "data": "data/public/csv/public-ratio-00.csv",
+    "data_sha256": "bde8bf42af9ee4c97134445512c198f748926d214b06fa6330827f0f148cad04",
+    "spec": {
+      "op": "ratio",
+      "column": "urban_population",
+      "unit": "%",
+      "denominator": "population"
+    },
+    "question": "Compute 100 * sum(urban_population) / sum(population) for the listed 2024 countries, using complete observations.",
+    "source": "World Bank WDI",
+    "source_snapshot_sha256": "46c48e7bee87c73fd647ecaa068e43a473b9a02576c58e02c18a02632ec7b54b",
+    "cohort": 0,
+    "rows": 12
+  },
+  {
+    "id": "public-ratio-01",
+    "domain": "public",
+    "family": "ratio",
+    "split": "extension_test",
+    "data": "data/public/csv/public-ratio-01.csv",
+    "data_sha256": "4793a09545f05a53d2d62f4a812db8057ddaa8004f09ea78390593c27b76376d",
+    "spec": {
+      "op": "ratio",
+      "column": "urban_population",
+      "unit": "%",
+      "denominator": "population"
+    },
+    "question": "Compute 100 * sum(urban_population) / sum(population) for the listed 2024 countries, using complete observations.",
+    "source": "World Bank WDI",
+    "source_snapshot_sha256": "46c48e7bee87c73fd647ecaa068e43a473b9a02576c58e02c18a02632ec7b54b",
+    "cohort": 1,
+    "rows": 12
+  },
+  {
+    "id": "ratio-06",
+    "split": "test",
+    "family": "ratio",
+    "data": "data/csv/ratio-06.csv",
+    "spec": {
+      "op": "ratio",
+      "column": "x",
+      "unit": "%",
+      "denominator": "n"
+    },
+    "question": "Compute 100*sum(x)/sum(n), using only rows with both x and n present.",
+    "data_sha256": "5e26a35627c9c1dce6aaaf076ffacf8422b6362bc248d49654b0dbba3bca6780",
+    "domain": "synthetic"
+  },
+  {
+    "id": "ratio-07",
+    "split": "test",
+    "family": "ratio",
+    "data": "data/csv/ratio-07.csv",
+    "spec": {
+      "op": "ratio",
+      "column": "x",
+      "unit": "%",
+      "denominator": "n"
+    },
+    "question": "Compute 100*sum(x)/sum(n), using only rows with both x and n present.",
+    "data_sha256": "11384e75ac36180b7ae9716cd9394d24a5792a244fcd53d1986276ec6179673f",
+    "domain": "synthetic"
+  },
+  {
+    "id": "public-sum-00",
+    "domain": "public",
+    "family": "sum",
+    "split": "extension_test",
+    "data": "data/public/csv/public-sum-00.csv",
+    "data_sha256": "bde8bf42af9ee4c97134445512c198f748926d214b06fa6330827f0f148cad04",
+    "spec": {
+      "op": "sum",
+      "column": "population",
+      "unit": "people"
+    },
+    "question": "Sum population across the listed countries in 2024.",
+    "source": "World Bank WDI",
+    "source_snapshot_sha256": "46c48e7bee87c73fd647ecaa068e43a473b9a02576c58e02c18a02632ec7b54b",
+    "cohort": 0,
+    "rows": 12
+  },
+  {
+    "id": "public-sum-01",
+    "domain": "public",
+    "family": "sum",
+    "split": "extension_test",
+    "data": "data/public/csv/public-sum-01.csv",
+    "data_sha256": "4793a09545f05a53d2d62f4a812db8057ddaa8004f09ea78390593c27b76376d",
+    "spec": {
+      "op": "sum",
+      "column": "population",
+      "unit": "people"
+    },
+    "question": "Sum population across the listed countries in 2024.",
+    "source": "World Bank WDI",
+    "source_snapshot_sha256": "46c48e7bee87c73fd647ecaa068e43a473b9a02576c58e02c18a02632ec7b54b",
+    "cohort": 1,
+    "rows": 12
+  },
+  {
+    "id": "sum-06",
+    "split": "test",
+    "family": "sum",
+    "data": "data/csv/sum-06.csv",
+    "spec": {
+      "op": "sum",
+      "column": "x",
+      "unit": "points"
+    },
+    "question": "Sum nonmissing x values.",
+    "data_sha256": "654988b28ca9c6cecfc55f47621e7800afcec591d21e4a0afdd6e77538e898ec",
+    "domain": "synthetic"
+  },
+  {
+    "id": "sum-07",
+    "split": "test",
+    "family": "sum",
+    "data": "data/csv/sum-07.csv",
+    "spec": {
+      "op": "sum",
+      "column": "x",
+      "unit": "points"
+    },
+    "question": "Sum nonmissing x values.",
+    "data_sha256": "746b5a641646961ff99efe64256a9db049be3a08609a538e8cea0d5d03e1ba00",
+    "domain": "synthetic"
+  },
+  {
+    "id": "public-weighted_mean-00",
+    "domain": "public",
+    "family": "weighted_mean",
+    "split": "extension_test",
+    "data": "data/public/csv/public-weighted_mean-00.csv",
+    "data_sha256": "bde8bf42af9ee4c97134445512c198f748926d214b06fa6330827f0f148cad04",
+    "spec": {
+      "op": "weighted_mean",
+      "column": "urban_share",
+      "unit": "%",
+      "weight": "population"
+    },
+    "question": "Compute the population-weighted mean of urban_share in 2024, using only complete observations.",
+    "source": "World Bank WDI",
+    "source_snapshot_sha256": "46c48e7bee87c73fd647ecaa068e43a473b9a02576c58e02c18a02632ec7b54b",
+    "cohort": 0,
+    "rows": 12
+  },
+  {
+    "id": "public-weighted_mean-01",
+    "domain": "public",
+    "family": "weighted_mean",
+    "split": "extension_test",
+    "data": "data/public/csv/public-weighted_mean-01.csv",
+    "data_sha256": "4793a09545f05a53d2d62f4a812db8057ddaa8004f09ea78390593c27b76376d",
+    "spec": {
+      "op": "weighted_mean",
+      "column": "urban_share",
+      "unit": "%",
+      "weight": "population"
+    },
+    "question": "Compute the population-weighted mean of urban_share in 2024, using only complete observations.",
+    "source": "World Bank WDI",
+    "source_snapshot_sha256": "46c48e7bee87c73fd647ecaa068e43a473b9a02576c58e02c18a02632ec7b54b",
+    "cohort": 1,
+    "rows": 12
+  },
+  {
+    "id": "weighted_mean-06",
+    "split": "test",
+    "family": "weighted_mean",
+    "data": "data/csv/weighted_mean-06.csv",
+    "spec": {
+      "op": "weighted_mean",
+      "column": "x",
+      "unit": "points",
+      "weight": "n"
+    },
+    "question": "Compute sum(x*n)/sum(n), using only rows with both x and n present.",
+    "data_sha256": "c1aa23a08c4a5ac946d62c8578e66355749881c26d1c645a55b8b6c99d041ee8",
+    "domain": "synthetic"
+  },
+  {
+    "id": "weighted_mean-07",
+    "split": "test",
+    "family": "weighted_mean",
+    "data": "data/csv/weighted_mean-07.csv",
+    "spec": {
+      "op": "weighted_mean",
+      "column": "x",
+      "unit": "points",
+      "weight": "n"
+    },
+    "question": "Compute sum(x*n)/sum(n), using only rows with both x and n present.",
+    "data_sha256": "6344c000cb76d8c5a6412d7bde19494e4b0ea8758b95b37e64d5c3cb031c7479",
+    "domain": "synthetic"
+  }
+]

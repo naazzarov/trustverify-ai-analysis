@@ -1,0 +1,89 @@
+{
+  "publisher": "World Bank, World Development Indicators",
+  "indicators": [
+    "SP.POP.TOTL",
+    "SP.URB.TOTL"
+  ],
+  "license": "CC-BY-4.0",
+  "license_url": "https://datacatalog.worldbank.org/public-licenses",
+  "indicator_urls": [
+    "https://data.worldbank.org/indicator/SP.POP.TOTL",
+    "https://data.worldbank.org/indicator/SP.URB.TOTL"
+  ],
+  "retrieved_at_utc": "2026-11-20T10:53:24.397753+00:00",
+  "cohorts": [
+    [
+      "CHN",
+      "IDN",
+      "IND",
+      "PAK",
+      "UZB",
+      "KAZ",
+      "DEU",
+      "FRA",
+      "NGA",
+      "KEN",
+      "BRA",
+      "MEX"
+    ],
+    [
+      "JPN",
+      "VNM",
+      "BGD",
+      "LKA",
+      "TUR",
+      "GEO",
+      "GBR",
+      "ITA",
+      "ZAF",
+      "ETH",
+      "ARG",
+      "COL"
+    ]
+  ],
+  "sources": {
+    "population": {
+      "sha256": "22ea0414b8c7d54999ad1598e67cbbc55daed9b55af8a83140ec603b5aa857a1",
+      "observations": 288,
+      "metadata": {
+        "derived_from": "population.zip",
+        "member": "API_SP.POP.TOTL_DS2_en_csv_v2_58181.csv",
+        "lastupdated": "2026-11-11"
+      }
+    },
+    "urban_population": {
+      "sha256": "052143769d39e417ca40ff95507ebf23b38ea56fec851d382fc20a4bbe6f0c5d",
+      "observations": 288,
+      "metadata": {
+        "derived_from": "urban_population.zip",
+        "member": "API_SP.URB.TOTL_DS2_en_csv_v2_108.csv",
+        "lastupdated": "2026-11-11"
+      }
+    },
+    "countries": {
+      "sha256": "c9acf3932785191a649cbc04c3056af4cf64a236e5c3b49d49be25ddb0440bce",
+      "observations": 296,
+      "metadata": {
+        "page": 1,
+        "pages": 1,
+        "per_page": "400",
+        "total": 296
+      }
+    }
+  },
+  "downloads": {
+    "population.zip": {
+      "url": "https://api.worldbank.org/v2/en/indicator/SP.POP.TOTL?downloadformat=csv",
+      "sha256": "f9340a4c8ffad67dfd6b50b6753e234c15f4024611687f3ff22a55cd6d275fde"
+    },
+    "urban_population.zip": {
+      "url": "https://api.worldbank.org/v2/en/indicator/SP.URB.TOTL?downloadformat=csv",
+      "sha256": "931d5db5f757af9d0c20b4dcafab354578b5812ba2a8e56a33270d8c23cd51c3"
+    },
+    "countries.json": {
+      "url": "https://api.worldbank.org/v2/country?format=json&per_page=400",
+      "sha256": "c9acf3932785191a649cbc04c3056af4cf64a236e5c3b49d49be25ddb0440bce"
+    }
+  },
+  "changes": "Country/year subsets; urban percentage derived to six decimal places; task CSVs document column roles. Source estimates are not independently validated."
+}

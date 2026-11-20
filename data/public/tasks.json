@@ -1,0 +1,224 @@
+[
+  {
+    "id": "public-sum-00",
+    "domain": "public",
+    "family": "sum",
+    "split": "extension_test",
+    "data": "data/public/csv/public-sum-00.csv",
+    "data_sha256": "bde8bf42af9ee4c97134445512c198f748926d214b06fa6330827f0f148cad04",
+    "spec": {
+      "op": "sum",
+      "column": "population",
+      "unit": "people"
+    },
+    "question": "Sum population across the listed countries in 2024.",
+    "source": "World Bank WDI",
+    "source_snapshot_sha256": "46c48e7bee87c73fd647ecaa068e43a473b9a02576c58e02c18a02632ec7b54b",
+    "cohort": 0,
+    "rows": 12
+  },
+  {
+    "id": "public-sum-01",
+    "domain": "public",
+    "family": "sum",
+    "split": "extension_test",
+    "data": "data/public/csv/public-sum-01.csv",
+    "data_sha256": "4793a09545f05a53d2d62f4a812db8057ddaa8004f09ea78390593c27b76376d",
+    "spec": {
+      "op": "sum",
+      "column": "population",
+      "unit": "people"
+    },
+    "question": "Sum population across the listed countries in 2024.",
+    "source": "World Bank WDI",
+    "source_snapshot_sha256": "46c48e7bee87c73fd647ecaa068e43a473b9a02576c58e02c18a02632ec7b54b",
+    "cohort": 1,
+    "rows": 12
+  },
+  {
+    "id": "public-mean-00",
+    "domain": "public",
+    "family": "mean",
+    "split": "extension_test",
+    "data": "data/public/csv/public-mean-00.csv",
+    "data_sha256": "bde8bf42af9ee4c97134445512c198f748926d214b06fa6330827f0f148cad04",
+    "spec": {
+      "op": "mean",
+      "column": "urban_share",
+      "unit": "%"
+    },
+    "question": "Compute the unweighted arithmetic mean of urban_share across the listed countries in 2024.",
+    "source": "World Bank WDI",
+    "source_snapshot_sha256": "46c48e7bee87c73fd647ecaa068e43a473b9a02576c58e02c18a02632ec7b54b",
+    "cohort": 0,
+    "rows": 12
+  },
+  {
+    "id": "public-mean-01",
+    "domain": "public",
+    "family": "mean",
+    "split": "extension_test",
+    "data": "data/public/csv/public-mean-01.csv",
+    "data_sha256": "4793a09545f05a53d2d62f4a812db8057ddaa8004f09ea78390593c27b76376d",
+    "spec": {
+      "op": "mean",
+      "column": "urban_share",
+      "unit": "%"
+    },
+    "question": "Compute the unweighted arithmetic mean of urban_share across the listed countries in 2024.",
+    "source": "World Bank WDI",
+    "source_snapshot_sha256": "46c48e7bee87c73fd647ecaa068e43a473b9a02576c58e02c18a02632ec7b54b",
+    "cohort": 1,
+    "rows": 12
+  },
+  {
+    "id": "public-weighted_mean-00",
+    "domain": "public",
+    "family": "weighted_mean",
+    "split": "extension_test",
+    "data": "data/public/csv/public-weighted_mean-00.csv",
+    "data_sha256": "bde8bf42af9ee4c97134445512c198f748926d214b06fa6330827f0f148cad04",
+    "spec": {
+      "op": "weighted_mean",
+      "column": "urban_share",
+      "unit": "%",
+      "weight": "population"
+    },
+    "question": "Compute the population-weighted mean of urban_share in 2024, using only complete observations.",
+    "source": "World Bank WDI",
+    "source_snapshot_sha256": "46c48e7bee87c73fd647ecaa068e43a473b9a02576c58e02c18a02632ec7b54b",
+    "cohort": 0,
+    "rows": 12
+  },
+  {
+    "id": "public-weighted_mean-01",
+    "domain": "public",
+    "family": "weighted_mean",
+    "split": "extension_test",
+    "data": "data/public/csv/public-weighted_mean-01.csv",
+    "data_sha256": "4793a09545f05a53d2d62f4a812db8057ddaa8004f09ea78390593c27b76376d",
+    "spec": {
+      "op": "weighted_mean",
+      "column": "urban_share",
+      "unit": "%",
+      "weight": "population"
+    },
+    "question": "Compute the population-weighted mean of urban_share in 2024, using only complete observations.",
+    "source": "World Bank WDI",
+    "source_snapshot_sha256": "46c48e7bee87c73fd647ecaa068e43a473b9a02576c58e02c18a02632ec7b54b",
+    "cohort": 1,
+    "rows": 12
+  },
+  {
+    "id": "public-ratio-00",
+    "domain": "public",
+    "family": "ratio",
+    "split": "extension_test",
+    "data": "data/public/csv/public-ratio-00.csv",
+    "data_sha256": "bde8bf42af9ee4c97134445512c198f748926d214b06fa6330827f0f148cad04",
+    "spec": {
+      "op": "ratio",
+      "column": "urban_population",
+      "unit": "%",
+      "denominator": "population"
+    },
+    "question": "Compute 100 * sum(urban_population) / sum(population) for the listed 2024 countries, using complete observations.",
+    "source": "World Bank WDI",
+    "source_snapshot_sha256": "46c48e7bee87c73fd647ecaa068e43a473b9a02576c58e02c18a02632ec7b54b",
+    "cohort": 0,
+    "rows": 12
+  },
+  {
+    "id": "public-ratio-01",
+    "domain": "public",
+    "family": "ratio",
+    "split": "extension_test",
+    "data": "data/public/csv/public-ratio-01.csv",
+    "data_sha256": "4793a09545f05a53d2d62f4a812db8057ddaa8004f09ea78390593c27b76376d",
+    "spec": {
+      "op": "ratio",
+      "column": "urban_population",
+      "unit": "%",
+      "denominator": "population"
+    },
+    "question": "Compute 100 * sum(urban_population) / sum(population) for the listed 2024 countries, using complete observations.",
+    "source": "World Bank WDI",
+    "source_snapshot_sha256": "46c48e7bee87c73fd647ecaa068e43a473b9a02576c58e02c18a02632ec7b54b",
+    "cohort": 1,
+    "rows": 12
+  },
+  {
+    "id": "public-group_sum-00",
+    "domain": "public",
+    "family": "group_sum",
+    "split": "extension_test",
+    "data": "data/public/csv/public-group_sum-00.csv",
+    "data_sha256": "bde8bf42af9ee4c97134445512c198f748926d214b06fa6330827f0f148cad04",
+    "spec": {
+      "op": "group_sum",
+      "column": "population",
+      "unit": "people",
+      "group": "region"
+    },
+    "question": "Sum the listed 2024 country populations by World Bank region code; use region codes as metric keys.",
+    "source": "World Bank WDI",
+    "source_snapshot_sha256": "46c48e7bee87c73fd647ecaa068e43a473b9a02576c58e02c18a02632ec7b54b",
+    "cohort": 0,
+    "rows": 12
+  },
+  {
+    "id": "public-group_sum-01",
+    "domain": "public",
+    "family": "group_sum",
+    "split": "extension_test",
+    "data": "data/public/csv/public-group_sum-01.csv",
+    "data_sha256": "4793a09545f05a53d2d62f4a812db8057ddaa8004f09ea78390593c27b76376d",
+    "spec": {
+      "op": "group_sum",
+      "column": "population",
+      "unit": "people",
+      "group": "region"
+    },
+    "question": "Sum the listed 2024 country populations by World Bank region code; use region codes as metric keys.",
+    "source": "World Bank WDI",
+    "source_snapshot_sha256": "46c48e7bee87c73fd647ecaa068e43a473b9a02576c58e02c18a02632ec7b54b",
+    "cohort": 1,
+    "rows": 12
+  },
+  {
+    "id": "public-pct_change-00",
+    "domain": "public",
+    "family": "pct_change",
+    "split": "extension_test",
+    "data": "data/public/csv/public-pct_change-00.csv",
+    "data_sha256": "87bda8fbf0b88b328e86fb7e3da3f37d961f7eb3e1e097ce48cf648547741a74",
+    "spec": {
+      "op": "pct_change",
+      "column": "population",
+      "unit": "%"
+    },
+    "question": "Compute population percentage change for UZB from the first to last nonmissing year in this 2013-2024 series. Preserve CSV order.",
+    "source": "World Bank WDI",
+    "source_snapshot_sha256": "46c48e7bee87c73fd647ecaa068e43a473b9a02576c58e02c18a02632ec7b54b",
+    "cohort": 0,
+    "rows": 12
+  },
+  {
+    "id": "public-pct_change-01",
+    "domain": "public",
+    "family": "pct_change",
+    "split": "extension_test",
+    "data": "data/public/csv/public-pct_change-01.csv",
+    "data_sha256": "5178ad5fd4f6ebf8f9348562f01cdc390219cb46ad40e4c10e02b3fcc4582c03",
+    "spec": {
+      "op": "pct_change",
+      "column": "population",
+      "unit": "%"
+    },
+    "question": "Compute population percentage change for JPN from the first to last nonmissing year in this 2013-2024 series. Preserve CSV order.",
+    "source": "World Bank WDI",
+    "source_snapshot_sha256": "46c48e7bee87c73fd647ecaa068e43a473b9a02576c58e02c18a02632ec7b54b",
+    "cohort": 1,
+    "rows": 12
+  }
+]

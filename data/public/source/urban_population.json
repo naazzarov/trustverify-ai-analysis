@@ -1,0 +1,1449 @@
+[
+  {
+    "derived_from": "urban_population.zip",
+    "member": "API_SP.URB.TOTL_DS2_en_csv_v2_108.csv",
+    "lastupdated": "2026-11-11"
+  },
+  [
+    {
+      "countryiso3code": "ARG",
+      "date": "2013",
+      "value": "38878399"
+    },
+    {
+      "countryiso3code": "ARG",
+      "date": "2014",
+      "value": "39322940"
+    },
+    {
+      "countryiso3code": "ARG",
+      "date": "2015",
+      "value": "39778119"
+    },
+    {
+      "countryiso3code": "ARG",
+      "date": "2016",
+      "value": "40206401"
+    },
+    {
+      "countryiso3code": "ARG",
+      "date": "2017",
+      "value": "40602996"
+    },
+    {
+      "countryiso3code": "ARG",
+      "date": "2018",
+      "value": "40978889"
+    },
+    {
+      "countryiso3code": "ARG",
+      "date": "2019",
+      "value": "41311179"
+    },
+    {
+      "countryiso3code": "ARG",
+      "date": "2020",
+      "value": "41551256"
+    },
+    {
+      "countryiso3code": "ARG",
+      "date": "2021",
+      "value": "41700565"
+    },
+    {
+      "countryiso3code": "ARG",
+      "date": "2022",
+      "value": "41826509"
+    },
+    {
+      "countryiso3code": "ARG",
+      "date": "2023",
+      "value": "41983907"
+    },
+    {
+      "countryiso3code": "ARG",
+      "date": "2024",
+      "value": "42165780"
+    },
+    {
+      "countryiso3code": "BGD",
+      "date": "2013",
+      "value": "45144971"
+    },
+    {
+      "countryiso3code": "BGD",
+      "date": "2014",
+      "value": "46116983"
+    },
+    {
+      "countryiso3code": "BGD",
+      "date": "2015",
+      "value": "47081010"
+    },
+    {
+      "countryiso3code": "BGD",
+      "date": "2016",
+      "value": "48043194"
+    },
+    {
+      "countryiso3code": "BGD",
+      "date": "2017",
+      "value": "48982779"
+    },
+    {
+      "countryiso3code": "BGD",
+      "date": "2018",
+      "value": "49903270"
+    },
+    {
+      "countryiso3code": "BGD",
+      "date": "2019",
+      "value": "50830886"
+    },
+    {
+      "countryiso3code": "BGD",
+      "date": "2020",
+      "value": "51746778"
+    },
+    {
+      "countryiso3code": "BGD",
+      "date": "2021",
+      "value": "52643565"
+    },
+    {
+      "countryiso3code": "BGD",
+      "date": "2022",
+      "value": "53650523"
+    },
+    {
+      "countryiso3code": "BGD",
+      "date": "2023",
+      "value": "55140091"
+    },
+    {
+      "countryiso3code": "BGD",
+      "date": "2024",
+      "value": "56717264"
+    },
+    {
+      "countryiso3code": "BRA",
+      "date": "2013",
+      "value": "169039320"
+    },
+    {
+      "countryiso3code": "BRA",
+      "date": "2014",
+      "value": "170939000"
+    },
+    {
+      "countryiso3code": "BRA",
+      "date": "2015",
+      "value": "172822963"
+    },
+    {
+      "countryiso3code": "BRA",
+      "date": "2016",
+      "value": "174663337"
+    },
+    {
+      "countryiso3code": "BRA",
+      "date": "2017",
+      "value": "176450869"
+    },
+    {
+      "countryiso3code": "BRA",
+      "date": "2018",
+      "value": "178163387"
+    },
+    {
+      "countryiso3code": "BRA",
+      "date": "2019",
+      "value": "179821975"
+    },
+    {
+      "countryiso3code": "BRA",
+      "date": "2020",
+      "value": "181349681"
+    },
+    {
+      "countryiso3code": "BRA",
+      "date": "2021",
+      "value": "182593908"
+    },
+    {
+      "countryiso3code": "BRA",
+      "date": "2022",
+      "value": "183701720"
+    },
+    {
+      "countryiso3code": "BRA",
+      "date": "2023",
+      "value": "184993000"
+    },
+    {
+      "countryiso3code": "BRA",
+      "date": "2024",
+      "value": "186337958"
+    },
+    {
+      "countryiso3code": "CHN",
+      "date": "2013",
+      "value": "742829499"
+    },
+    {
+      "countryiso3code": "CHN",
+      "date": "2014",
+      "value": "764815456"
+    },
+    {
+      "countryiso3code": "CHN",
+      "date": "2015",
+      "value": "791070763"
+    },
+    {
+      "countryiso3code": "CHN",
+      "date": "2016",
+      "value": "816574579"
+    },
+    {
+      "countryiso3code": "CHN",
+      "date": "2017",
+      "value": "841083668"
+    },
+    {
+      "countryiso3code": "CHN",
+      "date": "2018",
+      "value": "862700183"
+    },
+    {
+      "countryiso3code": "CHN",
+      "date": "2019",
+      "value": "882795695"
+    },
+    {
+      "countryiso3code": "CHN",
+      "date": "2020",
+      "value": "896379022"
+    },
+    {
+      "countryiso3code": "CHN",
+      "date": "2021",
+      "value": "914094603"
+    },
+    {
+      "countryiso3code": "CHN",
+      "date": "2022",
+      "value": "920987153"
+    },
+    {
+      "countryiso3code": "CHN",
+      "date": "2023",
+      "value": "924440306"
+    },
+    {
+      "countryiso3code": "CHN",
+      "date": "2024",
+      "value": "928439823"
+    },
+    {
+      "countryiso3code": "COL",
+      "date": "2013",
+      "value": "35551303"
+    },
+    {
+      "countryiso3code": "COL",
+      "date": "2014",
+      "value": "35904667"
+    },
+    {
+      "countryiso3code": "COL",
+      "date": "2015",
+      "value": "36243710"
+    },
+    {
+      "countryiso3code": "COL",
+      "date": "2016",
+      "value": "36623480"
+    },
+    {
+      "countryiso3code": "COL",
+      "date": "2017",
+      "value": "37168994"
+    },
+    {
+      "countryiso3code": "COL",
+      "date": "2018",
+      "value": "37886343"
+    },
+    {
+      "countryiso3code": "COL",
+      "date": "2019",
+      "value": "38658502"
+    },
+    {
+      "countryiso3code": "COL",
+      "date": "2020",
+      "value": "39308245"
+    },
+    {
+      "countryiso3code": "COL",
+      "date": "2021",
+      "value": "39841781"
+    },
+    {
+      "countryiso3code": "COL",
+      "date": "2022",
+      "value": "40379635"
+    },
+    {
+      "countryiso3code": "COL",
+      "date": "2023",
+      "value": "40954681"
+    },
+    {
+      "countryiso3code": "COL",
+      "date": "2024",
+      "value": "41526944"
+    },
+    {
+      "countryiso3code": "DEU",
+      "date": "2013",
+      "value": "64898125"
+    },
+    {
+      "countryiso3code": "DEU",
+      "date": "2014",
+      "value": "65252249"
+    },
+    {
+      "countryiso3code": "DEU",
+      "date": "2015",
+      "value": "65919002"
+    },
+    {
+      "countryiso3code": "DEU",
+      "date": "2016",
+      "value": "66566371"
+    },
+    {
+      "countryiso3code": "DEU",
+      "date": "2017",
+      "value": "66939157"
+    },
+    {
+      "countryiso3code": "DEU",
+      "date": "2018",
+      "value": "67271661"
+    },
+    {
+      "countryiso3code": "DEU",
+      "date": "2019",
+      "value": "67559064"
+    },
+    {
+      "countryiso3code": "DEU",
+      "date": "2020",
+      "value": "67751166"
+    },
+    {
+      "countryiso3code": "DEU",
+      "date": "2021",
+      "value": "67915111"
+    },
+    {
+      "countryiso3code": "DEU",
+      "date": "2022",
+      "value": "68028459"
+    },
+    {
+      "countryiso3code": "DEU",
+      "date": "2023",
+      "value": "68215139"
+    },
+    {
+      "countryiso3code": "DEU",
+      "date": "2024",
+      "value": "68501264"
+    },
+    {
+      "countryiso3code": "ETH",
+      "date": "2013",
+      "value": "18324880"
+    },
+    {
+      "countryiso3code": "ETH",
+      "date": "2014",
+      "value": "19238546"
+    },
+    {
+      "countryiso3code": "ETH",
+      "date": "2015",
+      "value": "20203785"
+    },
+    {
+      "countryiso3code": "ETH",
+      "date": "2016",
+      "value": "21211688"
+    },
+    {
+      "countryiso3code": "ETH",
+      "date": "2017",
+      "value": "22271601"
+    },
+    {
+      "countryiso3code": "ETH",
+      "date": "2018",
+      "value": "23415903"
+    },
+    {
+      "countryiso3code": "ETH",
+      "date": "2019",
+      "value": "24592655"
+    },
+    {
+      "countryiso3code": "ETH",
+      "date": "2020",
+      "value": "25717142"
+    },
+    {
+      "countryiso3code": "ETH",
+      "date": "2021",
+      "value": "27000822"
+    },
+    {
+      "countryiso3code": "ETH",
+      "date": "2022",
+      "value": "28508335"
+    },
+    {
+      "countryiso3code": "ETH",
+      "date": "2023",
+      "value": "29674563"
+    },
+    {
+      "countryiso3code": "ETH",
+      "date": "2024",
+      "value": "31195533"
+    },
+    {
+      "countryiso3code": "FRA",
+      "date": "2013",
+      "value": "50979490"
+    },
+    {
+      "countryiso3code": "FRA",
+      "date": "2014",
+      "value": "51293995"
+    },
+    {
+      "countryiso3code": "FRA",
+      "date": "2015",
+      "value": "51748663"
+    },
+    {
+      "countryiso3code": "FRA",
+      "date": "2016",
+      "value": "52445087"
+    },
+    {
+      "countryiso3code": "FRA",
+      "date": "2017",
+      "value": "52628868"
+    },
+    {
+      "countryiso3code": "FRA",
+      "date": "2018",
+      "value": "52834442"
+    },
+    {
+      "countryiso3code": "FRA",
+      "date": "2019",
+      "value": "53022323"
+    },
+    {
+      "countryiso3code": "FRA",
+      "date": "2020",
+      "value": "53210127"
+    },
+    {
+      "countryiso3code": "FRA",
+      "date": "2021",
+      "value": "53417028"
+    },
+    {
+      "countryiso3code": "FRA",
+      "date": "2022",
+      "value": "53701527"
+    },
+    {
+      "countryiso3code": "FRA",
+      "date": "2023",
+      "value": "53863982"
+    },
+    {
+      "countryiso3code": "FRA",
+      "date": "2024",
+      "value": "54018685"
+    },
+    {
+      "countryiso3code": "GBR",
+      "date": "2013",
+      "value": "52245132"
+    },
+    {
+      "countryiso3code": "GBR",
+      "date": "2014",
+      "value": "52752092"
+    },
+    {
+      "countryiso3code": "GBR",
+      "date": "2015",
+      "value": "53257032"
+    },
+    {
+      "countryiso3code": "GBR",
+      "date": "2016",
+      "value": "53812009"
+    },
+    {
+      "countryiso3code": "GBR",
+      "date": "2017",
+      "value": "54242630"
+    },
+    {
+      "countryiso3code": "GBR",
+      "date": "2018",
+      "value": "54651355"
+    },
+    {
+      "countryiso3code": "GBR",
+      "date": "2019",
+      "value": "55081329"
+    },
+    {
+      "countryiso3code": "GBR",
+      "date": "2020",
+      "value": "55327461"
+    },
+    {
+      "countryiso3code": "GBR",
+      "date": "2021",
+      "value": "55584133"
+    },
+    {
+      "countryiso3code": "GBR",
+      "date": "2022",
+      "value": "56188876"
+    },
+    {
+      "countryiso3code": "GBR",
+      "date": "2023",
+      "value": "56986354"
+    },
+    {
+      "countryiso3code": "GBR",
+      "date": "2024",
+      "value": "57671551"
+    },
+    {
+      "countryiso3code": "GEO",
+      "date": "2013",
+      "value": "2104877"
+    },
+    {
+      "countryiso3code": "GEO",
+      "date": "2014",
+      "value": "2120950"
+    },
+    {
+      "countryiso3code": "GEO",
+      "date": "2015",
+      "value": "2137578"
+    },
+    {
+      "countryiso3code": "GEO",
+      "date": "2016",
+      "value": "2150711"
+    },
+    {
+      "countryiso3code": "GEO",
+      "date": "2017",
+      "value": "2162230"
+    },
+    {
+      "countryiso3code": "GEO",
+      "date": "2018",
+      "value": "2172720"
+    },
+    {
+      "countryiso3code": "GEO",
+      "date": "2019",
+      "value": "2181146"
+    },
+    {
+      "countryiso3code": "GEO",
+      "date": "2020",
+      "value": "2196367"
+    },
+    {
+      "countryiso3code": "GEO",
+      "date": "2021",
+      "value": "2204003"
+    },
+    {
+      "countryiso3code": "GEO",
+      "date": "2022",
+      "value": "2227878"
+    },
+    {
+      "countryiso3code": "GEO",
+      "date": "2023",
+      "value": "2257242"
+    },
+    {
+      "countryiso3code": "GEO",
+      "date": "2024",
+      "value": "2328646"
+    },
+    {
+      "countryiso3code": "IDN",
+      "date": "2013",
+      "value": "132610251"
+    },
+    {
+      "countryiso3code": "IDN",
+      "date": "2014",
+      "value": "135911187"
+    },
+    {
+      "countryiso3code": "IDN",
+      "date": "2015",
+      "value": "139204099"
+    },
+    {
+      "countryiso3code": "IDN",
+      "date": "2016",
+      "value": "142402781"
+    },
+    {
+      "countryiso3code": "IDN",
+      "date": "2017",
+      "value": "145581221"
+    },
+    {
+      "countryiso3code": "IDN",
+      "date": "2018",
+      "value": "148731816"
+    },
+    {
+      "countryiso3code": "IDN",
+      "date": "2019",
+      "value": "151880690"
+    },
+    {
+      "countryiso3code": "IDN",
+      "date": "2020",
+      "value": "154661763"
+    },
+    {
+      "countryiso3code": "IDN",
+      "date": "2021",
+      "value": "157409381"
+    },
+    {
+      "countryiso3code": "IDN",
+      "date": "2022",
+      "value": "160309348"
+    },
+    {
+      "countryiso3code": "IDN",
+      "date": "2023",
+      "value": "163421861"
+    },
+    {
+      "countryiso3code": "IDN",
+      "date": "2024",
+      "value": "166551891"
+    },
+    {
+      "countryiso3code": "IND",
+      "date": "2013",
+      "value": "413495036"
+    },
+    {
+      "countryiso3code": "IND",
+      "date": "2014",
+      "value": "422931498"
+    },
+    {
+      "countryiso3code": "IND",
+      "date": "2015",
+      "value": "432236104"
+    },
+    {
+      "countryiso3code": "IND",
+      "date": "2016",
+      "value": "441688342"
+    },
+    {
+      "countryiso3code": "IND",
+      "date": "2017",
+      "value": "451163324"
+    },
+    {
+      "countryiso3code": "IND",
+      "date": "2018",
+      "value": "460489278"
+    },
+    {
+      "countryiso3code": "IND",
+      "date": "2019",
+      "value": "469686125"
+    },
+    {
+      "countryiso3code": "IND",
+      "date": "2020",
+      "value": "478694801"
+    },
+    {
+      "countryiso3code": "IND",
+      "date": "2021",
+      "value": "487087908"
+    },
+    {
+      "countryiso3code": "IND",
+      "date": "2022",
+      "value": "495413925"
+    },
+    {
+      "countryiso3code": "IND",
+      "date": "2023",
+      "value": "504297814"
+    },
+    {
+      "countryiso3code": "IND",
+      "date": "2024",
+      "value": "513325082"
+    },
+    {
+      "countryiso3code": "ITA",
+      "date": "2013",
+      "value": "41800410"
+    },
+    {
+      "countryiso3code": "ITA",
+      "date": "2014",
+      "value": "41971609"
+    },
+    {
+      "countryiso3code": "ITA",
+      "date": "2015",
+      "value": "41925828"
+    },
+    {
+      "countryiso3code": "ITA",
+      "date": "2016",
+      "value": "41838346"
+    },
+    {
+      "countryiso3code": "ITA",
+      "date": "2017",
+      "value": "41712413"
+    },
+    {
+      "countryiso3code": "ITA",
+      "date": "2018",
+      "value": "41602695"
+    },
+    {
+      "countryiso3code": "ITA",
+      "date": "2019",
+      "value": "41514698"
+    },
+    {
+      "countryiso3code": "ITA",
+      "date": "2020",
+      "value": "41321146"
+    },
+    {
+      "countryiso3code": "ITA",
+      "date": "2021",
+      "value": "41086468"
+    },
+    {
+      "countryiso3code": "ITA",
+      "date": "2022",
+      "value": "41005043"
+    },
+    {
+      "countryiso3code": "ITA",
+      "date": "2023",
+      "value": "41016535"
+    },
+    {
+      "countryiso3code": "ITA",
+      "date": "2024",
+      "value": "41033884"
+    },
+    {
+      "countryiso3code": "JPN",
+      "date": "2013",
+      "value": "116168233"
+    },
+    {
+      "countryiso3code": "JPN",
+      "date": "2014",
+      "value": "116145580"
+    },
+    {
+      "countryiso3code": "JPN",
+      "date": "2015",
+      "value": "116147454"
+    },
+    {
+      "countryiso3code": "JPN",
+      "date": "2016",
+      "value": "116216245"
+    },
+    {
+      "countryiso3code": "JPN",
+      "date": "2017",
+      "value": "116242665"
+    },
+    {
+      "countryiso3code": "JPN",
+      "date": "2018",
+      "value": "116206724"
+    },
+    {
+      "countryiso3code": "JPN",
+      "date": "2019",
+      "value": "116143255"
+    },
+    {
+      "countryiso3code": "JPN",
+      "date": "2020",
+      "value": "115883599"
+    },
+    {
+      "countryiso3code": "JPN",
+      "date": "2021",
+      "value": "115468839"
+    },
+    {
+      "countryiso3code": "JPN",
+      "date": "2022",
+      "value": "115087029"
+    },
+    {
+      "countryiso3code": "JPN",
+      "date": "2023",
+      "value": "114658281"
+    },
+    {
+      "countryiso3code": "JPN",
+      "date": "2024",
+      "value": "114293108"
+    },
+    {
+      "countryiso3code": "KAZ",
+      "date": "2013",
+      "value": "9669766"
+    },
+    {
+      "countryiso3code": "KAZ",
+      "date": "2014",
+      "value": "9897380"
+    },
+    {
+      "countryiso3code": "KAZ",
+      "date": "2015",
+      "value": "10147137"
+    },
+    {
+      "countryiso3code": "KAZ",
+      "date": "2016",
+      "value": "10420907"
+    },
+    {
+      "countryiso3code": "KAZ",
+      "date": "2017",
+      "value": "10717147"
+    },
+    {
+      "countryiso3code": "KAZ",
+      "date": "2018",
+      "value": "11026194"
+    },
+    {
+      "countryiso3code": "KAZ",
+      "date": "2019",
+      "value": "11349629"
+    },
+    {
+      "countryiso3code": "KAZ",
+      "date": "2020",
+      "value": "11686761"
+    },
+    {
+      "countryiso3code": "KAZ",
+      "date": "2021",
+      "value": "12049571"
+    },
+    {
+      "countryiso3code": "KAZ",
+      "date": "2022",
+      "value": "12310097"
+    },
+    {
+      "countryiso3code": "KAZ",
+      "date": "2023",
+      "value": "12555078"
+    },
+    {
+      "countryiso3code": "KAZ",
+      "date": "2024",
+      "value": "12782330"
+    },
+    {
+      "countryiso3code": "KEN",
+      "date": "2013",
+      "value": "14320396"
+    },
+    {
+      "countryiso3code": "KEN",
+      "date": "2014",
+      "value": "14641205"
+    },
+    {
+      "countryiso3code": "KEN",
+      "date": "2015",
+      "value": "14942980"
+    },
+    {
+      "countryiso3code": "KEN",
+      "date": "2016",
+      "value": "15236332"
+    },
+    {
+      "countryiso3code": "KEN",
+      "date": "2017",
+      "value": "15516171"
+    },
+    {
+      "countryiso3code": "KEN",
+      "date": "2018",
+      "value": "15762021"
+    },
+    {
+      "countryiso3code": "KEN",
+      "date": "2019",
+      "value": "15969935"
+    },
+    {
+      "countryiso3code": "KEN",
+      "date": "2020",
+      "value": "16295124"
+    },
+    {
+      "countryiso3code": "KEN",
+      "date": "2021",
+      "value": "16651177"
+    },
+    {
+      "countryiso3code": "KEN",
+      "date": "2022",
+      "value": "17051973"
+    },
+    {
+      "countryiso3code": "KEN",
+      "date": "2023",
+      "value": "17505406"
+    },
+    {
+      "countryiso3code": "KEN",
+      "date": "2024",
+      "value": "17998601"
+    },
+    {
+      "countryiso3code": "LKA",
+      "date": "2013",
+      "value": "3794292"
+    },
+    {
+      "countryiso3code": "LKA",
+      "date": "2014",
+      "value": "3867905"
+    },
+    {
+      "countryiso3code": "LKA",
+      "date": "2015",
+      "value": "3941575"
+    },
+    {
+      "countryiso3code": "LKA",
+      "date": "2016",
+      "value": "4024359"
+    },
+    {
+      "countryiso3code": "LKA",
+      "date": "2017",
+      "value": "4108415"
+    },
+    {
+      "countryiso3code": "LKA",
+      "date": "2018",
+      "value": "4187534"
+    },
+    {
+      "countryiso3code": "LKA",
+      "date": "2019",
+      "value": "4250415"
+    },
+    {
+      "countryiso3code": "LKA",
+      "date": "2020",
+      "value": "4309755"
+    },
+    {
+      "countryiso3code": "LKA",
+      "date": "2021",
+      "value": "4392788"
+    },
+    {
+      "countryiso3code": "LKA",
+      "date": "2022",
+      "value": "4433492"
+    },
+    {
+      "countryiso3code": "LKA",
+      "date": "2023",
+      "value": "4439472"
+    },
+    {
+      "countryiso3code": "LKA",
+      "date": "2024",
+      "value": "4448882"
+    },
+    {
+      "countryiso3code": "MEX",
+      "date": "2013",
+      "value": "90882630"
+    },
+    {
+      "countryiso3code": "MEX",
+      "date": "2014",
+      "value": "92202901"
+    },
+    {
+      "countryiso3code": "MEX",
+      "date": "2015",
+      "value": "93456180"
+    },
+    {
+      "countryiso3code": "MEX",
+      "date": "2016",
+      "value": "94672068"
+    },
+    {
+      "countryiso3code": "MEX",
+      "date": "2017",
+      "value": "95907379"
+    },
+    {
+      "countryiso3code": "MEX",
+      "date": "2018",
+      "value": "97201282"
+    },
+    {
+      "countryiso3code": "MEX",
+      "date": "2019",
+      "value": "98542822"
+    },
+    {
+      "countryiso3code": "MEX",
+      "date": "2020",
+      "value": "99762910"
+    },
+    {
+      "countryiso3code": "MEX",
+      "date": "2021",
+      "value": "100755748"
+    },
+    {
+      "countryiso3code": "MEX",
+      "date": "2022",
+      "value": "101861181"
+    },
+    {
+      "countryiso3code": "MEX",
+      "date": "2023",
+      "value": "103108719"
+    },
+    {
+      "countryiso3code": "MEX",
+      "date": "2024",
+      "value": "104366731"
+    },
+    {
+      "countryiso3code": "NGA",
+      "date": "2013",
+      "value": "97971440"
+    },
+    {
+      "countryiso3code": "NGA",
+      "date": "2014",
+      "value": "102100615"
+    },
+    {
+      "countryiso3code": "NGA",
+      "date": "2015",
+      "value": "106266334"
+    },
+    {
+      "countryiso3code": "NGA",
+      "date": "2016",
+      "value": "110505898"
+    },
+    {
+      "countryiso3code": "NGA",
+      "date": "2017",
+      "value": "114843267"
+    },
+    {
+      "countryiso3code": "NGA",
+      "date": "2018",
+      "value": "119182819"
+    },
+    {
+      "countryiso3code": "NGA",
+      "date": "2019",
+      "value": "123515077"
+    },
+    {
+      "countryiso3code": "NGA",
+      "date": "2020",
+      "value": "127896884"
+    },
+    {
+      "countryiso3code": "NGA",
+      "date": "2021",
+      "value": "132362871"
+    },
+    {
+      "countryiso3code": "NGA",
+      "date": "2022",
+      "value": "136953875"
+    },
+    {
+      "countryiso3code": "NGA",
+      "date": "2023",
+      "value": "141685483"
+    },
+    {
+      "countryiso3code": "NGA",
+      "date": "2024",
+      "value": "146531222"
+    },
+    {
+      "countryiso3code": "PAK",
+      "date": "2013",
+      "value": "74786751"
+    },
+    {
+      "countryiso3code": "PAK",
+      "date": "2014",
+      "value": "76405820"
+    },
+    {
+      "countryiso3code": "PAK",
+      "date": "2015",
+      "value": "78011192"
+    },
+    {
+      "countryiso3code": "PAK",
+      "date": "2016",
+      "value": "79601595"
+    },
+    {
+      "countryiso3code": "PAK",
+      "date": "2017",
+      "value": "81350216"
+    },
+    {
+      "countryiso3code": "PAK",
+      "date": "2018",
+      "value": "83391491"
+    },
+    {
+      "countryiso3code": "PAK",
+      "date": "2019",
+      "value": "85648282"
+    },
+    {
+      "countryiso3code": "PAK",
+      "date": "2020",
+      "value": "88144500"
+    },
+    {
+      "countryiso3code": "PAK",
+      "date": "2021",
+      "value": "90841927"
+    },
+    {
+      "countryiso3code": "PAK",
+      "date": "2022",
+      "value": "93517801"
+    },
+    {
+      "countryiso3code": "PAK",
+      "date": "2023",
+      "value": "96079231"
+    },
+    {
+      "countryiso3code": "PAK",
+      "date": "2024",
+      "value": "98430767"
+    },
+    {
+      "countryiso3code": "TUR",
+      "date": "2013",
+      "value": "59792513"
+    },
+    {
+      "countryiso3code": "TUR",
+      "date": "2014",
+      "value": "64525973"
+    },
+    {
+      "countryiso3code": "TUR",
+      "date": "2015",
+      "value": "68219585"
+    },
+    {
+      "countryiso3code": "TUR",
+      "date": "2016",
+      "value": "69845546"
+    },
+    {
+      "countryiso3code": "TUR",
+      "date": "2017",
+      "value": "70700912"
+    },
+    {
+      "countryiso3code": "TUR",
+      "date": "2018",
+      "value": "71773129"
+    },
+    {
+      "countryiso3code": "TUR",
+      "date": "2019",
+      "value": "73216431"
+    },
+    {
+      "countryiso3code": "TUR",
+      "date": "2020",
+      "value": "74154256"
+    },
+    {
+      "countryiso3code": "TUR",
+      "date": "2021",
+      "value": "75039385"
+    },
+    {
+      "countryiso3code": "TUR",
+      "date": "2022",
+      "value": "75664514"
+    },
+    {
+      "countryiso3code": "TUR",
+      "date": "2023",
+      "value": "75958748"
+    },
+    {
+      "countryiso3code": "TUR",
+      "date": "2024",
+      "value": "76406060"
+    },
+    {
+      "countryiso3code": "UZB",
+      "date": "2013",
+      "value": "15197230"
+    },
+    {
+      "countryiso3code": "UZB",
+      "date": "2014",
+      "value": "15379536"
+    },
+    {
+      "countryiso3code": "UZB",
+      "date": "2015",
+      "value": "15577537"
+    },
+    {
+      "countryiso3code": "UZB",
+      "date": "2016",
+      "value": "15847892"
+    },
+    {
+      "countryiso3code": "UZB",
+      "date": "2017",
+      "value": "16125558"
+    },
+    {
+      "countryiso3code": "UZB",
+      "date": "2018",
+      "value": "16374996"
+    },
+    {
+      "countryiso3code": "UZB",
+      "date": "2019",
+      "value": "16677505"
+    },
+    {
+      "countryiso3code": "UZB",
+      "date": "2020",
+      "value": "17050807"
+    },
+    {
+      "countryiso3code": "UZB",
+      "date": "2021",
+      "value": "17439284"
+    },
+    {
+      "countryiso3code": "UZB",
+      "date": "2022",
+      "value": "17813536"
+    },
+    {
+      "countryiso3code": "UZB",
+      "date": "2023",
+      "value": "18181423"
+    },
+    {
+      "countryiso3code": "UZB",
+      "date": "2024",
+      "value": "18544064"
+    },
+    {
+      "countryiso3code": "VNM",
+      "date": "2013",
+      "value": "28560797"
+    },
+    {
+      "countryiso3code": "VNM",
+      "date": "2014",
+      "value": "29289816"
+    },
+    {
+      "countryiso3code": "VNM",
+      "date": "2015",
+      "value": "30057186"
+    },
+    {
+      "countryiso3code": "VNM",
+      "date": "2016",
+      "value": "30876800"
+    },
+    {
+      "countryiso3code": "VNM",
+      "date": "2017",
+      "value": "31753511"
+    },
+    {
+      "countryiso3code": "VNM",
+      "date": "2018",
+      "value": "32663930"
+    },
+    {
+      "countryiso3code": "VNM",
+      "date": "2019",
+      "value": "33645364"
+    },
+    {
+      "countryiso3code": "VNM",
+      "date": "2020",
+      "value": "34887423"
+    },
+    {
+      "countryiso3code": "VNM",
+      "date": "2021",
+      "value": "36263736"
+    },
+    {
+      "countryiso3code": "VNM",
+      "date": "2022",
+      "value": "37427944"
+    },
+    {
+      "countryiso3code": "VNM",
+      "date": "2023",
+      "value": "38264181"
+    },
+    {
+      "countryiso3code": "VNM",
+      "date": "2024",
+      "value": "38870231"
+    },
+    {
+      "countryiso3code": "ZAF",
+      "date": "2013",
+      "value": "34476291"
+    },
+    {
+      "countryiso3code": "ZAF",
+      "date": "2014",
+      "value": "35099930"
+    },
+    {
+      "countryiso3code": "ZAF",
+      "date": "2015",
+      "value": "35854741"
+    },
+    {
+      "countryiso3code": "ZAF",
+      "date": "2016",
+      "value": "36231037"
+    },
+    {
+      "countryiso3code": "ZAF",
+      "date": "2017",
+      "value": "36500987"
+    },
+    {
+      "countryiso3code": "ZAF",
+      "date": "2018",
+      "value": "37147252"
+    },
+    {
+      "countryiso3code": "ZAF",
+      "date": "2019",
+      "value": "37786302"
+    },
+    {
+      "countryiso3code": "ZAF",
+      "date": "2020",
+      "value": "38419145"
+    },
+    {
+      "countryiso3code": "ZAF",
+      "date": "2021",
+      "value": "39023643"
+    },
+    {
+      "countryiso3code": "ZAF",
+      "date": "2022",
+      "value": "39595737"
+    },
+    {
+      "countryiso3code": "ZAF",
+      "date": "2023",
+      "value": "40191932"
+    },
+    {
+      "countryiso3code": "ZAF",
+      "date": "2024",
+      "value": "40767329"
+    }
+  ]
+]
