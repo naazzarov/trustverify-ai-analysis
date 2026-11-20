@@ -1,0 +1,64 @@
+{
+  "receipt_version": 1,
+  "created_at_utc": "2026-11-20T11:22:29.864669+00:00",
+  "producer": {
+    "name": "TrustVerify",
+    "version": "1.0.0",
+    "python": "3.14.7",
+    "engine_sha256": "87f8d22f6e50ad211925c90abbe3b93da65b99323e7c7cb641819128fbb06f8f"
+  },
+  "input": {
+    "csv_sha256": "8956dd45b516cf74bf9ccf57f52a3c0a3bc25c308b0a8179252e30f2e761c515",
+    "csv_bytes": 17,
+    "rows": 3,
+    "contract_sha256": "2e7115407ee89fb330c57f9fd1ad5eeeaa5c979c823928df88b2c5f82157d9a7",
+    "report_sha256": "8620289b9cd969f937686c5217d8356d37ae6791be11acdd85fa312523f40b5f"
+  },
+  "contract": {
+    "op": "weighted_mean",
+    "column": "x",
+    "weight": "n",
+    "unit": "points"
+  },
+  "report": {
+    "metrics": {
+      "value": 18
+    },
+    "unit": "points",
+    "rows_used": 2,
+    "chart": {
+      "labels": [
+        "value"
+      ],
+      "values": [
+        18
+      ]
+    },
+    "narrative": "The weighted mean is 18 points."
+  },
+  "profile": "full",
+  "verification": {
+    "status": "fail",
+    "profile": "full",
+    "findings": [
+      {
+        "code": "NUMERIC",
+        "field": "metrics.value",
+        "message": "Incorrect or non-finite numeric result",
+        "expected": 17.5,
+        "actual": 18
+      },
+      {
+        "code": "CHART",
+        "field": "chart.value",
+        "message": "Chart data disagrees with recomputation",
+        "expected": 17.5,
+        "actual": 18
+      }
+    ],
+    "scope": "structured fields only; narrative and contract intent unchecked"
+  },
+  "scope": "Checks selected structured fields under the supplied contract. Narrative meaning, data quality and contract intent are not verified.",
+  "integrity": "SHA-256 detects changes against this receipt. It is not a digital signature or proof of authorship.",
+  "receipt_sha256": "f30685ef7143d7c6e2b82356b0aab530e9f018e00c37bcdc2b97fc62d7f27aa0"
+}

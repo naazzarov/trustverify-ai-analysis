@@ -25,6 +25,18 @@ python3 -m trustverify.server
 Open [the local demo](http://127.0.0.1:8765). Choose a fault, verify the report, then recompute.
 The [dark view](http://127.0.0.1:8765/#theme=dark) matches the research presentation.
 
+The demo also accepts your own UTF-8 CSV and approved contract, includes attributed
+World Bank examples, and downloads [replayable evidence receipts](docs/evidence_receipts.md).
+Try the [complete receipt example](demo/receipt-example/):
+
+```bash
+python3 -m trustverify.audit replay --csv demo/receipt-example/observations.csv \
+  --receipt demo/receipt-example/receipt.json
+```
+
+This reproduces a **failed** check (18 reported versus 17.5 computed). Replay
+success means the recorded check reproduces. Receipt hashes are not signatures.
+
 Try the **unsupported causal prose** example: its structured values pass while its causal
 assertion remains unsupported. This is an intentional demonstration of the tool's boundary.
 

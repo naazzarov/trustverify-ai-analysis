@@ -6,11 +6,15 @@ from pathlib import Path
 
 from .benchmark import load_tasks, mutate
 from .core import load_rows, repair, verify, ContractError
+from .audit import create_receipt, parse_csv
 
 
 def make_handler(root):
     tasks={t["id"]:t for t in load_tasks(root)}
     gold=json.loads((root/"data/gold.json").read_text())
+    if (root/'data/public/tasks.json').exists():
+        tasks.update({t['id']:t for t in json.loads((root/'data/public/tasks.json').read_text())})
+        gold.update(json.loads((root/'data/public/gold.json').read_text()))
     class Handler(BaseHTTPRequestHandler):
         def send(self,code,data,content_type="application/json"):
             body=data if isinstance(data,bytes) else json.dumps(data,allow_nan=False).encode()
@@ -32,7 +36,7 @@ def make_handler(root):
                                "numeric":json.loads(diagnostics.read_text())["models"] if diagnostics.exists() else None})
             else:self.send(404,{"error":"Unknown route"})
         def do_POST(self):
-            if self.path not in {"/api/example","/api/verify","/api/repair"}:
+            if self.path not in {"/api/example","/api/verify","/api/repair","/api/receipt","/api/preview"}:
                 return self.send(404,{"error":"Unknown route"})
             # Block browser requests from other origins to this local service.
             if self.headers.get("Origin") not in {None,f"http://{self.headers.get('Host')}"}:
@@ -41,13 +45,25 @@ def make_handler(root):
                 size=int(self.headers.get("Content-Length","0"))
                 if not 0<size<=100000:return self.send(413,{"error":"Request must be 1–100000 bytes"})
                 payload=json.loads(self.rfile.read(size))
-                task=tasks[payload["id"]];rows=load_rows(root/task["data"])
+                if not isinstance(payload,dict): raise ValueError('Expected a JSON object')
+                if 'csv' in payload:
+                    if not isinstance(payload['csv'],str): raise ValueError('CSV must be text')
+                    body=payload['csv'].encode('utf-8');rows=parse_csv(body);spec=payload['spec']
+                    if self.path=='/api/example': raise ValueError('Custom input has no injected reference example')
+                else:
+                    task=tasks[payload["id"]];body=(root/task['data']).read_bytes()
+                    rows=load_rows(root/task["data"]);spec=task['spec']
                 if self.path=="/api/example":
                     fault=payload.get("fault","clean")
                     report=gold[task["id"]] if fault=="clean" else mutate(gold[task["id"]],fault)
+                    if task.get('domain')=='public' and fault=='numeric':
+                        key=next(iter(report['metrics']))
+                        report['metrics'][key]=gold[task['id']]['metrics'][key]+max(3.25,abs(gold[task['id']]['metrics'][key])*.01)
                     return self.send(200,{"task":task,"rows":rows,"report":report})
-                if self.path=="/api/repair":return self.send(200,repair(rows,task["spec"],payload.get("report")))
-                self.send(200,verify(rows,task["spec"],payload.get("report"),payload.get("profile","full")))
+                if self.path=="/api/preview":return self.send(200,{'rows':rows,'verification':verify(rows,spec,{})})
+                if self.path=="/api/repair":return self.send(200,repair(rows,spec,payload.get("report")))
+                if self.path=="/api/receipt":return self.send(200,create_receipt(body,spec,payload.get('report'),payload.get('profile','full')))
+                self.send(200,verify(rows,spec,payload.get("report"),payload.get("profile","full")))
             except (ValueError,KeyError,TypeError,ContractError) as exc:self.send(400,{"error":str(exc)})
         def log_message(self,*args):pass
     return Handler
