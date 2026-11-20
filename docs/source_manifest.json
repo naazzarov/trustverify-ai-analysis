@@ -76,5 +76,10 @@
     "filename": "scu_course_paper_template.zip",
     "sha256": "4174338498c0f14e815e57b3bc60ff5b866871ec1d39cf101f123ce915377f08",
     "note": "Report layout reference: English adaptation of cover fields, margins, line spacing, headings, numbering and bibliography style."
+  },
+  {
+    "filename": "课程报告评分标准(1).docx",
+    "original_sha256": "0b339e30c5a7890a3a5d950c3e1fde5321575a36a63b34b26689e9aa90be7fa2",
+    "source_status": "read for grading criteria; lecturer-owned source not redistributed"
   }
 ]

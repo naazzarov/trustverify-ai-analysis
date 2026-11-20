@@ -1,22 +1,35 @@
 # Course rubric and evidence map
 
-Based on supplied course evaluation slides dated 19 October 2026, slides 2–10.
-This is a checklist of evidence, not a self-awarded score.
+Based on the supplied evaluation deck (19 October 2026) and course-report grading form.
+These are evidence links, not an awarded or guaranteed score.
 
-| Criterion | Maximum | Evidence in this repository |
+| Criterion | Maximum | Concrete evidence |
 |---|---:|---|
-| Topic selection quality | 20 | Concrete analytics reliability problem; project_description.md; bounded research questions |
-| Literature application | 10 | paper/refs.bib; report related work; primary-source links and discussion |
-| Research and investigation | 20 | Frozen protocol, independent SQL oracle, actual model logs, ablations, paired analysis |
-| Report format | 10 | English adaptation of the supplied SCU template, 12-point text, 1.5 line spacing, numbered figures/equations, GB/T 7714 references and editable LaTeX source |
-| Report quality | 20 | Methods, actual results, error analysis, threats to validity and reproducibility instructions |
-| Innovation | 10 | Structured claim verification across several fields, execution feedback and explicit blind-spot experiment |
-| Workload and attitude | 10 | Working prototype, tests, raw results, repeatable scripts and demonstration |
+| Topic selection | 20 | Four research questions; contract-based analytics workflow; report §1 and docs/project_description.md |
+| Literature application | 10 | Seven recent primary research works, comparative synthesis and design implications; report §2, refs.bib, docs/literature_review.md |
+| Research and investigation | 20 | Independent Decimal/SQLite implementations; 48 clean + 336 faulty reports; original 144-call pilot; separate 144-call extension with public data, paired formats and review branches; report §§5–6 |
+| Report format | 10 | English adaptation of supplied A4 SCU template, unchanged supplied wordmark, 12-point body, 1.5 spacing, section-based captions/equations and GB/T 7714 numerical references |
+| Report quality | 20 | Formal tolerance, complete-case rules, actual results with intervals, retained failure pair, public-data attribution, threats to validity and reproducibility; report §§3–9 |
+| Innovation | 10 | Measured separation of output structure and computational agreement; portable replayable receipts; explicit narrative blind-spot demonstration |
+| Workload and attitude | 10 | Functional custom-CSV demo, 33 tests, raw requests/responses, frozen source snapshots, source code, editable 22-slide deck and coherent pushed commits |
 
-Overall course weights are attendance/participation 30%, final project 50%, documentation 20%.
-The project component lists PPT plus description 25% and report 25% of the course.
-A separate project assessment slide lists presentation 20%, peer evaluation 20%, instructor
-evaluation 60%. Do not multiply or merge those schemes without instructor clarification.
-The slides state December 2026 for the final document but do not give an exact submission day.
+## Assessment schemes
 
-The course permits individual projects using contemporary development tools. The submission includes a report, presentation, software demonstration and reproducible evidence.
+Overall course weights: attendance/participation 30%, final project 50%, documentation
+20%. PPT plus project description and the report each account for 25% of the course.
+A separate project assessment lists presentation 20%, peer evaluation 20%, instructor
+60%. The documents do not specify how to combine these schemes, so they remain separate.
+Final documentation is due in December 2026; no exact day is given.
+
+The supplied requirements permit AI development tools and require individual delivery.
+A strong defense requires understanding the implementation and the results, including
+negative findings. Neither presentation quality nor this evidence map determines the grade.
+
+## Boundaries a reviewer should see
+
+- Controlled fault coverage is not a natural error-detection rate.
+- Complete model-report correctness stays zero in the measured settings.
+- Feedback supplies computational answers; equal calls do not mean equal information.
+- The extension has one realized model capacity. The planned 3B acquisition failed.
+- Public data broaden the inputs, but curated 12-row templates do not establish broad generality.
+- Student number appears only in the local submission edition, not public repository files.

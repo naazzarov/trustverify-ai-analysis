@@ -1,6 +1,7 @@
 # Recorded experimental evidence
 
-All experiments were executed on 10 November 2026. Model-call timestamps are UTC.
+The original controlled benchmark and model pilots were executed on 10 November 2026.
+The separate paired extension was executed on 20 November 2026. Model-call timestamps are UTC.
 
 - `fault_injection.json`: 48 held-out datasets, one clean report and seven single-fault
   reports per dataset, evaluated with three profiles. 1,152 profile evaluations. There
@@ -29,3 +30,19 @@ recomputation gives 24/24 on those task subsets and is conventional tool executi
 Do not interpret the mutation study's designed coverage as model error prevalence, or
 the deterministic result as whole-report truth. The repeated task templates limit the
 interpretation of uncertainty intervals and transfer to real analysis.
+
+## Completed paired extension
+
+`study/qwen2.5-1.5b/` contains all 144 actual requests/responses, immutable context
+metadata, task checkpoints, group summaries and paired comparisons. It evaluates
+24 new tasks (12 synthetic and 12 World Bank) × two output formats × three conditions.
+`python3 scripts/check_study.py` independently reconstructs requests and scores offline.
+
+Initial schema compliance is 20/24 in JSON mode and 23/24 with schema constraints.
+Numerical mappings after feedback are correct on 19/24 and 18/24 respectively;
+complete correctness stays 0/24 in every condition. Three truncated schema completions
+remain scored. These are separate observations from the original pilot.
+
+The planned additional 3B capacity was not acquired or run. The realized-scope note
+in `docs/extension_execution_note.md` preserves the timing and reason for this reduction.
+The repository has 288 actual saved model calls in total, not the larger planned count.

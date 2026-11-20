@@ -1,6 +1,7 @@
 % !TEX program = xelatex
 \input{format.tex}
 \input{results_macros.tex}
+\input{study_macros.tex}
 \newcommand{\AuthorName}{BAHODIR KODIRJON UGLI NAZAROV}
 \newcommand{\StudentID}{}
 \IfFileExists{identity.tex}{\input{identity.tex}}{}
@@ -10,350 +11,295 @@
 \begin{titlepage}
 \thispagestyle{empty}
 \begin{center}
-\vspace*{1cm}
-{\fontsize{32}{38}\selectfont\bfseries\color{SCURed}SICHUAN UNIVERSITY}\par
-\vspace{1.5cm}
-{\fontsize{26}{32}\selectfont\sffamily\bfseries Course Paper}\par
-\vspace{2cm}
-{\fontsize{20}{26}\selectfont\bfseries TrustVerify}\par
-\vspace{1cm}
-\begingroup\setstretch{1.1}\renewcommand{\arraystretch}{1.2}
-\begin{tabular}{@{}r@{\hspace{.7cm}}l@{}}
+\vspace*{8mm}
+\includegraphics[width=10cm]{figures/SCU_TITLE.png}\par
+\vspace{5mm}
+{\large\sffamily Sichuan University}\par
+\vspace{13mm}
+{\fontsize{25}{31}\selectfont\sffamily\bfseries Course Paper}\par
+\vspace{12mm}
+{\fontsize{22}{28}\selectfont\bfseries TrustVerify}\par
+\vspace{8mm}
+\begingroup\setstretch{1.1}\renewcommand{\arraystretch}{1.1}
+\begin{tabular}{@{}r@{\hspace{.6cm}}l@{}}
 \coverfield{Project title}{Executable Verification of\\AI-Generated Data Analysis}
 \coverfield{Course}{New Software Technology}
-\coverfield{Student}{\small\AuthorName}
+\coverfield{University}{Sichuan University}
+\coverfield{Program}{Software Engineering}
+\coverfield{Student}{\fontsize{10.5}{13}\selectfont\AuthorName}
 \ifdefempty{\StudentID}{}{\coverfield{Student ID}{\StudentID}}
 \coverfield{Instructor}{Dr. Hu Dasha}
 \end{tabular}
 \endgroup
 \vfill
 {\large Academic Year 2026--2027, Semester 1}\par
-\vspace{4mm}{\normalsize November 2026}\par
-\vspace{1cm}
+\vspace{3mm}{\normalsize November 2026}\par
+\vspace{6mm}
 \end{center}
 \end{titlepage}
-\setcounter{page}{1}
 \hypersetup{pageanchor=true}
+\pagenumbering{roman}
 \thispagestyle{plain}
 \section*{Abstract}
-AI-generated data analyses may contain correct-looking calculations alongside incorrect units, row counts or chart data. This study develops TrustVerify, an executable verifier for six descriptive operations under an approved analysis contract. A reproducible benchmark contains 60 synthetic datasets with an independent SQLite oracle. In 336 controlled faulty reports, full verification detects 288 structured faults (85.7\%) and misses 48 unsupported causal narratives, with zero false alarms on 48 clean reports. A separate pilot records 144 calls to two local Qwen2.5 models. Executable feedback produces correct numerical mappings on 19 of 24 tasks for the 1.5B model, compared with none under self-review. Full-report correctness remains zero because other fields still fail. Deterministic recomputation matches the oracle on all supported generated tasks. The results show that computational evidence can repair selected claims, while reliable report production also requires explicit output validation.
+AI-generated analyses can contain plausible prose alongside incorrect calculations, units, row counts or chart data. TrustVerify checks selected structured claims by recomputing six descriptive operations under a human-approved analysis contract. Its independent evaluator uses SQLite rather than the production Decimal implementation. A controlled experiment contains 48 clean and 336 faulty reports: full verification detects all 288 supported structured mutations and misses all 48 causal-narrative mutations, with no clean-report false alarms. An initial 144-call local-model pilot exposes a distinction between numerical repair and complete-report correctness. A separate post-pilot extension records \StudyCalls\ calls on 24 new tasks, half derived from attributed World Bank observations, comparing JSON mode with schema-constrained generation and equal-call review branches. \StudyAbstract\ The prototype additionally accepts custom CSVs and produces portable receipts that replay each bounded verification result. The study demonstrates the value of independent computation while showing why format compliance, arithmetic consistency and scientific validity require separate evidence.
 
-\noindent\textbf{Keywords:} data analysis; language models; executable verification; structured reporting; reproducibility
-
+\vspace{4mm}
+\noindent\textbf{Keywords:} language models; data analysis; executable verification; structured generation; reproducibility
 \clearpage
+\setcounter{tocdepth}{2}
+\begingroup\small\setstretch{1.05}
+\tableofcontents
+\endgroup
+\clearpage
+\pagenumbering{arabic}
+
 \section{Introduction}
-Language models provide an accessible interface for data analysis, but a fluent explanation
-does not establish that its calculations are correct. A report may use the wrong denominator,
-count missing observations, attach a wrong unit, or plot values different from those in its
-numeric result. These failures matter even in basic descriptive analysis. The central
-engineering question is how much of a candidate analysis can be checked with executable
-evidence and how precisely the resulting assurance should be described.
+A data-analysis report can look complete while using the wrong denominator, counting missing observations or plotting values that differ from its reported statistic. These errors are especially easy to overlook when a language model supplies a fluent explanation. A schema can specify the fields a report must contain, but it cannot by itself establish that the values answer the approved question. This project asks how conventional computation can provide precise, reproducible evidence for selected claims inside such reports.
 
-This project studies a bounded setting. A human approves the operation, columns, unit and
-missing-value rule before verification. A model proposes a structured report. TrustVerify
-recomputes the approved operation and returns field-specific findings. The model can then
-receive those findings in one repair call. A separate deterministic path replaces the checked
-fields directly. Neither path certifies free-form prose or discovers the correct research question.
+The setting is deliberately bounded. A user approves the operation, source columns, output unit and missing-value rule. A model proposes a JSON report; TrustVerify independently recomputes the operation and compares the report fields. Findings can inform one additional model call, or deterministic software can produce the checked fields directly. Neither path establishes that the user's chosen analysis is scientifically appropriate.
 
-Three research questions organize the study. RQ1 asks which error classes different checking
-layers detect. RQ2 asks whether executable feedback improves structured correctness compared
-with an equal-call self-review condition. RQ3 asks what role remains for the model when the
-analysis contract is already explicit. The third question is essential: direct computation is
-already sufficient for the six implemented operations. The evaluation therefore separates conventional execution from model repair.
+The investigation addresses four questions. RQ1 asks which errors are detected by successive checking layers. RQ2 compares executable-feedback repair with self-review under equal model-call budgets. RQ3 asks whether schema-constrained generation improves complete-report correctness, separately from format compliance. RQ4 examines what assurance remains outside an executable check, including narrative meaning and the approved contract's intent.
 
-The contributions are a dependency-free Python prototype, a reproducible synthetic benchmark
-with an independent oracle, a controlled ablation, actual local-model response logs, and a
-demonstration of both successful checks and failure boundaries. The implementation combines field-level verification with an independent evaluation oracle and a reproducible comparison of review strategies.
+The contribution is an inspectable software system and a small empirical study, rather than a new language model. The repository supplies an independent SQL oracle, frozen datasets and actual model-call evidence; a paired extension adds public observations and isolates the generation-format factor. A portable receipt links each verification result to its exact CSV, contract and candidate report. These components support a practical workflow in which a reader can reproduce the check and see its limits.
 
-\section{Related work}
-\subsection{Evaluating data-science systems}
-DSBench evaluates data-science agents on realistic tasks involving substantial files and
-multi-stage analysis~\cite{jing2025dsbench}. It motivates examining observed outcomes rather
-than treating generated analysis as completed work. Our synthetic benchmark has a different,
-narrower purpose: exact control over the operation, missingness, source values and injected
-fault. Results from this project are not directly comparable with DSBench scores and do not
-measure end-to-end data-science competence.
+\section{Related work and research position}
+\subsection{Feedback and reasoning correction}
+Huang et al. examine settings where intrinsic reasoning self-correction is unreliable~\cite{huang2024selfcorrect}. CRITIC instead uses external tools to inform revision~\cite{gou2024critic}. Together these works motivate comparing self-review with computational feedback. Our implementation differs in scope: it provides field discrepancies for six explicitly approved operations and executes no model-written code. Feedback may reveal recomputed values, so any gain is evidence about a tool-assisted system, not unaided reasoning.
 
-\subsection{Self-review and external feedback}
-Self-Refine studies iterative improvement using feedback from the same model without
-additional model training~\cite{madaan2023selfrefine}. Its task-dependent results motivate
-including a self-review baseline. Huang et al. investigate limitations of intrinsic
-self-correction in reasoning~\cite{huang2024selfcorrect}. Their findings motivate an
-independent computational signal, but do not establish that self-review always fails or
-that every form of external feedback succeeds. This project evaluates those alternatives
-under one explicit local protocol and preserves negative results.
+\subsection{Structured generation and artifact evaluation}
+JSONSchemaBench evaluates constrained generation through schema coverage, efficiency and output quality~\cite{geng2025jsonschema}. Its quality experiments do not support assuming constraints always reduce reasoning quality. For this project, the relevant distinction is between satisfying structural constraints and producing the correct statistic. Both generation modes therefore receive the same schema text, while the API format setting alone changes.
 
-\subsection{Local inference and structured reporting}
-Qwen2.5 provides models of different capacities~\cite{qwen2024}. We use quantized 0.5B and
-1.5B variants through Ollama's chat interface~\cite{ollama2026}. The experiment requests
-JSON output but does not impose a strict JSON schema. Consequently, syntactically valid JSON
-can still violate the report contract. These small local models make the study accessible,
-but their results do not estimate the performance of larger hosted systems.
+DSBench evaluates realistic data-analysis and modeling tasks~\cite{jing2025dsbench}; ScienceAgentBench evaluates scientific workflow artifacts with task-specific criteria~\cite{chen2025scienceagent}. These studies motivate scoring produced outputs and keeping evidence rather than treating a generated answer as completed work. Our 12-row tasks offer controlled diagnosis, but do not reproduce their end-to-end workflows or establish broad data-science competence.
+
+\subsection{Evidence boundaries and recent verification research}
+TrustDABench studies reliability when evidence is insufficient and robustness when equivalent tables are represented differently~\cite{shi2026trustda}. CausalVerify separates method recognition, design, execution and recovery of causal estimates~\cite{zhang2026causalverify}. These 2026 studies reinforce the need to define the target of verification. TrustVerify checks descriptive structured outputs under a supplied contract; it does not validate causal identification or certify the source data. The causal-narrative counterexample makes that boundary observable.
+
+\begin{table}[!htbp]\centering\small
+\caption{Position of the project relative to recent research. Benchmark scores are not directly comparable.}
+\label{tab:position}
+\begin{tabular}{@{}p{3.8cm}p{4.7cm}p{6.4cm}@{}}\toprule
+Research direction & Evidence assessed & Scope of this project\\\midrule
+Tool-supported revision~\cite{gou2024critic} & External feedback during correction & Field findings from fixed descriptive operations\\
+Constrained generation~\cite{geng2025jsonschema} & Structure, coverage and quality & Identical prompts; JSON versus schema API setting\\
+Workflow evaluation~\cite{jing2025dsbench,chen2025scienceagent} & Produced analysis artifacts & Small CSVs with independent SQL reference values\\
+Analysis reliability~\cite{shi2026trustda,zhang2026causalverify} & Evidence sufficiency and valid targets & Explicit boundaries; no causal certification\\\bottomrule
+\end{tabular}
+\end{table}
 
 \section{Problem formulation}
-\subsection{Approved contract and report}
-Let $D$ be a CSV dataset, $C$ the human-approved contract and $R$ a candidate JSON report.
-The contract specifies one of six operations, the required columns and the output unit.
-The report contains a metric mapping, a unit string, an integer valid-row count, chart labels
-and numeric values, and a narrative string. The verifier computes $E=f_C(D)$ and compares
-the structured fields of $R$ with $E$.
+\subsection{Contract and candidate report}
+Let $D$ denote CSV observations, $C$ an approved analysis contract and $R$ a candidate report. The contract selects an operation, required columns and output unit. The report contains \texttt{metrics}, \texttt{unit}, \texttt{rows\_used}, \texttt{chart} and \texttt{narrative}. A scalar metric uses key \texttt{value}; grouped results use group labels. Chart labels must uniquely cover the metric keys and name matching numeric values. Label order may vary.
 
-For a scalar answer, the metric key is \texttt{value}. A grouped answer uses the group
-labels as keys. Chart values must match their named metrics, although the chart label order
-can vary. A field passes numeric comparison when
-\begin{equation}
- |r-e|\leq\max\left(10^{-6},10^{-6}\max(|r|,|e|)\right).
+The verifier computes expected fields $E=f_C(D)$. Numeric equality is defined by
+\begin{equation}\label{eq:tolerance}
+ |r-e|\leq\max\!\left(10^{-6},10^{-6}\max(|r|,|e|)\right).
 \end{equation}
-Booleans, numeric strings and non-finite values do not count as numeric answers. This
-tolerance accommodates output rounding. It also defines a detectable-error boundary:
-smaller differences can pass.
+Booleans, numeric strings and non-finite values are rejected as numeric answers. This tolerance permits output rounding, so ``correct'' throughout means agreement within this declared policy. At a billion people, the relative component permits differences of approximately a thousand people; it is not integer-exact demographic accounting.
 
-\subsection{Supported arithmetic}
-The operations are sum, arithmetic mean, weighted mean, ratio of sums expressed as a
-percentage, group sum and first-to-last percentage change. Weighted mean is
+\subsection{Supported operations and exclusions}
+The engine supports sum, arithmetic mean, weighted mean, percentage ratio of sums, grouped sum and first-to-last percentage change. The weighted mean and ratio are
 \begin{equation}
- \bar{x}_w=\frac{\sum_{i\in I}w_i x_i}{\sum_{i\in I}w_i},
+ \bar{x}_w=\frac{\sum_{i\in I}w_i x_i}{\sum_{i\in I}w_i},\qquad
+ p=100\frac{\sum_{i\in I}x_i}{\sum_{i\in I}n_i},
 \end{equation}
-where $I$ includes rows with both values present. The percentage ratio is
+where $I$ includes only rows complete for the required columns. A ratio of sums is distinct from the unweighted mean of row-level ratios. Change is
 \begin{equation}
- p=100\frac{\sum_{i\in I}x_i}{\sum_{i\in I}n_i}.
+ \Delta=100\frac{x_{\mathrm{last}}-x_{\mathrm{first}}}{x_{\mathrm{first}}},
 \end{equation}
-It is deliberately defined as a ratio of sums, which differs from averaging row-wise
-ratios. Percentage change uses the first and last nonmissing observations in CSV order.
-The engine does not infer chronological order from column names.
+using nonmissing observations in CSV order. The engine never infers chronological order from column names.
 
-Missing cells are excluded according to the columns required by the operation. All duplicate
-records count as separate observations. The approved unit is used literally; dimensional
-analysis is outside scope. Empty data, missing columns, unsupported operations, zero aggregate
-denominators and invalid weights produce an abstention. The public API distinguishes
-\texttt{pass}, \texttt{fail} and \texttt{abstain} so an unsupported task does not silently
-receive a successful verdict.
+Blank required values are excluded; duplicates count as separate observations. Units are literal contract strings rather than inferred dimensions. Missing columns, empty or undefined calculations, negative weights and zero aggregate denominators cause abstention. The API distinguishes \texttt{pass}, \texttt{fail} and \texttt{abstain}. A pass means selected structured fields agree with the supplied contract, not that the report is scientifically true.
 
-\section{System design}
-\subsection{Independent computation and field checks}
-The production engine uses Python's Decimal arithmetic with a 40-digit calculation context
-and emits finite JSON numbers. It never reads evaluation gold answers. The independent
-evaluation oracle uses SQLite aggregation and separate query logic. Agreement between
-these implementations checks common arithmetic mistakes, although it cannot eliminate
-all shared specification errors.
+\section{System implementation}
+\subsection{Independent computation and checking layers}
+The production engine uses Python Decimal with a 40-digit context, then emits finite JSON numbers. It does not read evaluation gold files. The evaluator uses separate SQLite queries over the same declared column roles. Agreement between implementations reduces identical-code bias, while hand calculations and metamorphic tests supply additional checks. Shared specification errors remain possible.
 
-The numeric profile checks metric labels and values. The schema-plus-numeric profile
-also requires the expected top-level fields and selected field types. Full verification
-adds unit equality, complete-case row count and chart consistency. These profiles provide
-an ablation over coverage rather than three independently trained systems.
+Numeric checking compares metric labels and values. Schema-plus-numeric checking additionally requires the expected fields and selected types. Full checking adds units, complete-case row counts and chart consistency. The stricter JSON schema used in the extension is a separate output validator: it also disallows extra fields, requires nonempty numeric mappings/arrays and limits narrative length to 160 characters. The original pilot's scoring rule is preserved rather than retroactively tightened.
 
-Each finding contains a code, field path, explanation and expected/observed values when
-available. For example, an incorrect percentage can yield a finding for
-\texttt{metrics.value} with the recomputed percentage. Such expected values are derived
-from the available data and approved contract. They are computational feedback, not hidden
-benchmark labels, but they do give the model more information than self-review receives.
+A finding records its field, discrepancy code, expected value and observed value where available. Expected values come from the original CSV and contract, not the evaluator's hidden gold file. They nevertheless provide substantive answers to the model and must be understood as external computational information.
 
-\subsection{Repair paths and demonstration}
-The model repair path receives the initial response and checker findings in one additional
-call. The deterministic path recomputes the report without another model call. It replaces
-the narrative with an explicit statement that no causal conclusion has been established.
-We label this path deterministic recomputation throughout the results.
+\begin{lstlisting}[style=vscode,caption={An approved ratio contract. The checker does not infer the intended research question.},label={lst:contract}]
+{
+  "op": "ratio",
+  "column": "x",
+  "denominator": "n",
+  "unit": "%"
+}
+\end{lstlisting}
 
-The local demonstration serves a task selector, an editable candidate report, the approved
-contract and original rows. Users can inject a named fault, run an ablated checker and
-recompute the structured report. All examples are visibly identified as controlled cases.
-The application binds to loopback, accepts bounded JSON input and executes no submitted
-Python or shell code. It is a local prototype, not a general code-execution sandbox.
+\subsection{Correction and evidence receipts}
+Model repair receives the initial response plus checker findings in one additional call. A separate deterministic path directly recomputes supported fields and replaces prose with a bounded statement that no causal conclusion is established. The latter is ordinary software execution, not model self-correction.
+
+The receipt feature records CSV byte count and SHA-256, canonical JSON hashes of the contract and candidate report, the verification-engine hash, selected profile, verdict and findings. It embeds the report and contract but no local file path or student identifier. Offline replay checks the input and engine hashes and recomputes the verdict. A failed or abstained verification can replay successfully: replay establishes reproducibility of that result.
+
+Hashes are not signatures. A person able to replace the record and its hashes can create a different receipt. The feature supplies integrity relative to the recorded evidence, not authenticated authorship. Its practical value is that a bounded claim travels with enough information to reproduce its check.
+
+\subsection{Local demonstration}
+The browser interface supports controlled synthetic examples, attributed public-data tasks and a user-selected UTF-8 CSV. The user supplies the contract, edits a candidate report, inspects discrepancies and optionally recomputes or downloads a receipt. Input data stay in the local request/session and are not automatically written to the repository. The loopback service bounds requests to 100,000 bytes, rejects cross-origin browser requests and executes no submitted Python or shell code.
 
 \section{Experimental design}
-\subsection{Datasets and split}
-The generator creates ten datasets for each operation, using independently determined
-seeds. Every dataset has 12 rows and three columns: numeric observation $x$, weight or
-denominator $n$, and group $g$. Two observations of $x$ and one of $n$ are missing in
-each dataset. Variants 00--01 form 12 development tasks, and 02--09 form 48 test tasks.
-The model pilot uses variants 02--05, providing four test tasks per family and 24 per model.
-Each task manifest includes a CSV SHA-256 digest.
+\subsection{Original controlled benchmark and pilot}
+The generator creates 60 synthetic datasets: ten per operation, each containing 12 observations with columns $x$, $n$ and $g$. Two $x$ cells and one $n$ cell are missing. Variants 00--01 form 12 development tasks; 02--09 form 48 test tasks. Each CSV has a frozen SHA-256. This is a dataset split inside six fixed templates, not transfer to unseen operations.
 
-This is a dataset-level split within six fixed task templates. It does not test transfer
-to unseen operation families. All observations are synthetic and carry no substantive
-claim about real people, institutions or economic outcomes.
+Each held-out task supplies one clean report and seven single-fault reports. Mutations alter a metric by 3.25, change the unit, increase the row count by one, change a chart value by five, remove the chart, replace a metric with string NaN, or insert unsupported causal prose. The experiment therefore has 48 clean and 336 faulty reports per checking profile. Mutation labels never enter verification. Dependent mutations and deliberately chosen fault classes make these coverage tests, not estimates of natural error prevalence.
 
-\subsection{Controlled mutations}
-For each of the 48 test tasks we retain a correct report and construct seven single-fault
-reports. Six mutations target supported fields: a metric increased by 3.25, a wrong unit,
-a valid-row count increased by one, a chart value increased by five, a missing chart and
-a metric replaced by the string NaN. The seventh inserts an unsupported causal narrative
-while preserving every structured value.
+The original local pilot uses variants 02--05: 24 tasks per model. Qwen2.5 0.5B is followed by a disclosed 1.5B capacity check after inspecting the first run. Both use the same prompts, JSON mode, temperature 0, seed 31415, context 4096 and output cap 384. Each task has an initial call and two separate one-call branches: self-review and executable-feedback repair. These 144 calls remain unchanged. Qwen model provenance and the Ollama interface are documented in their primary sources~\cite{qwen2024,ollama2026}.
 
-The resulting experiment contains 48 clean and 336 faulty reports, evaluated under each
-profile. Mutation labels never enter the checker. Faults sharing one dataset are dependent,
-and the types are intentionally chosen. Therefore, their detection proportions describe
-coverage of the injected fault set, not the natural frequency or population prevalence of
-LLM errors. We do not attach naive binomial confidence intervals to these mutation counts.
+\subsection{Post-pilot extension and public observations}
+The extension was designed after the pilot and frozen in the repository before its first model call. It is not an independent preregistration. Twelve synthetic variants 06--07 had not previously been used for model generation. Twelve public tasks add two datasets per operation from the World Bank's population and urban-population indicators~\cite{worldbank2026population,worldbank2026urban}.
 
-\subsection{Actual-model comparison}
-The initial pilot uses Qwen2.5 0.5B. After observing frequent schema failures, we disclose a
-capacity-check amendment and run Qwen2.5 1.5B on the same tasks with unchanged prompts.
-This is a post-pilot capacity check rather than a preregistered independent replication.
-Both models use temperature zero, seed 31415, context limit 4096 and a maximum of 384
-generated tokens per call. Exact model digests, prompts and provider settings are saved.
+Two disjoint curated country cohorts each contain 12 countries. Cross-sectional tasks use 2024 observations. Percentage-change tasks use 2013--2024 series for Uzbekistan and Japan. Urban share is derived as $100U/P$ to six decimals; the weighted mean uses population weights. The ratio task instead uses the original population counts. Grouped totals use World Bank region codes and describe only the selected countries. They are not estimates of full regional populations.
 
-For every task an initial call generates a report. Two separate branches then start from
-that same initial report. One receives a self-review instruction with the data and question;
-the other receives executable checker findings. Each branch gets exactly one additional
-call with the same output-token limit. Thus each model contributes 72 calls: 24 initial,
-24 self-review and 24 feedback repair. The branches have equal call count but differ in
-prompt length and available computational information.
+Original bulk ZIPs, country metadata, normalized extracts, CSVs and independent SQL results are preserved. Provenance records publisher URLs, checksums, changes, retrieval time and CC BY 4.0 attribution. The source exports were updated on 11 November 2026. National definitions of urban areas differ, and the study does not independently validate population estimates.
 
-Invalid JSON or an invalid report is a measured content failure. Service/network failures
-stop the run rather than being scored as model mistakes. Raw completed calls are retained,
-and resuming a run checks request hashes. There is no content retry or selection of a
-preferred response. Generated code is never executed.
+\begin{table}[!htbp]\centering\small
+\caption{Experiment inventory. Counts refer to tasks, reports or recorded calls as indicated.}
+\label{tab:inventory}
+\begin{tabular}{@{}p{4.5cm}p{4.8cm}p{5.6cm}@{}}\toprule
+Experiment & Data and comparison & Size\\\midrule
+Controlled checking & Synthetic test tasks; 3 checking layers & 48 clean + 336 faulty reports per layer\\
+Original pilot & Synthetic variants 02--05; 0.5B and 1.5B & 24 tasks/model; 144 calls total\\
+Paired extension & 12 synthetic + 12 public tasks; 2 formats & 24 tasks; \StudyModels\ completed model capacity; \StudyCalls\ calls\\\bottomrule
+\end{tabular}
+\end{table}
 
-\subsection{Metrics and uncertainty}
-Primary correctness requires all metric labels/values, units, valid-row count and chart
-data to match the independent oracle within tolerance. Narrative truth is excluded from
-this metric. We also record JSON-object validity, field-level findings, wall-clock latency
-and provider token counts. Model tables report cumulative initial-plus-second-call latency
-for review and feedback. Deterministic computation time is reported separately.
+\subsection{Generation factors, pairing and integrity}
+The realized extension compares ordinary JSON mode with JSON-Schema-constrained mode for Qwen2.5 1.5B. A planned 3B capacity comparison was not completed because repeated weight-transfer failures prevented a verified local model download. Both receive identical prompt text, including the schema. Only the API \texttt{format} value differs, following the documented interface~\cite{ollamaschema2026}. The schema contains no gold metric values, correct unit, row count, enumerated metric keys or chart references.
 
-We give Wilson 95\% intervals for each model condition and a task-level paired bootstrap
-interval for feedback-minus-self-review accuracy, using 10,000 resamples and fixed seed
-20261110. These intervals describe a small, clustered-by-template synthetic task sample.
-They do not establish population-wide model performance or cross-model superiority.
+Every task and format receives an initial call and independent self-review/feedback branches from that same initial answer. Format order and second-branch order are counterbalanced by task index. All calls use temperature 0, seed 31415, context 4096 and output cap 512. The full planned design was $24\times2\times3\times2=288$ new calls; the realized one-capacity extension contains 144. Together with the preserved pilot, 288 actual model calls are published. The execution note records this scope reduction after the 1.5B outcomes were available. No output is retried for better content or selected as a preferred sample.
+
+Raw requests and responses carry hashes, timestamps, model digest and code/protocol/task context. Resume requires matching requests, model digest, source data, prompts and experimental code. Changed content is rejected. Operational network/service failures stop execution and are not counted as model errors; truncated model content remains a scored failure. Exact digests and settings are in the saved metadata.
+
+\subsection{Outcomes and descriptive uncertainty}
+Extension primary correctness requires compliance with the fixed JSON schema and correct metric labels/values, unit, row count and chart data against the independent oracle. Narrative meaning remains outside scope. Secondary outcomes separately count schema compliance, numerical mappings and each checked field, as well as truncations, latency and token usage. Deterministic recomputation is scored separately.
+
+Each condition has 24 paired tasks; synthetic and public strata each have 12. Wilson 95\% intervals describe condition-level complete correctness. Paired comparisons record improved, regressed and unchanged task outcomes and an exact two-sided McNemar test over discordant pairs. These are descriptive comparisons of a small constructed set, with multiple related outcomes and no multiplicity adjustment. Country cohorts and operation templates induce dependence; no population-wide significance claim is made. The original pilot retains its separately documented paired bootstrap analysis.
 
 \section{Results and error analysis}
-\subsection{Checking layers and controlled coverage}
-Numeric-only verification detects 96 of 336 injected faults (28.6\%). Requiring the report
-schema increases detection to 144 (42.9\%). Full structured checking detects 288 (85.7\%).
-All profiles produce zero false alarms on the 48 clean reports. Full verification detects
-all 288 supported structured mutations, while missing all 48 causal-narrative mutations.
-Figure~\ref{fig:coverage} shows the aggregate ablation and Figure~\ref{fig:matrix} separates
-the fault categories.
+\subsection{Controlled checking coverage}
+Numeric-only checking detects 96/336 injected faults (28.6\%); adding schema checks detects 144 (42.9\%); full checking detects 288 (85.7\%). Full checking detects every supported structured mutation, with zero false alarms among 48 clean reports, but misses all 48 causal-narrative mutations. Figure~\ref{fig:coverage} gives the aggregate counts and Figure~\ref{fig:matrix} separates the fault classes.
 
 \begin{figure}[!htbp]\centering
-\includegraphics[width=0.97\textwidth]{figures/fault_coverage.pdf}
-\caption{Detection of controlled injected faults. The denominator includes the intentionally
-unsupported narrative mutation. These are checker-coverage results, not natural model error rates.}
-\label{fig:coverage}\end{figure}
+\includegraphics[width=.98\textwidth]{figures/fault_coverage.pdf}
+\caption{Controlled detection coverage. The denominator includes causal prose, which is intentionally outside the checker. These are designed faults, not natural model error rates.}\label{fig:coverage}
+\end{figure}
 \begin{figure}[!htbp]\centering
-\includegraphics[width=0.98\textwidth]{figures/fault_matrix.pdf}
-\caption{Detection counts by field and profile. Each cell contains 48 controlled cases.}
-\label{fig:matrix}\end{figure}
+\includegraphics[width=.98\textwidth]{figures/fault_matrix.pdf}
+\caption{Checking-layer ablation by injected fault class, with 48 cases per cell.}\label{fig:matrix}
+\end{figure}
 
-This result is consistent with the design: numeric checking cannot discover a wrong unit
-when the metric itself is unchanged. Schema checking can detect the missing chart but not
-a present chart with wrong values. Full checking adds independent evidence for those fields.
-However, because the mutations directly exercise designed checks, perfect supported-fault
-detection is a coverage observation, not proof against arbitrary failures.
+The pattern follows the available evidence: a numeric check cannot discover a wrong unit if the metric remains unchanged, and the presence of a chart cannot establish that its values match. Perfect coverage of designed supported mutations does not prove resistance to arbitrary errors or adversarial inputs.
 
 \FloatBarrier
-\subsection{Model outcomes}
+\subsection{Preserved pilot outcomes}
 \begin{table}[!htbp]\centering\small
-\caption{Measured actual-model pilot. Each generation condition uses 24 paired tasks.
-Intervals are descriptive Wilson 95\% intervals for structured correctness.}
-\label{tab:live}
+\caption{Original pilot with 24 tasks per model and condition. The primary endpoint excludes narrative truth. Intervals are descriptive Wilson 95\% intervals.}\label{tab:pilot}
 \input{live_table.tex}
 \end{table}
 \ComparisonText
 
-\begin{figure}[!htbp]\centering
-\includegraphics[width=0.98\textwidth]{figures/live_accuracy.pdf}
-\caption{Primary structured correctness for both tested local models. Whiskers show
-Wilson 95\% intervals. Deterministic recomputation scores 24/24 separately for each task set.}
-\label{fig:live}\end{figure}
-
-The 0.5B model produces JSON objects on 19 of 24 tasks in every generation condition, but
-none satisfies the full structured correctness criterion. On task sum-02, it reports a value
-of 10, embeds unit and row-count fields inside the metric mapping, and uses chart labels
-that do not correspond to the expected single metric. Self-review and feedback repair
-preserve these problems. This example illustrates that a parseable object is weaker than
-a valid, correct report. The unchanged prompt and retained responses make this floor
-effect visible instead of silently removing it from the evaluation.
-
 \LargeErrorText
 
-Figure~\ref{fig:numeric} decomposes numerical correctness by operation. Feedback repairs all sum, mean, weighted-mean and ratio tasks, three of four percentage-change tasks, and none of the grouped-sum tasks. Figure~\ref{fig:fields} shows why those numerical gains do not produce fully correct reports: chart consistency remains the weakest output field.
-\begin{figure}[!htbp]\centering
-\includegraphics[width=0.98\textwidth]{figures/numeric_by_family.pdf}
-\caption{Exploratory numerical correctness for Qwen2.5 1.5B. Each operation contains four held-out tasks. This endpoint excludes unit, row-count and chart requirements.}
-\label{fig:numeric}\end{figure}
-\begin{figure}[!htbp]\centering
-\includegraphics[width=0.98\textwidth]{figures/field_compliance.pdf}
-\caption{Independent field compliance for Qwen2.5 1.5B. A report must satisfy all fields to meet the primary endpoint. Numerical mappings include exact metric-key agreement.}
-\label{fig:fields}\end{figure}
+The 1.5B numerical-mapping result is exploratory and does not change the primary endpoint. Figure~\ref{fig:pilotfields} shows the independent field counts. For example, a numerically repaired value can coexist with chart values that still describe the original observations rather than the approved statistic. The extension tests that distinction with a stronger format constraint and new tasks.
 
+\begin{figure}[!htbp]\centering
+\includegraphics[width=.98\textwidth]{figures/field_compliance.pdf}
+\caption{Original 1.5B pilot: independent field compliance, denominator 24. Every required field must agree simultaneously for a complete report.}\label{fig:pilotfields}
+\end{figure}
 
 \FloatBarrier
-\subsection{What deterministic execution establishes}
-Deterministic recomputation matches the independent oracle on all 60 generated tasks,
-including all 48 held-out checker tasks and the 24-task pilot subset. This is an expected
-consequence of correctly implementing an explicit operation. It provides a useful
-deployment path for supported contracts, but does not constitute language-model reasoning
-improvement. It also makes the project's arithmetic boundary clear: when the operation is
-known, conventional software is the appropriate source of the result.
+\subsection{Extension: complete correctness and schema compliance}
+Table~\ref{tab:extension} reports complete-report outcomes from the saved extension calls. Figure~\ref{fig:studyprimary} includes descriptive Wilson intervals, while Figure~\ref{fig:schematruth} compares initial schema compliance with complete correctness. The schema validates field types and presence; it does not express the calculations, semantic unit equality or cross-field relationships.
 
-The model may still be useful for proposing a readable interface or a narrative, but those
-roles require additional validation. Our reported correctness metric cannot evaluate them.
-The deterministic score applies to supported computations under the approved contract.
+\begin{table}[!htbp]\centering\small
+\caption{Extension complete correctness. Each cell uses the same 24 paired tasks per model; schema validity is additionally required.}\label{tab:extension}
+\input{study_primary_table.tex}
+\end{table}
+\begin{figure}[!htbp]\centering
+\includegraphics[width=.99\textwidth]{figures/study_primary.pdf}
+\caption{Extension primary outcomes by model, format and condition. Whiskers are Wilson 95\% intervals over the constructed task set.}\label{fig:studyprimary}
+\end{figure}
+\begin{figure}[!htbp]\centering
+\includegraphics[width=.98\textwidth]{figures/schema_vs_truth.pdf}
+\caption{Initial output compliance versus complete correctness. Both bars have denominator 24; a structural constraint alone does not establish the correct target value.}\label{fig:schematruth}
+\end{figure}
 
-\section{Threats to validity and limitations}
-\subsection{Internal validity}
-Using Decimal and SQLite reduces identical-implementation bias, but both follow the same
-written contract. A wrong contract can make both implementations agree on the wrong task.
-Likewise, final scoring shares a numeric-tolerance policy with checking. Hand-calculated
-unit tests provide an additional independent check for representative operations.
+\input{study_results_text.tex}
 
-The feedback branch receives expected values computed from the data, while self-review
-does not. Consequently, the experiment compares complete systems with different evidence
-access. Equal generation counts do not make available information, token counts or total
-computation identical. Cold-start loading, caching and hardware scheduling affect measured
-latency. Wall-clock results are local observations, not general speed benchmarks.
+\FloatBarrier
+\subsection{Field diagnosis and public-data stratum}
+Figure~\ref{fig:studyfields} separates formatting from numerical and cross-field outcomes. Table~\ref{tab:strata} keeps synthetic and public tasks visible rather than merging them into an unqualified real-world performance claim. The public tasks use larger counts, descriptive column names and country/region labels, but still specify the operation explicitly.
 
-\subsection{Construct and external validity}
-Structured correctness excludes narrative accuracy, causal validity, input-data quality,
-visual chart design and choice of statistical method. In the causal-claim mutation, all
-structured fields can pass while the report makes an unjustified assertion. In a second
-scope challenge, changing an approved sum contract to a mean contract and computing that
-mean correctly also passes. The verifier has no evidence of the user's original intent.
+\begin{figure}[!htbp]\centering
+\includegraphics[width=.99\textwidth]{figures/study_fields.pdf}
+\caption{Extension field counts, each out of 24. ``Complete'' requires schema compliance and simultaneous agreement of all checked fields; narrative truth is excluded.}\label{fig:studyfields}
+\end{figure}
+\begin{table}[!htbp]\centering\small
+\caption{Feedback-repair outcomes by data stratum. Numerical mapping is a secondary endpoint under Equation~\ref{eq:tolerance}; complete correctness includes every required field.}\label{tab:strata}
+\input{study_strata_table.tex}
+\end{table}
 
-The synthetic tasks are small, have fixed templates and cover only six descriptive
-operations. Two small quantized models and one generation seed offer limited generalization.
-The larger model was selected after inspecting the smaller pilot, which we disclose.
-Bootstrap uncertainty over 24 tasks does not account for all model, dataset, hardware or
-prompt variation. Wider evaluations should add independently sourced real datasets,
-unseen task families and stronger models while retaining these original results.
+\FloatBarrier
+\subsection{A recorded failure after numerical repair}
+In the 1.5B schema-mode response for \texttt{mean-06}, the initial mean is 5.6 although the independent result is 14.3. After executable feedback, the model changes the metric to 14.3 but retains chart label \texttt{x} and the original sequence of observations. The report is structurally valid yet still fails chart consistency. Listings~\ref{lst:initial} and~\ref{lst:feedback} show excerpts of the saved report objects, with narrative omitted and formatting condensed for readability. They are one illustrative paired case, not an additional experimental sample.
 
-\subsection{Practical assurance}
-A pass should read ``checked structured fields agree with this approved contract'', never
-``the report is true''. Unsupported tasks should route to human review. A practical extension
-would ask a user to approve the proposed contract and inspect data-quality decisions before
-generation. Free-text claims could receive a separate, calibrated evidence review. These
-extensions are future work and have not been implemented or evaluated here.
+\noindent\begin{minipage}[t]{.48\textwidth}
+\lstinputlisting[style=vscode,basicstyle=\ttfamily\fontsize{9}{11}\selectfont\color{CodeText},caption={Initial report excerpt.},label={lst:initial}]{case_initial.json}
+\end{minipage}\hfill
+\begin{minipage}[t]{.48\textwidth}
+\lstinputlisting[style=vscode,basicstyle=\ttfamily\fontsize{9}{11}\selectfont\color{CodeText},caption={Feedback report excerpt.},label={lst:feedback}]{case_feedback_repair.json}
+\end{minipage}
 
-\section{Reproducibility and software quality}
-The core package uses Python 3.10 or later with no third-party runtime dependencies.
-The repository includes 60 CSVs, their task manifests and hashes, independent oracle values,
-controlled fault records, model-call logs, summary statistics, figure source and the report
-source. Tests cover hand calculations, missingness, undefined contracts, malformed reports,
-chart consistency, repair behavior, known blind spots and oracle agreement.
+\subsection{Deterministic results and receipt replay}
+Deterministic recomputation matches the independent evaluator on all 60 synthetic tasks and all 12 public tasks. It also satisfies the extension's structural validator. This is conventional execution under explicit contracts, not evidence of language-model reasoning improvement. Given the contract, using ordinary software for arithmetic is the appropriate deployment path.
 
-The main reproduction commands are listed below. They run from the repository root.
-\begin{quote}\small\ttfamily
-python3 -m unittest discover -s tests -v\\
-python3 -m trustverify.cli generate\\
-python3 -m trustverify.cli benchmark\\
-python3 scripts/check\_results.py\\
+The shipped receipt example deliberately reports a weighted mean of 18 for values 10 and 20 with weights 1 and 3. The correct mean is 17.5. Verification fails, and offline replay reproduces that failure. Tests additionally cover replayed passes and abstentions, changed CSV bytes, changed receipt content and malformed CSV input. The example illustrates how reproducible evidence can preserve a discrepancy rather than conceal it.
+
+\section{Discussion and validity boundaries}
+\subsection{Why format and numerical consistency differ}
+A JSON schema constrains what can be expressed. The approved operation and source observations determine which expressed values are correct. Chart consistency additionally requires agreement between independently named fields. The observed failures support maintaining these checks separately. They do not establish that all constrained decoding frameworks, prompts or larger models share the same failure pattern.
+
+Feedback repair is also not independent reasoning: the checker can supply the answer. A practical design can compute supported metrics directly, then allow the model to propose readable text or alternative displays behind further validation. The receipt preserves which fields were checked and what evidence was available, allowing a reader to assess the bounded result.
+
+\subsection{Internal and measurement validity}
+Decimal and SQLite follow independently implemented arithmetic, but share the written contract and numeric tolerance. They can agree on a mis-specified task. A real analysis may require an exact integer count, unit conversion or a different missing-data policy. Equation~\ref{eq:tolerance} should therefore be selected and approved for the application rather than treated as universally appropriate.
+
+The branches have equal model-call budgets, not equal information, input tokens or total computation. Expected-value findings advantage the feedback system by design. Counterbalancing reduces simple order bias but does not remove caching or hardware effects. Temperature zero and one seed do not measure variation across prompts, random seeds or inference implementations. Provider token counts and wall time are descriptive local observations.
+
+\subsection{External validity and study amendments}
+The initial study uses small synthetic datasets and fixed templates. The extension adds real observations but remains a narrow benchmark of six explicitly stated operations. Two public country cohorts reuse observations, and related tasks are not statistically independent. National urban definitions, source revisions, derived-share rounding and curated cohort selection limit substantive interpretation. The source snapshot is reproducible, not a guarantee of measurement truth.
+
+The larger pilot and the entire extension follow inspection of earlier outcomes. Their separate protocols and preserved results disclose this adaptive sequence. Failure to acquire the planned 3B model further restricts the extension to one capacity; no comparison with that unavailable model is claimed. Results cannot be presented as an independently preregistered replication. Larger or hosted models, additional task families, genuinely independent datasets and repeated seeds remain future work.
+
+\subsection{What a pass cannot establish}
+The causal mutation keeps every structured field correct while claiming that group membership causes an outcome. All structured checks pass because narrative meaning is outside scope. A second challenge approves a mean contract when a user originally intended a sum: correctly computing the mean also passes. The verifier cannot recover unrecorded intent.
+
+Neither a passing receipt nor a passing schema authenticates authorship, validates a causal design, establishes data quality or proves an entire report true. A useful assurance statement is precise: the selected structured fields agree with the supplied input and approved contract under the recorded policy.
+
+\section{Reproducibility and engineering quality}
+The core, local demo, receipts and tests require Python 3.10 or later and no third-party runtime libraries. Optional Matplotlib dependencies regenerate figures. Ollama is separately installed for new model calls; model weights and lecturer-owned course materials are not redistributed.
+
+The repository contains source CSVs and hashes, original public downloads and attribution, independent gold values, controlled results, raw model requests/responses, frozen protocols, score-reconstruction scripts, manuscript source and editable slides. The following commands run from the repository root:
+\begin{lstlisting}[style=commands,caption={Offline checks and local demonstration.}]
+python3 -m unittest discover -s tests -v
+python3 scripts/check_results.py
+python3 scripts/check_study.py
+python3 -m trustverify.public_data
+python3 -m trustverify.audit replay \
+  --csv demo/receipt-example/observations.csv \
+  --receipt demo/receipt-example/receipt.json
 python3 -m trustverify.server
-\end{quote}
-The first command runs the tests, the second regenerates data, the third reproduces
-controlled results, the fourth checks saved model evidence without new calls, and the
-last starts the demonstration. The README gives full model and manuscript instructions.
+\end{lstlisting}
+Tests exercise hand calculations, complete-case exclusion, undefined contracts, chart consistency, known blind spots, independent-oracle agreement, metamorphic properties, saved-call tampering, CSV uploads and receipt replay. Operational failures are distinguished from scored content failures.
 
 \section{Conclusion}
-TrustVerify demonstrates how independent execution can verify selected analysis claims.
-Full checking detects 288 of 336 controlled faults, including all supported structured
-mutations, while unsupported causal narratives remain unchecked. In the 1.5B pilot,
-feedback yields 19/24 correct numeric mappings versus 0/24 under self-review; complete-report
-correctness remains 0/24. The findings distinguish arithmetic repair from report compliance
-and support gating generated reports with explicit field-level checks.
+TrustVerify checks selected claims under an approved analysis contract. It detects all 288 supported controlled mutations while leaving causal prose unchecked. The model experiments distinguish numerical repair, schema compliance and complete-report correctness. Public observations and replayable receipts broaden the evidence. The practical conclusion is to compute supported statistics directly, check every reported field and state the limits of each verification result.
 
 \FloatBarrier
+\clearpage
+\phantomsection\addcontentsline{toc}{section}{References}
+\begingroup\setstretch{1.2}
 \bibliographystyle{gbt7714-numerical}
 \bibliography{refs}
+\endgroup
 \end{document}

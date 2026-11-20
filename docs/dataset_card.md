@@ -38,3 +38,17 @@ The task generator is narrow, templated, small, and synthetic. Dataset-level sep
 not imply new task-family generalization. Six mutation classes directly match six designed
 checks, so high detection is an expected coverage result. Actual model tests and blind-spot
 examples are included to avoid interpreting designed coverage as universal reliability.
+
+## Public-data extension (November 2026)
+
+Twelve tasks derive from a frozen World Bank WDI population/urban-population snapshot.
+They use two curated 12-country cohorts for 2024 cross-sections and Uzbekistan/Japan
+2013–2024 series for percentage change. These are observational source estimates, not
+synthetic values; the task templates remain curated and small. Raw bulk ZIPs, normalized
+responses, exact source URLs, dates, SHA-256 hashes, derived-variable rules and CC BY 4.0
+attribution are in [data/public/README.md](../data/public/README.md).
+
+The paired extension uses 12 previously unused synthetic tasks (variants 06–07) plus all
+12 public tasks. Its realized 144 calls, output-schema rules, counterbalancing, strict
+request reuse and scope reduction are documented in protocol_v2.md and
+extension_execution_note.md. The original 12/48 split and pilot evidence remain unchanged.

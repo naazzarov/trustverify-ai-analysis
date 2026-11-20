@@ -45,9 +45,10 @@ assertion remains unsupported. This is an intentional demonstration of the tool'
 - [Final report PDF](paper/main.pdf) and [editable LaTeX source](paper/main.tex)
 - [PowerPoint presentation](presentation/TrustVerify-Dark-Defense.pptx), [matching PDF slides](presentation/main.pdf) and [speaker notes](docs/presentation_guide.md)
 - [Project description](docs/project_description.md)
-- [Research protocol](docs/protocol.md), [initial pilot specification](docs/protocol_v1.md) and [dataset card](docs/dataset_card.md)
+- [Original protocol](docs/protocol.md), [paired extension protocol](docs/protocol_v2.md), [realized scope](docs/extension_execution_note.md) and [dataset card](docs/dataset_card.md)
 - [Course rubric evidence map](docs/course_alignment.md)
-- [Actual recorded results](results/) and raw model requests/responses in `results/raw/` and `results/qwen-1.5b/raw/`
+- [Actual recorded results](results/): 144 original pilot calls and [144 extension calls](results/study/qwen2.5-1.5b/)
+- [Recent literature review](docs/literature_review.md), [public-data provenance](data/public/README.md) and [evidence receipts](docs/evidence_receipts.md)
 - [Reliability boundaries](docs/limitations.md)
 
 ![Presentation design overview](presentation/overview.png)
@@ -68,6 +69,30 @@ The model results reveal a floor effect on the full-report endpoint. [Explorator
 
 For the 1.5B model, correct numeric mappings increase from **0/24 with self-review** to **19/24 with executable feedback**. This is an exploratory field-level result; the full reports still fail.
 <!-- RESULTS_END -->
+
+### Paired extension: JSON mode versus schema constraints
+
+A separate 144-call extension uses 24 new tasks (12 synthetic and 12 from a frozen
+World Bank snapshot), Qwen2.5 1.5B, two generation formats and three conditions.
+The schema constrains structure; it contains no gold answers. Both modes receive
+identical prompt text. All counts below have denominator 24.
+
+| Generation mode | Initial schema-valid | Initial numeric | Review numeric | Feedback numeric | Feedback chart | Complete, every condition |
+|---|---:|---:|---:|---:|---:|---:|
+| JSON | 20 | 0 | 0 | 19 | 1 | 0 |
+| JSON Schema | 23 | 0 | 0 | 18 | 1 | 0 |
+
+The three extra schema-valid initial outputs do not establish a general formatting advantage
+(exact paired p=0.25). Numerical repair improves, but chart consistency remains poor.
+The complete-report endpoint has a floor effect. Reported numeric agreement uses the
+specified absolute/relative tolerance, not exact equality for population counts.
+
+**Total actual saved model calls: 288.** The extension originally planned an additional
+3B model; its download could not be completed and verified. No 3B run is claimed.
+The [execution note](docs/extension_execution_note.md) records this reduction after
+1.5B results were available; the extension is not presented as a result-blind preregistration.
+
+![Schema compliance and numerical repair](paper/figures/schema_vs_truth.png)
 
 ![Checking-layer ablation](paper/figures/fault_coverage.png)
 
@@ -104,9 +129,10 @@ python3 -m trustverify.cli benchmark
 python3 scripts/check_results.py
 ```
 
-Data are synthetic. There are 12 development and 48 test datasets, split by independent
-dataset variants. The actual-model pilot uses 24 test tasks per model. Controlled errors
-and real model failures have separate denominators and must not be merged.
+The original data are synthetic: 12 development and 48 test datasets split by dataset
+variant, with 24 test tasks per model in the original pilot. The extension adds 12 attributed
+World Bank tasks and uses 12 previously unused synthetic tasks. Controlled mutations and
+actual model failures have separate denominators and must not be merged.
 
 To regenerate the actual local-model calls, install [Ollama](https://ollama.com/) separately,
 start its local service, and run:
@@ -127,6 +153,24 @@ Different hardware, runtime versions or model digests can change generation and 
 Both review branches start from the same initial response and get one additional call with
 the same token limit. The second model is explicitly a capacity-check amendment after the
 first pilot, with unchanged prompts. It is not a separately preregistered replication.
+
+### Recheck the completed extension offline
+
+```bash
+python3 -m trustverify.public_data
+python3 scripts/check_study.py
+```
+
+These verify the frozen source hashes, regenerate 12 public-data tasks, check independent
+SQLite agreement and reconstruct all 144 saved extension requests and scores. To repeat
+model generation, use a new directory and retain the archived results:
+
+```bash
+python3 -m trustverify.study --model qwen2.5:1.5b --output results/new-extension
+```
+
+The original protocol and planned second capacity are retained in
+[protocol_v2.md](docs/protocol_v2.md); actual completed scope is recorded separately.
 
 ## Check a custom report
 
@@ -157,9 +201,10 @@ Figure regeneration requires Python 3.11+ and the optional plotting dependencies
 python3 -m venv .venv
 .venv/bin/python -m pip install -r requirements-figures.txt
 .venv/bin/python scripts/make_figures.py
+.venv/bin/python scripts/study_artifacts.py
 ```
 
-Compile the English report with XeLaTeX and BibTeX:
+Compile the English report with XeLaTeX and BibTeX (or `tectonic -X compile main.tex`):
 
 ```bash
 cd paper
@@ -171,16 +216,15 @@ xelatex main
 
 The report adapts the supplied SCU course-paper template in English: A4 paper, 2.5 cm side margins, 2.75 cm top and 3 cm bottom margins, 12-point text, 1.5 line spacing, centered section headings and GB/T 7714 numerical references. The formal cover uses English labels. Public copies contain the author name; the submission edition also includes the student number.
 
-The 16-slide research presentation uses a dark navy palette with syntax-highlighted JSON, editable charts, tables, diagrams and speaker notes. Its PDF edition preserves the presentation layout. Figures trace to the saved experiment results.
+The 22-slide research presentation (18 main slides and four appendices) uses a dark navy palette with syntax-highlighted JSON, editable charts, tables, diagrams and speaker notes. It uses Avenir Next and Menlo, a navy/cobalt/cyan palette, and the supplied unchanged SCU wordmark. Its PDF edition provides a fixed-layout viewing copy. All four charts and eight tables are native editable objects; chart data workbooks are embedded. Figures trace to saved results. The [slide source and rebuild instructions](presentation/source/) are included.
 
 ## Research foundations
 
-- Jing et al., [DSBench](https://arxiv.org/abs/2409.07703): realistic data-science-agent evaluation.
-- Madaan et al., [Self-Refine](https://arxiv.org/abs/2303.17651): iterative improvement with model feedback.
-- Huang et al., [Large Language Models Cannot Self-Correct Reasoning Yet](https://arxiv.org/abs/2310.01798): limitations of intrinsic reasoning self-correction in their tested settings.
-- [Qwen2.5 release](https://qwenlm.github.io/blog/qwen2.5/) and [Ollama chat API](https://docs.ollama.com/api/chat): model and local-inference provenance.
-
-These works motivate the design. Their benchmark scores are not directly comparable with this study.
+The [literature review](docs/literature_review.md) compares seven primary research
+works from 2024–2026, including CRITIC, intrinsic reasoning correction,
+JSONSchemaBench, DSBench, ScienceAgentBench, TrustDABench and CausalVerify.
+The bibliography distinguishes publication years from the exact archived versions used.
+Their benchmark scores are not directly comparable with this bounded study.
 
 ## Licence and attribution
 

@@ -1,0 +1,9 @@
+For Qwen2.5 1.5B, initial schema compliance is 20/24 in JSON mode and 23/24 in schema mode. Complete correctness is 0/24 and 0/24 respectively. After executable feedback, numerical mappings are correct on 19/24 JSON-mode tasks and 18/24 schema-mode tasks; complete reports score 0/24 and 0/24.
+
+The initial schema-validity contrast improves 3 tasks and regresses 0 (exact two-sided paired $p=0.25$). A zero complete-report score creates a floor effect; it does not establish equivalence between formats.
+
+For the 1.5B JSON comparison, feedback versus self-review improves numerical correctness on 19 tasks and regresses on 0; the exact two-sided paired test gives $p=0.00000381$. This is a descriptive secondary comparison without a multiplicity adjustment.
+
+For the 1.5B schema comparison, feedback versus self-review improves numerical correctness on 18 tasks and regresses on 0; the exact two-sided paired test gives $p=0.00000763$. This is a descriptive secondary comparison without a multiplicity adjustment.
+
+The 1.5B run records 3 truncated completions among 144 calls and 26,990 generated tokens. Truncations remain in the denominator. A valid structure can still contain a wrong metric or an inconsistent chart.

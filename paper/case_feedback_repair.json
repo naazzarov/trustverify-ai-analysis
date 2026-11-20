@@ -1,0 +1,11 @@
+{
+  "metrics": {
+    "value": 14.3
+  },
+  "unit": "points",
+  "rows_used": 10,
+  "chart": {
+    "labels": ["x"],
+    "values": [19, 4, 22, 2, 13, 24, 8, 5, 3, 27, 17, 4]
+  }
+}
