@@ -5,7 +5,7 @@ import {execFileSync} from 'node:child_process';
 import {Presentation, PresentationFile} from '@oai/artifact-tool';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../..');
-const dir = path.resolve(root, '.build/redesign');
+const dir = path.resolve(root, '.build/redesign-tech');
 const finalPath = path.resolve(process.env.SLIDE_OUTPUT || path.join(dir, 'TrustVerify-Research-Defense.pptx'));
 const P = Presentation.create({slideSize:{width:1280, height:720}});
 const fromRepo = name => path.join(root, name);
@@ -17,13 +17,12 @@ const feedback = await readJson('paper/case_feedback_repair.json');
 
 const repoUrl = 'https://github.com/naazzarov/trustverify-ai-analysis';
 const C = {
-  charcoal:'#111C21', spruce:'#102827', blueblack:'#111F2B', olive:'#222824',
-  paper:'#F5F1E7', muted:'#C6D0CC', fine:'#AEBDB9', grid:'#354944',
-  mint:'#81DFC0', amber:'#F9CC85', lilac:'#C1B8FF',
-  darkAmber:'#453626',
-  code:'#1E1E1E', codeHeader:'#303033', codeBorder:'#51565A',
+  navy:'#101A2A', deepNavy:'#0B172D', blueNavy:'#0E2138', indigoNavy:'#121D35',
+  paper:'#F2F6FF', muted:'#C4D1E6', fine:'#A6B7D2', grid:'#304663',
+  blue:'#72C8FF', amber:'#FFBF7D', periwinkle:'#B9C4FF', darkAmber:'#48342E',
+  code:'#141B29', codeHeader:'#202C41', codeBorder:'#465B77',
 };
-const heading = 'Georgia', font = 'Arial', mono = 'Courier New';
+const font = 'Arial', mono = 'Courier New';
 const X = 72, W = 1136;
 const backgrounds = new WeakMap();
 const groups = study.groups['qwen2.5:1.5b'];
@@ -47,16 +46,16 @@ function text(s, value, x, y, w, h, size=28, {color=C.paper, face=font, bold=fal
   return shape;
 }
 function rule(s, x, y, w=W, color=C.grid) { box(s,x,y,w,1,color); }
-function slide(title, {bg=C.charcoal, footer='', href, size=46}={}) {
+function slide(title, {bg=C.navy, footer='', href, size=46}={}) {
   const s = P.slides.add();
   s.background.fill = bg;
   backgrounds.set(s,bg);
   if (title) {
-    text(s,title,X,56,W,75,size,{face:heading,bold:true});
+    text(s,title,X,56,W,75,size,{bold:true});
     rule(s,X,145);
-    rule(s,X,145,61,C.mint);
+    rule(s,X,145,61,C.blue);
     rule(s,X,658);
-    const footerText=text(s,footer,X,675,href?400:1065,24,16,{color:href?C.mint:C.fine});
+    const footerText=text(s,footer,X,675,href?400:1065,24,16,{color:href?C.blue:C.fine});
     if (href) footerText.hyperlink={uri:href,isExternal:true};
     text(s,String(P.slides.items.length).padStart(2,'0'),1153,674,55,24,16,{color:C.fine,align:'right'});
   }
@@ -65,8 +64,8 @@ function slide(title, {bg=C.charcoal, footer='', href, size=46}={}) {
 function caption(s, value, x, y, w, {color=C.muted, size=23}={}) {
   return text(s,value,x,y,w,73,size,{color});
 }
-function metric(s, value, label, x,y,w,{color=C.mint,size=92}={}) {
-  text(s,value,x,y,w,size+31,size,{face:heading,bold:true,color});
+function metric(s, value, label, x,y,w,{color=C.blue,size=92}={}) {
+  text(s,value,x,y,w,size+31,size,{bold:true,color});
   caption(s,label,x+3,y+size+30,w-3,{size:24});
 }
 async function img(s, file, alt, x,y,w,h, options={}) {
@@ -90,13 +89,13 @@ function table(s, values, x,y,w,h,widths,{heat=false,size=25,header=true}={}) {
   for (let row=0; row<values.length; row++) {
     for (let col=0; col<values[row].length; col++) {
       const cell=t.getCell(row,col), top=header&&row===0;
-      let fill=top ? '#31534A' : row%2 ? '#1B332F' : '#203B35';
+      let fill=top ? '#233F65' : row%2 ? '#151F32' : '#1B2A42';
       let color=top||col===0 ? C.paper : C.muted;
       if (heat && !top && col>0) {
         const [n,d]=String(values[row][col]).split('/').map(Number);
         const fraction=n/d;
-        fill=fraction===0 ? '#1D292C' : fraction<.5 ? '#263A40' : fraction<.9 ? '#30504D' : '#32644F';
-        color=fraction===0 ? C.fine : fraction>=.9 ? '#F0FFF6' : C.paper;
+        fill=fraction===0 ? '#151F32' : fraction<.5 ? '#223852' : fraction<.9 ? '#2A466B' : '#2E567F';
+        color=fraction===0 ? C.fine : fraction>=.9 ? '#F6FBFF' : C.paper;
         if (col===values[0].length-1 && fraction===0) { fill=C.darkAmber; color=C.amber; }
       }
       cell.fill=fill;
@@ -122,15 +121,15 @@ function chart(s,categories,series,x,y,w,h,{horizontal=false,max=24,step=6,legen
   });
 }
 function linkArrow(s,x,y,w=44) {
-  s.shapes.add({geometry:'rightArrow',position:{left:x,top:y,width:w,height:17},fill:C.mint,line:{fill:'none',width:0}});
+  s.shapes.add({geometry:'rightArrow',position:{left:x,top:y,width:w,height:17},fill:C.blue,line:{fill:'none',width:0}});
 }
 function stage(s,title,detail,x,y,w) {
-  rule(s,x,y,w,C.mint);
+  rule(s,x,y,w,C.blue);
   text(s,title,x,y+22,w,45,30,{bold:true});
   caption(s,detail,x,y+76,w,{size:23});
 }
 
-const tokens = {key:'#A0D9FF', string:'#F3AD8D', number:'#C9E9A5', bracket:'#F6D36C', plain:'#E7E7E7'};
+const tokens = {key:'#A0D9FF', string:'#F3AB92', number:'#B6E6AA', bracket:'#F6D36C', plain:'#E7E7E7'};
 function highlightJson(line) {
   const pattern=/("[^"\\]*(?:\\.[^"\\]*)*"(?=\s*:))|("[^"\\]*(?:\\.[^"\\]*)*")|(-?\d+(?:\.\d+)?)|([{}\[\]])/g;
   const runs=[];
@@ -148,7 +147,7 @@ function highlightShell(line) {
   const [command,...segments]=line.split(' ');
   return [
     {run:command,style:{color:tokens.key}},
-    ...segments.map(segment=>({run:` ${segment}`,style:{color:segment[0]==='-'?C.lilac:segment.endsWith('.py')?tokens.string:tokens.plain}})),
+    ...segments.map(segment=>({run:` ${segment}`,style:{color:segment[0]==='-'?C.periwinkle:segment.endsWith('.py')?tokens.string:tokens.plain}})),
   ];
 }
 function editor(s,name,lines,x,y,w,{size=25,step=40,focus=[],language='json'}={}) {
@@ -156,12 +155,12 @@ function editor(s,name,lines,x,y,w,{size=25,step=40,focus=[],language='json'}={}
   box(s,x,y,w,h,C.code,C.codeBorder);
   box(s,x+1,y+1,w-2,header,C.codeHeader);
   text(s,name,x+20,y+13,w-40,28,19,{face:mono,color:'#F0F0EE',bold:true});
-  box(s,x+gutter-11,y+header+pad,1,lines.length*step,'#45454B');
+  box(s,x+gutter-11,y+header+pad,1,lines.length*step,'#3D4D65');
   for (const [i,line] of lines.entries()) {
     const rowY=y+header+pad+i*step;
     if (focus.includes(i)) {
-      box(s,x+gutter-4,rowY-2,w-gutter-9,step,'#2C3B34');
-      box(s,x+gutter-4,rowY-2,3,step,C.mint);
+      box(s,x+gutter-4,rowY-2,w-gutter-9,step,'#233750');
+      box(s,x+gutter-4,rowY-2,3,step,C.blue);
     }
     text(s,String(i+1),x+10,rowY+3,27,28,17,{face:mono,color:'#A5ADB0',align:'right'});
     const code=text(s,'',x+gutter+7,rowY,w-gutter-23,step,size,{face:mono,color:tokens.plain});
@@ -169,45 +168,46 @@ function editor(s,name,lines,x,y,w,{size=25,step=40,focus=[],language='json'}={}
   }
 }
 
-let s = slide('',{bg:C.spruce});
+let s = slide('',{bg:C.deepNavy});
 await img(s,'presentation/assets/verification-cover.png','Conceptual artwork of layered analysis evidence',630,0,650,720,
   {fit:'cover',crop:{left:.39,top:0,right:.04,bottom:0}});
-box(s,0,0,650,720,C.spruce);
-box(s,X,61,171,56,'#FFFFFF');
-await img(s,'paper/figures/SCU_TITLE.png','Official Sichuan University wordmark',X+8,67,155,44);
-text(s,'Sichuan University',266,75,355,38,24,{bold:true});
+box(s,0,0,650,720,C.deepNavy);
+const wordmark = 'paper/figures/SCU_TITLE_BW.png';
+await img(s,wordmark,'Sichuan University calligraphic wordmark',X,60,173,52);
+text(s,'Sichuan University',264,71,345,42,25,{bold:true});
 rule(s,X,146,515);
-text(s,'TrustVerify',X,204,554,128,84,{face:heading,bold:true});
+rule(s,X,146,72,C.blue);
+text(s,'TrustVerify',X,199,553,141,98,{bold:true});
 text(s,'Executable verification of\nAI-generated data analysis',X+4,335,518,105,35,{color:C.paper});
 rule(s,X,541,515);
 text(s,'BAHODIR KODIRJON UGLI NAZAROV',X,570,560,38,23,{bold:true});
 text(s,'New Software Technology  /  November 2026',X,618,540,35,20,{color:C.muted});
 
-s = slide('One report, two different values',{bg:C.olive,footer:'Controlled fault in ratio-02. Both percentages are rounded to two decimals.'});
+s = slide('One report, two different values',{bg:C.indigoNavy,footer:'Controlled fault in ratio-02. Both percentages are rounded to two decimals.'});
 metric(s,'266.71%','Value in the candidate report',X,208,510,{color:C.amber,size:101});
 metric(s,'263.46%','Value from independent computation',678,208,530,{size:101});
 rule(s,X,430);
-text(s,'3.25 percentage points',X,460,1130,77,50,{face:heading,bold:true});
+text(s,'3.25 percentage points',X,460,1130,77,50,{bold:true});
 caption(s,'Both values are evaluated against the same CSV and approved contract.\nThe verifier recomputes 100 × 137 ÷ 52 from nine complete rows.',X+3,550,W,{size:25});
 
-s = slide('The analysis contract',{bg:C.blueblack,footer:'The verifier excludes rows missing any value required by the selected operation.'});
+s = slide('The analysis contract',{bg:C.blueNavy,footer:'The verifier excludes rows missing any value required by the selected operation.'});
 editor(s,'contract.json',['{','  "op": "ratio",','  "column": "x",','  "denominator": "n",','  "unit": "%"','}'],X,202,616,{size:29,step:49,focus:[1]});
-text(s,'What gets checked',763,218,445,54,31,{face:heading,bold:true});
+text(s,'What gets checked',763,218,445,54,31,{bold:true});
 for (const [i,[main,sub]] of [['Metrics','Labels and computed values'],['Unit and rows','Unit string and valid-row count'],['Chart data','Labels and reported values']].entries()) {
   const y=287+i*101;
   rule(s,763,y,445);
-  text(s,main,763,y+13,445,37,27,{bold:true,color:C.mint});
+  text(s,main,763,y+13,445,37,27,{bold:true,color:C.blue});
   caption(s,sub,763,y+50,445,{size:22});
 }
 
-s = slide('How TrustVerify checks a report',{bg:C.spruce,footer:'Verification follows the approved contract. Review the choice of analysis separately.'});
+s = slide('How TrustVerify checks a report',{bg:C.deepNavy,footer:'Verification follows the approved contract. Review the choice of analysis separately.'});
 stage(s,'Approved inputs','Source CSV\nand analysis contract',X,230,280);
 linkArrow(s,376,267);
 stage(s,'Recompute','Python Decimal\nreference fields',455,230,280);
 linkArrow(s,758,267);
 stage(s,'Compare','Check each candidate field.\nPass, fail or abstain.',836,230,372);
 rule(s,X,435);
-text(s,'Independent evaluation',X,474,512,55,36,{face:heading,bold:true});
+text(s,'Independent evaluation',X,474,512,55,36,{bold:true});
 text(s,'Separate SQLite queries generate the study’s reference answers.',X,546,W,56,28,{color:C.muted});
 
 s = slide('Three sources of evidence',{footer:'The controlled benchmark uses designed faults. The two model studies preserve actual responses.'});
@@ -217,20 +217,20 @@ table(s,[
   ['Initial model pilot','Qwen2.5 0.5B and 1.5B','144 calls across both models'],
   ['Paired extension','24 new tasks at Qwen2.5 1.5B','144 calls across both formats'],
 ],X,208,W,276,[295,444,397],{size:25});
-text(s,'288',X,518,236,110,77,{face:heading,bold:true,color:C.mint});
+text(s,'288',X,518,236,110,77,{bold:true,color:C.blue});
 text(s,'recorded model calls across the pilot and extension',321,553,870,65,29,{color:C.paper});
 
-s = slide('Detection across three checking layers',{bg:C.spruce,footer:'The 336 faults include 48 unsupported causal claims. All counts come from controlled injections.'});
+s = slide('Detection across three checking layers',{bg:C.deepNavy,footer:'The 336 faults include 48 unsupported causal claims. All counts come from controlled injections.'});
 text(s,'Injected faults detected',X,192,710,40,24,{bold:true});
 chart(s,['Numbers only','Schema + numbers','Full verification'],[
-  {name:'Detected faults',values:evidence.fault_detection.detected,fill:C.mint,
-   points:[{idx:0,fill:'#708883'},{idx:1,fill:C.lilac},{idx:2,fill:C.mint}]},
+  {name:'Detected faults',values:evidence.fault_detection.detected,fill:C.blue,
+   points:[{idx:0,fill:'#6981A8'},{idx:1,fill:C.periwinkle},{idx:2,fill:C.blue}]},
 ],55,242,782,338,{horizontal:true,max:336,step:84,gap:86});
 metric(s,'85.7%','of all injected faults',878,221,330,{size:75});
 rule(s,882,393,326);
 text(s,'288/288',882,415,326,50,35,{bold:true});
 caption(s,'Supported structured faults detected',882,472,326,{size:23});
-text(s,'0/48 false alarms',882,566,326,47,28,{bold:true,color:C.mint});
+text(s,'0/48 false alarms',882,566,326,47,28,{bold:true,color:C.blue});
 
 s = slide('Detection by injected fault',{footer:'Each cell represents 48 deliberate mutations. “Missing chart” removes the chart field.'});
 table(s,[
@@ -239,25 +239,25 @@ table(s,[
  ['Schema + numeric','48/48','0/48','0/48','0/48','48/48','48/48','0/48'],
  ['Full','48/48','48/48','48/48','48/48','48/48','48/48','0/48'],
 ],X,218,W,290,[213,107,92,92,145,155,96,236],{heat:true,size:21});
-text(s,'Causal claims sit outside all three checks',X,554,W,60,37,{face:heading,bold:true,color:C.amber});
+text(s,'Causal claims sit outside all three checks',X,554,W,60,37,{bold:true,color:C.amber});
 
-s = slide('Original pilot results',{bg:C.blueblack,footer:'Complete correctness requires simultaneous agreement on metrics, unit, row count and chart data.'});
+s = slide('Original pilot results',{bg:C.blueNavy,footer:'Complete correctness requires simultaneous agreement on metrics, unit, row count and chart data.'});
 text(s,'Complete reports (out of 24)',X,181,W,44,24,{bold:true});
 table(s,[
  ['Model','Initial','Self-review','Executable feedback'],
  ['Qwen2.5 0.5B','0/24','0/24','0/24'],
  ['Qwen2.5 1.5B','0/24','0/24','0/24'],
 ],X,241,W,213,[310,225,240,361],{size:27});
-text(s,'19/24',X,507,340,100,73,{face:heading,bold:true,color:C.mint});
+text(s,'19/24',X,507,340,100,73,{bold:true,color:C.blue});
 text(s,'numeric mappings agree after feedback at 1.5B',435,539,773,60,29,{bold:true});
 
-s = slide('Paired study design',{bg:C.spruce,footer:'Identical prompts and data in both formats. Seed 31415, maximum 512 generated tokens per call.'});
-text(s,'24 shared tasks',X,183,660,70,47,{face:heading,bold:true});
+s = slide('Paired study design',{bg:C.deepNavy,footer:'Identical prompts and data in both formats. Seed 31415, maximum 512 generated tokens per call.'});
+text(s,'24 shared tasks',X,183,660,70,47,{bold:true});
 text(s,'12 synthetic and 12 World Bank tasks',689,206,519,50,25,{color:C.muted});
 for (const [i,mode] of ['JSON mode','Schema mode'].entries()) {
   const y=306+i*137;
   rule(s,X,y-10);
-  text(s,mode,X,y+22,300,54,33,{bold:true,color:i?C.lilac:C.mint});
+  text(s,mode,X,y+22,300,54,33,{bold:true,color:i?C.periwinkle:C.blue});
   linkArrow(s,384,y+33,44);
   text(s,'Initial report',481,y+22,300,54,33,{bold:true});
   linkArrow(s,786,y+33,44);
@@ -266,20 +266,20 @@ for (const [i,mode] of ['JSON mode','Schema mode'].entries()) {
 }
 text(s,'Both follow-ups independently start from the same initial report.',X,595,W,44,24,{color:C.muted});
 
-s = slide('World Bank observations',{bg:C.blueblack,footer:'World Development Indicators, CC BY 4.0. The cohorts are curated subsets used for controlled comparison.'});
+s = slide('World Bank observations',{bg:C.blueNavy,footer:'World Development Indicators, CC BY 4.0. The cohorts are curated subsets used for controlled comparison.'});
 metric(s,'2024','Population and urban-share cross-sections',X,196,535,{size:83});
-metric(s,'2013–2024','Population series for Uzbekistan and Japan',668,196,540,{color:C.lilac,size:83});
+metric(s,'2013–2024','Population series for Uzbekistan and Japan',668,196,540,{color:C.periwinkle,size:83});
 table(s,[
   ['Cohort A','CHN  IDN  IND  PAK  UZB  KAZ','DEU  FRA  NGA  KEN  BRA  MEX'],
   ['Cohort B','JPN  VNM  BGD  LKA  TUR  GEO','GBR  ITA  ZAF  ETH  ARG  COL'],
 ],X,421,W,126,[159,474,503],{header:false,size:23});
 text(s,'Regional totals cover the selected countries in each cohort.',X,580,W,46,26,{color:C.muted});
 
-s = slide('More reports passed the schema',{bg:C.spruce,footer:'Qwen2.5 1.5B extension. Three initial reports gained schema compliance in the paired comparison (p = 0.25).'});
+s = slide('More reports passed the schema',{bg:C.deepNavy,footer:'Qwen2.5 1.5B extension. Three initial reports gained schema compliance in the paired comparison (p = 0.25).'});
 text(s,'Schema-valid initial reports (out of 24)',X,182,720,42,25,{bold:true});
 chart(s,['JSON mode','Schema mode'],[
- {name:'Schema-valid reports',values:['json','schema'].map(mode=>score(mode,'initial','schema_valid')),fill:C.mint,
-  points:[{idx:0,fill:C.mint},{idx:1,fill:C.lilac}]},
+ {name:'Schema-valid reports',values:['json','schema'].map(mode=>score(mode,'initial','schema_valid')),fill:C.blue,
+  points:[{idx:0,fill:C.blue},{idx:1,fill:C.periwinkle}]},
 ],68,232,725,348,{max:24,step:6,gap:138});
 rule(s,843,252,365);
 metric(s,'0/24','complete initial reports\nin either mode',843,298,365,{color:C.amber,size:82});
@@ -288,12 +288,12 @@ s = slide('Executable feedback corrects more numbers',{footer:'Each condition us
 text(s,'Reports with correct metric labels and values (out of 24)',X,181,W,42,25,{bold:true});
 const conditions=['initial','self_review','feedback_repair'];
 chart(s,['Initial','Self-review','Executable feedback'],[
-  {name:'JSON mode',values:conditions.map(c=>score('json',c,'numeric')),fill:C.mint},
-  {name:'Schema mode',values:conditions.map(c=>score('schema',c,'numeric')),fill:C.lilac},
+  {name:'JSON mode',values:conditions.map(c=>score('json',c,'numeric')),fill:C.blue},
+  {name:'Schema mode',values:conditions.map(c=>score('schema',c,'numeric')),fill:C.periwinkle},
 ],70,238,1136,354,{legend:true,gap:120});
 text(s,'Feedback includes values independently recomputed from the CSV.',X,603,W,40,24,{color:C.muted});
 
-s = slide('Chart agreement stays near zero',{bg:C.blueblack,footer:'Each cell is out of 24. A complete report must satisfy every checked field simultaneously.'});
+s = slide('Chart agreement stays near zero',{bg:C.blueNavy,footer:'Each cell is out of 24. A complete report must satisfy every checked field simultaneously.'});
 const fieldRows=[['Mode and condition','Schema','Metrics','Unit','Rows','Chart','Complete']];
 for (const mode of ['json','schema']) {
   for (const condition of conditions) {
@@ -307,16 +307,16 @@ for (const mode of ['json','schema']) {
 table(s,fieldRows,X,201,W,366,[291,139,140,127,125,137,177],{heat:true,size:23});
 text(s,'Only one chart agrees after feedback in each mode.',X,592,W,52,30,{bold:true,color:C.amber});
 
-s = slide('Numerical repair on public and synthetic data',{bg:C.spruce,footer:'Feedback condition only. Each stratum has 12 tasks from six fixed operations.',size:44});
+s = slide('Numerical repair on public and synthetic data',{bg:C.deepNavy,footer:'Feedback condition only. Each stratum has 12 tasks from six fixed operations.',size:44});
 text(s,'Correct metric labels and values after feedback (out of 12)',X,183,1136,43,25,{bold:true});
 chart(s,['Synthetic tasks','World Bank tasks'],[
-  {name:'JSON mode',values:['synthetic','public'].map(p=>score('json','feedback_repair','numeric',p)),fill:C.mint},
-  {name:'Schema mode',values:['synthetic','public'].map(p=>score('schema','feedback_repair','numeric',p)),fill:C.lilac},
+  {name:'JSON mode',values:['synthetic','public'].map(p=>score('json','feedback_repair','numeric',p)),fill:C.blue},
+  {name:'Schema mode',values:['synthetic','public'].map(p=>score('schema','feedback_repair','numeric',p)),fill:C.periwinkle},
 ],66,238,766,356,{max:12,step:3,legend:true,gap:84});
 rule(s,861,274,347);
 metric(s,'0/12','complete reports in\nevery group shown',858,311,350,{color:C.amber,size:73});
 
-s = slide('The mean is fixed. The chart still fails.',{bg:C.olive,footer:'Recorded response pair for mean-06 in schema mode. Excerpts abbreviate the chart array.'});
+s = slide('The mean is fixed. The chart still fails.',{bg:C.indigoNavy,footer:'Recorded response pair for mean-06 in schema mode. Excerpts abbreviate the chart array.'});
 const excerpt = candidate => [
   `"metrics": {"value": ${candidate.metrics.value}},`,
   '"chart": {',
@@ -328,10 +328,10 @@ text(s,'Initial model report',X,177,546,38,24,{color:C.muted,bold:true});
 text(s,'After executable feedback',662,177,546,38,24,{color:C.muted,bold:true});
 editor(s,'initial.json',excerpt(initial),X,227,546,{size:26,step:45,focus:[0]});
 editor(s,'feedback.json',excerpt(feedback),662,227,546,{size:26,step:45,focus:[0]});
-text(s,'The mean changes to 14.3',X,565,546,51,30,{face:heading,bold:true,color:C.mint});
-text(s,'The chart keeps the input values',662,565,546,59,29,{face:heading,bold:true,color:C.amber});
+text(s,'The mean changes to 14.3',X,565,546,51,30,{bold:true,color:C.blue});
+text(s,'The chart keeps the input values',662,565,546,59,29,{bold:true,color:C.amber});
 
-s = slide('A verification receipt can be replayed',{bg:C.blueblack,footer:'The excerpt shows one recorded finding. The receipt also records input hashes, the contract and the checker version.'});
+s = slide('A verification receipt can be replayed',{bg:C.blueNavy,footer:'The excerpt shows one recorded finding. The receipt also records input hashes, the contract and the checker version.'});
 const receipt=await readJson('demo/receipt-example/receipt.json');
 const finding=receipt.verification.findings[0];
 editor(s,'receipt.json',[
@@ -344,28 +344,28 @@ editor(s,'receipt.json',[
  '  }]',
  '}',
 ],X,191,622,{size:25,step:43,focus:[4,5]});
-text(s,'Weighted mean',756,221,452,58,39,{face:heading,bold:true});
-text(s,'17.5 expected',756,304,452,59,37,{bold:true,color:C.mint});
+text(s,'Weighted mean',756,221,452,58,39,{bold:true});
+text(s,'17.5 expected',756,304,452,59,37,{bold:true,color:C.blue});
 text(s,'18 reported',756,371,452,55,34,{bold:true,color:C.amber});
 rule(s,756,463,452);
 caption(s,'Replaying the receipt reproduces\nthe failed check.',756,504,452,{size:26});
 
-s = slide('What a pass leaves unchecked',{bg:C.olive,footer:'Controlled narrative-only mutation. The verified metrics, units, row count and chart data stay correct.'});
-text(s,'“These observational data prove that group\nmembership causes the outcome.”',X,224,W,150,45,{face:heading,italic:true});
+s = slide('What a pass leaves unchecked',{bg:C.indigoNavy,footer:'Controlled narrative-only mutation. The verified metrics, units, row count and chart data stay correct.'});
+text(s,'“These observational data prove that group\nmembership causes the outcome.”',X,224,W,150,45,{italic:true});
 rule(s,X,435);
 text(s,'Structured fields',X,465,560,50,29,{color:C.muted});
-text(s,'PASS',773,452,435,59,44,{bold:true,color:C.mint});
+text(s,'PASS',773,452,435,59,44,{bold:true,color:C.blue});
 text(s,'Causal conclusion',X,557,560,50,29,{color:C.muted});
 text(s,'UNCHECKED',773,548,435,59,37,{bold:true,color:C.amber});
 
-s = slide('What the experiments establish',{bg:C.spruce,footer:repoUrl.replace('https://',''),href:repoUrl});
+s = slide('What the experiments establish',{bg:C.deepNavy,footer:repoUrl.replace('https://',''),href:repoUrl});
 for (const [i,[n,description,color]] of [
-  ['288/288','Supported structured faults detected',C.mint],
+  ['288/288','Supported structured faults detected',C.blue],
   ['19/24','Correct numerical mappings after JSON-mode feedback',C.paper],
   ['0/24','Complete reports in each extension condition',C.amber],
 ].entries()) {
   const y=182+i*126;
-  text(s,n,X,y,378,104,67,{face:heading,bold:true,color});
+  text(s,n,X,y,378,104,67,{bold:true,color});
   text(s,description,485,y+28,723,64,27,{color:C.paper});
   rule(s,X,y+107);
 }
@@ -379,7 +379,7 @@ table(s,[
   ['DSBench / ScienceAgentBench','2025','Evaluate actual outputs and add public observations'],
   ['TrustDABench / CausalVerify','2026','Define the limits of structured verification'],
 ],X,202,W,357,[386,110,640],{size:23});
-text(s,'TrustVerify adds a working verifier and replayable evidence.',X,596,W,45,29,{bold:true,color:C.mint});
+text(s,'TrustVerify adds a working verifier and replayable evidence.',X,596,W,45,29,{bold:true,color:C.blue});
 
 s = slide('Paired comparisons and study scope',{footer:'Exact two-sided McNemar comparisons. Correlated tasks and endpoints limit inference.'});
 table(s,[
@@ -388,10 +388,10 @@ table(s,[
   ['Metrics: JSON feedback vs review','19','0','0.00000381'],
   ['Metrics: schema feedback vs review','18','0','0.00000763'],
 ],X,201,W,285,[565,165,165,241],{size:25});
-text(s,'The completed extension tests Qwen2.5 1.5B only.',X,533,W,47,33,{face:heading,bold:true,color:C.amber});
+text(s,'The completed extension tests Qwen2.5 1.5B only.',X,533,W,47,33,{bold:true,color:C.amber});
 text(s,'The planned 3B model download failed before testing.',X,591,W,38,24,{color:C.muted});
 
-s = slide('Reproducing the results',{bg:C.blueblack,footer:'Run from the repository root. The local demo opens at http://127.0.0.1:8765/#theme=dark.'});
+s = slide('Reproducing the results',{bg:C.blueNavy,footer:'Run from the repository root. The local demo opens at http://127.0.0.1:8765/#theme=dark.'});
 editor(s,'Terminal',[
  'python3 -m unittest discover -s tests -v',
  'python3 scripts/check_results.py',
@@ -412,7 +412,7 @@ table(s,[
 ],X,194,W,410,[400,736],{size:25});
 
 const notes = [
-  "TrustVerify. Executable Verification of AI-Generated Data Analysis. BAHODIR KODIRJON UGLI NAZAROV, Software Engineering, Sichuan University. New Software Technology, Dr. Hu Dasha. November 2026. University wordmark: unchanged SCU_TITLE.png supplied in the course-paper template. Background: conceptual verification artwork, not an experimental image.",
+  "TrustVerify. Executable Verification of AI-Generated Data Analysis. BAHODIR KODIRJON UGLI NAZAROV, Software Engineering, Sichuan University. New Software Technology, Dr. Hu Dasha. November 2026. University wordmark: the supplied monochrome SCU_TITLE_BW.png with a blue slide color treatment. Background: conceptual verification artwork, not an experimental image.",
   "Controlled ratio-02 example, demo/examples.json. 100 × 137 / 52 = 263.46153846153845%; nine complete observations. The deliberately injected metric adds 3.25 percentage points. This is not a natural model output.",
   "The contract is human approved. It fixes operation, columns, unit and missing-value semantics. The ratio is a ratio of sums, not an average of row ratios. The checker cannot infer whether this is the right research question. Source: trustverify/core.py, data/tasks.jsonl.",
   "Production: trustverify/core.py uses Decimal with a 40-digit context and never reads evaluator gold files. Evaluation: trustverify/benchmark.py uses independently implemented SQLite queries. No model-generated code executes. Both follow the approved contract, so a shared specification error remains possible.",
@@ -446,7 +446,9 @@ for (const [i,page] of P.slides.items.entries()) {
 }
 const candidate=path.join(dir,'candidate.pptx');
 await (await PresentationFile.exportPptx(P)).save(candidate);
-execFileSync('python3',[fromRepo('presentation/source/metadata.py'),candidate]);
+execFileSync('python3',[
+  fromRepo('presentation/source/metadata.py'),candidate,fromRepo(wordmark),C.blue.slice(1),C.deepNavy.slice(1),
+]);
 
 const skill=process.env.PRESENTATION_SKILL;
 if (skill) {
@@ -461,7 +463,7 @@ if (skill) {
       ...tables.flatMap(n=>['--require-native-table-slide',String(n)])],
     explicitTotalSlideCount:22,requiredNativeChartOwnerSlides:[6,11,12,14],requiredNativeTableOwnerSlides:tables,
     materializeLiteralChartWorkbooks:true,verifyArtifactToolImport:true,
-    fontPolicy:{basis:'design',families:[heading,font,mono]},
+    fontPolicy:{basis:'design',families:[font,mono]},
     receiptPath:path.join(dir,path.basename(finalPath)+'.validation.json'),
   });
 } else {
